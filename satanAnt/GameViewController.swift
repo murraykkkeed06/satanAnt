@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
     var bornRoomNumberInList: Int!
     var map = Map.map1
     var player: Player!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,8 +33,11 @@ class GameViewController: UIViewController {
                 // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
                 
-            scene.levelNum = 1
-            scene.player = Player()
+            //setupButton(scene: scene)
+            
+            let player = Player()
+            player.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+            scene.player = player
             
                 // Present the scene
             view.presentScene(scene)
@@ -62,7 +67,15 @@ class GameViewController: UIViewController {
     }
     
     
-    
+//    func setupButton(scene: GameScene)  {
+//        scene.mount = (scene.childNode(withName: "//mount") as! SKSpriteNode)
+//        scene.handler = (scene.childNode(withName: "//handler") as! SKSpriteNode)
+//        scene.handlerBackground = (scene.childNode(withName: "//handlerBackground") as! SKSpriteNode)
+//        scene.fireButton = (scene.childNode(withName: "fireButton") as! MSButtonNode)
+//        scene.popoButton = (scene.childNode(withName: "popoButton") as! MSButtonNode)
+//
+//    }
+//
     
     
     func setupSceneList()  {

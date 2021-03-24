@@ -14,11 +14,13 @@ class Player: SKSpriteNode {
     
     var timer: Timer!
     
-    let moveDistance: CGFloat = 0.02
+    let moveDistance: CGFloat = 3
     
     var timerSet = false
     
     var facing: CGPoint = CGPoint(x: 0, y: 0)
+    
+    var popoStart: TimeInterval = 0
     
     init(){
         let texture = SKTexture(imageNamed: "nakedAnt_2")
