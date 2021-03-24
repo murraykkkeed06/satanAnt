@@ -10,6 +10,8 @@
 		7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7203E1C0260B2E68006FFD40 /* handlerBackground.png */; };
 		7203E1C4260B2EAF006FFD40 /* handler.png in Resources */ = {isa = PBXBuildFile; fileRef = 7203E1C3260B2EAF006FFD40 /* handler.png */; };
 		7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7203E1C6260B3CCA006FFD40 /* Extension.swift */; };
+		72B30111260B7DE0008063D7 /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B30110260B7DE0008063D7 /* door.png */; };
+		72B30114260B7E0B008063D7 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B30113260B7E0B008063D7 /* Door.swift */; };
 		72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4663C260B2A1400BC5E56 /* AppDelegate.swift */; };
 		72B4663F260B2A1400BC5E56 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B4663E260B2A1400BC5E56 /* GameScene.sks */; };
 		72B46641260B2A1400BC5E56 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B46640260B2A1400BC5E56 /* Actions.sks */; };
@@ -25,12 +27,16 @@
 		72D3A537260B524D00E65281 /* Popo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3A536260B524D00E65281 /* Popo.swift */; };
 		72D3A552260B575D00E65281 /* popo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72D3A550260B575D00E65281 /* popo.sks */; };
 		72D3A553260B575D00E65281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72D3A551260B575D00E65281 /* Assets.xcassets */; };
+		72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3A556260B5E8E00E65281 /* GridYX.swift */; };
+		72D3A55A260B618100E65281 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3A559260B618100E65281 /* Map.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7203E1C0260B2E68006FFD40 /* handlerBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handlerBackground.png; sourceTree = "<group>"; };
 		7203E1C3260B2EAF006FFD40 /* handler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handler.png; sourceTree = "<group>"; };
 		7203E1C6260B3CCA006FFD40 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		72B30110260B7DE0008063D7 /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door.png; sourceTree = "<group>"; };
+		72B30113260B7E0B008063D7 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		72B46639260B2A1400BC5E56 /* satanAnt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = satanAnt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B4663C260B2A1400BC5E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72B4663E260B2A1400BC5E56 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -48,6 +54,8 @@
 		72D3A536260B524D00E65281 /* Popo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popo.swift; sourceTree = "<group>"; };
 		72D3A550260B575D00E65281 /* popo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = popo.sks; sourceTree = "<group>"; };
 		72D3A551260B575D00E65281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72D3A556260B5E8E00E65281 /* GridYX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridYX.swift; sourceTree = "<group>"; };
+		72D3A559260B618100E65281 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 				72B4665A260B2D3000BC5E56 /* Player */,
 				72B46656260B2CA900BC5E56 /* assets.atlas */,
 				72B4663C260B2A1400BC5E56 /* AppDelegate.swift */,
+				72D3A559260B618100E65281 /* Map.swift */,
 				72B4663E260B2A1400BC5E56 /* GameScene.sks */,
 				72B46640260B2A1400BC5E56 /* Actions.sks */,
 				7203E1C6260B3CCA006FFD40 /* Extension.swift */,
@@ -94,6 +103,7 @@
 				72B4664B260B2A1500BC5E56 /* Info.plist */,
 				72D3A550260B575D00E65281 /* popo.sks */,
 				72D3A551260B575D00E65281 /* Assets.xcassets */,
+				72D3A556260B5E8E00E65281 /* GridYX.swift */,
 			);
 			path = satanAnt;
 			sourceTree = "<group>";
@@ -101,6 +111,7 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72B30110260B7DE0008063D7 /* door.png */,
 				72D3A533260B522F00E65281 /* popo.png */,
 				72B4BD7C260B4B570063ED38 /* bullet.png */,
 				7203E1C3260B2EAF006FFD40 /* handler.png */,
@@ -116,6 +127,7 @@
 				72B46652260B2C5E00BC5E56 /* Player.swift */,
 				72B4BD82260B4BCE0063ED38 /* Bullet.swift */,
 				72D3A536260B524D00E65281 /* Popo.swift */,
+				72B30113260B7E0B008063D7 /* Door.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -191,6 +203,7 @@
 				72D3A553260B575D00E65281 /* Assets.xcassets in Resources */,
 				7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */,
 				72B4663F260B2A1400BC5E56 /* GameScene.sks in Resources */,
+				72B30111260B7DE0008063D7 /* door.png in Resources */,
 				7203E1C4260B2EAF006FFD40 /* handler.png in Resources */,
 				72B4BD7D260B4B570063ED38 /* bullet.png in Resources */,
 				72B46641260B2A1400BC5E56 /* Actions.sks in Resources */,
@@ -204,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72D3A55A260B618100E65281 /* Map.swift in Sources */,
 				7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */,
 				72B46653260B2C5E00BC5E56 /* Player.swift in Sources */,
 				72B46643260B2A1400BC5E56 /* GameScene.swift in Sources */,
@@ -212,6 +226,8 @@
 				72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */,
 				72B46645260B2A1400BC5E56 /* GameViewController.swift in Sources */,
 				72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */,
+				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
+				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

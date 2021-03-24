@@ -8,7 +8,8 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    
     
     var player: Player!
     var mount: SKSpriteNode!
@@ -23,8 +24,28 @@ class GameScene: SKScene {
     var popoStart: TimeInterval = 0
     var eachFrame: TimeInterval = 1/60
     
+    var top: GameScene!
+    var bototm: GameScene!
+    var left: GameScene!
+    var right: GameScene!
+    
+    var levelNum: Int!
+    var roomType: Int!
+    
+    var YX: GridYX!
+    /* Make a Class method to load levels */
+    //    class func level(_ levelNumber: Int) -> GameScene? {
+    //        guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
+    //            return nil
+    //        }
+    //        scene.scaleMode = .aspectFill
+    //        return scene
+    //    }
     
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self
+        
         player = Player()
         player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
         addChild(player)
@@ -55,12 +76,16 @@ class GameScene: SKScene {
             
             
         }
+        
+        
+        setupDoor()
+        print("room y: \(YX.y) x: \(YX.x)")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
-    
+        
         handleHandler(phase: "began", location: location)
         
         
@@ -90,6 +115,78 @@ class GameScene: SKScene {
         if popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
     }
     
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let nodeA = contact.bodyA.node
+        let nodeB = contact.bodyB.node
+        
+        if let nodeA = nodeA {
+            if let nodeB = nodeB{
+                setupDoorPass(nodeA: nodeA, nodeB: nodeB)
+            }
+        }
+        
+        
+        
+        
+    }
+    
+    
+    func setupDoorPass(nodeA: SKNode, nodeB: SKNode) {
+        
+        
+        if nodeA.name == "rightDoor" || nodeB.name == "rightDoor" {
+            if  let view = self.view as SKView?{
+                let scene = self.right
+                scene?.scaleMode = .aspectFill
+                view.presentScene(scene)
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true
+            }
+        }
+        if nodeA.name == "leftDoor" || nodeB.name == "leftDoor" {
+            if  let view = self.view as SKView?{
+                let scene = self.left
+                scene?.scaleMode = .aspectFill
+                view.presentScene(scene)
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true}
+        }
+        if nodeA.name == "topDoor" || nodeB.name == "topDoor" {
+            if  let view = self.view as SKView?{
+                let scene = self.top
+                scene?.scaleMode = .aspectFill
+                view.presentScene(scene)
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true}
+        }
+        if nodeA.name == "bottomDoor" || nodeB.name == "bottomDoor" {
+            if  let view = self.view as SKView?{
+                let scene = self.bototm
+                scene?.scaleMode = .aspectFill
+                view.presentScene(scene)
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true}
+        }
+    }
+    
+    
+    func setupDoor() {
+        let topDoor = (self.childNode(withName: "topDoor") as! SKSpriteNode)
+        let bottomDoor = (self.childNode(withName: "bottomDoor") as! SKSpriteNode)
+        let leftDoor = (self.childNode(withName: "leftDoor") as! SKSpriteNode)
+        let rightDoor = (self.childNode(withName: "rightDoor") as! SKSpriteNode)
+        if self.top != nil {addChild(Door(position: topDoor.position,name: "topDoor"))}
+        if self.bototm != nil {addChild(Door(position: bottomDoor.position, name: "bottomDoor"))}
+        if self.left != nil {addChild(Door(position: leftDoor.position, name: "leftDoor"))}
+        if self.right != nil {addChild(Door(position: rightDoor.position, name: "rightDoor"))}
+        
+        
+    }
     
     func handleHandler(phase: String, location: CGPoint) {
         let nodeAtpoint = atPoint(location)
