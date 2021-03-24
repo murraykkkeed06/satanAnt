@@ -46,9 +46,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         
-        player = Player()
+        player.move(toParent: self)
+        player.playerIsMoving = false
         player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-        addChild(player)
+        //addChild(player)
         
         mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
         handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
@@ -113,6 +114,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         popoStart += eachFrame
         if popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
+        
+        if player.playerIsMoving{
+            player.position+=(player.facing * 5)
+        }
     }
     
     
@@ -139,6 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if  let view = self.view as SKView?{
                 let scene = self.right
                 scene?.scaleMode = .aspectFill
+                scene?.player = player
                 view.presentScene(scene)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -149,6 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if  let view = self.view as SKView?{
                 let scene = self.left
                 scene?.scaleMode = .aspectFill
+                scene?.player = player
                 view.presentScene(scene)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -158,6 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if  let view = self.view as SKView?{
                 let scene = self.top
                 scene?.scaleMode = .aspectFill
+                scene?.player = player
                 view.presentScene(scene)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -167,6 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if  let view = self.view as SKView?{
                 let scene = self.bototm
                 scene?.scaleMode = .aspectFill
+                scene?.player = player
                 view.presentScene(scene)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -205,19 +214,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "moved":
             if !handlerBackground.frame.contains(location) {
-                player.stopWalk();
                 player.playerIsMoving = false
                 return
             }
             handler.position = location
-            player.walkBy(handlePosition: handler.position, handleMiddlePosition: mount.position)
-            
             let vec = handler.position - mount.position
             player.facing = vec.normalized()
             
         case "ended":
             player.playerIsMoving = false
-            player.stopWalk()
         default:
             break
         }

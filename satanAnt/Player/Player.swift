@@ -36,28 +36,7 @@ class Player: SKSpriteNode {
         super.init(coder: aDecoder)
     }
     
-    func walkBy(handlePosition: CGPoint, handleMiddlePosition: CGPoint) {
-        //if !playerIsMoving {timer.invalidate(); return}
-        if timerSet {timer.invalidate()}
-        let vec = handlePosition - handleMiddlePosition
-        let vecNormal = vec.normalized()
-
-        timer = Timer.scheduledTimer(timeInterval: -1, target: self, selector: #selector(goingTo), userInfo: vecNormal, repeats: true)
-        timerSet = true
-    }
     
-    @objc func goingTo(timer: Timer) {
-        let vecNormal = timer.userInfo as! CGPoint
-        
-        self.position.x += vecNormal.x * moveDistance
-        self.position.y += vecNormal.y * moveDistance
-        
-    }
-
-    
-    func stopWalk()  {
-        timer.invalidate()
-    }
     
     
 }

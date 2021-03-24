@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
     var sceneCol = 7
     var bornRoomNumberInList: Int!
     var map = Map.map1
-    
+    var player: Player!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +32,8 @@ class GameViewController: UIViewController {
             scene.scaleMode = .aspectFill
                 
             scene.levelNum = 1
-                
+            scene.player = Player()
+            
                 // Present the scene
             view.presentScene(scene)
             
