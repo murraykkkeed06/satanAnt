@@ -15,7 +15,13 @@ class GameScene: SKScene {
     var handler: SKSpriteNode!
     var handlerBackground: SKSpriteNode!
     var touchJoint: SKPhysicsJointSpring!
+    var fireButton: MSButtonNode!
+    var popoButton: MSButtonNode!
     
+    var popoBornTime: TimeInterval = 5
+    
+    var popoStart: TimeInterval = 0
+    var eachFrame: TimeInterval = 1/60
     
     
     override func didMove(to view: SKView) {
@@ -29,6 +35,26 @@ class GameScene: SKScene {
         
         mount.position = handlerBackground.position
         handler.position = handlerBackground.position
+        
+        fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
+        fireButton.selectedHandler = {
+            print("touch!")
+            let bullet = Bullet(position: self.player.position)
+            self.addChild(bullet)
+            bullet.flyTo(direction: self.player.facing)
+        }
+        
+        popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+        popoButton.isHidden = true
+        popoButton.selectedHandler = {
+            //if !(self.popoStart > 6){return}
+            let popo = Popo(position: self.player.position)
+            self.addChild(popo)
+            self.popoStart = 0
+            
+            
+            
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,6 +85,12 @@ class GameScene: SKScene {
     }
     
     
+    override func update(_ currentTime: TimeInterval) {
+        popoStart += eachFrame
+        if popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
+    }
+    
+    
     func handleHandler(phase: String, location: CGPoint) {
         let nodeAtpoint = atPoint(location)
         if nodeAtpoint.name != "handler" {return}
@@ -75,9 +107,17 @@ class GameScene: SKScene {
             player.playerIsMoving = true
             
         case "moved":
-            if !handlerBackground.frame.contains(location) {player.stopWalk(); return}
+            if !handlerBackground.frame.contains(location) {
+                player.stopWalk();
+                player.playerIsMoving = false
+                return
+            }
             handler.position = location
             player.walkBy(handlePosition: handler.position, handleMiddlePosition: mount.position)
+            
+            let vec = handler.position - mount.position
+            player.facing = vec.normalized()
+            
         case "ended":
             player.playerIsMoving = false
             player.stopWalk()

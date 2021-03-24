@@ -18,6 +18,8 @@ class Player: SKSpriteNode {
     
     var timerSet = false
     
+    var facing: CGPoint = CGPoint(x: 0, y: 0)
+    
     init(){
         let texture = SKTexture(imageNamed: "nakedAnt_2")
         super.init(texture: texture, color: .clear, size: CGSize(width: 50, height: 50))

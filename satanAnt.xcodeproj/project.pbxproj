@@ -16,9 +16,15 @@
 		72B46643260B2A1400BC5E56 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B46642260B2A1400BC5E56 /* GameScene.swift */; };
 		72B46645260B2A1400BC5E56 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B46644260B2A1400BC5E56 /* GameViewController.swift */; };
 		72B46648260B2A1400BC5E56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B46646260B2A1400BC5E56 /* Main.storyboard */; };
-		72B4664A260B2A1500BC5E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72B46649260B2A1500BC5E56 /* Assets.xcassets */; };
 		72B46653260B2C5E00BC5E56 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B46652260B2C5E00BC5E56 /* Player.swift */; };
 		72B46658260B2CC700BC5E56 /* nakedAnt_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B46657260B2CC700BC5E56 /* nakedAnt_2.png */; };
+		72B4BD7D260B4B570063ED38 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B4BD7C260B4B570063ED38 /* bullet.png */; };
+		72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4BD7F260B4B830063ED38 /* MSButtonNode.swift */; };
+		72B4BD83260B4BCE0063ED38 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4BD82260B4BCE0063ED38 /* Bullet.swift */; };
+		72D3A534260B522F00E65281 /* popo.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D3A533260B522F00E65281 /* popo.png */; };
+		72D3A537260B524D00E65281 /* Popo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3A536260B524D00E65281 /* Popo.swift */; };
+		72D3A552260B575D00E65281 /* popo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72D3A550260B575D00E65281 /* popo.sks */; };
+		72D3A553260B575D00E65281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72D3A551260B575D00E65281 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +38,16 @@
 		72B46642260B2A1400BC5E56 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		72B46644260B2A1400BC5E56 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		72B46647260B2A1400BC5E56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		72B46649260B2A1500BC5E56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72B4664B260B2A1500BC5E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72B46652260B2C5E00BC5E56 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		72B46657260B2CC700BC5E56 /* nakedAnt_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nakedAnt_2.png; sourceTree = "<group>"; };
+		72B4BD7C260B4B570063ED38 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		72B4BD7F260B4B830063ED38 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		72B4BD82260B4BCE0063ED38 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		72D3A533260B522F00E65281 /* popo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popo.png; sourceTree = "<group>"; };
+		72D3A536260B524D00E65281 /* Popo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popo.swift; sourceTree = "<group>"; };
+		72D3A550260B575D00E65281 /* popo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = popo.sks; sourceTree = "<group>"; };
+		72D3A551260B575D00E65281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				72D3A53E260B52C900E65281 /* SKS */,
 				72B4665A260B2D3000BC5E56 /* Player */,
 				72B46656260B2CA900BC5E56 /* assets.atlas */,
 				72B4663C260B2A1400BC5E56 /* AppDelegate.swift */,
@@ -77,8 +90,10 @@
 				72B46642260B2A1400BC5E56 /* GameScene.swift */,
 				72B46644260B2A1400BC5E56 /* GameViewController.swift */,
 				72B46646260B2A1400BC5E56 /* Main.storyboard */,
-				72B46649260B2A1500BC5E56 /* Assets.xcassets */,
+				72B4BD7F260B4B830063ED38 /* MSButtonNode.swift */,
 				72B4664B260B2A1500BC5E56 /* Info.plist */,
+				72D3A550260B575D00E65281 /* popo.sks */,
+				72D3A551260B575D00E65281 /* Assets.xcassets */,
 			);
 			path = satanAnt;
 			sourceTree = "<group>";
@@ -86,6 +101,8 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72D3A533260B522F00E65281 /* popo.png */,
+				72B4BD7C260B4B570063ED38 /* bullet.png */,
 				7203E1C3260B2EAF006FFD40 /* handler.png */,
 				7203E1C0260B2E68006FFD40 /* handlerBackground.png */,
 				72B46657260B2CC700BC5E56 /* nakedAnt_2.png */,
@@ -97,8 +114,17 @@
 			isa = PBXGroup;
 			children = (
 				72B46652260B2C5E00BC5E56 /* Player.swift */,
+				72B4BD82260B4BCE0063ED38 /* Bullet.swift */,
+				72D3A536260B524D00E65281 /* Popo.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		72D3A53E260B52C900E65281 /* SKS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SKS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,11 +185,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				72B46658260B2CC700BC5E56 /* nakedAnt_2.png in Resources */,
+				72D3A534260B522F00E65281 /* popo.png in Resources */,
+				72D3A552260B575D00E65281 /* popo.sks in Resources */,
 				72B46648260B2A1400BC5E56 /* Main.storyboard in Resources */,
+				72D3A553260B575D00E65281 /* Assets.xcassets in Resources */,
 				7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */,
 				72B4663F260B2A1400BC5E56 /* GameScene.sks in Resources */,
 				7203E1C4260B2EAF006FFD40 /* handler.png in Resources */,
-				72B4664A260B2A1500BC5E56 /* Assets.xcassets in Resources */,
+				72B4BD7D260B4B570063ED38 /* bullet.png in Resources */,
 				72B46641260B2A1400BC5E56 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +207,9 @@
 				7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */,
 				72B46653260B2C5E00BC5E56 /* Player.swift in Sources */,
 				72B46643260B2A1400BC5E56 /* GameScene.swift in Sources */,
+				72D3A537260B524D00E65281 /* Popo.swift in Sources */,
+				72B4BD83260B4BCE0063ED38 /* Bullet.swift in Sources */,
+				72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */,
 				72B46645260B2A1400BC5E56 /* GameViewController.swift in Sources */,
 				72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */,
 			);
