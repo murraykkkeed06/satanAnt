@@ -12,31 +12,32 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     //5 * 7
-    //10 room
     var sceneList = [GameScene]()
-    var sceneRow = 5
-    var sceneCol = 7
-    var bornRoomNumberInList: Int!
-    var map = Map.map1
+    
+    
+    var map = [[Int]]()
     var player: Player!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSceneList()
-        self.bornRoomNumberInList = Int.random(in: 0..<sceneList.count)
+        player = Player()
+        player.inMapNumber = Int.random(in: 0..<Map().map.count)
+        map = Map().map[player.inMapNumber]
 
+        setupSceneList()
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            let scene = sceneList[self.bornRoomNumberInList]
+            let scene = sceneList[self.bornRoom()]
                 // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
                 
             //setupButton(scene: scene)
             
-            let player = Player()
+            
             player.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+            
             scene.player = player
             
                 // Present the scene
@@ -78,13 +79,30 @@ class GameViewController: UIViewController {
 //
     
     
+    func bornRoom() -> Int {
+        var room: Int!
+        
+        for i in 0..<sceneList.count{
+            if sceneList[i].isBornRoom{
+                room = i
+                break
+            }
+        }
+        return room
+    }
+    
+    
     func setupSceneList()  {
         //new scene
-        for y in 0..<sceneRow{
-            for x in 0..<sceneCol{
+        for y in 0..<Map().sceneRow{
+            for x in 0..<Map().sceneCol{
                 if self.map[y][x] != 0{
+                    //print("y: \(y),x: \(x)")
                     let gameScene = GameScene(fileNamed: "GameScene")!
                     gameScene.YX = GridYX(y: y, x: x)
+                    if self.map[y][x] == 2 {
+                        gameScene.isBornRoom = true
+                    }
                     sceneList.append(gameScene)
                 }
             }

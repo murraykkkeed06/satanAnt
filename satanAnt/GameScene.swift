@@ -37,6 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var leftDoor: SKSpriteNode!
     var rightDoor: SKSpriteNode!
     
+    var mapPosition: SKSpriteNode!
+
+    var isBornRoom = false
     var YX: GridYX!
     /* Make a Class method to load levels */
     //    class func level(_ levelNumber: Int) -> GameScene? {
@@ -48,6 +51,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //    }
     
     override func didMove(to view: SKView) {
+
+        
         
         physicsWorld.contactDelegate = self
         
@@ -58,6 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
         handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
+        mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
         handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
         
         //mount.position = handlerBackground.position
@@ -65,7 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
         fireButton.selectedHandler = {
-            print("touch!")
+            
             let bullet = Bullet(position: self.player.position)
             self.addChild(bullet)
             bullet.flyTo(direction: self.player.facing)
@@ -77,18 +83,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let popo = Popo(position: self.player.position)
             self.addChild(popo)
             self.player.popoStart = 0
-    
+            
         }
         
         
         setupDoor()
+        setupMap()
         print("room y: \(YX.y) x: \(YX.x)")
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
-        
+       
         handleHandler(phase: "began", location: location)
         
         
@@ -138,9 +146,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func setupMap() {
+        let map = Map().map[player.inMapNumber]
+        for y in 0..<Map().sceneRow{
+            for x in 0..<Map().sceneCol{
+                //set room for none zero
+                if map[y][x] != 0 {
+                    let newRoom = SKSpriteNode(color: .white, size: CGSize(width: 20, height: 20))
+                    //player room
+                    if x == YX.x && y == YX.y {
+                        newRoom.color = .red
+                    }
+                    newRoom.position = mapPosition.position + CGPoint(x: 20*x, y: -20*y)
+                    addChild(newRoom)
+                    
+                    
+                }
+                
+               
+            }
+        }
+        
+    }
+    
     
     func setupDoorPass(nodeA: SKNode, nodeB: SKNode) {
         
+        let fade = SKTransition.fade(withDuration: 1)
         
         if nodeA.name == "rightDoor" || nodeB.name == "rightDoor" {
             if  let view = self.view as SKView?{
@@ -149,7 +181,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = leftDoor.position + CGPoint(x: 70, y: 0)
                 //scene?.handler.position = self.handler.position
-                view.presentScene(scene)
+                
+                view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true
@@ -162,7 +195,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = rightDoor.position + CGPoint(x: -70, y: 0)
                 //scene?.handler.position = self.handler.position
-                view.presentScene(scene)
+                
+                view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true}
@@ -174,7 +208,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = bottomDoor.position + CGPoint(x: 0, y: 70)
                 //scene?.handler.position = self.handler.position
-                view.presentScene(scene)
+                
+                view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true}
@@ -186,7 +221,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = topDoor.position + CGPoint(x: 0, y: -70)
                 //scene?.handler.position = self.handler.position
-                view.presentScene(scene)
+                
+                view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true}
@@ -214,8 +250,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch phase {
         case "began":
             touchJoint = SKPhysicsJointSpring.joint(withBodyA: mount.physicsBody!, bodyB: handler.physicsBody!, anchorA: mount.position, anchorB: location)
-            touchJoint.damping = 1
-            touchJoint.frequency = 1
+            touchJoint.damping = 20
+            touchJoint.frequency = 30
             physicsWorld.add(touchJoint)
             
             handler.position = location
