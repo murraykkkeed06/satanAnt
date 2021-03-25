@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var mount: SKSpriteNode!
     var handler: SKSpriteNode!
     var handlerBackground: SKSpriteNode!
-    var touchJoint: SKPhysicsJointSpring!
+   
     var fireButton: MSButtonNode!
     var popoButton: MSButtonNode!
     
@@ -66,8 +66,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
         handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
         
-        //mount.position = handlerBackground.position
-        //handler.position = handlerBackground.position
+        mount.position = handlerBackground.position
+        handler.position = handlerBackground.position
         
         fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
         fireButton.selectedHandler = {
@@ -153,6 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //set room for none zero
                 if map[y][x] != 0 {
                     let newRoom = SKSpriteNode(color: .white, size: CGSize(width: 20, height: 20))
+                    newRoom.zPosition = 2
                     //player room
                     if x == YX.x && y == YX.y {
                         newRoom.color = .red
@@ -249,26 +250,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch phase {
         case "began":
-            touchJoint = SKPhysicsJointSpring.joint(withBodyA: mount.physicsBody!, bodyB: handler.physicsBody!, anchorA: mount.position, anchorB: location)
-            touchJoint.damping = 20
-            touchJoint.frequency = 30
-            physicsWorld.add(touchJoint)
+
             
             handler.position = location
             
             player.playerIsMoving = true
             
         case "moved":
-            if !handlerBackground.frame.contains(location) {
-                player.playerIsMoving = false
-                return
-            }
-            handler.position = location
-            let vec = handler.position - mount.position
+            
+            
+            let vec = location - mount.position
+            //print("\(vec)")
             player.facing = vec.normalized()
+            //print("\(player.facing)")
+            
+            if !handlerBackground.frame.contains(location){
+                player.playerIsMoving = false
+                handler.position = mount.position
+            }else {
+                handler.position = location
+            }
+            
+            
+            
+            
             
             
         case "ended":
+            print("ended!")
+            handler.position = mount.position
             player.playerIsMoving = false
         default:
             break

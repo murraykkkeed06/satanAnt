@@ -15,6 +15,7 @@ class Door: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: CGSize(width: 50, height: 50  ))
         self.position = position
         self.name = name
+        self.zPosition = 2
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
         self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = false
