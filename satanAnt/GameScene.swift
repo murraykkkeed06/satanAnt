@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var popoBornTime: TimeInterval = 5
     
-    
+    var sinceStart: TimeInterval!
     var eachFrame: TimeInterval = 1/60
     
     var top: GameScene!
@@ -38,38 +38,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rightDoor: SKSpriteNode!
     
     var mapPosition: SKSpriteNode!
+    
+    var setupIsSet = false
 
     var isBornRoom = false
     var YX: GridYX!
     /* Make a Class method to load levels */
-    //    class func level(_ levelNumber: Int) -> GameScene? {
-    //        guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
-    //            return nil
-    //        }
-    //        scene.scaleMode = .aspectFill
-    //        return scene
-    //    }
+        class func level(_ levelNumber: Int) -> GameScene? {
+            guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
+                return nil
+            }
+            scene.scaleMode = .aspectFill
+            return scene
+        }
     
     override func didMove(to view: SKView) {
 
         
         
+        
+        //player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        //addChild(player)
+        if !self.setupIsSet {
+            mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
+            handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
+            mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
+            handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
+            fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
+            popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+            setupDoor()
+            setupMap()
+        }
+        
+        handler.isHidden = true
+        
+        sinceStart = 0
+        mount.position = handlerBackground.position
+        handler.position = handlerBackground.position
         physicsWorld.contactDelegate = self
         
         player.move(toParent: self)
         player.playerIsMoving = false
-        //player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-        //addChild(player)
+        player.state = .idle
         
-        mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
-        handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
-        mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
-        handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
-        
-        mount.position = handlerBackground.position
-        handler.position = handlerBackground.position
-        
-        fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
         fireButton.selectedHandler = {
             
             let bullet = Bullet(position: self.player.position)
@@ -77,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bullet.flyTo(direction: self.player.facing)
         }
         
-        popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+        
         popoButton.selectedHandler = {
             //if !(self.popoStart > 6){return}
             let popo = Popo(position: self.player.position)
@@ -87,9 +98,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        setupDoor()
-        setupMap()
-        print("room y: \(YX.y) x: \(YX.x)")
+       
+       
+        
         
     }
     
@@ -116,18 +127,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
-        
+        player.state = .idle
         handleHandler(phase: "ended", location: location)
     }
     
     
     override func update(_ currentTime: TimeInterval) {
         player.popoStart += eachFrame
+        sinceStart += eachFrame
+        if sinceStart > eachFrame{
+            handler.isHidden = false
+        }
         if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
         
         if player.playerIsMoving{
             player.position+=(player.facing * player.moveDistance)
         }
+        
+        
     }
     
     
@@ -140,11 +157,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupDoorPass(nodeA: nodeA, nodeB: nodeB)
             }
         }
-        
-        
-        
-        
+    
     }
+    
     
     func setupMap() {
         let map = Map().map[player.inMapNumber]
@@ -154,6 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if map[y][x] != 0 {
                     let newRoom = SKSpriteNode(color: .white, size: CGSize(width: 20, height: 20))
                     newRoom.zPosition = 2
+                    newRoom.alpha = 0.5
                     //player room
                     if x == YX.x && y == YX.y {
                         newRoom.color = .red
@@ -172,6 +188,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setupDoorPass(nodeA: SKNode, nodeB: SKNode) {
+        
+        
         
         let fade = SKTransition.fade(withDuration: 1)
         
@@ -228,6 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true}
         }
+        self.setupIsSet = true
     }
     
     
@@ -244,6 +263,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    
+    
+    
+    
     func handleHandler(phase: String, location: CGPoint) {
         let nodeAtpoint = atPoint(location)
         if nodeAtpoint.name != "handler" {return}
@@ -258,6 +281,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "moved":
             
+            if !player.playerIsMoving {return}
             
             let vec = location - mount.position
             //print("\(vec)")
@@ -277,7 +301,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             
         case "ended":
-            print("ended!")
+            //print("ended!")
             handler.position = mount.position
             player.playerIsMoving = false
         default:

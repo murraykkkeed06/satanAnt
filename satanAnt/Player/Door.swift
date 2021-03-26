@@ -10,19 +10,23 @@ import SpriteKit
 
 class Door: SKSpriteNode {
     
+    
+    var doorSize = CGSize(width: 20, height: 15)
+    
     init(position: CGPoint, name: String){
-        let texture = SKTexture(imageNamed: "door")
-        super.init(texture: texture, color: .clear, size: CGSize(width: 50, height: 50  ))
+        let texture = SKTexture(imageNamed: "portal_1")
+        super.init(texture: texture, color: .clear, size: doorSize)
+        self.run(SKAction(named: "portalMove")!)
         self.position = position
         self.name = name
         self.zPosition = 2
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+        self.physicsBody = SKPhysicsBody(rectangleOf: doorSize)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.pinned = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.collisionBitMask = 0
-        self.physicsBody?.categoryBitMask = 0
+        self.physicsBody?.categoryBitMask = 3
         self.physicsBody?.contactTestBitMask = 1
     }
     

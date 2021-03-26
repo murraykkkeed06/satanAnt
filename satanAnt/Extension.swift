@@ -89,13 +89,36 @@ extension CGPoint {
   }
 
   /**
-   * Returns the angle in radians of the vector described by the CGPoint.
-   * The range of the angle is -π to π; an angle of 0 points to the right.
+   * Returns the angle in degree
+   * The range of the angle is 0 to 360, return 0 on coordinate line
    */
   public var angle: CGFloat {
-    return atan2(y, x)
+    var value: CGFloat!
+    
+    if x>0 && y>0{
+        value = 90 - atan2(x, y) * 180 / CGFloat.pi
+    }else if x<0 && y>0{
+        value = 90 + atan2(x, y) * -180 / CGFloat.pi
+    }else if x<0 && y<0{
+        value = 90 - atan2(x, y) * 180 / CGFloat.pi
+    }else if x>0 && y<0{
+        value = 450 - atan2(x,y) * 180 / CGFloat.pi
+    }else{
+        value = 0
+    }
+    
+    return value
+    
+    
+    
   }
+
+
 }
+
+
+
+
 
 /**
  * Adds two CGPoint values and returns the result as a new CGPoint.

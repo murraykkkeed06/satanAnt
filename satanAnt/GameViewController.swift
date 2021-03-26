@@ -98,12 +98,18 @@ class GameViewController: UIViewController {
             for x in 0..<Map().sceneCol{
                 if self.map[y][x] != 0{
                     //print("y: \(y),x: \(x)")
-                    let gameScene = GameScene(fileNamed: "GameScene")!
-                    gameScene.YX = GridYX(y: y, x: x)
+                    
                     if self.map[y][x] == 2 {
+                        let gameScene = GameScene.level(2)!
+                        gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isBornRoom = true
+                        sceneList.append(gameScene)
+                    }else{
+                        let gameScene = GameScene.level(1)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        sceneList.append(gameScene)
                     }
-                    sceneList.append(gameScene)
+                    
                 }
             }
         }

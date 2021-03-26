@@ -27,8 +27,13 @@ class Bullet: SKSpriteNode {
     
     func flyTo(direction: CGPoint)  {
         
+        //self.physicsBody = SKPhysicsBody(circleOfRadius: 5)
+//        self.physicsBody?.affectedByGravity = false
+//        self.physicsBody?.allowsRotation = false
+//        self.physicsBody?.applyImpulse(CGVector(dx: direction.x, dy: direction.y))
         let flyAction = SKAction.moveBy(x: direction.x*999, y: direction.y*999, duration: self.bulletSpeed)
-        let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
+        let wait = SKAction.wait(forDuration: 3)
+        let seq = SKAction.sequence([flyAction,wait,SKAction.removeFromParent()])
         self.run(seq)
     }
     
