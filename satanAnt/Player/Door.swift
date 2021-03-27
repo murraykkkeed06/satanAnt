@@ -21,7 +21,7 @@ class Door: SKSpriteNode {
         self.name = name
         self.zPosition = 2
         self.physicsBody = SKPhysicsBody(rectangleOf: doorSize)
-        self.physicsBody?.isDynamic = false
+        self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.pinned = true
         self.physicsBody?.allowsRotation = false

@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fireButton: MSButtonNode!
     var popoButton: MSButtonNode!
     
-    var popoBornTime: TimeInterval = 5
+    //var popoBornTime: TimeInterval = 5
     
     var sinceStart: TimeInterval!
     var eachFrame: TimeInterval = 1/60
@@ -101,10 +101,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.moneyChanged = true
         
         fireButton.selectedHandler = {
-            
-            let bullet = Bullet(position: self.player.position)
-            self.addChild(bullet)
-            bullet.flyTo(direction: self.player.facing)
+            self.player.fireStart = 0
+            self.player.weapon.attack(direction: self.player.facing,homeScene: self)
         }
         
         
@@ -153,14 +151,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         player.popoStart += eachFrame
+        player.fireStart += eachFrame
         sinceStart += eachFrame
         for i in 0..<logList.count{
             logList[i].sinceStart += eachFrame
         }
         
         playerSetupHud()
-        
-        
         timeControl()
         
 
@@ -175,10 +172,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let nodeB = nodeB{
                 setupDoorPass(nodeA: nodeA, nodeB: nodeB)
                 setupMonsterMoving(nodeA: nodeA, nodeB: nodeB)
+                setupDamage(nodeA: nodeA, nodeB: nodeB)
             }
         }
     
     }
+    
+    
     
     func playerSetupHud() {
         //set exp
@@ -252,6 +252,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             thirdMoneyNode.position = CGPoint(x: 30, y: 0)
             player.moneyChanged = false
         }
+        //set weapon on hud and player
+        if player.weaponChanged{
+            let weaponBorn = (self.childNode(withName: "//weaponBorn") as! SKSpriteNode)
+            let weaponName = player.weapon.name!
+            weaponBorn.removeAllChildren()
+            let newWeapon = Weapon(name: weaponName)
+            newWeapon.position = CGPoint(x: 0, y: 0)
+            weaponBorn.addChild(newWeapon)
+            
+//            player.removeAllChildren()
+//            let weaponOnHand = Weapon(name: weaponName)
+//            weaponOnHand.position = CGPoint(x: 13, y: -8)
+//            weaponOnHand.anchorPoint = CGPoint(x: 1, y: 0)
+//            weaponOnHand.zRotation = -53 * (3.14/180)
+//            player.addChild(weaponOnHand)
+
+            player.weaponChanged = false
+        }
+        
+        
         
     }
     
@@ -268,11 +288,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setupDamage(nodeA: SKNode, nodeB: SKNode) {
+        if (nodeA.name == "staffBullet" && nodeB.name == "log"){
+            let bullet = nodeA as! Bullet
+            bullet.removeFromParent()
+            let log = nodeB as! Log
+            log.health -= 0.25
+            if log.health <= 0 {
+                player.exp += 10
+                player.expChanged = true
+            }
+            //print("hit!")
+        }
+        if (nodeA.name == "log" && nodeB.name == "staffBullet"){
+            let bullet = nodeB as! Bullet
+            bullet.removeFromParent()
+            let log = nodeA as! Log
+            log.health -= 0.25
+            if log.health <= 0 {
+                player.exp += 10
+                player.expChanged = true
+            }
+            //print("hit!")
+        }
+        
+        if (nodeA.name == "log" && nodeB.name == "player"){
+            player.health -= 0.25
+            player.healthChanged = true
+        }
+        if (nodeA.name == "player" && nodeB.name == "log"){
+            player.health -= 0.25
+            player.healthChanged = true
+            
+        }
+        
+        
+        
+    }
+    
     func timeControl()  {
         if sinceStart > eachFrame{
             handler.isHidden = false
         }
         if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
+        
+        if player.fireStart < player.weapon.attackSpeed {fireButton.isHidden = true} else{
+            fireButton.isHidden = false
+        }
         
         if player.playerIsMoving{
             player.position+=(player.facing * player.moveDistance)

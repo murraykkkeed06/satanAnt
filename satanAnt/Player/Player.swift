@@ -23,6 +23,7 @@ class Player: SKSpriteNode {
     var playerIsMoving = false
     let moveDistance: CGFloat = 2
     var popoStart: TimeInterval = 0
+    var fireStart: TimeInterval = 0
     //which map in Map.swift
     var inMapNumber: Int!
     var playerSize = CGSize(width: 28, height: 34)
@@ -32,6 +33,10 @@ class Player: SKSpriteNode {
     var leftIsSet = false
     var backIsSet = false
     var forIsSet = false
+    
+    //weapon
+    var weapon: Weapon!
+    var weaponChanged = true
     
     var homeScene: GameScene!
     //player ability
@@ -44,6 +49,7 @@ class Player: SKSpriteNode {
             _exp = newValue
             if _exp > 100 {
                 self.level += 1
+                self.levelChanged = true
                 _exp = _exp - 100
             }
         }
@@ -128,7 +134,7 @@ class Player: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: playerSize)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.isDynamic = true
+        self.physicsBody?.isDynamic = false
         //self.physicsBody?.collisionBitMask = 2
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 3
@@ -137,7 +143,7 @@ class Player: SKSpriteNode {
         self.level = 3
         self.health = 2.75
         self.money = 178
-        
+        self.weapon = Weapon(name: "staff")
        
         
     }

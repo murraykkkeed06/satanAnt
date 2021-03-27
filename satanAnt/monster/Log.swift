@@ -22,11 +22,25 @@ enum LogState: Int{
 
 class Log: SKSpriteNode{
     
+    private var _health: CGFloat!
+    var health: CGFloat{
+        set{
+            _health = newValue
+            if _health<=0 {
+                //first run action
+                self.removeFromParent()
+            }
+        }
+        get{
+            return _health
+        }
+    }
+    
     private var _logState: LogState!
     var logState: LogState {
         set{
             _logState = newValue
-            self.removeAllActions()
+            //self.removeAllActions()
             switch newValue {
             case .idle:
                 self.run(SKAction(named: "logIdle")!)
@@ -77,9 +91,10 @@ class Log: SKSpriteNode{
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.contactTestBitMask = 2
+        self.physicsBody?.contactTestBitMask = 3
         self.name = "log"
         self.sinceStart = 0
+        self.health = 1
         //self.startMoving()
     }
     required init?(coder aDecoder: NSCoder) {
