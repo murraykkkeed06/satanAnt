@@ -21,25 +21,43 @@ enum playerState {
 class Player: SKSpriteNode {
     
     var playerIsMoving = false
-    
-    var timer: Timer!
-    
     let moveDistance: CGFloat = 2
-    
-    var timerSet = false
-    
-    
-
     var popoStart: TimeInterval = 0
-    
+    //which map in Map.swift
     var inMapNumber: Int!
-    
     var playerSize = CGSize(width: 28, height: 34)
     
+    //for  SKAction
     var rightIsSet = false
     var leftIsSet = false
     var backIsSet = false
     var forIsSet = false
+    
+    var homeScene: GameScene!
+    //player ability
+    var health: CGFloat!
+    var level: CGFloat!
+    var money: CGFloat!
+    private var _exp: CGFloat!
+    var exp: CGFloat {
+        set{
+            _exp = newValue
+            if _exp > 100 {
+                self.level += 1
+                _exp = _exp - 100
+            }
+        }
+        get{
+            return _exp
+        }
+    }
+    
+    var healthChanged = true
+    var levelChanged = true
+    var moneyChanged = true
+    var expChanged = true
+    
+    
     
     
     private var _state: playerState!
@@ -103,7 +121,7 @@ class Player: SKSpriteNode {
     init(){
         let texture = SKTexture(imageNamed: "new_forward_1")
         super.init(texture: texture, color: .clear, size: playerSize)
-        self.zPosition = 1
+        self.zPosition = 3
         self.state = .idle
         self._facing = CGPoint(x: 0, y: 0)
         //self.idleStart = 0
@@ -114,14 +132,20 @@ class Player: SKSpriteNode {
         //self.physicsBody?.collisionBitMask = 2
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 3
+        self.name = "player"
+        self.exp = 89
+        self.level = 3
+        self.health = 2.75
+        self.money = 178
+        
+       
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    
+   
     
     
 }

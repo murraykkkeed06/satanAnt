@@ -11,6 +11,8 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
+    var logList = [Log]()
+    
     var player: Player!
     var mount: SKSpriteNode!
     var handler: SKSpriteNode!
@@ -42,15 +44,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var setupIsSet = false
 
     var isBornRoom = false
+    var isBonusRoom = false
     var YX: GridYX!
     /* Make a Class method to load levels */
-        class func level(_ levelNumber: Int) -> GameScene? {
-            guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
+    class func level(_ levelNumber: Int) -> GameScene? {
+        
+        if levelNumber == 1 {
+            let randomMap = Int.random(in: 0..<7)
+            guard let scene = GameScene(fileNamed: "Level_\(levelNumber)_\(randomMap)") else {
                 return nil
             }
             scene.scaleMode = .aspectFill
             return scene
+        }else{
+        guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
+            return nil
         }
+        scene.scaleMode = .aspectFill
+        return scene
+        }
+    }
     
     override func didMove(to view: SKView) {
 
@@ -68,6 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
             setupDoor()
             setupMap()
+            if !isBornRoom && !isBonusRoom{setupMonster()}
         }
         
         handler.isHidden = true
@@ -80,6 +94,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.move(toParent: self)
         player.playerIsMoving = false
         player.state = .idle
+        player.homeScene = self
+        player.healthChanged = true
+        player.levelChanged = true
+        player.expChanged = true
+        player.moneyChanged = true
         
         fireButton.selectedHandler = {
             
@@ -135,16 +154,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         player.popoStart += eachFrame
         sinceStart += eachFrame
-        if sinceStart > eachFrame{
-            handler.isHidden = false
-        }
-        if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
-        
-        if player.playerIsMoving{
-            player.position+=(player.facing * player.moveDistance)
+        for i in 0..<logList.count{
+            logList[i].sinceStart += eachFrame
         }
         
+        playerSetupHud()
         
+        
+        timeControl()
+        
+
     }
     
     
@@ -155,11 +174,136 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let nodeA = nodeA {
             if let nodeB = nodeB{
                 setupDoorPass(nodeA: nodeA, nodeB: nodeB)
+                setupMonsterMoving(nodeA: nodeA, nodeB: nodeB)
             }
         }
     
     }
     
+    func playerSetupHud() {
+        //set exp
+        if player.expChanged{
+            let expBar = (self.childNode(withName: "//expBar") as! SKSpriteNode)
+            expBar.xScale = player.exp/100
+            player.expChanged = false
+        }
+        
+        //set health
+        if player.healthChanged {
+            let heartBorn = (self.childNode(withName: "//heartBorn") as! SKSpriteNode)
+            heartBorn.removeAllChildren()
+            
+            let integer = player.health.rounded(.down)
+            let left = player.health.truncatingRemainder(dividingBy: 1.0)
+            
+            for i in 0..<Int(integer){
+                let newHeart = Heart(number: 1)
+                newHeart.run(SKAction(named: "idle")!)
+                newHeart.position =  CGPoint(x: i*20, y: 0)
+                heartBorn.addChild(newHeart)
+                if i == Int(integer)-1{
+                    let newHeart = Heart(number: left)
+                    newHeart.run(SKAction(named: "idle")!)
+                    newHeart.position =  CGPoint(x: (i+1)*20, y: 0)
+                    heartBorn.addChild(newHeart)
+                }
+            }
+            player.healthChanged = false
+        }
+        //set level
+        if player.levelChanged{
+            let levelBorn = (self.childNode(withName: "//levelBorn") as! SKSpriteNode)
+            levelBorn.removeAllChildren()
+            
+            let firstNum: Int = Int((player.level/10).rounded(.down))
+            let secondNum: Int = Int(player.level.truncatingRemainder(dividingBy: 10))
+            
+            let firstNode = Num(number: firstNum,size: 10)
+            levelBorn.addChild(firstNode)
+            firstNode.position = CGPoint(x: 0, y: 0)
+            
+            let secondNode = Num(number: secondNum,size: 10)
+            levelBorn.addChild(secondNode)
+            secondNode.position = CGPoint(x: 10, y: 0)
+            player.levelChanged = false
+        }
+        
+        //set money
+        if player.moneyChanged {
+            let moneyBorn = (self.childNode(withName: "//moneyBorn") as! SKSpriteNode)
+            moneyBorn.removeAllChildren()
+            
+            let firstMoney: Int = Int((player.money/100).rounded(.down))
+            let tempMoney: Int = (player.money >= 100) ? Int(player.money) - firstMoney*100 : Int(player.money)
+            let secondMoney: Int = Int(tempMoney/10)
+            let thirdMoney: Int = Int(player.money.truncatingRemainder(dividingBy: 10))
+            
+            
+            let firstMoneyNode = Num(number: firstMoney,size: 15)
+            moneyBorn.addChild(firstMoneyNode)
+            firstMoneyNode.position = CGPoint(x: 0, y: 0)
+            
+            let secondMoneyNode = Num(number: secondMoney,size: 15)
+            moneyBorn.addChild(secondMoneyNode)
+            secondMoneyNode.position = CGPoint(x: 15, y: 0)
+            
+            let thirdMoneyNode = Num(number: thirdMoney,size: 15)
+            moneyBorn.addChild(thirdMoneyNode)
+            thirdMoneyNode.position = CGPoint(x: 30, y: 0)
+            player.moneyChanged = false
+        }
+        
+    }
+    
+    func setupMonsterMoving(nodeA: SKNode, nodeB: SKNode) {
+        if nodeA.name == "log" {
+            
+            let node = nodeA as! Log
+            node.bump()
+        }
+        if nodeB.name == "log" {
+            
+            let node = nodeB as! Log
+            node.bump()
+        }
+    }
+    
+    func timeControl()  {
+        if sinceStart > eachFrame{
+            handler.isHidden = false
+        }
+        if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
+        
+        if player.playerIsMoving{
+            player.position+=(player.facing * player.moveDistance)
+        }
+    }
+    
+    func setupMonster() {
+        for _ in 0..<10 {
+            var borned = false
+            var check = 0
+            var bornX = CGFloat.random(in: 0..<self.view!.frame.width)
+            var bornY = CGFloat.random(in: 0..<self.view!.frame.height)
+            while !borned {
+                for node in self.children {
+                    if node.physicsBody != nil && node.frame.contains(CGPoint(x: bornX, y: bornY)) {
+                        bornX = CGFloat.random(in: 0..<self.view!.frame.width)
+                        bornY = CGFloat.random(in: 0..<self.view!.frame.height)
+                        break
+                    }else {
+                        check += 1
+                        if check == self.children.count {borned = true}
+                    }
+                }
+            }
+            let newLog = Log()
+            newLog.position = CGPoint(x: bornX, y: bornY)
+            addChild(newLog)
+            logList.append(newLog)
+        }
+        
+    }
     
     func setupMap() {
         let map = Map().map[player.inMapNumber]
@@ -193,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let fade = SKTransition.fade(withDuration: 1)
         
-        if nodeA.name == "rightDoor" || nodeB.name == "rightDoor" {
+        if (nodeA.name == "rightDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "rightDoor"){
             if  let view = self.view as SKView?{
                 let scene = self.right
                 scene?.scaleMode = .aspectFill
@@ -207,7 +351,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.ignoresSiblingOrder = true
             }
         }
-        if nodeA.name == "leftDoor" || nodeB.name == "leftDoor" {
+        if (nodeA.name == "leftDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "leftDoor") {
             if  let view = self.view as SKView?{
                 let scene = self.left
                 scene?.scaleMode = .aspectFill
@@ -220,7 +364,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true}
         }
-        if nodeA.name == "topDoor" || nodeB.name == "topDoor" {
+        if (nodeA.name == "topDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "topDoor") {
             if  let view = self.view as SKView?{
                 let scene = self.top
                 scene?.scaleMode = .aspectFill
@@ -233,7 +377,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true}
         }
-        if nodeA.name == "bottomDoor" || nodeB.name == "bottomDoor" {
+        if (nodeA.name == "bottomDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "bottomDoor") {
             if  let view = self.view as SKView?{
                 let scene = self.bototm
                 scene?.scaleMode = .aspectFill

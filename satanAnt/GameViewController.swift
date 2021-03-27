@@ -104,7 +104,13 @@ class GameViewController: UIViewController {
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isBornRoom = true
                         sceneList.append(gameScene)
-                    }else{
+                    }else if self.map[y][x] == 3 {
+                        let gameScene = GameScene.level(3)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isBonusRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else {
                         let gameScene = GameScene.level(1)!
                         gameScene.YX = GridYX(y: y, x: x)
                         sceneList.append(gameScene)
