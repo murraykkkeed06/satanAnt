@@ -134,7 +134,7 @@ class Player: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: playerSize)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.isDynamic = false
+        self.physicsBody?.isDynamic = true
         //self.physicsBody?.collisionBitMask = 2
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 3

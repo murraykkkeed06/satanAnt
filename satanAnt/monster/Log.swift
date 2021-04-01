@@ -40,17 +40,22 @@ class Log: SKSpriteNode{
     var logState: LogState {
         set{
             _logState = newValue
-            //self.removeAllActions()
+            self.removeAllActions()
             switch newValue {
             case .idle:
+                self.run(SKAction.resize(toWidth: 36, duration: 0.01))
                 self.run(SKAction(named: "logIdle")!)
             case .right:
+                self.run(SKAction.resize(toWidth: 20, duration: 0.01))
                 self.run(SKAction(named: "logRight")!)
             case .backward:
+                self.run(SKAction.resize(toWidth: 36, duration: 0.01))
                 self.run(SKAction(named: "logBackward")!)
             case .forward:
+                self.run(SKAction.resize(toWidth: 36, duration: 0.01))
                 self.run(SKAction(named: "logForward")!)
             case .left:
+                self.run(SKAction.resize(toWidth: 20, duration: 0.01))
                 self.run(SKAction(named: "logLeft")!)
             }
         }
@@ -86,12 +91,13 @@ class Log: SKSpriteNode{
         let texture = SKTexture(imageNamed: "log_forward_1")
         super.init(texture: texture, color: .clear, size: logSize)
         self.zPosition = 3
-        self.logState = .left
+        self.logState = .idle
         self.physicsBody = SKPhysicsBody(rectangleOf: logSize)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.contactTestBitMask = 3
+        self.physicsBody?.contactTestBitMask = 7
+        self.physicsBody?.categoryBitMask = 4
         self.name = "log"
         self.sinceStart = 0
         self.health = 1

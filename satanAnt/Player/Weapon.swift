@@ -16,7 +16,7 @@ class Weapon: SKSpriteNode {
     
     init(name: String){
         let texture = SKTexture(imageNamed: name)
-        super.init(texture: texture, color: .clear, size: CGSize(width: 30, height: 30))
+        super.init(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         self.name = name
         self.zPosition = 6
         

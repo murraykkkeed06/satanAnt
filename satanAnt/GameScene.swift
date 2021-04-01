@@ -101,10 +101,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.levelChanged = true
         player.expChanged = true
         player.moneyChanged = true
+        player.weaponChanged = true
         
         fireButton.selectedHandler = {
             self.player.fireStart = 0
-            self.player.weapon.attack(degree:self.player.facing.angle+80,homeScene: self)
+            self.player.weapon.attack(direction: self.player.facing,homeScene: self)
         }
         
         
@@ -265,11 +266,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             player.removeAllChildren()
             weaponOnHand = Weapon(name: weaponName)
-            weaponOnHand.position = CGPoint(x: 0, y: 0)
-            weaponOnHand.anchorPoint = CGPoint(x: 0.8, y: 0.2)
+            weaponOnHand.position = CGPoint(x: 10, y: -8)
+            weaponOnHand.anchorPoint = CGPoint(x: 0.2, y: 0.3)
         
             let bornPoint = SKSpriteNode(color: .red, size: CGSize(width: 1, height: 1))
-            bornPoint.position = CGPoint(x: -26, y: 26)
+            bornPoint.position = CGPoint(x: 28.4, y: 3.3)
             bornPoint.name = "bornPoint"
             weaponOnHand.addChild(bornPoint)
             
@@ -278,7 +279,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         //weapon on hand rotate each frame
-        weaponOnHand.zRotation  = (player.facing.angle-53) * (3.14/180)
+        weaponOnHand.zRotation  = (player.facing.angle) * (3.14/180)
         
         
         
