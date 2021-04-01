@@ -46,6 +46,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isBornRoom = false
     var isBonusRoom = false
     var YX: GridYX!
+    
+    var weaponOnHand: SKSpriteNode!
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
         
@@ -261,15 +263,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newWeapon.position = CGPoint(x: 0, y: 0)
             weaponBorn.addChild(newWeapon)
             
-//            player.removeAllChildren()
-//            let weaponOnHand = Weapon(name: weaponName)
-//            weaponOnHand.position = CGPoint(x: 13, y: -8)
-//            weaponOnHand.anchorPoint = CGPoint(x: 1, y: 0)
-//            weaponOnHand.zRotation = -53 * (3.14/180)
-//            player.addChild(weaponOnHand)
-
+            player.removeAllChildren()
+            weaponOnHand = Weapon(name: weaponName)
+            weaponOnHand.position = CGPoint(x: 0, y: 0)
+            weaponOnHand.anchorPoint = CGPoint(x: 0.8, y: 0.2)
+        
+            let bornPoint = SKSpriteNode(color: .red, size: CGSize(width: 1, height: 1))
+            bornPoint.position = CGPoint(x: -26, y: 26)
+            bornPoint.name = "bornPoint"
+            weaponOnHand.addChild(bornPoint)
+            
+            player.addChild(weaponOnHand)
             player.weaponChanged = false
         }
+        
+        //weapon on hand rotate each frame
+        weaponOnHand.zRotation  = (player.facing.angle-53) * (3.14/180)
         
         
         
