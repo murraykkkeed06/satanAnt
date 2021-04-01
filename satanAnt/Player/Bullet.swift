@@ -20,7 +20,10 @@ class Bullet: SKSpriteNode {
         self.zPosition = 2
         self.position = position
         self.name = name
-        
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 5)
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.contactTestBitMask = 1
+        self.physicsBody?.collisionBitMask = 0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,14 +32,32 @@ class Bullet: SKSpriteNode {
     
     func flyTo(direction: CGPoint)  {
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 5)
-        //self.physicsBody?.isDynamic = false
-        self.physicsBody?.affectedByGravity = false
-        //self.physicsBody?.allowsRotation = false
-        //self.physicsBody?.applyImpulse(CGVector(dx: direction.x, dy: direction.y))
-        self.physicsBody?.contactTestBitMask = 1
-        self.physicsBody?.collisionBitMask = 0
+        
         let flyAction = SKAction.moveBy(x: direction.x*range, y: direction.y*range, duration: self.bulletSpeed)
+        let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
+        self.run(seq)
+    }
+    
+    func  flyTo(degree: CGFloat)  {
+        let x: CGFloat!
+        let y: CGFloat!
+        if degree < 90 {
+             x = cos(degree * CGFloat.pi / 180)
+             y = sin(degree * CGFloat.pi / 180)
+        }else if degree < 180 {
+            let newDegree = 180 - degree
+            x = -cos(newDegree * CGFloat.pi / 180)
+            y = sin(newDegree * CGFloat.pi / 180)
+        }else if degree < 270{
+            let newDegree =  degree - 180
+            x = -cos(newDegree * CGFloat.pi / 180)
+            y = -sin(newDegree * CGFloat.pi / 180)
+        }else {
+            let newDegree =  360 - degree
+            x = cos(newDegree * CGFloat.pi / 180)
+            y = -sin(newDegree * CGFloat.pi / 180)
+        }
+        let flyAction = SKAction.moveBy(x: x*range, y: y*range, duration: self.bulletSpeed)
         let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
         self.run(seq)
     }

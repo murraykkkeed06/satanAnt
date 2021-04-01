@@ -104,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         fireButton.selectedHandler = {
             self.player.fireStart = 0
-            self.player.weapon.attack(direction: self.player.facing,homeScene: self)
+            self.player.weapon.attack(degree:self.player.facing.angle+80,homeScene: self)
         }
         
         

@@ -49,4 +49,19 @@ class Weapon: SKSpriteNode {
         
     }
     
+    func attack(degree: CGFloat, homeScene: GameScene){
+        
+        if self.name == "staff"{
+            if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
+                let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
+                let bullet = Bullet(position: position, name: "staffBullet")
+                homeScene.addChild(bullet)
+                bullet.flyTo(degree: degree)
+            }
+            
+        }
+        
+        
+    }
+    
 }
