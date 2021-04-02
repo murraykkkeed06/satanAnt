@@ -21,6 +21,7 @@ enum LogState: Int{
 }
 
 class Log: SKSpriteNode{
+    var isAlived = true
     var homeScene: GameScene!
     private var _health: CGFloat!
     var health: CGFloat{
@@ -29,6 +30,7 @@ class Log: SKSpriteNode{
             if _health<=0 {
                 //first run action
                 self.removeFromParent()
+                self.isAlived = false
             }
         }
         get{
@@ -90,7 +92,7 @@ class Log: SKSpriteNode{
 
         let texture = SKTexture(imageNamed: "log_forward_1")
         super.init(texture: texture, color: .clear, size: logSize)
-        self.zPosition = 3
+        self.zPosition = 5
         self.logState = .idle
         self.physicsBody = SKPhysicsBody(rectangleOf: logSize)
         self.physicsBody?.affectedByGravity = false

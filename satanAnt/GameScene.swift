@@ -48,6 +48,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isBonusRoom = false
     var YX: GridYX!
     
+    var isDoorSet = false
+    
     var weaponOnHand: SKSpriteNode!
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
@@ -70,9 +72,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
 
-        
-        
-        
         //player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
         //addChild(player)
         if !self.setupIsSet {
@@ -82,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
             fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
             popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
-            setupDoor()
+            //setupDoor()
             setupMap()
             if !isBornRoom && !isBonusRoom{setupMonster()}
         }
@@ -168,6 +167,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         playerSetupHud()
         timeControl()
+        
+        
+//        for i in 0..<logList.count{if logList[i].isAlived{print("\(i): \(logList[i].position.x),\(logList[i].position.y)")}}
+        
+        //finsh cleaning monster
+        if isBornRoom || isBonusRoom{if !isDoorSet{setupDoor();isDoorSet=true}
+        }else{
+            for i in 0..<logList.count{
+                if logList[i].isAlived{break}
+                if i == logList.count - 1 && !isDoorSet{setupDoor();isDoorSet=true}
+            }
+        }
+        
         
 
     }
@@ -365,13 +377,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for _ in 0..<10 {
             var borned = false
             var check = 0
-            var bornX = CGFloat.random(in: 0..<self.view!.frame.width)
-            var bornY = CGFloat.random(in: 0..<self.view!.frame.height)
+            var bornX = CGFloat.random(in: 50..<self.frame.width-50)
+            var bornY = CGFloat.random(in: 50..<self.frame.height-50)
             while !borned {
                 for node in self.children {
                     if node.physicsBody != nil && node.frame.contains(CGPoint(x: bornX, y: bornY)) {
-                        bornX = CGFloat.random(in: 0..<self.view!.frame.width)
-                        bornY = CGFloat.random(in: 0..<self.view!.frame.height)
+                        bornX = CGFloat.random(in: 50..<self.frame.width-50)
+                        bornY = CGFloat.random(in: 50..<self.frame.height-50)
                         break
                     }else {
                         check += 1
