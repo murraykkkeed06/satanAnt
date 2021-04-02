@@ -10,11 +10,12 @@ import SpriteKit
 
 class Bullet: SKSpriteNode {
     
-    var range: CGFloat = 100
+    var range: CGFloat = 150
     var bulletSpeed: TimeInterval = 0.5
     var bulletSize: CGSize = CGSize(width: 10, height: 10)
+    var homeScene: GameScene!
     
-    init(position: CGPoint, name: String){
+    init(position: CGPoint, name: String, homeScene: GameScene){
         let texture = SKTexture(imageNamed: name)
         super.init(texture: texture, color: .clear, size: bulletSize)
         self.zPosition = 2
@@ -24,6 +25,7 @@ class Bullet: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.contactTestBitMask = 1
         self.physicsBody?.collisionBitMask = 0
+        self.homeScene = homeScene
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,10 +34,29 @@ class Bullet: SKSpriteNode {
     
     func flyTo(direction: CGPoint)  {
         
+        var targetMonster: SKSpriteNode!
+        var newDirection: CGPoint!
+        //auto detect monster and fly to in 30 degree in range
+        let logList = homeScene.logList
+        for i in 0..<logList.count{
+            let diff = (logList[i].position - homeScene.player.position)
+            if logList[i].position.distanceTo(homeScene.player.position) < range && abs(diff.angle - homeScene.player.facing.angle) < 30 {
+                newDirection = diff.normalized()
+                targetMonster = logList[i]
+                break
+            }
+        }
         
-        let flyAction = SKAction.moveBy(x: direction.x*range, y: direction.y*range, duration: self.bulletSpeed)
-        let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
-        self.run(seq)
+        if targetMonster != nil {
+            let flyAction = SKAction.moveBy(x: newDirection.x*range, y: newDirection.y*range, duration: self.bulletSpeed)
+            let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
+            self.run(seq)
+        }else {
+        
+            let flyAction = SKAction.moveBy(x: direction.x*range, y: direction.y*range, duration: self.bulletSpeed)
+            let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
+            self.run(seq)
+        }
     }
     
     func  flyTo(degree: CGFloat)  {

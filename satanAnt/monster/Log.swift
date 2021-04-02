@@ -21,7 +21,7 @@ enum LogState: Int{
 }
 
 class Log: SKSpriteNode{
-    
+    var homeScene: GameScene!
     private var _health: CGFloat!
     var health: CGFloat{
         set{
@@ -86,7 +86,7 @@ class Log: SKSpriteNode{
     var logSize = CGSize(width: 36, height: 36)
     var timer: Timer!
     
-    init(){
+    init(scene: GameScene){
 
         let texture = SKTexture(imageNamed: "log_forward_1")
         super.init(texture: texture, color: .clear, size: logSize)
@@ -101,6 +101,9 @@ class Log: SKSpriteNode{
         self.name = "log"
         self.sinceStart = 0
         self.health = 1
+        self.homeScene = scene
+        
+        
         //self.startMoving()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -112,6 +115,15 @@ class Log: SKSpriteNode{
         print("bump!")
         sinceStart = 0
         logState = LogState.random()
+    }
+    func beingHit(){
+        //let sound = SKAction.playSoundFileNamed("hit", waitForCompletion: false)
+        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
+        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
+        let back = SKAction.moveBy(x: self.homeScene.player.facing.x*10, y: self.homeScene.player.facing.y*10, duration: 0.1)
+        self.run(back)
+        self.run(SKAction.sequence([red,clear]))
+        
     }
     
     

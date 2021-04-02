@@ -39,7 +39,7 @@ class Weapon: SKSpriteNode {
         if self.name == "staff"{
             if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
                 let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
-                let bullet = Bullet(position: position, name: "staffBullet")
+                let bullet = Bullet(position: position, name: "staffBullet",homeScene: homeScene)
                 homeScene.addChild(bullet)
                 bullet.flyTo(direction: direction)
             }
@@ -54,7 +54,7 @@ class Weapon: SKSpriteNode {
         if self.name == "staff"{
             if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
                 let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
-                let bullet = Bullet(position: position, name: "staffBullet")
+                let bullet = Bullet(position: position, name: "staffBullet",homeScene: homeScene)
                 homeScene.addChild(bullet)
                 bullet.flyTo(degree: degree)
             }

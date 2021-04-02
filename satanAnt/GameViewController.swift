@@ -31,7 +31,7 @@ class GameViewController: UIViewController {
             // Load the SKScene from 'GameScene.sks'
             let scene = sceneList[self.bornRoom()]
                 // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
+            scene.scaleMode = .aspectFit
                 
             //setupButton(scene: scene)
             

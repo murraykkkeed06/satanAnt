@@ -16,8 +16,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: Player!
     var mount: SKSpriteNode!
     var handler: SKSpriteNode!
+
     var handlerBackground: SKSpriteNode!
-   
+    
     var fireButton: MSButtonNode!
     var popoButton: MSButtonNode!
     
@@ -127,8 +128,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
-       
+        if location.x > self.frame.width/2{
+            mount.position = location
+            handler.position = location
+        }
         handleHandler(phase: "began", location: location)
+        //handleFacingHandler(phase: "began", location: location)
         
         
         
@@ -139,7 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         
         handleHandler(phase: "moved", location: location)
-        
+        //handleFacingHandler(phase: "moved", location: location)
         
         
     }
@@ -149,6 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         player.state = .idle
         handleHandler(phase: "ended", location: location)
+        //handleFacingHandler(phase: "ended", location: location)
     }
     
     
@@ -290,11 +296,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let node = nodeA as! Log
             node.bump()
+            
         }
         if nodeB.name == "log" {
             
             let node = nodeB as! Log
             node.bump()
+            
         }
     }
     
@@ -303,6 +311,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let bullet = nodeA as! Bullet
             bullet.removeFromParent()
             let log = nodeB as! Log
+            log.beingHit()
             log.health -= 0.25
             if log.health <= 0 {
                 player.exp += 10
@@ -314,6 +323,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let bullet = nodeB as! Bullet
             bullet.removeFromParent()
             let log = nodeA as! Log
+            log.beingHit()
             log.health -= 0.25
             if log.health <= 0 {
                 player.exp += 10
@@ -369,7 +379,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
-            let newLog = Log()
+            let newLog = Log(scene: self)
             newLog.position = CGPoint(x: bornX, y: bornY)
             addChild(newLog)
             logList.append(newLog)
@@ -412,7 +422,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA.name == "rightDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "rightDoor"){
             if  let view = self.view as SKView?{
                 let scene = self.right
-                scene?.scaleMode = .aspectFill
+                scene?.scaleMode = .aspectFit
                 scene?.player = player
                 scene?.player.position = leftDoor.position + CGPoint(x: 70, y: 0)
                 //scene?.handler.position = self.handler.position
@@ -426,7 +436,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA.name == "leftDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "leftDoor") {
             if  let view = self.view as SKView?{
                 let scene = self.left
-                scene?.scaleMode = .aspectFill
+                scene?.scaleMode = .aspectFit
                 scene?.player = player
                 scene?.player.position = rightDoor.position + CGPoint(x: -70, y: 0)
                 //scene?.handler.position = self.handler.position
@@ -439,7 +449,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA.name == "topDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "topDoor") {
             if  let view = self.view as SKView?{
                 let scene = self.top
-                scene?.scaleMode = .aspectFill
+                scene?.scaleMode = .aspectFit
                 scene?.player = player
                 scene?.player.position = bottomDoor.position + CGPoint(x: 0, y: 70)
                 //scene?.handler.position = self.handler.position
@@ -452,7 +462,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA.name == "bottomDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "bottomDoor") {
             if  let view = self.view as SKView?{
                 let scene = self.bototm
-                scene?.scaleMode = .aspectFill
+                scene?.scaleMode = .aspectFit
                 scene?.player = player
                 scene?.player.position = topDoor.position + CGPoint(x: 0, y: -70)
                 //scene?.handler.position = self.handler.position
@@ -490,9 +500,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch phase {
         case "began":
 
-            
             handler.position = location
-            
             player.playerIsMoving = true
             
         case "moved":
@@ -504,18 +512,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.facing = vec.normalized()
             //print("\(player.facing)")
             
-            if !handlerBackground.frame.contains(location){
+            //if !handlerBackground.frame.contains(location){
+            if location.x < self.frame.width/2{
                 player.playerIsMoving = false
                 handler.position = mount.position
             }else {
                 handler.position = location
             }
-            
-            
-            
-            
-            
-            
+               
         case "ended":
             //print("ended!")
             handler.position = mount.position
@@ -524,6 +528,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         }
     }
+    
+    
     
     
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7203E1C0260B2E68006FFD40 /* handlerBackground.png */; };
 		7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7203E1C6260B3CCA006FFD40 /* Extension.swift */; };
+		720A424A26174C44002D589C /* hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 720A424926174C44002D589C /* hit.wav */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
 		72727448260F761D00141766 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72727447260F761D00141766 /* Weapon.swift */; };
 		7272744B260F774200141766 /* spear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7272744A260F774200141766 /* spear.png */; };
@@ -125,6 +126,7 @@
 /* Begin PBXFileReference section */
 		7203E1C0260B2E68006FFD40 /* handlerBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handlerBackground.png; sourceTree = "<group>"; };
 		7203E1C6260B3CCA006FFD40 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		720A424926174C44002D589C /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit.wav; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		72727447260F761D00141766 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7272744A260F774200141766 /* spear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spear.png; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				72E48442260F0F7000D1C2DA /* Log.swift */,
+				720A424926174C44002D589C /* hit.wav */,
 			);
 			path = monster;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				729E9437260E38A100DFF2D0 /* Level_2.sks in Resources */,
 				72E48498260F338C00D1C2DA /* five.png in Resources */,
 				729E9426260E2FBE00DFF2D0 /* new_backward_1.png in Resources */,
+				720A424A26174C44002D589C /* hit.wav in Resources */,
 				72E48425260EF26500D1C2DA /* background_1.png in Resources */,
 				72E4849C260F338C00D1C2DA /* one.png in Resources */,
 				72E48417260EEDAA00D1C2DA /* background_4.png in Resources */,
