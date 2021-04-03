@@ -126,6 +126,13 @@ class Log: SKSpriteNode{
         self.run(back)
         self.run(SKAction.sequence([red,clear]))
         
+        self.health -= 0.25
+        if self.health <= 0 {
+            homeScene.player.exp += 10
+            homeScene.player.expChanged = true
+        }
+        
+        
     }
     
     

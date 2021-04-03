@@ -104,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.weaponChanged = true
         
         fireButton.selectedHandler = {
-            self.player.fireStart = 0
+            //self.player.fireStart = 0
             self.player.weapon.attack(direction: self.player.facing,homeScene: self)
         }
         
@@ -153,13 +153,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         player.state = .idle
         handleHandler(phase: "ended", location: location)
+        player.playerIsMoving = false
         //handleFacingHandler(phase: "ended", location: location)
     }
     
     
     override func update(_ currentTime: TimeInterval) {
         player.popoStart += eachFrame
-        player.fireStart += eachFrame
+        //player.fireStart += eachFrame
         sinceStart += eachFrame
         for i in 0..<logList.count{
             logList[i].sinceStart += eachFrame
@@ -324,33 +325,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bullet.removeFromParent()
             let log = nodeB as! Log
             log.beingHit()
-            log.health -= 0.25
-            if log.health <= 0 {
-                player.exp += 10
-                player.expChanged = true
-            }
-            //print("hit!")
+            
         }
         if (nodeA.name == "log" && nodeB.name == "staffBullet"){
             let bullet = nodeB as! Bullet
             bullet.removeFromParent()
             let log = nodeA as! Log
             log.beingHit()
-            log.health -= 0.25
-            if log.health <= 0 {
-                player.exp += 10
-                player.expChanged = true
-            }
-            //print("hit!")
+            
         }
         
         if (nodeA.name == "log" && nodeB.name == "player"){
             player.health -= 0.25
             player.healthChanged = true
+            player.beingHit()
+            let log = nodeA as! Log
+            log.beingHit()
+            
         }
         if (nodeA.name == "player" && nodeB.name == "log"){
             player.health -= 0.25
             player.healthChanged = true
+            player.beingHit()
+            let log = nodeB as! Log
+            log.beingHit()
             
         }
         
@@ -364,9 +362,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
         
-        if player.fireStart < player.weapon.attackSpeed {fireButton.isHidden = true} else{
-            fireButton.isHidden = false
-        }
+//        if player.fireStart < player.weapon.attackSpeed {fireButton.isHidden = true} else{
+//            fireButton.isHidden = false
+//        }
         
         if player.playerIsMoving{
             player.position+=(player.facing * player.moveDistance)

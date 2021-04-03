@@ -10,6 +10,12 @@
 		7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7203E1C0260B2E68006FFD40 /* handlerBackground.png */; };
 		7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7203E1C6260B3CCA006FFD40 /* Extension.swift */; };
 		720A424A26174C44002D589C /* hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 720A424926174C44002D589C /* hit.wav */; };
+		720A425126189C31002D589C /* attack_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A424C26189C30002D589C /* attack_1.png */; };
+		720A425226189C31002D589C /* attack_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A424D26189C31002D589C /* attack_3.png */; };
+		720A425326189C31002D589C /* attack_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A424E26189C31002D589C /* attack_4.png */; };
+		720A425426189C31002D589C /* attack_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A424F26189C31002D589C /* attack_2.png */; };
+		720A425526189C31002D589C /* attack_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A425026189C31002D589C /* attack_5.png */; };
+		720A425826189E7D002D589C /* AttackPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A425726189E7D002D589C /* AttackPoint.swift */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
 		72727448260F761D00141766 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72727447260F761D00141766 /* Weapon.swift */; };
 		7272744B260F774200141766 /* spear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7272744A260F774200141766 /* spear.png */; };
@@ -127,6 +133,12 @@
 		7203E1C0260B2E68006FFD40 /* handlerBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handlerBackground.png; sourceTree = "<group>"; };
 		7203E1C6260B3CCA006FFD40 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		720A424926174C44002D589C /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit.wav; sourceTree = "<group>"; };
+		720A424C26189C30002D589C /* attack_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_1.png; sourceTree = "<group>"; };
+		720A424D26189C31002D589C /* attack_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_3.png; sourceTree = "<group>"; };
+		720A424E26189C31002D589C /* attack_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_4.png; sourceTree = "<group>"; };
+		720A424F26189C31002D589C /* attack_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_2.png; sourceTree = "<group>"; };
+		720A425026189C31002D589C /* attack_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_5.png; sourceTree = "<group>"; };
+		720A425726189E7D002D589C /* AttackPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackPoint.swift; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		72727447260F761D00141766 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7272744A260F774200141766 /* spear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spear.png; sourceTree = "<group>"; };
@@ -295,6 +307,11 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				720A424C26189C30002D589C /* attack_1.png */,
+				720A424F26189C31002D589C /* attack_2.png */,
+				720A424D26189C31002D589C /* attack_3.png */,
+				720A424E26189C31002D589C /* attack_4.png */,
+				720A425026189C31002D589C /* attack_5.png */,
 				72DC0FEE2615C55D006E7AA1 /* staff.png */,
 				72727450260F84AE00141766 /* staffBullet.png */,
 				7272744A260F774200141766 /* spear.png */,
@@ -391,6 +408,7 @@
 				72D704D2260F5E54007326C3 /* Num.swift */,
 				72B4BD82260B4BCE0063ED38 /* Bullet.swift */,
 				72727447260F761D00141766 /* Weapon.swift */,
+				720A425726189E7D002D589C /* AttackPoint.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -498,12 +516,14 @@
 				72E48428260EF83D00D1C2DA /* background_6.png in Resources */,
 				72E48420260EEE5000D1C2DA /* Level_1_3.sks in Resources */,
 				72D3A552260B575D00E65281 /* popo.sks in Resources */,
+				720A425426189C31002D589C /* attack_2.png in Resources */,
 				72E48493260F338C00D1C2DA /* two.png in Resources */,
 				729E943A260E38DD00DFF2D0 /* background_2.png in Resources */,
 				729E9421260E2FBE00DFF2D0 /* new_right_3.png in Resources */,
 				72E4845E260F110600D1C2DA /* log_left_1.png in Resources */,
 				72E48496260F338C00D1C2DA /* nine.png in Resources */,
 				729E941A260E2FBE00DFF2D0 /* new_backward_4.png in Resources */,
+				720A425326189C31002D589C /* attack_4.png in Resources */,
 				72E4843E260F052600D1C2DA /* Level_1_6.sks in Resources */,
 				72B46648260B2A1400BC5E56 /* Main.storyboard in Resources */,
 				72E48479260F2F2800D1C2DA /* log_right_1.png in Resources */,
@@ -527,7 +547,9 @@
 				729E9424260E2FBE00DFF2D0 /* new_right_4.png in Resources */,
 				72E48492260F338C00D1C2DA /* three.png in Resources */,
 				7279A97B260D92ED000EB14F /* player_forward_2.png in Resources */,
+				720A425126189C31002D589C /* attack_1.png in Resources */,
 				72E48459260F110600D1C2DA /* log_left_2.png in Resources */,
+				720A425526189C31002D589C /* attack_5.png in Resources */,
 				72E48460260F110600D1C2DA /* log_left_4.png in Resources */,
 				7279A97A260D92ED000EB14F /* player_forward_3.png in Resources */,
 				72E48411260EEAC800D1C2DA /* Level_1_1.sks in Resources */,
@@ -549,6 +571,7 @@
 				729E9419260E2FBE00DFF2D0 /* new_forward_1.png in Resources */,
 				729E941B260E2FBE00DFF2D0 /* new_forward_3.png in Resources */,
 				72E4845A260F110600D1C2DA /* log_backward_3.png in Resources */,
+				720A425226189C31002D589C /* attack_3.png in Resources */,
 				72E4841A260EEDD100D1C2DA /* background_5.png in Resources */,
 				72E4845F260F110600D1C2DA /* log_left_3.png in Resources */,
 				7279A987260D94A5000EB14F /* player_left_3.png in Resources */,
@@ -603,6 +626,7 @@
 				72B46645260B2A1400BC5E56 /* GameViewController.swift in Sources */,
 				72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */,
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
+				720A425826189E7D002D589C /* AttackPoint.swift in Sources */,
 				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

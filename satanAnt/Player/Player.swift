@@ -23,7 +23,7 @@ class Player: SKSpriteNode {
     var playerIsMoving = false
     let moveDistance: CGFloat = 2
     var popoStart: TimeInterval = 0
-    var fireStart: TimeInterval = 0
+    //var fireStart: TimeInterval = 0
     //which map in Map.swift
     var inMapNumber: Int!
     var playerSize = CGSize(width: 28, height: 34)
@@ -113,10 +113,10 @@ class Player: SKSpriteNode {
     var facing: CGPoint {
         set{
             _facing = newValue
-            if newValue.angle < 45 || newValue.angle>315{self.state = .right}
-            if newValue.angle < 135 && newValue.angle>45{self.state = .backward}
-            if newValue.angle < 225 && newValue.angle>135{self.state = .left}
-            if newValue.angle < 315 && newValue.angle>225{self.state = .forward}
+            if newValue.angle <= 45 || newValue.angle>=315{self.state = .right}
+            if newValue.angle <= 135 && newValue.angle>=45{self.state = .backward}
+            if newValue.angle <= 225 && newValue.angle>=135{self.state = .left}
+            if newValue.angle <= 315 && newValue.angle>=225{self.state = .forward}
            
         }
         get{
@@ -152,6 +152,14 @@ class Player: SKSpriteNode {
         super.init(coder: aDecoder)
     }
    
+    func beingHit()  {
+        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.5)
+        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
+        let back = SKAction.moveBy(x: -self.homeScene.player.facing.x*10, y: -self.homeScene.player.facing.y*10, duration: 0.1)
+        
+        self.run(SKAction.sequence([red,clear]))
+        self.run(back)
+    }
     
     
 }

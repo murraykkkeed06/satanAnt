@@ -36,6 +36,27 @@ class Weapon: SKSpriteNode {
     
     func attack(direction: CGPoint, homeScene: GameScene){
         
+        var useSword = false
+        
+        //use sword in distance < 30
+        let distance: CGFloat = 60
+        for i in 0..<homeScene.logList.count{
+            let diff = homeScene.logList[i].position.distanceTo(homeScene.player.position)
+            var vec = homeScene.logList[i].position - homeScene.player.position
+            if diff<distance && abs(vec.normalize().angle - homeScene.player.facing.angle)<30 && homeScene.logList[i].isAlived{
+                let attackPoint = AttackPoint()
+                let bornPoint = homeScene.player.position + (homeScene.logList[i].position - homeScene.player.position)/2
+                attackPoint.position = bornPoint
+                homeScene.addChild(attackPoint)
+                attackPoint.startPoint()
+                homeScene.logList[i].beingHit()
+                useSword = true
+                break
+            }
+        }
+        print("sword: \(useSword)")
+        //use bullet
+        if useSword {return}
         if self.name == "staff"{
             if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
                 let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
@@ -43,7 +64,6 @@ class Weapon: SKSpriteNode {
                 homeScene.addChild(bullet)
                 bullet.flyTo(direction: direction)
             }
-            
         }
         
         
