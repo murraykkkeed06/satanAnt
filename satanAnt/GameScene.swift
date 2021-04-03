@@ -168,6 +168,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         playerSetupHud()
         timeControl()
+        //check log health
+        
         
         
 //        for i in 0..<logList.count{if logList[i].isAlived{print("\(i): \(logList[i].position.x),\(logList[i].position.y)")}}
@@ -326,6 +328,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let log = nodeB as! Log
             log.beingHit()
             
+            
         }
         if (nodeA.name == "log" && nodeB.name == "staffBullet"){
             let bullet = nodeB as! Bullet
@@ -340,7 +343,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.healthChanged = true
             player.beingHit()
             let log = nodeA as! Log
-            log.beingHit()
+            if log.health>0{log.beingHit()}
             
         }
         if (nodeA.name == "player" && nodeB.name == "log"){
@@ -372,7 +375,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupMonster() {
-        for _ in 0..<10 {
+        for _ in 0..<3 {
             var borned = false
             var check = 0
             var bornX = CGFloat.random(in: 50..<self.frame.width-50)

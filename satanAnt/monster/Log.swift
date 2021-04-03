@@ -26,11 +26,23 @@ class Log: SKSpriteNode{
     private var _health: CGFloat!
     var health: CGFloat{
         set{
-            _health = newValue
-            if _health<=0 {
-                //first run action
-                self.removeFromParent()
-                self.isAlived = false
+            if self.isAlived {
+                _health = newValue
+                if _health<=0 {
+                    //first run action
+                    
+                    self.logState = .idle
+                    self.isAlived = false
+                    self.physicsBody = nil
+                    //self.run(SKAction.fadeAlpha(by: 0, duration: 1))
+                    let dieAction = SKAction(named: "monsterDie")!
+                    let tomb = Tomb()
+                    tomb.position = self.position
+                    self.homeScene.addChild(tomb)
+                    self.run(SKAction.sequence([dieAction,SKAction.removeFromParent()]))
+                    //self.removeFromParent()
+                    
+                }
             }
         }
         get{
@@ -114,7 +126,7 @@ class Log: SKSpriteNode{
     
     
     func bump(){
-        print("bump!")
+        //print("bump!")
         sinceStart = 0
         logState = LogState.random()
     }

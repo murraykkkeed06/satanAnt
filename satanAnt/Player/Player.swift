@@ -127,7 +127,7 @@ class Player: SKSpriteNode {
     init(){
         let texture = SKTexture(imageNamed: "new_forward_1")
         super.init(texture: texture, color: .clear, size: playerSize)
-        self.zPosition = 3
+        self.zPosition = 6
         self.state = .idle
         self._facing = CGPoint(x: 0, y: 0)
         //self.idleStart = 0

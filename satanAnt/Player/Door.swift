@@ -14,9 +14,9 @@ class Door: SKSpriteNode {
     var doorSize = CGSize(width: 20, height: 15)
     
     init(position: CGPoint, name: String){
-        let texture = SKTexture(imageNamed: "portal_1")
+        let texture = SKTexture(imageNamed: "fire_1")
         super.init(texture: texture, color: .clear, size: doorSize)
-        self.run(SKAction(named: "portalMove")!)
+        self.run(SKAction(named: "firePortal")!)
         self.position = position
         self.name = name
         self.zPosition = 2

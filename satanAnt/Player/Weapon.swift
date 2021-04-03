@@ -54,7 +54,7 @@ class Weapon: SKSpriteNode {
                 break
             }
         }
-        print("sword: \(useSword)")
+        //print("sword: \(useSword)")
         //use bullet
         if useSword {return}
         if self.name == "staff"{
