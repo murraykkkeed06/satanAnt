@@ -94,8 +94,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupIsSet = true
             if isBedRoom{
                 let book = Book()
-                book.position = CGPoint(x: 400, y: 130)
-                book.selectHandler = {book.open()}
+                book.position = CGPoint(x: 460, y: 130)
+                book.selectHandler = {
+                    book.open()
+                    let abilityHud = AbilityHud(scene: self)
+                    self.addChild(abilityHud)
+                    abilityHud.open()
+                }
                 addChild(book)
             }
         }

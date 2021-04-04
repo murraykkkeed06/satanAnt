@@ -50,6 +50,15 @@
 		724213EC261A0CB300CA5F97 /* book_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E6261A0CB300CA5F97 /* book_1.png */; };
 		724213ED261A0CB300CA5F97 /* book_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E7261A0CB300CA5F97 /* book_5.png */; };
 		724213F0261A0CBE00CA5F97 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724213EF261A0CBE00CA5F97 /* Book.swift */; };
+		724213F3261A18C600CA5F97 /* abilityHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213F2261A18C600CA5F97 /* abilityHud.png */; };
+		724213F9261A18D000CA5F97 /* point_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213F5261A18D000CA5F97 /* point_red.png */; };
+		724213FA261A18D000CA5F97 /* point_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213F6261A18D000CA5F97 /* point_white.png */; };
+		724213FB261A18D000CA5F97 /* point_purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213F7261A18D000CA5F97 /* point_purple.png */; };
+		724213FC261A18D000CA5F97 /* point_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213F8261A18D000CA5F97 /* point_green.png */; };
+		724213FF261A18DC00CA5F97 /* AbilityHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724213FE261A18DC00CA5F97 /* AbilityHud.swift */; };
+		72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72421402261A194A00CA5F97 /* AbilityPoint.swift */; };
+		72421407261A1A6900CA5F97 /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72421406261A1A6900CA5F97 /* plusButton.png */; };
+		7242140A261A1C3B00CA5F97 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72421409261A1C3B00CA5F97 /* PlusButton.swift */; };
 		72727448260F761D00141766 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72727447260F761D00141766 /* Weapon.swift */; };
 		7272744B260F774200141766 /* spear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7272744A260F774200141766 /* spear.png */; };
 		72727451260F84AE00141766 /* staffBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72727450260F84AE00141766 /* staffBullet.png */; };
@@ -234,6 +243,15 @@
 		724213E6261A0CB300CA5F97 /* book_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_1.png; sourceTree = "<group>"; };
 		724213E7261A0CB300CA5F97 /* book_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_5.png; sourceTree = "<group>"; };
 		724213EF261A0CBE00CA5F97 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		724213F2261A18C600CA5F97 /* abilityHud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityHud.png; sourceTree = "<group>"; };
+		724213F5261A18D000CA5F97 /* point_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_red.png; sourceTree = "<group>"; };
+		724213F6261A18D000CA5F97 /* point_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_white.png; sourceTree = "<group>"; };
+		724213F7261A18D000CA5F97 /* point_purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_purple.png; sourceTree = "<group>"; };
+		724213F8261A18D000CA5F97 /* point_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_green.png; sourceTree = "<group>"; };
+		724213FE261A18DC00CA5F97 /* AbilityHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityHud.swift; sourceTree = "<group>"; };
+		72421402261A194A00CA5F97 /* AbilityPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityPoint.swift; sourceTree = "<group>"; };
+		72421406261A1A6900CA5F97 /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
+		72421409261A1C3B00CA5F97 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		72727447260F761D00141766 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7272744A260F774200141766 /* spear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spear.png; sourceTree = "<group>"; };
 		72727450260F84AE00141766 /* staffBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staffBullet.png; sourceTree = "<group>"; };
@@ -430,6 +448,12 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72421406261A1A6900CA5F97 /* plusButton.png */,
+				724213F2261A18C600CA5F97 /* abilityHud.png */,
+				724213F8261A18D000CA5F97 /* point_green.png */,
+				724213F7261A18D000CA5F97 /* point_purple.png */,
+				724213F5261A18D000CA5F97 /* point_red.png */,
+				724213F6261A18D000CA5F97 /* point_white.png */,
 				724213E6261A0CB300CA5F97 /* book_1.png */,
 				724213E4261A0CB300CA5F97 /* book_2.png */,
 				724213E3261A0CB200CA5F97 /* book_3.png */,
@@ -619,6 +643,9 @@
 				720A425726189E7D002D589C /* AttackPoint.swift */,
 				724213DF261A091400CA5F97 /* Box.swift */,
 				724213EF261A0CBE00CA5F97 /* Book.swift */,
+				724213FE261A18DC00CA5F97 /* AbilityHud.swift */,
+				72421402261A194A00CA5F97 /* AbilityPoint.swift */,
+				72421409261A1C3B00CA5F97 /* PlusButton.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -705,6 +732,7 @@
 				729E9431260E33CA00DFF2D0 /* portal_4.png in Resources */,
 				729E941F260E2FBE00DFF2D0 /* new_left_2.png in Resources */,
 				72E48494260F338C00D1C2DA /* eight.png in Resources */,
+				724213FB261A18D000CA5F97 /* point_purple.png in Resources */,
 				724213D6261A064700CA5F97 /* box_4.png in Resources */,
 				720A42632618A81D002D589C /* fire_7.png in Resources */,
 				720A427A2618CBE9002D589C /* bomb_3.png in Resources */,
@@ -732,6 +760,7 @@
 				72B46648260B2A1400BC5E56 /* Main.storyboard in Resources */,
 				72E48479260F2F2800D1C2DA /* log_right_1.png in Resources */,
 				72E4849D260F338C00D1C2DA /* zero.png in Resources */,
+				724213FA261A18D000CA5F97 /* point_white.png in Resources */,
 				72D6389126196A4700A43D41 /* npcRight_3.png in Resources */,
 				72D638A9261978AC00A43D41 /* bigDialogue.png in Resources */,
 				72E48458260F110600D1C2DA /* log_backward_4.png in Resources */,
@@ -756,6 +785,7 @@
 				72D6388F26196A4700A43D41 /* npcLeft_3.png in Resources */,
 				72D6388626196A4700A43D41 /* npcFor_3.png in Resources */,
 				72D6388526196A4700A43D41 /* npcLeft_1.png in Resources */,
+				72421407261A1A6900CA5F97 /* plusButton.png in Resources */,
 				72E484A0260F338C00D1C2DA /* heart_4.png in Resources */,
 				7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */,
 				72B4663F260B2A1400BC5E56 /* Level_1_0.sks in Resources */,
@@ -789,6 +819,7 @@
 				72E48468260F11D700D1C2DA /* monsterAction.sks in Resources */,
 				7272744B260F774200141766 /* spear.png in Resources */,
 				72E4842B260EF85700D1C2DA /* Level_3.sks in Resources */,
+				724213F9261A18D000CA5F97 /* point_red.png in Resources */,
 				72E484AB260F43AA00D1C2DA /* heart_2.png in Resources */,
 				720A427F2618CBE9002D589C /* bomb_2.png in Resources */,
 				7279A999260DAAC2000EB14F /* player_backward_2.png in Resources */,
@@ -823,6 +854,7 @@
 				72E48438260EFEFC00D1C2DA /* Level_1_5.sks in Resources */,
 				72E4847B260F2F2800D1C2DA /* log_right_4.png in Resources */,
 				72E48414260EEB2200D1C2DA /* background_3.png in Resources */,
+				724213F3261A18C600CA5F97 /* abilityHud.png in Resources */,
 				72D6388926196A4700A43D41 /* npcBack_3.png in Resources */,
 				72B46641260B2A1400BC5E56 /* Actions.sks in Resources */,
 				72E4848F260F338C00D1C2DA /* exp_background.png in Resources */,
@@ -843,6 +875,7 @@
 				72E48457260F110600D1C2DA /* log_forward_3.png in Resources */,
 				7279A973260D908F000EB14F /* player_forward_1.png in Resources */,
 				7279A982260D93D4000EB14F /* player_right_2.png in Resources */,
+				724213FC261A18D000CA5F97 /* point_green.png in Resources */,
 				72E4849A260F338C00D1C2DA /* four.png in Resources */,
 				72D6388826196A4700A43D41 /* npcBack_1.png in Resources */,
 				729E9423260E2FBE00DFF2D0 /* new_left_3.png in Resources */,
@@ -859,11 +892,13 @@
 			files = (
 				72D704D3260F5E54007326C3 /* Num.swift in Sources */,
 				720A42852618CD1E002D589C /* Tomb.swift in Sources */,
+				724213FF261A18DC00CA5F97 /* AbilityHud.swift in Sources */,
 				72D3A55A260B618100E65281 /* Map.swift in Sources */,
 				7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */,
 				72E48443260F0F7000D1C2DA /* Log.swift in Sources */,
 				724213E0261A091400CA5F97 /* Box.swift in Sources */,
 				72B46653260B2C5E00BC5E56 /* Player.swift in Sources */,
+				72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */,
 				72D638A42619756E00A43D41 /* Dialogue.swift in Sources */,
 				724213F0261A0CBE00CA5F97 /* Book.swift in Sources */,
 				72727448260F761D00141766 /* Weapon.swift in Sources */,
@@ -880,6 +915,7 @@
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
 				720A425826189E7D002D589C /* AttackPoint.swift in Sources */,
 				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,
+				7242140A261A1C3B00CA5F97 /* PlusButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
