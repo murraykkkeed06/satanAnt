@@ -49,8 +49,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var YX: GridYX!
     
     var isDoorSet = false
-    
+    var dialogueIsSet = false
+    var dialogue: Dialogue!
     var weaponOnHand: SKSpriteNode!
+    var npcBornPoint = CGPoint(x: 350, y: 220)
+    var inDialogue = false
+    
+    var npc: Npc!
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
         
@@ -84,7 +89,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //setupDoor()
             setupMap()
             if !isBornRoom && !isBonusRoom{setupMonster()}
+            if isBornRoom{setupNpc()}
         }
+        
+        
         
         handler.isHidden = true
         
@@ -102,6 +110,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.expChanged = true
         player.moneyChanged = true
         player.weaponChanged = true
+        
+        //if npc != nil {npc.position = npcBornPoint}
         
         fireButton.selectedHandler = {
             //self.player.fireStart = 0
@@ -127,6 +137,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
+        
+        if inDialogue {return}
+        
         if location.x > self.frame.width/2{
             mount.position = location
             handler.position = location
@@ -168,6 +181,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         playerSetupHud()
         timeControl()
+        
+        if npc != nil{
+            npc.sinceBorn += eachFrame
+            checkNpcAround()
+        }
+        
         //check log health
         
         
@@ -202,6 +221,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     }
     
+    func checkNpcAround() {
+        let dist = player.position.distanceTo(npc.position)
+        if dist < 50 {
+            if !dialogueIsSet {
+                dialogueIsSet = true
+                dialogue = Dialogue()
+                dialogue.position = npc.position + CGPoint(x: 0, y: 30)
+                dialogue.selectHandler = {
+                    
+                    let bigDialogue = BigDialogue(scene: self)
+                    bigDialogue.position = self.dialogue.position
+                    self.addChild(bigDialogue)
+                    bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
+                    bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
+                    
+                    //tricky way to disable handler
+                    self.inDialogue = true
+                    self.popoButton.isUserInteractionEnabled = false
+                    self.fireButton.isUserInteractionEnabled = false
+                    self.dialogue.removeFromParent()
+                    
+                    let wait = SKAction.wait(forDuration: 1)
+                    let start = SKAction.run(bigDialogue.startWord)
+                    
+                    bigDialogue.run(SKAction.sequence([wait,start]))
+                    
+                }
+                
+                addChild(dialogue)
+                dialogue.start()
+                
+            }
+            npc.state = .idle
+            npc.sinceBorn = 0
+        }else{
+            if dialogue != nil {
+                dialogue.removeFromParent()
+                dialogueIsSet = false
+            }
+        }
+        
+        
+    }
+    
+    func setupNpc() {
+        npc = Npc()
+        npc.position = npcBornPoint
+        self.addChild(npc)
+    }
     
     
     func playerSetupHud() {
