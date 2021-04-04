@@ -118,6 +118,7 @@ class Log: SKSpriteNode{
         self.homeScene = scene
         
         
+        
         //self.startMoving()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -138,7 +139,7 @@ class Log: SKSpriteNode{
         self.run(back)
         self.run(SKAction.sequence([red,clear]))
         
-        self.health -= 0.25
+        self.health -= (homeScene.player.weapon.attackPoint + homeScene.player.baseAttackPoint)
         if self.health <= 0 {
             homeScene.player.exp += 10
             homeScene.player.expChanged = true

@@ -46,6 +46,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var isBornRoom = false
     var isBonusRoom = false
+    var isBedRoom = false
+    var isMonsterRoom = false
     var YX: GridYX!
     
     var isDoorSet = false
@@ -82,14 +84,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !self.setupIsSet {
             mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
             handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
-            mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
+            
             handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
             fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
             popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
             //setupDoor()
-            setupMap()
-            if !isBornRoom && !isBonusRoom{setupMonster()}
-           
+            if !isBedRoom{mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap()}
+            if isMonsterRoom{setupMonster()}
+            setupIsSet = true
+            if isBedRoom{
+                let book = Book()
+                book.position = CGPoint(x: 400, y: 130)
+                book.selectHandler = {book.open()}
+                addChild(book)
+            }
         }
         
         setupNpc()
@@ -97,7 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if player.round > round {
             round = player.round
             //print("door")
-            if !isBornRoom && !isBonusRoom{
+            if isMonsterRoom{
                 cleanMonster()
                 setupMonster()
                 cleanDoor()
@@ -107,7 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         self.view?.isUserInteractionEnabled = true
-        handler.isHidden = true
+        player.isHidden = false
         
         sinceStart = 0
         mount.position = handlerBackground.position
@@ -123,6 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.expChanged = true
         player.moneyChanged = true
         player.weaponChanged = true
+        
         
         //if npc != nil {npc.position = npcBornPoint}
         
@@ -230,6 +239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupDoorPass(nodeA: nodeA, nodeB: nodeB)
                 setupMonsterMoving(nodeA: nodeA, nodeB: nodeB)
                 setupDamage(nodeA: nodeA, nodeB: nodeB)
+                setupExitDoor(nodeA: nodeA, nodeB: nodeB)
             }
         }
     
@@ -433,6 +443,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setupExitDoor(nodeA: SKNode, nodeB: SKNode) {
+        if nodeA.name == "exitDoor" || nodeB.name == "exitDoor"{
+            //print("out!")
+            
+            if  let view = self.view as SKView?{
+                if let scene = player.bornScene{
+                scene.scaleMode = .aspectFit
+                scene.player = self.player
+                scene.player.position = CGPoint(x: 209, y: 202)
+                scene.player.run(SKAction(named: "playerForward")!)
+
+                let fade = SKTransition.fade(withDuration: 1)
+                view.presentScene(scene, transition: fade)
+
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true
+
+                }
+            }
+        }
+    }
+    
     func setupDamage(nodeA: SKNode, nodeB: SKNode) {
         if (nodeA.name == "staffBullet" && nodeB.name == "log"){
             let bullet = nodeA as! Bullet
@@ -595,7 +628,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true}
         }
-        self.setupIsSet = true
+        //self.setupIsSet = true
     }
     
     

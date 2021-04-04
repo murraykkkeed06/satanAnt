@@ -10,8 +10,8 @@ import SpriteKit
 
 class Bullet: SKSpriteNode {
     
-    var range: CGFloat = 150
-    var bulletSpeed: TimeInterval = 0.5
+    var range: CGFloat!
+    var bulletSpeed: TimeInterval!
     var bulletSize: CGSize = CGSize(width: 10, height: 10)
     var homeScene: GameScene!
     
@@ -26,6 +26,9 @@ class Bullet: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = 1
         self.physicsBody?.collisionBitMask = 0
         self.homeScene = homeScene
+        
+        self.range = 150 + homeScene.player.baseBulletRange
+        self.bulletSpeed = 0.5 + homeScene.player.baseBulletSpeed
     }
     
     required init?(coder aDecoder: NSCoder) {

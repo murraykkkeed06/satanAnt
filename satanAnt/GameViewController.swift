@@ -27,28 +27,35 @@ class GameViewController: UIViewController {
         map = Map().map[player.inMapNumber]
 
         setupSceneList()
+        let bornScene = sceneList[self.bornRoom()]
+        
+        player.bornScene = bornScene
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            let scene = sceneList[self.bornRoom()]
-            player.bornScene = scene
+            
+            
+            if let scene = GameScene.level(4) {
+                player.roomScene = scene
                 // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFit
+                scene.scaleMode = .aspectFit
+                scene.isBedRoom = true
+                //scene.isMonsterRoom = false
+                //setupButton(scene: scene)
                 
-            //setupButton(scene: scene)
-            
-            
-            player.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
-            
-            scene.player = player
-            
-                // Present the scene
-            view.presentScene(scene)
-            
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
+                
+                player.position = CGPoint(x: 160, y: 250)
+                
+                scene.player = player
+                
+                    // Present the scene
+                view.presentScene(scene)
+                
+                
+                view.ignoresSiblingOrder = true
+                
+                view.showsFPS = true
+                view.showsNodeCount = true
+            }
         }
     }
 
@@ -111,9 +118,10 @@ class GameViewController: UIViewController {
                         gameScene.isBonusRoom = true
                         sceneList.append(gameScene)
                     }
-                    else {
+                    else if self.map[y][x] == 1{
                         let gameScene = GameScene.level(1)!
                         gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isMonsterRoom = true
                         sceneList.append(gameScene)
                     }
                     

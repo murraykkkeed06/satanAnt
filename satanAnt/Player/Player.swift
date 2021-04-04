@@ -20,7 +20,13 @@ enum playerState {
 
 class Player: SKSpriteNode {
     
+    var baseBulletRange: CGFloat = 0
+    var baseBulletSpeed: TimeInterval = 0
+    var baseAttackPoint: CGFloat = 0
+    var baseHealth: CGFloat = 0
+    
     var bornScene: GameScene!
+    var roomScene: GameScene!
     var isAlived = true
     var round = 0
     var playerIsMoving = false
@@ -51,7 +57,7 @@ class Player: SKSpriteNode {
             if _health <= 0 {
                 isAlived = false
                 round += 1
-                _health = 2.5
+                _health = 2.5 + baseHealth
                 self.isHidden = true
                 self.homeScene.view?.isUserInteractionEnabled = false
                
@@ -66,20 +72,25 @@ class Player: SKSpriteNode {
                 let transferAction = SKAction.run({
                 
                     if  let view = self.homeScene.view as SKView?{
-                        if let scene = self.bornScene{
-                        scene.scaleMode = .aspectFit
-                        scene.player = self
-                        scene.player.isHidden = false
-                        scene.player.position = CGPoint(x: 209, y: 202)
-                        scene.player.run(SKAction(named: "playerForward")!)
-                            
-                        let fade = SKTransition.fade(withDuration: 1)
-                        view.presentScene(scene, transition: fade)
-                            
-                        view.showsFPS = true
-                        view.showsNodeCount = true
-                        view.ignoresSiblingOrder = true
+                        if let scene = self.roomScene{
+                            // Set the scale mode to scale to fit the window
+                            scene.scaleMode = .aspectFit
+                            scene.isBedRoom = true
+                            //scene.isMonsterRoom = false
+                            //scene.cleanMonster()
+                            //setupButton(scene: scene)
 
+                            scene.player = self
+                            scene.player.position = CGPoint(x: 160, y: 250)
+                            
+                                // Present the scene
+                            view.presentScene(scene)
+                            
+                            
+                            view.ignoresSiblingOrder = true
+                            
+                            view.showsFPS = true
+                            view.showsNodeCount = true
                         }
                     }
                 })

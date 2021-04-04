@@ -37,9 +37,24 @@
 		720A42822618CD0D002D589C /* tomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A42812618CD0D002D589C /* tomb.png */; };
 		720A42852618CD1E002D589C /* Tomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A42842618CD1E002D589C /* Tomb.swift */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
+		724213D6261A064700CA5F97 /* box_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D2261A064700CA5F97 /* box_4.png */; };
+		724213D7261A064700CA5F97 /* box_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D3261A064700CA5F97 /* box_3.png */; };
+		724213D8261A064700CA5F97 /* box_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D4261A064700CA5F97 /* box_2.png */; };
+		724213D9261A064700CA5F97 /* box_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D5261A064700CA5F97 /* box_1.png */; };
+		724213DC261A069600CA5F97 /* ObjectAction.sks in Resources */ = {isa = PBXBuildFile; fileRef = 724213DB261A069600CA5F97 /* ObjectAction.sks */; };
+		724213E0261A091400CA5F97 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724213DF261A091400CA5F97 /* Box.swift */; };
+		724213E8261A0CB300CA5F97 /* book_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E2261A0CB200CA5F97 /* book_4.png */; };
+		724213E9261A0CB300CA5F97 /* book_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E3261A0CB200CA5F97 /* book_3.png */; };
+		724213EA261A0CB300CA5F97 /* book_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E4261A0CB300CA5F97 /* book_2.png */; };
+		724213EB261A0CB300CA5F97 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E5261A0CB300CA5F97 /* platform.png */; };
+		724213EC261A0CB300CA5F97 /* book_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E6261A0CB300CA5F97 /* book_1.png */; };
+		724213ED261A0CB300CA5F97 /* book_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213E7261A0CB300CA5F97 /* book_5.png */; };
+		724213F0261A0CBE00CA5F97 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724213EF261A0CBE00CA5F97 /* Book.swift */; };
 		72727448260F761D00141766 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72727447260F761D00141766 /* Weapon.swift */; };
 		7272744B260F774200141766 /* spear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7272744A260F774200141766 /* spear.png */; };
 		72727451260F84AE00141766 /* staffBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72727450260F84AE00141766 /* staffBullet.png */; };
+		7276B4ED2619F65700C4918F /* Level_4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7276B4EC2619F65700C4918F /* Level_4.sks */; };
+		7276B4F02619F68300C4918F /* bedroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7276B4EF2619F68300C4918F /* bedroom.png */; };
 		7279A973260D908F000EB14F /* player_forward_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279A972260D908F000EB14F /* player_forward_1.png */; };
 		7279A976260D913C000EB14F /* playerAction.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7279A975260D913C000EB14F /* playerAction.sks */; };
 		7279A97A260D92ED000EB14F /* player_forward_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279A978260D92ED000EB14F /* player_forward_3.png */; };
@@ -206,9 +221,24 @@
 		720A42812618CD0D002D589C /* tomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomb.png; sourceTree = "<group>"; };
 		720A42842618CD1E002D589C /* Tomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tomb.swift; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
+		724213D2261A064700CA5F97 /* box_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_4.png; sourceTree = "<group>"; };
+		724213D3261A064700CA5F97 /* box_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_3.png; sourceTree = "<group>"; };
+		724213D4261A064700CA5F97 /* box_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_2.png; sourceTree = "<group>"; };
+		724213D5261A064700CA5F97 /* box_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_1.png; sourceTree = "<group>"; };
+		724213DB261A069600CA5F97 /* ObjectAction.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ObjectAction.sks; sourceTree = "<group>"; };
+		724213DF261A091400CA5F97 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		724213E2261A0CB200CA5F97 /* book_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_4.png; sourceTree = "<group>"; };
+		724213E3261A0CB200CA5F97 /* book_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_3.png; sourceTree = "<group>"; };
+		724213E4261A0CB300CA5F97 /* book_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_2.png; sourceTree = "<group>"; };
+		724213E5261A0CB300CA5F97 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
+		724213E6261A0CB300CA5F97 /* book_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_1.png; sourceTree = "<group>"; };
+		724213E7261A0CB300CA5F97 /* book_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_5.png; sourceTree = "<group>"; };
+		724213EF261A0CBE00CA5F97 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		72727447260F761D00141766 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7272744A260F774200141766 /* spear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spear.png; sourceTree = "<group>"; };
 		72727450260F84AE00141766 /* staffBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staffBullet.png; sourceTree = "<group>"; };
+		7276B4EC2619F65700C4918F /* Level_4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_4.sks; sourceTree = "<group>"; };
+		7276B4EF2619F68300C4918F /* bedroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bedroom.png; sourceTree = "<group>"; };
 		7279A972260D908F000EB14F /* player_forward_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_forward_1.png; sourceTree = "<group>"; };
 		7279A975260D913C000EB14F /* playerAction.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = playerAction.sks; sourceTree = "<group>"; };
 		7279A978260D92ED000EB14F /* player_forward_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_forward_3.png; sourceTree = "<group>"; };
@@ -400,6 +430,17 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				724213E6261A0CB300CA5F97 /* book_1.png */,
+				724213E4261A0CB300CA5F97 /* book_2.png */,
+				724213E3261A0CB200CA5F97 /* book_3.png */,
+				724213E2261A0CB200CA5F97 /* book_4.png */,
+				724213E7261A0CB300CA5F97 /* book_5.png */,
+				724213E5261A0CB300CA5F97 /* platform.png */,
+				724213D5261A064700CA5F97 /* box_1.png */,
+				724213D4261A064700CA5F97 /* box_2.png */,
+				724213D3261A064700CA5F97 /* box_3.png */,
+				724213D2261A064700CA5F97 /* box_4.png */,
+				7276B4EF2619F68300C4918F /* bedroom.png */,
 				72D638A8261978AC00A43D41 /* bigDialogue.png */,
 				72D6389A2619752F00A43D41 /* dialogue_1.png */,
 				72D6389B2619752F00A43D41 /* dialogue_2.png */,
@@ -556,10 +597,12 @@
 				72E4843D260F052600D1C2DA /* Level_1_6.sks */,
 				729E9436260E38A100DFF2D0 /* Level_2.sks */,
 				72E4842A260EF85700D1C2DA /* Level_3.sks */,
+				7276B4EC2619F65700C4918F /* Level_4.sks */,
 				7279A975260D913C000EB14F /* playerAction.sks */,
 				72B46640260B2A1400BC5E56 /* Actions.sks */,
 				72E48467260F11D700D1C2DA /* monsterAction.sks */,
 				72D6389426196A6F00A43D41 /* npcAction.sks */,
+				724213DB261A069600CA5F97 /* ObjectAction.sks */,
 			);
 			path = SKS;
 			sourceTree = "<group>";
@@ -574,6 +617,8 @@
 				72E484A6260F435800D1C2DA /* Heart.swift */,
 				72D638A32619756E00A43D41 /* Dialogue.swift */,
 				720A425726189E7D002D589C /* AttackPoint.swift */,
+				724213DF261A091400CA5F97 /* Box.swift */,
+				724213EF261A0CBE00CA5F97 /* Book.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -660,6 +705,7 @@
 				729E9431260E33CA00DFF2D0 /* portal_4.png in Resources */,
 				729E941F260E2FBE00DFF2D0 /* new_left_2.png in Resources */,
 				72E48494260F338C00D1C2DA /* eight.png in Resources */,
+				724213D6261A064700CA5F97 /* box_4.png in Resources */,
 				720A42632618A81D002D589C /* fire_7.png in Resources */,
 				720A427A2618CBE9002D589C /* bomb_3.png in Resources */,
 				722F7065260C8B75009EB2D1 /* gray.png in Resources */,
@@ -671,6 +717,7 @@
 				720A425426189C31002D589C /* attack_2.png in Resources */,
 				72E48493260F338C00D1C2DA /* two.png in Resources */,
 				72D6388D26196A4700A43D41 /* npcRight_4.png in Resources */,
+				724213E9261A0CB300CA5F97 /* book_3.png in Resources */,
 				729E943A260E38DD00DFF2D0 /* background_2.png in Resources */,
 				720A426E2618C7C0002D589C /* logDie_1.png in Resources */,
 				72D638A12619753000A43D41 /* dialogue_3.png in Resources */,
@@ -681,6 +728,7 @@
 				720A426F2618C7C0002D589C /* logDie_4.png in Resources */,
 				720A425326189C31002D589C /* attack_4.png in Resources */,
 				72E4843E260F052600D1C2DA /* Level_1_6.sks in Resources */,
+				724213D8261A064700CA5F97 /* box_2.png in Resources */,
 				72B46648260B2A1400BC5E56 /* Main.storyboard in Resources */,
 				72E48479260F2F2800D1C2DA /* log_right_1.png in Resources */,
 				72E4849D260F338C00D1C2DA /* zero.png in Resources */,
@@ -712,6 +760,7 @@
 				7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */,
 				72B4663F260B2A1400BC5E56 /* Level_1_0.sks in Resources */,
 				72E48461260F110600D1C2DA /* log_backward_2.png in Resources */,
+				7276B4ED2619F65700C4918F /* Level_4.sks in Resources */,
 				72E48495260F338C00D1C2DA /* heart_3.png in Resources */,
 				729E9424260E2FBE00DFF2D0 /* new_right_4.png in Resources */,
 				72E48492260F338C00D1C2DA /* three.png in Resources */,
@@ -724,12 +773,15 @@
 				72D6389026196A4700A43D41 /* npcRight_2.png in Resources */,
 				72E48460260F110600D1C2DA /* log_left_4.png in Resources */,
 				72D6388726196A4700A43D41 /* npcBack_2.png in Resources */,
+				724213ED261A0CB300CA5F97 /* book_5.png in Resources */,
 				7279A97A260D92ED000EB14F /* player_forward_3.png in Resources */,
 				72E48411260EEAC800D1C2DA /* Level_1_1.sks in Resources */,
 				72DC0FEF2615C55D006E7AA1 /* staff.png in Resources */,
 				729E942F260E33CA00DFF2D0 /* portal_2.png in Resources */,
+				724213EC261A0CB300CA5F97 /* book_1.png in Resources */,
 				720A42792618CBE9002D589C /* bomb_1.png in Resources */,
 				72727451260F84AE00141766 /* staffBullet.png in Resources */,
+				724213EA261A0CB300CA5F97 /* book_2.png in Resources */,
 				720A42652618A81D002D589C /* fire_4.png in Resources */,
 				72E48456260F110600D1C2DA /* log_backward_1.png in Resources */,
 				72E48432260EFCAF00D1C2DA /* Level_1_4.sks in Resources */,
@@ -741,6 +793,7 @@
 				720A427F2618CBE9002D589C /* bomb_2.png in Resources */,
 				7279A999260DAAC2000EB14F /* player_backward_2.png in Resources */,
 				72E48435260EFEE700D1C2DA /* background_8.png in Resources */,
+				724213E8261A0CB300CA5F97 /* book_4.png in Resources */,
 				7279A99A260DAAC2000EB14F /* player_backward_1.png in Resources */,
 				7279A989260D94A5000EB14F /* player_left_2.png in Resources */,
 				729E9420260E2FBE00DFF2D0 /* new_right_2.png in Resources */,
@@ -752,6 +805,7 @@
 				720A42622618A81D002D589C /* fire_6.png in Resources */,
 				720A425226189C31002D589C /* attack_3.png in Resources */,
 				72E4841A260EEDD100D1C2DA /* background_5.png in Resources */,
+				7276B4F02619F68300C4918F /* bedroom.png in Resources */,
 				72E4845F260F110600D1C2DA /* log_left_3.png in Resources */,
 				720A42672618A81D002D589C /* fire_3.png in Resources */,
 				7279A987260D94A5000EB14F /* player_left_3.png in Resources */,
@@ -761,8 +815,10 @@
 				72E48490260F338C00D1C2DA /* heart_1.png in Resources */,
 				720A427C2618CBE9002D589C /* bomb_7.png in Resources */,
 				72E48497260F338C00D1C2DA /* seven.png in Resources */,
+				724213EB261A0CB300CA5F97 /* platform.png in Resources */,
 				72B4BD7D260B4B570063ED38 /* bullet.png in Resources */,
 				7279A981260D93D4000EB14F /* player_right_3.png in Resources */,
+				724213D9261A064700CA5F97 /* box_1.png in Resources */,
 				72E48491260F338C00D1C2DA /* money_background.png in Resources */,
 				72E48438260EFEFC00D1C2DA /* Level_1_5.sks in Resources */,
 				72E4847B260F2F2800D1C2DA /* log_right_4.png in Resources */,
@@ -771,6 +827,7 @@
 				72B46641260B2A1400BC5E56 /* Actions.sks in Resources */,
 				72E4848F260F338C00D1C2DA /* exp_background.png in Resources */,
 				720A427D2618CBE9002D589C /* bomb_5.png in Resources */,
+				724213DC261A069600CA5F97 /* ObjectAction.sks in Resources */,
 				729E9417260E2FBE00DFF2D0 /* new_left_4.png in Resources */,
 				72D6388326196A4700A43D41 /* npcFor_4.png in Resources */,
 				729E941E260E2FBE00DFF2D0 /* new_left_1.png in Resources */,
@@ -781,6 +838,7 @@
 				7279A988260D94A5000EB14F /* player_left_1.png in Resources */,
 				72E4845D260F110600D1C2DA /* log_forward_1.png in Resources */,
 				729E9418260E2FBE00DFF2D0 /* new_forward_4.png in Resources */,
+				724213D7261A064700CA5F97 /* box_3.png in Resources */,
 				72E4847A260F2F2800D1C2DA /* log_right_3.png in Resources */,
 				72E48457260F110600D1C2DA /* log_forward_3.png in Resources */,
 				7279A973260D908F000EB14F /* player_forward_1.png in Resources */,
@@ -804,8 +862,10 @@
 				72D3A55A260B618100E65281 /* Map.swift in Sources */,
 				7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */,
 				72E48443260F0F7000D1C2DA /* Log.swift in Sources */,
+				724213E0261A091400CA5F97 /* Box.swift in Sources */,
 				72B46653260B2C5E00BC5E56 /* Player.swift in Sources */,
 				72D638A42619756E00A43D41 /* Dialogue.swift in Sources */,
+				724213F0261A0CBE00CA5F97 /* Book.swift in Sources */,
 				72727448260F761D00141766 /* Weapon.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
 				72D6389826196B9400A43D41 /* Npc.swift in Sources */,
