@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    
+    var round = 0
     var logList = [Log]()
     
     var player: Player!
@@ -89,11 +89,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //setupDoor()
             setupMap()
             if !isBornRoom && !isBonusRoom{setupMonster()}
-            if isBornRoom{setupNpc()}
+           
         }
         
+        setupNpc()
         
+        if player.round > round {
+            round = player.round
+            //print("door")
+            if !isBornRoom && !isBonusRoom{
+                cleanMonster()
+                setupMonster()
+                cleanDoor()
+                
+                //setupDoor()
+            }
+        }
         
+        self.view?.isUserInteractionEnabled = true
         handler.isHidden = true
         
         sinceStart = 0
@@ -139,6 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         
         if inDialogue {return}
+        //if player.round > round{return}
         
         if location.x > self.frame.width/2{
             mount.position = location
@@ -221,6 +235,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     }
     
+    func cleanMonster()  {
+        for log in logList{
+            log.removeFromParent()
+        }
+        logList = []
+    }
+    
+    func cleanDoor()  {
+        
+        for node in self.children{
+            if node.isMember(of: Door.self){
+                if node.name == "rightDoor" || node.name == "leftDoor" || node.name == "topDoor" || node.name == "bottomDoor"{
+                    node.removeFromParent()
+                    //print("clean")
+                }
+            }
+        }
+        isDoorSet = false
+    }
+    
     func checkNpcAround() {
         let dist = player.position.distanceTo(npc.position)
         if dist < 50 {
@@ -266,6 +300,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupNpc() {
+        if !isBornRoom{return}
+        if npc != nil {npc.removeFromParent()}
         npc = Npc()
         npc.position = npcBornPoint
         self.addChild(npc)
@@ -300,6 +336,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     heartBorn.addChild(newHeart)
                 }
             }
+            
+            if integer == 0{
+                let newHeart = Heart(number: left)
+                newHeart.run(SKAction(named: "idle")!)
+                newHeart.position =  CGPoint(x: 0, y: 0)
+                heartBorn.addChild(newHeart)
+            }
+            
             player.healthChanged = false
         }
         //set level
@@ -407,16 +451,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (nodeA.name == "log" && nodeB.name == "player"){
-            player.health -= 0.25
-            player.healthChanged = true
+           
             player.beingHit()
             let log = nodeA as! Log
-            if log.health>0{log.beingHit()}
+            log.beingHit()
             
         }
         if (nodeA.name == "player" && nodeB.name == "log"){
-            player.health -= 0.25
-            player.healthChanged = true
+            
             player.beingHit()
             let log = nodeB as! Log
             log.beingHit()

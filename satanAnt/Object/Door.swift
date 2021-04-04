@@ -28,6 +28,7 @@ class Door: SKSpriteNode {
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.categoryBitMask = 3
         self.physicsBody?.contactTestBitMask = 1
+        //self.name = "door"
     }
     
     required init?(coder aDecoder: NSCoder) {

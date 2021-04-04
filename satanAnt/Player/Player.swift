@@ -20,6 +20,9 @@ enum playerState {
 
 class Player: SKSpriteNode {
     
+    var bornScene: GameScene!
+    var isAlived = true
+    var round = 0
     var playerIsMoving = false
     let moveDistance: CGFloat = 2
     var popoStart: TimeInterval = 0
@@ -40,7 +43,55 @@ class Player: SKSpriteNode {
     
     var homeScene: GameScene!
     //player ability
-    var health: CGFloat!
+    private var _health: CGFloat!
+    var health: CGFloat{
+        set{
+            _health = newValue
+            //print("\(_health)")
+            if _health <= 0 {
+                isAlived = false
+                round += 1
+                _health = 2.5
+                self.isHidden = true
+                self.homeScene.view?.isUserInteractionEnabled = false
+               
+                let dieAction = SKAction.run({
+                    
+                    let tomb = Tomb()
+                    tomb.position = self.position
+                    self.homeScene.addChild(tomb)
+
+                })
+                let wait = SKAction.wait(forDuration: 2)
+                let transferAction = SKAction.run({
+                
+                    if  let view = self.homeScene.view as SKView?{
+                        if let scene = self.bornScene{
+                        scene.scaleMode = .aspectFit
+                        scene.player = self
+                        scene.player.isHidden = false
+                        scene.player.position = CGPoint(x: 209, y: 202)
+                        scene.player.run(SKAction(named: "playerForward")!)
+                            
+                        let fade = SKTransition.fade(withDuration: 1)
+                        view.presentScene(scene, transition: fade)
+                            
+                        view.showsFPS = true
+                        view.showsNodeCount = true
+                        view.ignoresSiblingOrder = true
+
+                        }
+                    }
+                })
+                
+                self.run(SKAction.sequence([dieAction,wait,transferAction]))
+                
+            }
+        }
+        get{
+            return _health
+        }
+    }
     var level: CGFloat!
     var money: CGFloat!
     private var _exp: CGFloat!
@@ -114,9 +165,10 @@ class Player: SKSpriteNode {
         set{
             _facing = newValue
             if newValue.angle <= 45 || newValue.angle>=315{self.state = .right}
-            if newValue.angle <= 135 && newValue.angle>=45{self.state = .backward}
-            if newValue.angle <= 225 && newValue.angle>=135{self.state = .left}
-            if newValue.angle <= 315 && newValue.angle>=225{self.state = .forward}
+            else if newValue.angle <= 135 && newValue.angle>=45{self.state = .backward}
+            else if newValue.angle <= 225 && newValue.angle>=135{self.state = .left}
+            else if newValue.angle <= 315 && newValue.angle>=225{self.state = .forward}
+            else {self.state = .right}
            
         }
         get{
@@ -159,6 +211,9 @@ class Player: SKSpriteNode {
         
         self.run(SKAction.sequence([red,clear]))
         self.run(back)
+        
+        self.health -= 0.25
+        self.healthChanged = true
     }
     
     
