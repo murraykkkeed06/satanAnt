@@ -10,13 +10,17 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var round = 0
+    //move from gameviewcontroller
+    var sceneList = [GameScene]()
+    var map = [[Int]]()
+    
+    var round = -1
     var logList = [Log]()
     
     var player: Player!
     var mount: SKSpriteNode!
     var handler: SKSpriteNode!
-
+    
     var handlerBackground: SKSpriteNode!
     
     var fireButton: MSButtonNode!
@@ -44,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var cavePosition: SKSpriteNode!
     
     var setupIsSet = false
-
+    
     var isBornRoom = false
     var isBonusRoom = false
     var isBedRoom = false
@@ -72,16 +76,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             scene.scaleMode = .aspectFill
             return scene
         }else{
-        guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
-            return nil
-        }
-        scene.scaleMode = .aspectFill
-        return scene
+            guard let scene = GameScene(fileNamed: "Level_\(levelNumber)") else {
+                return nil
+            }
+            scene.scaleMode = .aspectFill
+            return scene
         }
     }
     
     override func didMove(to view: SKView) {
-
+        
         //player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
         //addChild(player)
         if !self.setupIsSet {
@@ -101,17 +105,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setupNpc()
         
-        if player.round > round {
-            round = player.round
-            //print("door")
-            if isMonsterRoom{
-                cleanMonster()
-                setupMonster()
-                cleanDoor()
-                
-                //setupDoor()
-            }
-        }
+        //        if player.round > round {
+        //            round = player.round
+        //            //print("door")
+        //            if isMonsterRoom{
+        //                cleanMonster()
+        //                setupMonster()
+        //                cleanDoor()
+        //
+        //                //setupDoor()
+        //            }
+        //        }
         
         self.view?.isUserInteractionEnabled = true
         player.isHidden = false
@@ -149,8 +153,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-       
-       
+        
+        
         
         
     }
@@ -213,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-//        for i in 0..<logList.count{if logList[i].isAlived{print("\(i): \(logList[i].position.x),\(logList[i].position.y)")}}
+        //        for i in 0..<logList.count{if logList[i].isAlived{print("\(i): \(logList[i].position.x),\(logList[i].position.y)")}}
         
         //finsh cleaning monster
         if isBornRoom || isBonusRoom{if !isDoorSet{setupDoor();isDoorSet=true}
@@ -225,7 +229,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-
+        
     }
     
     
@@ -241,7 +245,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupExitDoor(nodeA: nodeA, nodeB: nodeB)
             }
         }
-    
+        
     }
     func setupCave()  {
         let cavePosition = (self.childNode(withName: "cavePosition") as! SKSpriteNode)
@@ -251,6 +255,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupBedRoom()  {
+        player.health = 2.5 + player.baseHealth
+        player.healthChanged = true
         book = Book()
         book.position = CGPoint(x: 460, y: 130)
         book.selectHandler = {
@@ -260,8 +266,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             abilityHud.open()
         }
         addChild(book)
-        player.health = 2.5 + player.baseHealth
-        player.healthChanged = true
+        
     }
     
     func cleanMonster()  {
@@ -433,7 +438,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponOnHand = Weapon(name: weaponName)
             weaponOnHand.position = CGPoint(x: 10, y: -8)
             weaponOnHand.anchorPoint = CGPoint(x: 0.2, y: 0.3)
-        
+            
             let bornPoint = SKSpriteNode(color: .red, size: CGSize(width: 1, height: 1))
             bornPoint.position = CGPoint(x: 28.4, y: 3.3)
             bornPoint.name = "bornPoint"
@@ -467,24 +472,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupExitDoor(nodeA: SKNode, nodeB: SKNode) {
         if nodeA.name == "exitDoor" || nodeB.name == "exitDoor"{
-            //print("out!")
+            
+            sceneList.removeAll()
+            print("\(sceneList.count)")
+            player.inMapNumber = Int.random(in: 0..<Map().map.count)
+            map = Map().map[player.inMapNumber]
+            setupSceneList()
+            let bornScene = sceneList[self.bornRoom()]
+            player.bornScene = bornScene
             
             if  let view = self.view as SKView?{
                 if let scene = player.bornScene{
-                scene.scaleMode = .aspectFit
-                scene.player = self.player
-                scene.player.position = CGPoint(x: 209, y: 202)
-                scene.player.run(SKAction(named: "playerForward")!)
-
-                let fade = SKTransition.fade(withDuration: 1)
-                view.presentScene(scene, transition: fade)
-
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.ignoresSiblingOrder = true
-
+                    scene.scaleMode = .aspectFit
+                    scene.player = self.player
+                    scene.player.position = CGPoint(x: 209, y: 202)
+                    scene.player.run(SKAction(named: "playerForward")!)
+                    
+                    let fade = SKTransition.fade(withDuration: 1)
+                    view.presentScene(scene, transition: fade)
+                    
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
+                    
                 }
             }
+            // }
         }
     }
     
@@ -506,7 +519,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (nodeA.name == "log" && nodeB.name == "player"){
-           
+            
             player.beingHit()
             let log = nodeA as! Log
             log.beingHit()
@@ -530,9 +543,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
         
-//        if player.fireStart < player.weapon.attackSpeed {fireButton.isHidden = true} else{
-//            fireButton.isHidden = false
-//        }
+        //        if player.fireStart < player.weapon.attackSpeed {fireButton.isHidden = true} else{
+        //            fireButton.isHidden = false
+        //        }
         
         if player.playerIsMoving{
             player.position+=(player.facing * player.moveDistance)
@@ -584,7 +597,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 
-               
+                
             }
         }
         
@@ -655,10 +668,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setupDoor() {
-         topDoor = (self.childNode(withName: "topDoor") as! SKSpriteNode)
-         bottomDoor = (self.childNode(withName: "bottomDoor") as! SKSpriteNode)
-         leftDoor = (self.childNode(withName: "leftDoor") as! SKSpriteNode)
-         rightDoor = (self.childNode(withName: "rightDoor") as! SKSpriteNode)
+        topDoor = (self.childNode(withName: "topDoor") as! SKSpriteNode)
+        bottomDoor = (self.childNode(withName: "bottomDoor") as! SKSpriteNode)
+        leftDoor = (self.childNode(withName: "leftDoor") as! SKSpriteNode)
+        rightDoor = (self.childNode(withName: "rightDoor") as! SKSpriteNode)
         if self.top != nil {addChild(Door(position: topDoor.position,name: "topDoor"))}
         if self.bototm != nil {addChild(Door(position: bottomDoor.position, name: "bottomDoor"))}
         if self.left != nil {addChild(Door(position: leftDoor.position, name: "leftDoor"))}
@@ -677,7 +690,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch phase {
         case "began":
-
+            
             handler.position = location
             player.playerIsMoving = true
             
@@ -697,7 +710,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else {
                 handler.position = location
             }
-               
+            
         case "ended":
             //print("ended!")
             handler.position = mount.position
@@ -707,6 +720,104 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setupSceneList()  {
+        //new scene
+        for y in 0..<Map().sceneRow{
+            for x in 0..<Map().sceneCol{
+                if self.map[y][x] != 0{
+                    //print("y: \(y),x: \(x)")
+                    
+                    if self.map[y][x] == 2 {
+                        let gameScene = GameScene.level(2)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isBornRoom = true
+                        sceneList.append(gameScene)
+                    }else if self.map[y][x] == 3 {
+                        let gameScene = GameScene.level(3)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isBonusRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else if self.map[y][x] == 1{
+                        let gameScene = GameScene.level(1)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isMonsterRoom = true
+                        sceneList.append(gameScene)
+                    }else if self.map[y][x] == 5 {
+                        let gameScene = GameScene.level(1)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isCaveRoom = true
+                        gameScene.isMonsterRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    
+                }
+            }
+        }
+        
+        
+        //set relation
+        
+        for i in 0..<sceneList.count {
+            
+            let x = sceneList[i].YX.x!
+            let y = sceneList[i].YX.y!
+            
+            //check top
+            if y == 0 {sceneList[i].top = nil}
+            else{ if map[y-1][x] != 0 {
+                for j in 0..<sceneList.count {
+                    if sceneList[j].YX.x == x && sceneList[j].YX.y == y-1 {
+                        sceneList[i].top = sceneList[j]
+                    }
+                }
+            }}
+            
+            //check bottom
+            if y == 4 {sceneList[i].bototm = nil}
+            else{ if map[y+1][x] != 0 {
+                for j in 0..<sceneList.count {
+                    if sceneList[j].YX.x == x && sceneList[j].YX.y == y+1 {
+                        sceneList[i].bototm = sceneList[j]
+                    }
+                }
+            }}
+            
+            //check left
+            if x == 0 {sceneList[i].left = nil}
+            else{ if map[y][x-1] != 0 {
+                for j in 0..<sceneList.count {
+                    if sceneList[j].YX.x == x-1 && sceneList[j].YX.y == y {
+                        sceneList[i].left = sceneList[j]
+                    }
+                }
+            }}
+            
+            //check right
+            if x == 6 {sceneList[i].right = nil}
+            else{ if map[y][x+1] != 0 {
+                for j in 0..<sceneList.count {
+                    if sceneList[j].YX.x == x+1 && sceneList[j].YX.y == y {
+                        sceneList[i].right = sceneList[j]
+                    }
+                }
+            }}
+            
+            
+        }
+    }
+    
+    func bornRoom() -> Int {
+        var room: Int!
+        
+        for i in 0..<sceneList.count{
+            if sceneList[i].isBornRoom{
+                room = i
+                break
+            }
+        }
+        return room
+    }
     
     
     

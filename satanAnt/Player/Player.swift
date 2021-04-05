@@ -41,14 +41,16 @@ class Player: SKSpriteNode {
     var baseAttackPointPoint: CGFloat{
         set{
             _baseAttackPoint = newValue
-            baseAttackPoint = _baseAttackPoint * 5
+            baseAttackPoint = _baseAttackPoint * 0.25
         }
         get{return _baseAttackPoint}
     }
     var baseHealthPoint: CGFloat{
         set{
             _baseHealthPoint = newValue
-            baseHealth = _baseHealthPoint * 5
+            baseHealth = _baseHealthPoint * 0.25
+            health = baseHealth + 2.5
+            healthChanged = true
         }
         get{return _baseHealthPoint}
     }
@@ -75,19 +77,21 @@ class Player: SKSpriteNode {
     var leftIsSet = false
     var backIsSet = false
     var forIsSet = false
+    var idleIsSet = false
     
     //weapon
     var weapon: Weapon!
     var weaponChanged = true
     
     var homeScene: GameScene!
+    
     //player ability
     private var _health: CGFloat!
     var health: CGFloat{
         set{
             _health = newValue
             //print("\(_health)")
-            if _health <= 0 {
+            if _health <= 0 && isAlived{
                 isAlived = false
                 round += 1
                 //_health = 2.5 + baseHealth
@@ -165,11 +169,16 @@ class Player: SKSpriteNode {
     var state: playerState {
         set{
             _state = newValue
-            
+            //self.removeAllActions()
             switch newValue {
             case .idle:
                 //self.removeAllActions()
+                if idleIsSet{break}
                 self.run(SKAction(named: "playerIdle")!)
+                leftIsSet = false
+                rightIsSet = false
+                backIsSet = false
+                forIsSet = false
             case .left:
                 if leftIsSet {break}
                 self.run(SKAction(named: "playerLeft")!)

@@ -51,6 +51,7 @@ class AbilityHud: SKSpriteNode {
         
         rangeButton.selectHandler = {
             if self.homeScene.player.level == 0 {return}
+            if self.homeScene.player.baseBulletRangePoint == 8{return}
             self.homeScene.player.baseBulletRangePoint += 1
             self.homeScene.player.level -= 1
             self.homeScene.player.levelChanged = true
@@ -59,6 +60,7 @@ class AbilityHud: SKSpriteNode {
         }
         speedButton.selectHandler = {
             if self.homeScene.player.level == 0 {return}
+            if self.homeScene.player.baseBulletSpeedPoint == 8{return}
             self.homeScene.player.baseBulletSpeedPoint += 1
             self.homeScene.player.level -= 1
             self.homeScene.player.levelChanged = true
@@ -67,6 +69,7 @@ class AbilityHud: SKSpriteNode {
         }
         attackButton.selectHandler = {
             if self.homeScene.player.level == 0 {return}
+            if self.homeScene.player.baseAttackPoint == 8{return}
             self.homeScene.player.baseAttackPoint += 1
             self.homeScene.player.level -= 1
             self.homeScene.player.levelChanged = true
@@ -75,6 +78,7 @@ class AbilityHud: SKSpriteNode {
         }
         healthButton.selectHandler = {
             if self.homeScene.player.level == 0 {return}
+            if self.homeScene.player.baseHealthPoint == 8{return}
             self.homeScene.player.baseHealthPoint += 1
             self.homeScene.player.level -= 1
             self.homeScene.player.levelChanged = true

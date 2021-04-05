@@ -23,13 +23,13 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         player = Player()
-        player.inMapNumber = Int.random(in: 0..<Map().map.count)
-        map = Map().map[player.inMapNumber]
-
-        setupSceneList()
-        let bornScene = sceneList[self.bornRoom()]
         
-        player.bornScene = bornScene
+//        player.inMapNumber = Int.random(in: 0..<Map().map.count)
+//        map = Map().map[player.inMapNumber]
+//        setupSceneList()
+//        let bornScene = sceneList[self.bornRoom()]
+//        player.bornScene = bornScene
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             
@@ -87,103 +87,103 @@ class GameViewController: UIViewController {
 //
     
     
-    func bornRoom() -> Int {
-        var room: Int!
-        
-        for i in 0..<sceneList.count{
-            if sceneList[i].isBornRoom{
-                room = i
-                break
-            }
-        }
-        return room
-    }
+//    func bornRoom() -> Int {
+//        var room: Int!
+//
+//        for i in 0..<sceneList.count{
+//            if sceneList[i].isBornRoom{
+//                room = i
+//                break
+//            }
+//        }
+//        return room
+//    }
     
     
-    func setupSceneList()  {
-        //new scene
-        for y in 0..<Map().sceneRow{
-            for x in 0..<Map().sceneCol{
-                if self.map[y][x] != 0{
-                    //print("y: \(y),x: \(x)")
-                    
-                    if self.map[y][x] == 2 {
-                        let gameScene = GameScene.level(2)!
-                        gameScene.YX = GridYX(y: y, x: x)
-                        gameScene.isBornRoom = true
-                        sceneList.append(gameScene)
-                    }else if self.map[y][x] == 3 {
-                        let gameScene = GameScene.level(3)!
-                        gameScene.YX = GridYX(y: y, x: x)
-                        gameScene.isBonusRoom = true
-                        sceneList.append(gameScene)
-                    }
-                    else if self.map[y][x] == 1{
-                        let gameScene = GameScene.level(1)!
-                        gameScene.YX = GridYX(y: y, x: x)
-                        gameScene.isMonsterRoom = true
-                        sceneList.append(gameScene)
-                    }else if self.map[y][x] == 5 {
-                        let gameScene = GameScene.level(1)!
-                        gameScene.YX = GridYX(y: y, x: x)
-                        gameScene.isCaveRoom = true
-                        gameScene.isMonsterRoom = true
-                        sceneList.append(gameScene)
-                    }
-                    
-                }
-            }
-        }
-        
-        
-        //set relation
-        
-        for i in 0..<sceneList.count {
-            
-            let x = sceneList[i].YX.x!
-            let y = sceneList[i].YX.y!
-            
-            //check top
-            if y == 0 {sceneList[i].top = nil}
-            else{ if map[y-1][x] != 0 {
-                for j in 0..<sceneList.count {
-                    if sceneList[j].YX.x == x && sceneList[j].YX.y == y-1 {
-                        sceneList[i].top = sceneList[j]
-                    }
-                }
-            }}
-            
-            //check bottom
-            if y == 4 {sceneList[i].bototm = nil}
-            else{ if map[y+1][x] != 0 {
-                for j in 0..<sceneList.count {
-                    if sceneList[j].YX.x == x && sceneList[j].YX.y == y+1 {
-                        sceneList[i].bototm = sceneList[j]
-                    }
-                }
-            }}
-            
-            //check left
-            if x == 0 {sceneList[i].left = nil}
-            else{ if map[y][x-1] != 0 {
-                for j in 0..<sceneList.count {
-                    if sceneList[j].YX.x == x-1 && sceneList[j].YX.y == y {
-                        sceneList[i].left = sceneList[j]
-                    }
-                }
-            }}
-            
-            //check right
-            if x == 6 {sceneList[i].right = nil}
-            else{ if map[y][x+1] != 0 {
-                for j in 0..<sceneList.count {
-                    if sceneList[j].YX.x == x+1 && sceneList[j].YX.y == y {
-                        sceneList[i].right = sceneList[j]
-                    }
-                }
-            }}
-            
-            
-        }
-    }
+//    func setupSceneList()  {
+//        //new scene
+//        for y in 0..<Map().sceneRow{
+//            for x in 0..<Map().sceneCol{
+//                if self.map[y][x] != 0{
+//                    //print("y: \(y),x: \(x)")
+//
+//                    if self.map[y][x] == 2 {
+//                        let gameScene = GameScene.level(2)!
+//                        gameScene.YX = GridYX(y: y, x: x)
+//                        gameScene.isBornRoom = true
+//                        sceneList.append(gameScene)
+//                    }else if self.map[y][x] == 3 {
+//                        let gameScene = GameScene.level(3)!
+//                        gameScene.YX = GridYX(y: y, x: x)
+//                        gameScene.isBonusRoom = true
+//                        sceneList.append(gameScene)
+//                    }
+//                    else if self.map[y][x] == 1{
+//                        let gameScene = GameScene.level(1)!
+//                        gameScene.YX = GridYX(y: y, x: x)
+//                        gameScene.isMonsterRoom = true
+//                        sceneList.append(gameScene)
+//                    }else if self.map[y][x] == 5 {
+//                        let gameScene = GameScene.level(1)!
+//                        gameScene.YX = GridYX(y: y, x: x)
+//                        gameScene.isCaveRoom = true
+//                        gameScene.isMonsterRoom = true
+//                        sceneList.append(gameScene)
+//                    }
+//
+//                }
+//            }
+//        }
+//
+//
+//        //set relation
+//
+//        for i in 0..<sceneList.count {
+//
+//            let x = sceneList[i].YX.x!
+//            let y = sceneList[i].YX.y!
+//
+//            //check top
+//            if y == 0 {sceneList[i].top = nil}
+//            else{ if map[y-1][x] != 0 {
+//                for j in 0..<sceneList.count {
+//                    if sceneList[j].YX.x == x && sceneList[j].YX.y == y-1 {
+//                        sceneList[i].top = sceneList[j]
+//                    }
+//                }
+//            }}
+//
+//            //check bottom
+//            if y == 4 {sceneList[i].bototm = nil}
+//            else{ if map[y+1][x] != 0 {
+//                for j in 0..<sceneList.count {
+//                    if sceneList[j].YX.x == x && sceneList[j].YX.y == y+1 {
+//                        sceneList[i].bototm = sceneList[j]
+//                    }
+//                }
+//            }}
+//
+//            //check left
+//            if x == 0 {sceneList[i].left = nil}
+//            else{ if map[y][x-1] != 0 {
+//                for j in 0..<sceneList.count {
+//                    if sceneList[j].YX.x == x-1 && sceneList[j].YX.y == y {
+//                        sceneList[i].left = sceneList[j]
+//                    }
+//                }
+//            }}
+//
+//            //check right
+//            if x == 6 {sceneList[i].right = nil}
+//            else{ if map[y][x+1] != 0 {
+//                for j in 0..<sceneList.count {
+//                    if sceneList[j].YX.x == x+1 && sceneList[j].YX.y == y {
+//                        sceneList[i].right = sceneList[j]
+//                    }
+//                }
+//            }}
+//
+//
+//        }
+//    }
 }
