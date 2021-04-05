@@ -40,6 +40,9 @@
 		72210550261AA6B200B2EEAC /* pressButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221054F261AA6B200B2EEAC /* pressButton.png */; };
 		72210553261AB32100B2EEAC /* cancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72210552261AB32100B2EEAC /* cancelButton.png */; };
 		72210556261AB33700B2EEAC /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210555261AB33700B2EEAC /* CancelButton.swift */; };
+		7221055C261ABD4000B2EEAC /* Cave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221055B261ABD4000B2EEAC /* Cave.swift */; };
+		72210563261AC0C500B2EEAC /* cave2.png in Resources */ = {isa = PBXBuildFile; fileRef = 72210562261AC0C500B2EEAC /* cave2.png */; };
+		72210567261AC30F00B2EEAC /* cave.png in Resources */ = {isa = PBXBuildFile; fileRef = 72210566261AC30F00B2EEAC /* cave.png */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
 		724213D6261A064700CA5F97 /* box_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D2261A064700CA5F97 /* box_4.png */; };
 		724213D7261A064700CA5F97 /* box_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D3261A064700CA5F97 /* box_3.png */; };
@@ -237,6 +240,9 @@
 		7221054F261AA6B200B2EEAC /* pressButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pressButton.png; sourceTree = "<group>"; };
 		72210552261AB32100B2EEAC /* cancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelButton.png; sourceTree = "<group>"; };
 		72210555261AB33700B2EEAC /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		7221055B261ABD4000B2EEAC /* Cave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cave.swift; sourceTree = "<group>"; };
+		72210562261AC0C500B2EEAC /* cave2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cave2.png; sourceTree = "<group>"; };
+		72210566261AC30F00B2EEAC /* cave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cave.png; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		724213D2261A064700CA5F97 /* box_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_4.png; sourceTree = "<group>"; };
 		724213D3261A064700CA5F97 /* box_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_3.png; sourceTree = "<group>"; };
@@ -456,6 +462,8 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72210566261AC30F00B2EEAC /* cave.png */,
+				72210562261AC0C500B2EEAC /* cave2.png */,
 				72210552261AB32100B2EEAC /* cancelButton.png */,
 				7221054F261AA6B200B2EEAC /* pressButton.png */,
 				7221054C261AA5D400B2EEAC /* abilityHud2.png */,
@@ -658,6 +666,7 @@
 				72421402261A194A00CA5F97 /* AbilityPoint.swift */,
 				72421409261A1C3B00CA5F97 /* PlusButton.swift */,
 				72210555261AB33700B2EEAC /* CancelButton.swift */,
+				7221055B261ABD4000B2EEAC /* Cave.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -739,6 +748,7 @@
 				720A427E2618CBE9002D589C /* bomb_6.png in Resources */,
 				729E9432260E33CA00DFF2D0 /* portal_1.png in Resources */,
 				7279A976260D913C000EB14F /* playerAction.sks in Resources */,
+				72210567261AC30F00B2EEAC /* cave.png in Resources */,
 				7279A9B2260DDFD1000EB14F /* annieMap.png in Resources */,
 				72E4845B260F110600D1C2DA /* log_forward_2.png in Resources */,
 				729E9431260E33CA00DFF2D0 /* portal_4.png in Resources */,
@@ -753,6 +763,7 @@
 				72E48478260F2F2800D1C2DA /* log_right_2.png in Resources */,
 				72E48428260EF83D00D1C2DA /* background_6.png in Resources */,
 				72E48420260EEE5000D1C2DA /* Level_1_3.sks in Resources */,
+				72210563261AC0C500B2EEAC /* cave2.png in Resources */,
 				72D3A552260B575D00E65281 /* popo.sks in Resources */,
 				720A425426189C31002D589C /* attack_2.png in Resources */,
 				72E48493260F338C00D1C2DA /* two.png in Resources */,
@@ -905,6 +916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7221055C261ABD4000B2EEAC /* Cave.swift in Sources */,
 				72D704D3260F5E54007326C3 /* Num.swift in Sources */,
 				720A42852618CD1E002D589C /* Tomb.swift in Sources */,
 				724213FF261A18DC00CA5F97 /* AbilityHud.swift in Sources */,

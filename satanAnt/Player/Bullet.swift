@@ -23,8 +23,9 @@ class Bullet: SKSpriteNode {
         self.name = name
         self.physicsBody = SKPhysicsBody(circleOfRadius: 5)
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.contactTestBitMask = 1
+        self.physicsBody?.contactTestBitMask = 4
         self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.categoryBitMask=16
         self.homeScene = homeScene
         
         self.range = 150 + homeScene.player.baseBulletRange

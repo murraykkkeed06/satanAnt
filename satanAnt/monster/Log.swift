@@ -110,7 +110,7 @@ class Log: SKSpriteNode{
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.contactTestBitMask = 7
+        self.physicsBody?.contactTestBitMask = 7 + 64
         self.physicsBody?.categoryBitMask = 4
         self.name = "log"
         self.sinceStart = 0

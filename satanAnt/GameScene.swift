@@ -41,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rightDoor: SKSpriteNode!
     
     var mapPosition: SKSpriteNode!
+    var cavePosition: SKSpriteNode!
     
     var setupIsSet = false
 
@@ -48,6 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isBonusRoom = false
     var isBedRoom = false
     var isMonsterRoom = false
+    var isCaveRoom = false
     var YX: GridYX!
     
     var isDoorSet = false
@@ -93,17 +95,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if !isBedRoom{mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap()}
             if isMonsterRoom{setupMonster()}
             setupIsSet = true
-            if isBedRoom{
-                book = Book()
-                book.position = CGPoint(x: 460, y: 130)
-                book.selectHandler = {
-                    self.book.open()
-                    let abilityHud = AbilityHud(scene: self)
-                    self.addChild(abilityHud)
-                    abilityHud.open()
-                }
-                addChild(book)
-            }
+            if isBedRoom{setupBedRoom()}
+            if isCaveRoom{setupCave()}
         }
         
         setupNpc()
@@ -250,6 +243,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     
     }
+    func setupCave()  {
+        let cavePosition = (self.childNode(withName: "cavePosition") as! SKSpriteNode)
+        let cave = Cave()
+        cave.position = cavePosition.position
+        self.addChild(cave)
+    }
+    
+    func setupBedRoom()  {
+        book = Book()
+        book.position = CGPoint(x: 460, y: 130)
+        book.selectHandler = {
+            self.book.open()
+            let abilityHud = AbilityHud(scene: self)
+            self.addChild(abilityHud)
+            abilityHud.open()
+        }
+        addChild(book)
+        player.health = 2.5 + player.baseHealth
+        player.healthChanged = true
+    }
     
     func cleanMonster()  {
         for log in logList{
@@ -334,6 +347,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //set health
         if player.healthChanged {
+            
+            if player.health < 0 {player.healthChanged = false;return}
+            
             let heartBorn = (self.childNode(withName: "//heartBorn") as! SKSpriteNode)
             heartBorn.removeAllChildren()
             

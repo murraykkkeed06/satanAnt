@@ -123,6 +123,12 @@ class GameViewController: UIViewController {
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isMonsterRoom = true
                         sceneList.append(gameScene)
+                    }else if self.map[y][x] == 5 {
+                        let gameScene = GameScene.level(1)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isCaveRoom = true
+                        gameScene.isMonsterRoom = true
+                        sceneList.append(gameScene)
                     }
                     
                 }

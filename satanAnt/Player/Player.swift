@@ -90,7 +90,7 @@ class Player: SKSpriteNode {
             if _health <= 0 {
                 isAlived = false
                 round += 1
-                _health = 2.5 + baseHealth
+                //_health = 2.5 + baseHealth
                 self.isHidden = true
                 self.homeScene.view?.isUserInteractionEnabled = false
                
