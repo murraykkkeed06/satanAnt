@@ -15,6 +15,7 @@ class BigDialogue: SKSpriteNode {
     var num: Int = 0
     var wordList = [SKLabelNode]()
     var isFinish = false
+    var selectHandler: ()->Void = {print("big dialogue touch not implemented!")}
     
     init(scene: GameScene){
         let texture = SKTexture(imageNamed: "bigDialogue")
@@ -33,13 +34,15 @@ class BigDialogue: SKSpriteNode {
         super.init(coder: aDecoder)
     }
     
-    func startWord()  {
+    func startWord(sentence: String)  {
         
-        let startPoint = self.position + CGPoint(x: 30, y: -30)
+//        let startPoint = self.position + CGPoint(x: 30, y: -30)
+        let startPoint = CGPoint(x: 155, y: 160)
         var colNumber = 0
         var rowNumber = 0
-        let newWord = Word()
-        let newWordString = newWord.helloWord
+//        let newWord = Word()
+//        let newWordString = newWord.helloWord
+        let newWordString = sentence
         for i in 0..<newWordString.count{
             
             
@@ -60,7 +63,8 @@ class BigDialogue: SKSpriteNode {
             wordList.append(word)
             //word.run(SKAction.fadeAlpha(by: 1, duration: 0.5))
         }
-        runStart()
+        self.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),SKAction.run(runStart)]))
+        //runStart()
     }
     
     func runStart(){
@@ -74,6 +78,10 @@ class BigDialogue: SKSpriteNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    func justClose()  {
         if isFinish{
             self.removeFromParent()
             for node in wordList{

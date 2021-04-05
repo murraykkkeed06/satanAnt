@@ -43,6 +43,11 @@
 		7221055C261ABD4000B2EEAC /* Cave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221055B261ABD4000B2EEAC /* Cave.swift */; };
 		72210563261AC0C500B2EEAC /* cave2.png in Resources */ = {isa = PBXBuildFile; fileRef = 72210562261AC0C500B2EEAC /* cave2.png */; };
 		72210567261AC30F00B2EEAC /* cave.png in Resources */ = {isa = PBXBuildFile; fileRef = 72210566261AC30F00B2EEAC /* cave.png */; };
+		7221056D261AF14A00B2EEAC /* soilder_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 72210569261AF14900B2EEAC /* soilder_3.png */; };
+		7221056E261AF14A00B2EEAC /* soilder_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221056A261AF14A00B2EEAC /* soilder_2.png */; };
+		7221056F261AF14A00B2EEAC /* soilder_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221056B261AF14A00B2EEAC /* soilder_4.png */; };
+		72210570261AF14A00B2EEAC /* soilder_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221056C261AF14A00B2EEAC /* soilder_1.png */; };
+		72210573261AF18C00B2EEAC /* Soilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210572261AF18C00B2EEAC /* Soilder.swift */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
 		724213D6261A064700CA5F97 /* box_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D2261A064700CA5F97 /* box_4.png */; };
 		724213D7261A064700CA5F97 /* box_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D3261A064700CA5F97 /* box_3.png */; };
@@ -66,6 +71,16 @@
 		72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72421402261A194A00CA5F97 /* AbilityPoint.swift */; };
 		72421407261A1A6900CA5F97 /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72421406261A1A6900CA5F97 /* plusButton.png */; };
 		7242140A261A1C3B00CA5F97 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72421409261A1C3B00CA5F97 /* PlusButton.swift */; };
+		72500A60261AFEBE00EAE276 /* enterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A5E261AFEBE00EAE276 /* enterButton.png */; };
+		72500A61261AFEBE00EAE276 /* leaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A5F261AFEBE00EAE276 /* leaveButton.png */; };
+		72500A64261AFED000EAE276 /* wordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72500A63261AFED000EAE276 /* wordButton.swift */; };
+		72500A67261B03D000EAE276 /* caveRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A66261B03D000EAE276 /* caveRoom.png */; };
+		72500A6A261B044000EAE276 /* Level_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72500A69261B044000EAE276 /* Level_5.sks */; };
+		72500A6F261B0AE600EAE276 /* continueBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A6D261B0AE600EAE276 /* continueBoard.png */; };
+		72500A70261B0AE600EAE276 /* homeBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A6E261B0AE600EAE276 /* homeBoard.png */; };
+		72500A73261B0AEF00EAE276 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72500A72261B0AEF00EAE276 /* Board.swift */; };
+		72500A76261B12EE00EAE276 /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72500A75261B12EE00EAE276 /* Level_6.sks */; };
+		72500A79261B131100EAE276 /* breakRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A78261B131100EAE276 /* breakRoom.png */; };
 		72727448260F761D00141766 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72727447260F761D00141766 /* Weapon.swift */; };
 		7272744B260F774200141766 /* spear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7272744A260F774200141766 /* spear.png */; };
 		72727451260F84AE00141766 /* staffBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72727450260F84AE00141766 /* staffBullet.png */; };
@@ -243,6 +258,11 @@
 		7221055B261ABD4000B2EEAC /* Cave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cave.swift; sourceTree = "<group>"; };
 		72210562261AC0C500B2EEAC /* cave2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cave2.png; sourceTree = "<group>"; };
 		72210566261AC30F00B2EEAC /* cave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cave.png; sourceTree = "<group>"; };
+		72210569261AF14900B2EEAC /* soilder_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_3.png; sourceTree = "<group>"; };
+		7221056A261AF14A00B2EEAC /* soilder_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_2.png; sourceTree = "<group>"; };
+		7221056B261AF14A00B2EEAC /* soilder_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_4.png; sourceTree = "<group>"; };
+		7221056C261AF14A00B2EEAC /* soilder_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_1.png; sourceTree = "<group>"; };
+		72210572261AF18C00B2EEAC /* Soilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soilder.swift; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		724213D2261A064700CA5F97 /* box_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_4.png; sourceTree = "<group>"; };
 		724213D3261A064700CA5F97 /* box_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_3.png; sourceTree = "<group>"; };
@@ -266,6 +286,16 @@
 		72421402261A194A00CA5F97 /* AbilityPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityPoint.swift; sourceTree = "<group>"; };
 		72421406261A1A6900CA5F97 /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
 		72421409261A1C3B00CA5F97 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		72500A5E261AFEBE00EAE276 /* enterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enterButton.png; sourceTree = "<group>"; };
+		72500A5F261AFEBE00EAE276 /* leaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaveButton.png; sourceTree = "<group>"; };
+		72500A63261AFED000EAE276 /* wordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordButton.swift; sourceTree = "<group>"; };
+		72500A66261B03D000EAE276 /* caveRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caveRoom.png; sourceTree = "<group>"; };
+		72500A69261B044000EAE276 /* Level_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_5.sks; sourceTree = "<group>"; };
+		72500A6D261B0AE600EAE276 /* continueBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = continueBoard.png; sourceTree = "<group>"; };
+		72500A6E261B0AE600EAE276 /* homeBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeBoard.png; sourceTree = "<group>"; };
+		72500A72261B0AEF00EAE276 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		72500A75261B12EE00EAE276 /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
+		72500A78261B131100EAE276 /* breakRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breakRoom.png; sourceTree = "<group>"; };
 		72727447260F761D00141766 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7272744A260F774200141766 /* spear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spear.png; sourceTree = "<group>"; };
 		72727450260F84AE00141766 /* staffBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staffBullet.png; sourceTree = "<group>"; };
@@ -462,6 +492,16 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72500A78261B131100EAE276 /* breakRoom.png */,
+				72500A6D261B0AE600EAE276 /* continueBoard.png */,
+				72500A6E261B0AE600EAE276 /* homeBoard.png */,
+				72500A66261B03D000EAE276 /* caveRoom.png */,
+				72500A5E261AFEBE00EAE276 /* enterButton.png */,
+				72500A5F261AFEBE00EAE276 /* leaveButton.png */,
+				7221056C261AF14A00B2EEAC /* soilder_1.png */,
+				7221056A261AF14A00B2EEAC /* soilder_2.png */,
+				72210569261AF14900B2EEAC /* soilder_3.png */,
+				7221056B261AF14A00B2EEAC /* soilder_4.png */,
 				72210566261AC30F00B2EEAC /* cave.png */,
 				72210562261AC0C500B2EEAC /* cave2.png */,
 				72210552261AB32100B2EEAC /* cancelButton.png */,
@@ -641,6 +681,8 @@
 				729E9436260E38A100DFF2D0 /* Level_2.sks */,
 				72E4842A260EF85700D1C2DA /* Level_3.sks */,
 				7276B4EC2619F65700C4918F /* Level_4.sks */,
+				72500A69261B044000EAE276 /* Level_5.sks */,
+				72500A75261B12EE00EAE276 /* Level_6.sks */,
 				7279A975260D913C000EB14F /* playerAction.sks */,
 				72B46640260B2A1400BC5E56 /* Actions.sks */,
 				72E48467260F11D700D1C2DA /* monsterAction.sks */,
@@ -667,6 +709,9 @@
 				72421409261A1C3B00CA5F97 /* PlusButton.swift */,
 				72210555261AB33700B2EEAC /* CancelButton.swift */,
 				7221055B261ABD4000B2EEAC /* Cave.swift */,
+				72210572261AF18C00B2EEAC /* Soilder.swift */,
+				72500A63261AFED000EAE276 /* wordButton.swift */,
+				72500A72261B0AEF00EAE276 /* Board.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -756,12 +801,15 @@
 				72E48494260F338C00D1C2DA /* eight.png in Resources */,
 				724213FB261A18D000CA5F97 /* point_purple.png in Resources */,
 				724213D6261A064700CA5F97 /* box_4.png in Resources */,
+				72500A79261B131100EAE276 /* breakRoom.png in Resources */,
 				720A42632618A81D002D589C /* fire_7.png in Resources */,
 				720A427A2618CBE9002D589C /* bomb_3.png in Resources */,
 				722F7065260C8B75009EB2D1 /* gray.png in Resources */,
 				72E4841D260EEDE800D1C2DA /* Level_1_2.sks in Resources */,
+				72500A61261AFEBE00EAE276 /* leaveButton.png in Resources */,
 				72E48478260F2F2800D1C2DA /* log_right_2.png in Resources */,
 				72E48428260EF83D00D1C2DA /* background_6.png in Resources */,
+				7221056F261AF14A00B2EEAC /* soilder_4.png in Resources */,
 				72E48420260EEE5000D1C2DA /* Level_1_3.sks in Resources */,
 				72210563261AC0C500B2EEAC /* cave2.png in Resources */,
 				72D3A552260B575D00E65281 /* popo.sks in Resources */,
@@ -793,7 +841,10 @@
 				72E48498260F338C00D1C2DA /* five.png in Resources */,
 				720A426D2618C7C0002D589C /* logDie_2.png in Resources */,
 				720A42702618C7C0002D589C /* logDie_3.png in Resources */,
+				72210570261AF14A00B2EEAC /* soilder_1.png in Resources */,
+				72500A67261B03D000EAE276 /* caveRoom.png in Resources */,
 				729E9426260E2FBE00DFF2D0 /* new_backward_1.png in Resources */,
+				72500A6F261B0AE600EAE276 /* continueBoard.png in Resources */,
 				72D6389E2619753000A43D41 /* dialogue_1.png in Resources */,
 				72D6388426196A4700A43D41 /* npcRight_1.png in Resources */,
 				7221054D261AA5D400B2EEAC /* abilityHud2.png in Resources */,
@@ -805,6 +856,7 @@
 				72E48417260EEDAA00D1C2DA /* background_4.png in Resources */,
 				72D3A553260B575D00E65281 /* Assets.xcassets in Resources */,
 				72D6388E26196A4700A43D41 /* npcLeft_4.png in Resources */,
+				7221056D261AF14A00B2EEAC /* soilder_3.png in Resources */,
 				72E48464260F110600D1C2DA /* log_forward_4.png in Resources */,
 				72D6388F26196A4700A43D41 /* npcLeft_3.png in Resources */,
 				72D6388626196A4700A43D41 /* npcFor_3.png in Resources */,
@@ -836,11 +888,13 @@
 				724213EC261A0CB300CA5F97 /* book_1.png in Resources */,
 				720A42792618CBE9002D589C /* bomb_1.png in Resources */,
 				72727451260F84AE00141766 /* staffBullet.png in Resources */,
+				72500A60261AFEBE00EAE276 /* enterButton.png in Resources */,
 				724213EA261A0CB300CA5F97 /* book_2.png in Resources */,
 				72210550261AA6B200B2EEAC /* pressButton.png in Resources */,
 				720A42652618A81D002D589C /* fire_4.png in Resources */,
 				72E48456260F110600D1C2DA /* log_backward_1.png in Resources */,
 				72E48432260EFCAF00D1C2DA /* Level_1_4.sks in Resources */,
+				72500A76261B12EE00EAE276 /* Level_6.sks in Resources */,
 				72E4843B260F051600D1C2DA /* background_9.png in Resources */,
 				72E48468260F11D700D1C2DA /* monsterAction.sks in Resources */,
 				7272744B260F774200141766 /* spear.png in Resources */,
@@ -853,6 +907,7 @@
 				724213E8261A0CB300CA5F97 /* book_4.png in Resources */,
 				7279A99A260DAAC2000EB14F /* player_backward_1.png in Resources */,
 				7279A989260D94A5000EB14F /* player_left_2.png in Resources */,
+				7221056E261AF14A00B2EEAC /* soilder_2.png in Resources */,
 				729E9420260E2FBE00DFF2D0 /* new_right_2.png in Resources */,
 				72D6388A26196A4700A43D41 /* npcBack_4.png in Resources */,
 				729E9419260E2FBE00DFF2D0 /* new_forward_1.png in Resources */,
@@ -862,6 +917,7 @@
 				720A42622618A81D002D589C /* fire_6.png in Resources */,
 				720A425226189C31002D589C /* attack_3.png in Resources */,
 				72E4841A260EEDD100D1C2DA /* background_5.png in Resources */,
+				72500A6A261B044000EAE276 /* Level_5.sks in Resources */,
 				7276B4F02619F68300C4918F /* bedroom.png in Resources */,
 				72E4845F260F110600D1C2DA /* log_left_3.png in Resources */,
 				720A42672618A81D002D589C /* fire_3.png in Resources */,
@@ -871,6 +927,7 @@
 				729E941C260E2FBE00DFF2D0 /* new_forward_2.png in Resources */,
 				72E48490260F338C00D1C2DA /* heart_1.png in Resources */,
 				720A427C2618CBE9002D589C /* bomb_7.png in Resources */,
+				72500A70261B0AE600EAE276 /* homeBoard.png in Resources */,
 				72E48497260F338C00D1C2DA /* seven.png in Resources */,
 				724213EB261A0CB300CA5F97 /* platform.png in Resources */,
 				72B4BD7D260B4B570063ED38 /* bullet.png in Resources */,
@@ -928,8 +985,10 @@
 				72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */,
 				72D638A42619756E00A43D41 /* Dialogue.swift in Sources */,
 				724213F0261A0CBE00CA5F97 /* Book.swift in Sources */,
+				72500A73261B0AEF00EAE276 /* Board.swift in Sources */,
 				72210556261AB33700B2EEAC /* CancelButton.swift in Sources */,
 				72727448260F761D00141766 /* Weapon.swift in Sources */,
+				72210573261AF18C00B2EEAC /* Soilder.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
 				72D6389826196B9400A43D41 /* Npc.swift in Sources */,
 				72B46643260B2A1400BC5E56 /* GameScene.swift in Sources */,
@@ -940,6 +999,7 @@
 				72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */,
 				72B46645260B2A1400BC5E56 /* GameViewController.swift in Sources */,
 				72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */,
+				72500A64261AFED000EAE276 /* wordButton.swift in Sources */,
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
 				720A425826189E7D002D589C /* AttackPoint.swift in Sources */,
 				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,

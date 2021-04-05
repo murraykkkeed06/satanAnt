@@ -116,12 +116,12 @@ class Player: SKSpriteNode {
                             //scene.isMonsterRoom = false
                             //scene.cleanMonster()
                             //setupButton(scene: scene)
-
+                            
                             scene.player = self
                             scene.player.position = CGPoint(x: 160, y: 250)
-                            
-                                // Present the scene
-                            view.presentScene(scene)
+                            let fade = SKTransition.fade(withDuration: 1)
+                            // Present the scene
+                            view.presentScene(scene,transition: fade)
                             
                             
                             view.ignoresSiblingOrder = true
@@ -141,6 +141,7 @@ class Player: SKSpriteNode {
         }
     }
     var level: CGFloat!
+    var gameLevel: Int = 1
     var money: CGFloat!
     private var _exp: CGFloat!
     var exp: CGFloat {
@@ -161,6 +162,8 @@ class Player: SKSpriteNode {
     var levelChanged = true
     var moneyChanged = true
     var expChanged = true
+    var gameLevelChanged = true
+    
     
     
     
