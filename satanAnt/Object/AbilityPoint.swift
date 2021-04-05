@@ -26,7 +26,7 @@ class AbilityPoint: SKSpriteNode {
             break
         }
         
-        super.init(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
+        super.init(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
         self.zPosition = 16
         
         

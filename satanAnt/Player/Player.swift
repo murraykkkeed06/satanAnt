@@ -20,6 +20,39 @@ enum playerState {
 
 class Player: SKSpriteNode {
     
+    private var _baseBulletRangePoint: CGFloat!
+    private var _baseBulletSpeedPoint: TimeInterval!
+    private var _baseAttackPoint: CGFloat!
+    private var _baseHealthPoint: CGFloat!
+    var baseBulletRangePoint: CGFloat{
+        set{
+            _baseBulletRangePoint = newValue
+            baseBulletRange = _baseBulletRangePoint * 5
+        }
+        get{return _baseBulletRangePoint}
+    }
+    var baseBulletSpeedPoint: TimeInterval{
+        set{
+            _baseBulletSpeedPoint = newValue
+            baseBulletSpeed = _baseBulletSpeedPoint * (-0.05)
+        }
+        get{return _baseBulletSpeedPoint}
+    }
+    var baseAttackPointPoint: CGFloat{
+        set{
+            _baseAttackPoint = newValue
+            baseAttackPoint = _baseAttackPoint * 5
+        }
+        get{return _baseAttackPoint}
+    }
+    var baseHealthPoint: CGFloat{
+        set{
+            _baseHealthPoint = newValue
+            baseHealth = _baseHealthPoint * 5
+        }
+        get{return _baseHealthPoint}
+    }
+    
     var baseBulletRange: CGFloat = 0
     var baseBulletSpeed: TimeInterval = 0
     var baseAttackPoint: CGFloat = 0
@@ -208,6 +241,10 @@ class Player: SKSpriteNode {
         self.money = 178
         self.weapon = Weapon(name: "staff")
        
+        self.baseBulletRangePoint = 0
+        self.baseBulletSpeedPoint = 0
+        self.baseAttackPoint = 0
+        self.baseHealthPoint = 0
         
     }
     

@@ -36,6 +36,10 @@
 		720A427F2618CBE9002D589C /* bomb_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A42782618CBE9002D589C /* bomb_2.png */; };
 		720A42822618CD0D002D589C /* tomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 720A42812618CD0D002D589C /* tomb.png */; };
 		720A42852618CD1E002D589C /* Tomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720A42842618CD1E002D589C /* Tomb.swift */; };
+		7221054D261AA5D400B2EEAC /* abilityHud2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221054C261AA5D400B2EEAC /* abilityHud2.png */; };
+		72210550261AA6B200B2EEAC /* pressButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221054F261AA6B200B2EEAC /* pressButton.png */; };
+		72210553261AB32100B2EEAC /* cancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72210552261AB32100B2EEAC /* cancelButton.png */; };
+		72210556261AB33700B2EEAC /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210555261AB33700B2EEAC /* CancelButton.swift */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
 		724213D6261A064700CA5F97 /* box_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D2261A064700CA5F97 /* box_4.png */; };
 		724213D7261A064700CA5F97 /* box_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 724213D3261A064700CA5F97 /* box_3.png */; };
@@ -229,6 +233,10 @@
 		720A42782618CBE9002D589C /* bomb_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb_2.png; sourceTree = "<group>"; };
 		720A42812618CD0D002D589C /* tomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomb.png; sourceTree = "<group>"; };
 		720A42842618CD1E002D589C /* Tomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tomb.swift; sourceTree = "<group>"; };
+		7221054C261AA5D400B2EEAC /* abilityHud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abilityHud2.png; sourceTree = "<group>"; };
+		7221054F261AA6B200B2EEAC /* pressButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pressButton.png; sourceTree = "<group>"; };
+		72210552261AB32100B2EEAC /* cancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelButton.png; sourceTree = "<group>"; };
+		72210555261AB33700B2EEAC /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		724213D2261A064700CA5F97 /* box_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_4.png; sourceTree = "<group>"; };
 		724213D3261A064700CA5F97 /* box_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_3.png; sourceTree = "<group>"; };
@@ -448,6 +456,9 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72210552261AB32100B2EEAC /* cancelButton.png */,
+				7221054F261AA6B200B2EEAC /* pressButton.png */,
+				7221054C261AA5D400B2EEAC /* abilityHud2.png */,
 				72421406261A1A6900CA5F97 /* plusButton.png */,
 				724213F2261A18C600CA5F97 /* abilityHud.png */,
 				724213F8261A18D000CA5F97 /* point_green.png */,
@@ -646,6 +657,7 @@
 				724213FE261A18DC00CA5F97 /* AbilityHud.swift */,
 				72421402261A194A00CA5F97 /* AbilityPoint.swift */,
 				72421409261A1C3B00CA5F97 /* PlusButton.swift */,
+				72210555261AB33700B2EEAC /* CancelButton.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -773,6 +785,7 @@
 				729E9426260E2FBE00DFF2D0 /* new_backward_1.png in Resources */,
 				72D6389E2619753000A43D41 /* dialogue_1.png in Resources */,
 				72D6388426196A4700A43D41 /* npcRight_1.png in Resources */,
+				7221054D261AA5D400B2EEAC /* abilityHud2.png in Resources */,
 				720A42662618A81D002D589C /* fire_5.png in Resources */,
 				720A424A26174C44002D589C /* hit.wav in Resources */,
 				72E48425260EF26500D1C2DA /* background_1.png in Resources */,
@@ -808,10 +821,12 @@
 				72E48411260EEAC800D1C2DA /* Level_1_1.sks in Resources */,
 				72DC0FEF2615C55D006E7AA1 /* staff.png in Resources */,
 				729E942F260E33CA00DFF2D0 /* portal_2.png in Resources */,
+				72210553261AB32100B2EEAC /* cancelButton.png in Resources */,
 				724213EC261A0CB300CA5F97 /* book_1.png in Resources */,
 				720A42792618CBE9002D589C /* bomb_1.png in Resources */,
 				72727451260F84AE00141766 /* staffBullet.png in Resources */,
 				724213EA261A0CB300CA5F97 /* book_2.png in Resources */,
+				72210550261AA6B200B2EEAC /* pressButton.png in Resources */,
 				720A42652618A81D002D589C /* fire_4.png in Resources */,
 				72E48456260F110600D1C2DA /* log_backward_1.png in Resources */,
 				72E48432260EFCAF00D1C2DA /* Level_1_4.sks in Resources */,
@@ -901,6 +916,7 @@
 				72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */,
 				72D638A42619756E00A43D41 /* Dialogue.swift in Sources */,
 				724213F0261A0CBE00CA5F97 /* Book.swift in Sources */,
+				72210556261AB33700B2EEAC /* CancelButton.swift in Sources */,
 				72727448260F761D00141766 /* Weapon.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
 				72D6389826196B9400A43D41 /* Npc.swift in Sources */,

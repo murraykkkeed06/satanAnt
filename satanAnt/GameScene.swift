@@ -57,6 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var npcBornPoint = CGPoint(x: 350, y: 220)
     var inDialogue = false
     
+    var book: Book!
     var npc: Npc!
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
@@ -93,10 +94,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if isMonsterRoom{setupMonster()}
             setupIsSet = true
             if isBedRoom{
-                let book = Book()
+                book = Book()
                 book.position = CGPoint(x: 460, y: 130)
                 book.selectHandler = {
-                    book.open()
+                    self.book.open()
                     let abilityHud = AbilityHud(scene: self)
                     self.addChild(abilityHud)
                     abilityHud.open()

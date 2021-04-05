@@ -1,5 +1,5 @@
 //
-//  PlusButton.swift
+//  CancelButton.swift
 //  satanAnt
 //
 //  Created by 劉孟學 on 2021/4/5.
@@ -8,23 +8,19 @@
 import Foundation
 import SpriteKit
 
-class PlusButton: SKSpriteNode {
+class CancelButton: SKSpriteNode {
     
-    var selectHandler: ()->Void = {print("plusButton touch not implemented!")}
-    var homeScene: GameScene!
+    var selectHandler: ()->Void = {print("cancel button touch not implemented!")}
     
-    init(name: String){
-        let texture = SKTexture(imageNamed: "pressButton")
+    init(){
+        let texture = SKTexture(imageNamed: "cancelButton")
         super.init(texture: texture, color: .clear, size: CGSize(width: 30, height: 30))
-        self.zPosition = 20
+        self.zPosition = 50
         self.isUserInteractionEnabled = true
-        self.name = name
-        self.alpha = 1
-        
     }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
