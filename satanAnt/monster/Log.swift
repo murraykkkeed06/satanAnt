@@ -30,7 +30,8 @@ class Log: SKSpriteNode{
                 _health = newValue
                 if _health<=0 {
                     //first run action
-                    
+                    homeScene.player.exp += 10
+                    homeScene.player.expChanged = true
                     self.logState = .idle
                     self.isAlived = false
                     self.physicsBody = nil
@@ -140,10 +141,7 @@ class Log: SKSpriteNode{
         self.run(SKAction.sequence([red,clear]))
         
         self.health -= (homeScene.player.weapon.attackPoint + homeScene.player.baseAttackPoint)
-        if self.health <= 0 {
-            homeScene.player.exp += 10
-            homeScene.player.expChanged = true
-        }
+        
         
         
     }

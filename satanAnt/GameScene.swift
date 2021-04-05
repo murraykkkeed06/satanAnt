@@ -71,6 +71,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var soilder: Soilder!
     var cave: Cave!
     
+    var levelNumber: Num!
+    
     var bigDialogue: BigDialogue!
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
@@ -482,7 +484,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //set game level
         if levelChanged{
             //print("\(level)")
-            let levelNumber = Num(number: player.gameLevel, size: 20)
+            if levelNumber != nil {levelNumber.removeFromParent()}
+            levelNumber = Num(number: player.gameLevel, size: 20)
             levelNumber.position = CGPoint(x: 640, y: 28)
             levelNumber.run(SKAction(named: "idle")!)
             addChild(levelNumber)
@@ -663,7 +666,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene.scaleMode = .aspectFit
                     scene.player = self.player
                     scene.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-                    
+                    scene.sceneList = sceneList
                     let fade = SKTransition.fade(withDuration: 1)
                     view.presentScene(scene, transition: fade)
                     
@@ -685,6 +688,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             map = Map().map1[player.inMapNumber]
             setupSceneList()
             let bornScene = sceneList[self.bornRoom()]
+            //print("\(sceneList.count)")
             player.bornScene = bornScene
             
             if  let view = self.view as SKView?{
@@ -693,6 +697,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene.player = self.player
                     scene.player.position = CGPoint(x: 209, y: 202)
                     scene.player.run(SKAction(named: "playerForward")!)
+                    scene.sceneList = sceneList
                     
                     let fade = SKTransition.fade(withDuration: 1)
                     view.presentScene(scene, transition: fade)
@@ -727,15 +732,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA.name == "log" && nodeB.name == "player"){
             
             player.beingHit()
-            let log = nodeA as! Log
-            log.beingHit()
+            //let log = nodeA as! Log
+            //log.health -= 0.25
+            
             
         }
         if (nodeA.name == "player" && nodeB.name == "log"){
             
             player.beingHit()
-            let log = nodeB as! Log
-            log.beingHit()
+            //let log = nodeB as! Log
+            //log.health -= 0.25
             
         }
         
@@ -808,6 +814,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if x == YX.x && y == YX.y {
                         newRoom.color = .red
                     }
+
+                    //bonus room
+                    if map[y][x] == 3 {
+                        newRoom.color = .yellow
+                    }
+                    
+                    //monster clean room
+                    let scene = getSceneFromMap(y: y,x: x)
+                    if map[y][x] == 1 && scene.isDoorSet{
+                        newRoom.color = .blue
+                    }
+                    //cave room
+                    if map[y][x] == 5 {
+                        newRoom.color = .black
+                    }
+                    
+                    
                     newRoom.position = mapPosition.position + CGPoint(x: 20*x, y: -20*y)
                     addChild(newRoom)
                     
@@ -818,6 +841,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+    }
+    
+    func getSceneFromMap(y: Int,x: Int) -> GameScene {
+        var resultScene: GameScene!
+        
+        for scene in sceneList{
+            
+            if scene.YX.x == x && scene.YX.y == y{
+                resultScene = scene
+                break
+            }
+        }
+        
+        return resultScene
     }
     
     
@@ -834,7 +871,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = leftDoor.position + CGPoint(x: 70, y: 0)
                 //scene?.handler.position = self.handler.position
-                
+                scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -848,7 +885,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = rightDoor.position + CGPoint(x: -70, y: 0)
                 //scene?.handler.position = self.handler.position
-                
+                scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -861,7 +898,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = bottomDoor.position + CGPoint(x: 0, y: 70)
                 //scene?.handler.position = self.handler.position
-                
+                scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -874,7 +911,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = topDoor.position + CGPoint(x: 0, y: -70)
                 //scene?.handler.position = self.handler.position
-                
+                scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -893,7 +930,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         addChild(homeBoard)
         
-        if player.gameLevel == 5 {return}
+        if player.gameLevel == 5 {player.gameLevel = 1;return}
         
         let continueBoard = Board(name: "continue")
         let continuePosition = (self.childNode(withName: "continuePosition") as! SKSpriteNode)
