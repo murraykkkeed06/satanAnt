@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 enum LogState: Int{
     case right
@@ -21,6 +22,10 @@ enum LogState: Int{
 }
 
 class Log: SKSpriteNode{
+    var AudioPlayer = AVAudioPlayer()
+    var AudioPlayer2 = AVAudioPlayer()
+    var hurtSound: NSURL!
+    var walkSound: NSURL!
     var isAlived = true
     var homeScene: GameScene!
     private var _health: CGFloat!
@@ -29,6 +34,7 @@ class Log: SKSpriteNode{
             if self.isAlived {
                 _health = newValue
                 if _health<=0 {
+                    self.AudioPlayer2.stop()
                     //first run action
                     homeScene.player.exp += 10
                     homeScene.player.expChanged = true
@@ -36,10 +42,23 @@ class Log: SKSpriteNode{
                     self.isAlived = false
                     self.physicsBody = nil
                     //self.run(SKAction.fadeAlpha(by: 0, duration: 1))
-                    let dieAction = SKAction(named: "monsterDie")!
+                    
                     let tomb = Tomb()
                     tomb.position = self.position
                     self.homeScene.addChild(tomb)
+                    
+                    if Int.random(in: 0..<10) < 5 {
+                        print("haet")
+                        let heart = HeartDrop()
+                        
+                        let x = CGFloat.random(in: 0..<50)
+                        let y = CGFloat.random(in: 0..<50)
+                        heart.position = self.position + CGPoint(x: x, y: y)
+                        self.homeScene.addChild(heart)
+                    }
+                    
+                    
+                    let dieAction = SKAction(named: "monsterDie")!
                     self.run(SKAction.sequence([dieAction,SKAction.removeFromParent()]))
                     //self.removeFromParent()
                     
@@ -73,6 +92,19 @@ class Log: SKSpriteNode{
                 self.run(SKAction.resize(toWidth: 20, duration: 0.01))
                 self.run(SKAction(named: "logLeft")!)
             }
+            
+            //set walk sound
+            if logState != .idle && isAlived{
+                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.walkSound as URL)
+
+                self.AudioPlayer2.volume = 0.5
+                self.AudioPlayer2.prepareToPlay()
+                self.AudioPlayer2.numberOfLoops = -1
+                self.AudioPlayer2.play()
+            }else{
+                self.AudioPlayer2.stop()
+            }
+            
         }
         get{
             return _logState
@@ -103,6 +135,11 @@ class Log: SKSpriteNode{
     
     init(scene: GameScene){
 
+        hurtSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "logHurt", ofType: "mp3")!)
+        walkSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "logWalk", ofType: "wav")!)
+
+        self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.hurtSound as URL)
+        
         let texture = SKTexture(imageNamed: "log_forward_1")
         super.init(texture: texture, color: .clear, size: logSize)
         self.zPosition = 5
@@ -142,7 +179,11 @@ class Log: SKSpriteNode{
         
         self.health -= (homeScene.player.weapon.attackPoint + homeScene.player.baseAttackPoint)
         
-        
+//        self.AudioPlayer.volume = 5
+//        self.AudioPlayer.prepareToPlay()
+//        self.AudioPlayer.play()
+        let sound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
+        homeScene.run(sound)
         
     }
     

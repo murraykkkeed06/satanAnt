@@ -7,9 +7,20 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    
+    var AudioPlayer = AVAudioPlayer()
+    
+    //var shootSound: NSURL!
+    var openBookSound: NSURL!
+    var doorCloseSound: NSURL!
+    var helloSound: NSURL!
+    var stopSound: NSURL!
+    var portalSound: NSURL!
+    var portalBornSound: NSURL!
     //move from gameviewcontroller
     var sceneList = [GameScene]()
     var map = [[Int]]()
@@ -29,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //var popoBornTime: TimeInterval = 5
     
-    var sinceStart: TimeInterval!
+    var sinceStart: TimeInterval = 0
     var eachFrame: TimeInterval = 1/60
     
     var top: GameScene!
@@ -74,6 +85,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var levelNumber: Num!
     
     var bigDialogue: BigDialogue!
+    
+    
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
         
@@ -95,6 +108,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        //sound
+        //shootSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "shoot", ofType: "mp3")!)
+        
+        openBookSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "openChest", ofType: "wav")!)
+        doorCloseSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "door", ofType: "mp3")!)
+        helloSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "hello", ofType: "mp3")!)
+        stopSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "stop", ofType: "mp3")!)
+        portalSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "portal", ofType: "mp3")!)
+
+        portalBornSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "portalBorn", ofType: "wav")!)
+
         //player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
         //addChild(player)
         if !self.setupIsSet {
@@ -105,13 +129,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
             popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
             //setupDoor()
-            if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
-            if isMonsterRoom{setupMonster()}
+            
+            if isMonsterRoom {setupMonster()}
             setupIsSet = true
             if isBedRoom{setupBedRoom()}
             if isCaveRoom{setupCave()}
         }
-        
+        if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
         if isBedRoom{
             player.health = 2.5 + player.baseHealth
             player.healthChanged = true
@@ -149,14 +173,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.expChanged = true
         player.moneyChanged = true
         player.weaponChanged = true
+        player.isAlived = true
         levelChanged = true
+        player.isFiring = false
         
         
         //if npc != nil {npc.position = npcBornPoint}
-        
+        fireButton.touchStartHandler = {self.player.isFiring = true}
         fireButton.selectedHandler = {
             //self.player.fireStart = 0
-            self.player.weapon.attack(direction: self.player.facing,homeScene: self)
+            //self.player.weapon.attack(direction: self.player.facing,homeScene: self)
+            self.player.isFiring = false
+//            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.shootSound as URL)
+//            self.AudioPlayer.volume = 2
+//            self.AudioPlayer.prepareToPlay()
+//            self.AudioPlayer.play()
         }
         
         
@@ -189,7 +220,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         handleHandler(phase: "began", location: location)
         //handleFacingHandler(phase: "began", location: location)
         
-        
+       
         
     }
     
@@ -215,8 +246,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         player.popoStart += eachFrame
+        player.sinceFire += eachFrame
         //player.fireStart += eachFrame
         sinceStart += eachFrame
+        
         for i in 0..<logList.count{
             logList[i].sinceStart += eachFrame
         }
@@ -233,6 +266,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             checkSoilderAround()
         }
         
+        if player.isFiring{
+            self.player.weapon.attack(direction: self.player.facing,homeScene: self)
+            
+        }
         
         
         //check log health
@@ -259,6 +296,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+        //heal effect
+        for node in self.children{
+            if node.name == "heal"{
+                node.position = player.position
+            }
+        }
+        
         
         
     }
@@ -275,6 +319,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupDamage(nodeA: nodeA, nodeB: nodeB)
                 setupExitDoor(nodeA: nodeA, nodeB: nodeB)
                 setupHomeOrKeepGoingPass(nodeA: nodeA, nodeB: nodeB)
+                setupBulletHit(nodeA: nodeA, nodeB: nodeB)
+                setupPickUp(nodeA: nodeA, nodeB: nodeB)
             }
         }
         
@@ -300,6 +346,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let abilityHud = AbilityHud(scene: self)
             self.addChild(abilityHud)
             abilityHud.open()
+            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.openBookSound as URL)
+            self.AudioPlayer.volume = 5
+            self.AudioPlayer.prepareToPlay()
+            self.AudioPlayer.play()
         }
         addChild(book)
         
@@ -330,6 +380,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if dist < 50 {
             if !dialogueIsSet {
                 dialogueIsSet = true
+                //sound
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.stopSound as URL)
+
+                self.AudioPlayer.volume = 3
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+                
                 dialogue = Dialogue()
                 dialogue.position = soilder.position + CGPoint(x: 0, y: 30)
                 dialogue.selectHandler = {
@@ -433,6 +490,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 dialogueIsSet = true
                 dialogue = Dialogue()
                 dialogue.position = npc.position + CGPoint(x: 0, y: 30)
+                //set hello
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.helloSound as URL)
+
+                self.AudioPlayer.volume = 3
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+                
+                
+                
                 dialogue.selectHandler = {
                     
                     let bigDialogue = BigDialogue(scene: self)
@@ -620,6 +686,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setupPickUp(nodeA: SKNode, nodeB: SKNode)  {
+        if nodeA.name == "heart" {
+            //print("hit!")
+            let heart = nodeA as! HeartDrop
+            heart.removeFromParent()
+            player.health += 0.25
+            player.healthChanged = true
+            let sound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
+            self.run(sound)
+            let healEffect = SKEmitterNode(fileNamed: "healParticle")!
+            healEffect.name = "heal"
+            healEffect.position = player.position
+            addChild(healEffect)
+            healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
+        }
+        if nodeB.name == "heart" {
+
+            let heart = nodeB as! HeartDrop
+            heart.removeFromParent()
+            
+            player.health += 0.25
+            player.healthChanged = true
+            let sound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
+            self.run(sound)
+            let healEffect = SKEmitterNode(fileNamed: "healParticle")!
+            healEffect.name = "heal"
+            healEffect.position = player.position
+            addChild(healEffect)
+            healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
+        }
+    }
+    
+    func setupBulletHit(nodeA: SKNode, nodeB: SKNode)  {
+        if nodeA.name == "staffBullet" {
+            //print("hit!")
+            let bullet = nodeA as! Bullet
+            bullet.removeFromParent()
+            let bulletHitPoint = BulletHitPoint(scene: self)
+            bulletHitPoint.hit()
+        }
+        if nodeB.name == "staffBullet" {
+
+            let bullet = nodeB as! Bullet
+            let bulletHitPoint = BulletHitPoint(scene: self)
+            bulletHitPoint.position = bullet.position
+            addChild(bulletHitPoint)
+            bulletHitPoint.hit()
+            bullet.removeFromParent()
+        }
+        
+    }
+    
     func setupHomeOrKeepGoingPass(nodeA: SKNode, nodeB: SKNode) {
         if nodeA.name == "homeDoor" || nodeB.name == "homeDoor"{
             //print("go home")
@@ -708,22 +826,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
             }
+            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.doorCloseSound as URL)
+            self.AudioPlayer.volume = 3
+            self.AudioPlayer.prepareToPlay()
+            self.AudioPlayer.play()
+            
+            
             // }
         }
     }
     
     func setupDamage(nodeA: SKNode, nodeB: SKNode) {
         if (nodeA.name == "staffBullet" && nodeB.name == "log"){
-            let bullet = nodeA as! Bullet
-            bullet.removeFromParent()
+//            let bullet = nodeA as! Bullet
+//            bullet.removeFromParent()
             let log = nodeB as! Log
             log.beingHit()
             
             
         }
         if (nodeA.name == "log" && nodeB.name == "staffBullet"){
-            let bullet = nodeB as! Bullet
-            bullet.removeFromParent()
+//            let bullet = nodeB as! Bullet
+//            bullet.removeFromParent()
             let log = nodeA as! Log
             log.beingHit()
             
@@ -790,7 +914,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+   
+    
     func setupMap(mapNumber: Int) {
+        //clean newroom
+        for node in self.children {
+            if node.name == "newRoom" {
+                node.removeFromParent()
+            }
+        }
+        
+        //add newroom
         var map: [[Int]]
         switch mapNumber {
         case 1:
@@ -808,12 +942,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //set room for none zero
                 if map[y][x] != 0 {
                     let newRoom = SKSpriteNode(color: .white, size: CGSize(width: 20, height: 20))
+                    newRoom.name = "newRoom"
                     newRoom.zPosition = 2
                     newRoom.alpha = 0.5
                     //player room
-                    if x == YX.x && y == YX.y {
-                        newRoom.color = .red
-                    }
+                    
 
                     //bonus room
                     if map[y][x] == 3 {
@@ -828,6 +961,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //cave room
                     if map[y][x] == 5 {
                         newRoom.color = .black
+                    }
+                    
+                    //home room
+                    if map[y][x] == 2 {
+                        newRoom.color = .purple
+                    }
+                    
+                    //player room
+                    if x == YX.x && y == YX.y {
+                        newRoom.color = .red
                     }
                     
                     
@@ -876,6 +1019,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.showsFPS = true
                 view.showsNodeCount = true
                 view.ignoresSiblingOrder = true
+                
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalSound as URL)
+
+                self.AudioPlayer.volume = 5
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+
             }
         }
         if (nodeA.name == "leftDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "leftDoor") {
@@ -889,7 +1039,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
-                view.ignoresSiblingOrder = true}
+                view.ignoresSiblingOrder = true
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalSound as URL)
+
+                self.AudioPlayer.volume = 5
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+                
+            }
+            
         }
         if (nodeA.name == "topDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "topDoor") {
             if  let view = self.view as SKView?{
@@ -902,7 +1060,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
-                view.ignoresSiblingOrder = true}
+                view.ignoresSiblingOrder = true
+                
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalSound as URL)
+
+                self.AudioPlayer.volume = 5
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+            }
         }
         if (nodeA.name == "bottomDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "bottomDoor") {
             if  let view = self.view as SKView?{
@@ -915,8 +1080,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
                 view.showsNodeCount = true
-                view.ignoresSiblingOrder = true}
+                view.ignoresSiblingOrder = true
+                
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalSound as URL)
+
+                self.AudioPlayer.volume = 5
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+            }
         }
+        
+        
+        
         //self.setupIsSet = true
     }
     
@@ -951,10 +1126,60 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bottomDoor = (self.childNode(withName: "bottomDoor") as! SKSpriteNode)
         leftDoor = (self.childNode(withName: "leftDoor") as! SKSpriteNode)
         rightDoor = (self.childNode(withName: "rightDoor") as! SKSpriteNode)
-        if self.top != nil {addChild(Door(position: topDoor.position,name: "topDoor"))}
-        if self.bototm != nil {addChild(Door(position: bottomDoor.position, name: "bottomDoor"))}
-        if self.left != nil {addChild(Door(position: leftDoor.position, name: "leftDoor"))}
-        if self.right != nil {addChild(Door(position: rightDoor.position, name: "rightDoor"))}
+        let wait = SKAction.wait(forDuration: 0.5)
+        let firstAction = SKAction.run({
+            if self.top != nil {
+                let door = Door(position: self.topDoor.position,name: "topDoor")
+                self.addChild(door)
+    
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalBornSound as URL)
+                self.AudioPlayer.volume = 2
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+
+            }
+        })
+        let secondAction = SKAction.run({
+            if self.bototm != nil {
+                
+                let door = Door(position: self.bottomDoor.position,name: "bottomDoor")
+                self.addChild(door)
+                
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalBornSound as URL)
+                self.AudioPlayer.volume = 2
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+                
+            }
+        })
+        
+        let thirdAction = SKAction.run({
+            if self.left != nil {
+                
+                let door = Door(position: self.leftDoor.position,name: "leftDoor")
+                self.addChild(door)
+            
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalBornSound as URL)
+                self.AudioPlayer.volume = 2
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+            }
+        })
+        let fourthAction = SKAction.run({
+            if self.right != nil {
+                
+                let door = Door(position: self.rightDoor.position,name: "rightDoor")
+                self.addChild(door)
+                
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.portalBornSound as URL)
+                self.AudioPlayer.volume = 2
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+                
+            }
+        })
+        
+        self.run(SKAction.sequence([firstAction,wait,secondAction,wait,thirdAction,wait,fourthAction]))
         
         
     }

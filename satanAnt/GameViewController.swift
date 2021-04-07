@@ -8,9 +8,12 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameViewController: UIViewController {
 
+    var AudioPlayer = AVAudioPlayer()
+    
     //5 * 7
     var sceneList = [GameScene]()
     
@@ -21,6 +24,12 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "rainy", ofType: "mp3")!)
+        AudioPlayer = try! AVAudioPlayer(contentsOf: sound as URL)
+        AudioPlayer.prepareToPlay()
+        AudioPlayer.numberOfLoops = -1
+        AudioPlayer.play()
         
         player = Player()
         

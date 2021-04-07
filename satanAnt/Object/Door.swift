@@ -11,12 +11,12 @@ import SpriteKit
 class Door: SKSpriteNode {
     
     
-    var doorSize = CGSize(width: 20, height: 15)
+    var doorSize = CGSize(width: 30, height: 30)
     
     init(position: CGPoint, name: String){
-        let texture = SKTexture(imageNamed: "fire_1")
+        let texture = SKTexture(imageNamed: "caveDoor_1")
         super.init(texture: texture, color: .clear, size: doorSize)
-        self.run(SKAction(named: "firePortal")!)
+        self.run(SKAction(named: "newPortalMove")!)
         self.position = position
         self.name = name
         self.zPosition = 2

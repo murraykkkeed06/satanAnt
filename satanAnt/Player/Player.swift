@@ -7,7 +7,7 @@
 
 import Foundation
 import SpriteKit
-
+import AVFoundation
 
 enum playerState {
     case idle
@@ -19,6 +19,16 @@ enum playerState {
 
 
 class Player: SKSpriteNode {
+    
+    var AudioPlayer = AVAudioPlayer()
+    var AudioPlayer2 = AVAudioPlayer()
+    var AudioPlayer3 = AVAudioPlayer()
+    var hurtSound: NSURL!
+    var walkSound: NSURL!
+    var dieSound: NSURL!
+    
+    var isFiring = false
+    var sinceFire: TimeInterval = 0
     
     private var _baseBulletRangePoint: CGFloat!
     private var _baseBulletSpeedPoint: TimeInterval!
@@ -64,7 +74,21 @@ class Player: SKSpriteNode {
     var roomScene: GameScene!
     var isAlived = true
     var round = 0
-    var playerIsMoving = false
+    var playerIsMoving: Bool = false{
+        didSet{
+            if playerIsMoving{
+                self.AudioPlayer3 = try! AVAudioPlayer(contentsOf: self.walkSound as URL)
+
+                self.AudioPlayer3.volume = 3
+                self.AudioPlayer3.numberOfLoops = -1
+                self.AudioPlayer3.prepareToPlay()
+                self.AudioPlayer3.play()
+
+            }else{
+                self.AudioPlayer3.stop()
+            }
+        }
+    }
     let moveDistance: CGFloat = 2
     var popoStart: TimeInterval = 0
     //var fireStart: TimeInterval = 0
@@ -92,6 +116,10 @@ class Player: SKSpriteNode {
             _health = newValue
             //print("\(_health)")
             if _health <= 0 && isAlived{
+                
+                
+                
+                
                 isAlived = false
                 round += 1
                 //_health = 2.5 + baseHealth
@@ -133,7 +161,12 @@ class Player: SKSpriteNode {
                 })
                 
                 self.run(SKAction.sequence([dieAction,wait,transferAction]))
-                
+                //play sound
+                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.dieSound as URL)
+
+                self.AudioPlayer2.volume = 3
+                self.AudioPlayer2.prepareToPlay()
+                self.AudioPlayer2.play()
             }
         }
         get{
@@ -178,6 +211,7 @@ class Player: SKSpriteNode {
                 //self.removeAllActions()
                 if idleIsSet{break}
                 self.run(SKAction(named: "playerIdle")!)
+                
                 leftIsSet = false
                 rightIsSet = false
                 backIsSet = false
@@ -185,13 +219,16 @@ class Player: SKSpriteNode {
             case .left:
                 if leftIsSet {break}
                 self.run(SKAction(named: "playerLeft")!)
+                //self.playerIsMoving = true
                 leftIsSet = true
                 rightIsSet = false
                 backIsSet = false
                 forIsSet = false
+                
             case .right:
                 if rightIsSet {break}
                 self.run(SKAction(named: "playerRight")!)
+                //self.playerIsMoving = true
                 rightIsSet = true
                 leftIsSet = false
                 backIsSet = false
@@ -199,6 +236,7 @@ class Player: SKSpriteNode {
             case .forward:
                 if forIsSet {break}
                 self.run(SKAction(named: "playerForward")!)
+                //self.playerIsMoving = true
                 forIsSet = true
                 leftIsSet = false
                 rightIsSet = false
@@ -206,11 +244,16 @@ class Player: SKSpriteNode {
             case .backward:
                 if backIsSet {return}
                 self.run(SKAction(named: "playerBackward")!)
+                //self.playerIsMoving = true
                 backIsSet = true
                 leftIsSet = false
                 rightIsSet = false
                 forIsSet = false
             }
+            
+            
+            
+            
         }
         get{
             return _state
@@ -233,6 +276,8 @@ class Player: SKSpriteNode {
     }
     
     init(){
+        
+        
         let texture = SKTexture(imageNamed: "new_forward_1")
         super.init(texture: texture, color: .clear, size: playerSize)
         self.zPosition = 6
@@ -257,6 +302,12 @@ class Player: SKSpriteNode {
         self.baseBulletSpeedPoint = 0
         self.baseAttackPoint = 0
         self.baseHealthPoint = 0
+        self.hurtSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "playerHurt", ofType: "wav")!)
+        self.walkSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "playerWalk", ofType: "mp3")!)
+        self.dieSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "playerDie", ofType: "wav")!)
+
+        
+        
         
     }
     
@@ -274,6 +325,12 @@ class Player: SKSpriteNode {
         
         self.health -= 0.25
         self.healthChanged = true
+        
+        self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.hurtSound as URL)
+        self.AudioPlayer.volume = 3
+        self.AudioPlayer.prepareToPlay()
+        self.AudioPlayer.play()
+
     }
     
     

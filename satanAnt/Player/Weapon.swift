@@ -7,14 +7,23 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class Weapon: SKSpriteNode {
     
     var attackPoint: CGFloat!
     var attackSpeed: TimeInterval!
-
+    var AudioPlayer = AVAudioPlayer()
+    var AudioPlayer2 = AVAudioPlayer()
+    var shootSound: NSURL!
+    var swordSound: NSURL!
     
     init(name: String){
+        
+        //shootSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "shoot", ofType: "mp3")!)
+        swordSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "swordHit", ofType: "wav")!)
+        
+        
         let texture = SKTexture(imageNamed: name)
         super.init(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         self.name = name
@@ -29,12 +38,18 @@ class Weapon: SKSpriteNode {
             attackSpeed = 0.5
         }
         
+        
+        
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     func attack(direction: CGPoint, homeScene: GameScene){
+        
+        if homeScene.player.sinceFire < 0.3 + homeScene.player.baseBulletSpeed {return}
+        
+        homeScene.player.sinceFire = 0
         
         var useSword = false
         
@@ -51,6 +66,16 @@ class Weapon: SKSpriteNode {
                 attackPoint.startPoint()
                 homeScene.logList[i].beingHit()
                 useSword = true
+                
+                //sound
+                
+                self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.swordSound as URL)
+                self.AudioPlayer.volume = 3
+                self.AudioPlayer.prepareToPlay()
+                self.AudioPlayer.play()
+                
+                
+                
                 break
             }
         }
@@ -63,6 +88,18 @@ class Weapon: SKSpriteNode {
                 let bullet = Bullet(position: position, name: "staffBullet",homeScene: homeScene)
                 homeScene.addChild(bullet)
                 bullet.flyTo(direction: direction)
+                
+                //sound
+//                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.shootSound as URL)
+//
+//                self.AudioPlayer2.volume = 1
+//                self.AudioPlayer2.prepareToPlay()
+                //self.AudioPlayer2.play()
+                
+                let sound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
+                homeScene.run(sound)
+                
+                
             }
         }
         

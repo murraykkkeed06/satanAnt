@@ -7,9 +7,11 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class BigDialogue: SKSpriteNode {
-    
+    var AudioPlayer = AVAudioPlayer()
+    var typeSound: NSURL!
     var homeScene: GameScene!
     var timer: Timer!
     var num: Int = 0
@@ -18,6 +20,9 @@ class BigDialogue: SKSpriteNode {
     var selectHandler: ()->Void = {print("big dialogue touch not implemented!")}
     
     init(scene: GameScene){
+        typeSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "talking", ofType: "mp3")!)
+        AudioPlayer = try! AVAudioPlayer(contentsOf: self.typeSound as URL)
+        AudioPlayer.volume = 5
         let texture = SKTexture(imageNamed: "bigDialogue")
         //super.init(texture: texture, color: .clear, size: CGSize(width: 412, height: 124))
         super.init(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
@@ -69,16 +74,20 @@ class BigDialogue: SKSpriteNode {
     
     func runStart(){
         timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(addWord), userInfo: nil, repeats: true)
+        AudioPlayer.prepareToPlay()
+        AudioPlayer.play()
+        
     }
     
     @objc func addWord(){
         homeScene.addChild(wordList[num])
+        
         num += 1
-        if num == wordList.count {timer.invalidate();isFinish = true}
+        if num == wordList.count {timer.invalidate();isFinish = true;AudioPlayer.stop()}
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        selectHandler()
     }
     
     func justClose()  {
