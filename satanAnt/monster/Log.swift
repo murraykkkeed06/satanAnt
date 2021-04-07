@@ -51,8 +51,8 @@ class Log: SKSpriteNode{
                         print("haet")
                         let heart = HeartDrop()
                         
-                        let x = CGFloat.random(in: 0..<50)
-                        let y = CGFloat.random(in: 0..<50)
+                        let x = CGFloat.random(in: 0..<10)
+                        let y = CGFloat.random(in: 0..<10)
                         heart.position = self.position + CGPoint(x: x, y: y)
                         self.homeScene.addChild(heart)
                     }

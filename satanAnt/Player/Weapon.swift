@@ -17,6 +17,7 @@ class Weapon: SKSpriteNode {
     var AudioPlayer2 = AVAudioPlayer()
     var shootSound: NSURL!
     var swordSound: NSURL!
+    var tempTime: TimeInterval = 0.3
     
     init(name: String){
         
@@ -47,7 +48,18 @@ class Weapon: SKSpriteNode {
     
     func attack(direction: CGPoint, homeScene: GameScene){
         
-        if homeScene.player.sinceFire < 0.3 + homeScene.player.baseBulletSpeed {return}
+        if homeScene.player.sinceFire < tempTime + homeScene.player.baseBulletSpeed {return}
+        
+        switch tempTime {
+        case 0.3:
+            tempTime=0.2
+        case 0.2:
+            tempTime=0.1
+        case 0.1:
+            tempTime=0.3
+        default:
+            break
+        }
         
         homeScene.player.sinceFire = 0
         

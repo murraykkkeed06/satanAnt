@@ -86,6 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bigDialogue: BigDialogue!
     
+    var popo: Popo!
     
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
@@ -110,6 +111,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //sound
         //shootSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "shoot", ofType: "mp3")!)
+        
+        //self.physicsWorld.gravity = CGVector(dx: 0, dy: -3);
         
         openBookSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "openChest", ofType: "wav")!)
         doorCloseSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "door", ofType: "mp3")!)
@@ -176,6 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.isAlived = true
         levelChanged = true
         player.isFiring = false
+        player.popoStart = 6
         
         
         //if npc != nil {npc.position = npcBornPoint}
@@ -193,8 +197,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         popoButton.selectedHandler = {
             //if !(self.popoStart > 6){return}
-            let popo = Popo(position: self.player.position)
-            self.addChild(popo)
+            self.popo = Popo(position: self.player.position + self.player.facing * 30,scene: self)
+            self.addChild(self.popo)
+            self.popo.shoot()
             self.player.popoStart = 0
             
         }
@@ -303,6 +308,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+//        if popo != nil && popo.isFlying {
+//            player.physicsBody?.isDynamic = false
+//        }else{
+//            player.physicsBody?.isDynamic = true
+//        }
         
         
     }
@@ -687,7 +697,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupPickUp(nodeA: SKNode, nodeB: SKNode)  {
-        if nodeA.name == "heart" {
+        if nodeA.name == "heart" && nodeB.name == "player"{
             //print("hit!")
             let heart = nodeA as! HeartDrop
             heart.removeFromParent()
@@ -701,7 +711,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(healEffect)
             healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
         }
-        if nodeB.name == "heart" {
+        if nodeB.name == "heart" && nodeA.name == "player"{
 
             let heart = nodeB as! HeartDrop
             heart.removeFromParent()
