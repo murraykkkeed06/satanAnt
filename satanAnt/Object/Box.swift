@@ -11,12 +11,18 @@ import SpriteKit
 class Box: SKSpriteNode {
     
     var selectHandler: () -> Void = {print("box touch not implemented!")}
-    
+    var isOpen = false
+    var boxSize = CGSize(width: 49, height: 30)
     init(){
         let texture = SKTexture(imageNamed: "box_1")
-        super.init(texture: texture, color: .clear, size: CGSize(width: 40, height: 30))
+        super.init(texture: texture, color: .clear, size: boxSize)
         self.zPosition = 1
         self.isUserInteractionEnabled = true
+        self.physicsBody = SKPhysicsBody(rectangleOf: boxSize)
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.pinned = true
+        
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

@@ -90,7 +90,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bigDialogue: BigDialogue!
     
     var popo: Popo!
-    
+    var box: Box!
+    var boxIsSet = false
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
         
@@ -161,6 +162,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupIsSet = true
             if isBedRoom{setupBedRoom()}
             if isCaveRoom{setupCave()}
+            if isBornRoom{
+                box = Box()
+                box.position = CGPoint(x: 320, y: 120)
+                addChild(box)
+            }
         }
         if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
         if isBedRoom{
@@ -360,7 +366,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            }
 //        }
         
-        
+        checkBoxAround()
         
     }
     
@@ -538,6 +544,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+    }
+    
+    func checkBoxAround() {
+        if box == nil {return}
+        let dist = player.position.distanceTo(box.position)
+        if !boxIsSet{
+            if dist < 50 && !box.isOpen{
+                boxIsSet = true
+                box.open()
+                box.isOpen = true
+                //pop some item
+                let texture1 = SKTexture(imageNamed: "potion")
+                let potion = SKSpriteNode(texture: texture1, color: .clear, size: CGSize(width: 20, height: 30))
+                potion.name = "potion"
+                potion.position = box.position + CGPoint(x: CGFloat.random(in: -30..<30), y: CGFloat.random(in: -30..<30))
+                potion.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
+                potion.physicsBody?.affectedByGravity = false
+                potion.physicsBody?.contactTestBitMask = 1
+                addChild(potion)
+                
+                let texture2 = SKTexture(imageNamed: "fireBomb_1")
+                let fireBomb = SKSpriteNode(texture: texture2, color: .clear, size: CGSize(width: 30, height: 30))
+                fireBomb.name = "fireBomb"
+                fireBomb.position = box.position + CGPoint(x: CGFloat.random(in: -30..<30), y: CGFloat.random(in: -30..<30))
+                fireBomb.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
+                fireBomb.physicsBody?.affectedByGravity = false
+                fireBomb.physicsBody?.contactTestBitMask = 1
+                addChild(fireBomb)
+                
+            }
+            
+        }
     }
     
     func checkNpcAround() {
@@ -834,31 +872,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if nodeA.isMember(of: Item.self) && nodeB.name == "player"{
-            switch nodeA.name {
-            case "potion":
+        if nodeA.name == "potion" && nodeB.name == "player"{
+            
                 player.itemList.append(Potion())
                 setupItemOrder()
-            case "fireBomb_1":
-                player.itemList.append(FireBomb())
-                setupItemOrder()
-            default:
-                break
-            }
+            
+            nodeA.removeFromParent()
 
         }
         
-        if nodeA.name == "player" && nodeB.isMember(of: Item.self){
-            switch nodeB.name {
-            case "potion":
+        if nodeA.name == "player" && nodeB.name == "potion"{
+            
                 player.itemList.append(Potion())
                 setupItemOrder()
-            case "fireBomb_1":
+            
+            nodeB.removeFromParent()
+            
+        }
+        
+        if nodeA.name == "fireBomb" && nodeB.name == "player"{
+            
                 player.itemList.append(FireBomb())
                 setupItemOrder()
-            default:
-                break
-            }
+            
+            nodeA.removeFromParent()
+
+        }
+        
+        if nodeA.name == "player" && nodeB.name == "fireBomb"{
+           
+                player.itemList.append(FireBomb())
+                setupItemOrder()
+           
+            nodeB.removeFromParent()
             
         }
         
