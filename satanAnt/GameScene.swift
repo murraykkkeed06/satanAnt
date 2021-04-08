@@ -636,18 +636,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let secondMoney: Int = Int(tempMoney/10)
             let thirdMoney: Int = Int(player.money.truncatingRemainder(dividingBy: 10))
             
+            let first = SKAction.run({
+                let firstMoneyNode = Num(number: firstMoney,size: 15)
+                moneyBorn.addChild(firstMoneyNode)
+                firstMoneyNode.position = CGPoint(x: 0, y: 0)
+                firstMoneyNode.run(SKAction(named: "coinPop")!)
+            })
+            let second = SKAction.run({
+                let secondMoneyNode = Num(number: secondMoney,size: 15)
+                moneyBorn.addChild(secondMoneyNode)
+                secondMoneyNode.position = CGPoint(x: 15, y: 0)
+                secondMoneyNode.run(SKAction(named: "coinPop")!)
+            })
+            let third = SKAction.run({
+                let thirdMoneyNode = Num(number: thirdMoney,size: 15)
+                moneyBorn.addChild(thirdMoneyNode)
+                thirdMoneyNode.position = CGPoint(x: 30, y: 0)
+                thirdMoneyNode.run(SKAction(named: "coinPop")!)
+            })
+            let wait = SKAction.wait(forDuration: 0.2)
+            self.run(SKAction.sequence([first,wait,second,wait,third]))
             
-            let firstMoneyNode = Num(number: firstMoney,size: 15)
-            moneyBorn.addChild(firstMoneyNode)
-            firstMoneyNode.position = CGPoint(x: 0, y: 0)
             
-            let secondMoneyNode = Num(number: secondMoney,size: 15)
-            moneyBorn.addChild(secondMoneyNode)
-            secondMoneyNode.position = CGPoint(x: 15, y: 0)
             
-            let thirdMoneyNode = Num(number: thirdMoney,size: 15)
-            moneyBorn.addChild(thirdMoneyNode)
-            thirdMoneyNode.position = CGPoint(x: 30, y: 0)
             player.moneyChanged = false
         }
         //set weapon on hud and player
@@ -726,6 +737,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(healEffect)
             healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
         }
+        
+        if nodeA.name == "coin" && nodeB.name == "player"{
+            //print("hit!")
+            let coin = nodeA as! CoinDrop
+            coin.removeFromParent()
+            player.money += CGFloat.random(in: 5..<10)
+            player.moneyChanged = true
+            let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
+            self.run(sound)
+            
+        }
+        
+        if nodeB.name == "coin" && nodeA.name == "player"{
+            //print("hit!")
+            let coin = nodeB as! CoinDrop
+            coin.removeFromParent()
+            player.money += CGFloat.random(in: 5..<10)
+            player.moneyChanged = true
+            let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
+            self.run(sound)
+            
+        }
+        
     }
     
     func setupBulletHit(nodeA: SKNode, nodeB: SKNode)  {

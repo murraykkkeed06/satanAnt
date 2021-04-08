@@ -48,13 +48,23 @@ class Log: SKSpriteNode{
                     self.homeScene.addChild(tomb)
                     
                     if Int.random(in: 0..<10) < 5 {
-                        print("haet")
+                    
                         let heart = HeartDrop()
                         
                         let x = CGFloat.random(in: 0..<10)
                         let y = CGFloat.random(in: 0..<10)
                         heart.position = self.position + CGPoint(x: x, y: y)
                         self.homeScene.addChild(heart)
+                    }
+                    
+                    if Int.random(in: 0..<10) < 5 {
+                        
+                        let money = CoinDrop()
+                        
+                        let x = CGFloat.random(in: 0..<10)
+                        let y = CGFloat.random(in: 0..<10)
+                        money.position = self.position + CGPoint(x: x, y: y)
+                        self.homeScene.addChild(money)
                     }
                     
                     

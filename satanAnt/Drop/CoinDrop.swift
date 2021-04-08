@@ -15,13 +15,14 @@ class CoinDrop: SKSpriteNode {
     init(){
         let texture = SKTexture(imageNamed: "coinDrop_1")
         super.init(texture: texture, color: .clear, size: coinSize)
-        self.zPosition = 2
-        self.physicsBody = SKPhysicsBody(rectangleOf: coinSize)
+        self.zPosition = 30
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 10))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.pinned = true
         self.physicsBody?.contactTestBitMask = 1
         self.run(SKAction(named: "coinAction")!)
+        self.name = "coin"
     }
     
     required init?(coder aDecoder: NSCoder) {
