@@ -38,6 +38,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fireButton: MSButtonNode!
     var popoButton: MSButtonNode!
     var rButton: MSButtonNode!
+    var leftButton: MSButtonNode!
+    var rightButton: MSButtonNode!
     
     //var popoBornTime: TimeInterval = 5
     
@@ -134,7 +136,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
             rButton = (self.childNode(withName: "rHandler") as! MSButtonNode)
             //setupDoor()
-            
+            leftButton = (self.childNode(withName: "left") as! MSButtonNode)
+            leftButton.selectedHandler = {
+                if self.player.itemList.count < 2 {return}
+                if self.player.inItemListNumber == 0 {return}
+                
+                self.player.item = self.player.itemList[self.player.inItemListNumber-1]
+                self.player.inItemListNumber -= 1
+                self.player.itemChanged = true
+                
+            }
+            rightButton = (self.childNode(withName: "right") as! MSButtonNode)
+            rightButton.selectedHandler = {
+                if self.player.itemList.count < 2 {return}
+                if self.player.inItemListNumber == self.player.itemList.count-1 {return}
+                
+                self.player.item = self.player.itemList[self.player.inItemListNumber+1]
+                self.player.inItemListNumber += 1
+                self.player.itemChanged = true
+                
+            }
             
             if isMonsterRoom {setupMonster()}
             setupIsSet = true
@@ -179,6 +200,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.expChanged = true
         player.moneyChanged = true
         player.weaponChanged = true
+        player.itemChanged = true
+        
         player.isAlived = true
         levelChanged = true
         player.isFiring = false
@@ -195,7 +218,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            self.addChild(self.popo)
 //            self.popo.shoot()
 //            self.player.popoStart = 0
-            //print(<#T##items: Any...##Any#>)
+            
+            if self.player.item == nil {return}
+            switch self.player.item.name {
+            case "potion":
+                let item = self.player.item as! Potion
+                item.work(scene: self)
+                //self.player.itemChanged = true
+            case "fireBomb_1":
+                let item = self.player.item as! FireBomb
+                item.work(scene: self)
+            default:
+                break
+            }
+            
             
         }
         
@@ -252,6 +288,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        //print("\(player.itemList.count)")
+        
         player.popoStart += eachFrame
         player.sinceFire += eachFrame
         player.rStart += eachFrame
@@ -315,6 +354,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rButton.isUserInteractionEnabled = false
         }
         
+//        for i in 0..<player.itemList.count{
+//            if player.itemList[i].parent == nil {
+//                player.itemList.remove(at: i)
+//            }
+//        }
         
         
         
@@ -563,16 +607,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //set item
         if player.itemChanged{
-            let popoButton = (self.childNode(withName: "popoButton") as! SKSpriteNode)
-            popoButton.removeAllChildren()
-            popoButton.alpha = 1
-            let texture = SKTexture(imageNamed: player.item.name!)
-            let item = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 25, height: 25))
-            
-            item.position = CGPoint(x: 0, y: 0)
-            popoButton.addChild(item)
-            
+            //print("\(player.itemList.count)")
+            if player.item != nil {
+                
+                let popoButton = (self.childNode(withName: "popoButton") as! SKSpriteNode)
+                popoButton.removeAllChildren()
+                
+                let texture = SKTexture(imageNamed: player.item.name!)
+                //print("\(player.itemList[0].name!)")
+                let item = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 25, height: 25))
+                item.zPosition = 1
+                item.position = CGPoint(x: 0, y: 0)
+                popoButton.addChild(item)
+                
+                
+            }else {
+                let popoButton = (self.childNode(withName: "popoButton") as! SKSpriteNode)
+                popoButton.removeAllChildren()
+                
+            }
             player.itemChanged = false
+            
         }
         
         
@@ -779,6 +834,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
+        if nodeA.isMember(of: Item.self) && nodeB.name == "player"{
+            switch nodeA.name {
+            case "potion":
+                player.itemList.append(Potion())
+                setupItemOrder()
+            case "fireBomb_1":
+                player.itemList.append(FireBomb())
+                setupItemOrder()
+            default:
+                break
+            }
+
+        }
+        
+        if nodeA.name == "player" && nodeB.isMember(of: Item.self){
+            switch nodeB.name {
+            case "potion":
+                player.itemList.append(Potion())
+                setupItemOrder()
+            case "fireBomb_1":
+                player.itemList.append(FireBomb())
+                setupItemOrder()
+            default:
+                break
+            }
+            
+        }
+        
+    }
+    
+    func setupItemOrder()  {
+        if player.itemList.count == 1{
+            player.item = player.itemList[0]
+        }else{
+            player.item = player.itemList[player.itemList.count-1]
+            player.inItemListNumber = player.itemList.count-1
+        }
+        player.itemChanged = true
     }
     
     func setupBulletHit(nodeA: SKNode, nodeB: SKNode)  {

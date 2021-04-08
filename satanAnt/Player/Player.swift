@@ -113,6 +113,9 @@ class Player: SKSpriteNode {
     var item: Item!
     var itemChanged = true
     
+    var itemList = [Item]()
+    var inItemListNumber: Int = 0
+    
     var homeScene: GameScene!
     
     //player ability
@@ -303,7 +306,13 @@ class Player: SKSpriteNode {
         self.health = 2.75
         self.money = 178
         self.weapon = Weapon(name: "staff")
-        self.item = Potion()
+        
+        let potion = Potion()
+        let fireBomb = FireBomb()
+        self.itemList.append(potion)
+        self.itemList.append(fireBomb)
+        self.item = potion
+        
         
         self.baseBulletRangePoint = 0
         self.baseBulletSpeedPoint = 0

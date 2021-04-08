@@ -10,4 +10,6 @@ import SpriteKit
 
 class Item : SKSpriteNode {
     
+    
+    
 }
