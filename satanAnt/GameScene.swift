@@ -37,6 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var fireButton: MSButtonNode!
     var popoButton: MSButtonNode!
+    var rButton: MSButtonNode!
     
     //var popoBornTime: TimeInterval = 5
     
@@ -131,7 +132,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
             fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
             popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+            rButton = (self.childNode(withName: "rHandler") as! MSButtonNode)
             //setupDoor()
+            
             
             if isMonsterRoom {setupMonster()}
             setupIsSet = true
@@ -184,17 +187,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //if npc != nil {npc.position = npcBornPoint}
         fireButton.touchStartHandler = {self.player.isFiring = true}
-        fireButton.selectedHandler = {
-            //self.player.fireStart = 0
-            //self.player.weapon.attack(direction: self.player.facing,homeScene: self)
-            self.player.isFiring = false
-//            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.shootSound as URL)
-//            self.AudioPlayer.volume = 2
-//            self.AudioPlayer.prepareToPlay()
-//            self.AudioPlayer.play()
-        }
-        
-        
+        fireButton.selectedHandler = {self.player.isFiring = false}
+
         popoButton.selectedHandler = {
             //if !(self.popoStart > 6){return}
             self.popo = Popo(position: self.player.position + self.player.facing * 30,scene: self)
@@ -204,6 +198,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
+        rButton.selectedHandler = {
+            self.player.rStart = 0
+            let wait = SKAction.wait(forDuration: 0.1)
+            let fire = SKAction.run({
+                                        self.player.weapon.rAttack(direction: self.player.facing,homeScene: self) })
+            self.run(SKAction.sequence([fire,wait,fire,wait,fire]))
+        }
         
         
         
@@ -252,6 +253,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         player.popoStart += eachFrame
         player.sinceFire += eachFrame
+        player.rStart += eachFrame
         //player.fireStart += eachFrame
         sinceStart += eachFrame
         
@@ -274,14 +276,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if player.isFiring{
             self.player.weapon.attack(direction: self.player.facing,homeScene: self)
             
-        }
+        }else {player.weapon.tempTime = 0.3}
         
-        
-        //check log health
-        
-        
-        
-        //        for i in 0..<logList.count{if logList[i].isAlived{print("\(i): \(logList[i].position.x),\(logList[i].position.y)")}}
         
         //finsh cleaning monster
         if isBornRoom || isBonusRoom {if !isDoorSet{setupDoor();isDoorSet=true}
@@ -308,12 +304,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-//        if popo != nil && popo.isFlying {
-//            player.physicsBody?.isDynamic = false
-//        }else{
-//            player.physicsBody?.isDynamic = true
-//        }
-        
+        if player.rStart > 5 {
+            player.rStart = 5
+            rButton.isUserInteractionEnabled = true
+            
+        }else {
+            let white = (rButton.childNode(withName: "white") as! SKSpriteNode)
+            white.yScale = CGFloat(player.rStart)/5
+            rButton.isUserInteractionEnabled = false
+        }
+
         
     }
     

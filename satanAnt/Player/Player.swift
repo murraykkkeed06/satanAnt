@@ -91,6 +91,7 @@ class Player: SKSpriteNode {
     }
     let moveDistance: CGFloat = 2
     var popoStart: TimeInterval = 0
+    var rStart: TimeInterval = 0
     //var fireStart: TimeInterval = 0
     //which map in Map.swift
     var inMapNumber: Int!

@@ -46,6 +46,37 @@ class Weapon: SKSpriteNode {
         super.init(coder: aDecoder)
     }
     
+    func rAttack(direction: CGPoint, homeScene: GameScene){
+        if self.name == "staff"{
+            if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
+                let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
+                let bullet1 = Bullet(position: position, name: "staffBullet",homeScene: homeScene)
+                let bullet2 = Bullet(position: position, name: "staffBullet",homeScene: homeScene)
+                let bullet3 = Bullet(position: position, name: "staffBullet",homeScene: homeScene)
+                homeScene.addChild(bullet1)
+                homeScene.addChild(bullet2)
+                homeScene.addChild(bullet3)
+                bullet1.flyTo(degree: direction.angle)
+                bullet2.flyTo(degree: direction.angle + 20)
+                bullet3.flyTo(degree: direction.angle - 20)
+                
+                //sound
+//                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.shootSound as URL)
+//
+//                self.AudioPlayer2.volume = 1
+//                self.AudioPlayer2.prepareToPlay()
+                //self.AudioPlayer2.play()
+                
+                let sound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
+                homeScene.run(sound)
+                
+                
+            }
+        }
+        
+    }
+    
+    
     func attack(direction: CGPoint, homeScene: GameScene){
         
         if homeScene.player.sinceFire < tempTime + homeScene.player.baseBulletSpeed {return}
@@ -117,6 +148,9 @@ class Weapon: SKSpriteNode {
         
         
     }
+    
+    
+    
     
     func attack(degree: CGFloat, homeScene: GameScene){
         
