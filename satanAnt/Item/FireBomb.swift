@@ -33,15 +33,15 @@ class FireBomb: Item {
         self.homeScene = scene
         self.removeFromParent()
         //remove in item list
-        for i in 0..<homeScene.player.itemList.count{
-            if homeScene.player.itemList[i].name == self.name{
-                homeScene.player.itemList.remove(at: i)
-                break
-            }
+        homeScene.player.itemList.remove(at: homeScene.player.inItemListNumber)
+        
+        if homeScene.player.inItemListNumber == homeScene.player.itemList.count{
+            homeScene.player.inItemListNumber -= 1
         }
+        
         //set player item to next in itemlist
         if homeScene.player.itemList.count > 0 {
-            homeScene.player.item = homeScene.player.itemList[0]
+            homeScene.player.item = homeScene.player.itemList[homeScene.player.inItemListNumber]
         }else {
             homeScene.player.item = nil
         }
@@ -68,31 +68,46 @@ class FireBomb: Item {
         
         let wait1 = SKAction.wait(forDuration: 0.3)
         let wait2 = SKAction.wait(forDuration: 5)
-        self.run(SKAction.sequence([SKAction.run(up),wait1,SKAction.run(down),wait2,SKAction.removeFromParent()]))
+        self.run(SKAction.sequence([SKAction.run(up),wait1,SKAction.run(down),wait2,SKAction.run(explode),SKAction.removeFromParent()]))
         
     }
     
     func up()  {
+        homeScene.run(SKAction.playSoundFileNamed("throw.wav", waitForCompletion: true))
         let force: CGFloat = 100
         // Apply an impulse at the vector.
         let v = CGVector(dx: homeScene.player.facing.x * force, dy: homeScene.player.facing.y * force)
         
         self.physicsBody?.applyImpulse(v)
         
+        
     }
     func down()  {
         
-        self.physicsBody = nil
+//        self.physicsBody = nil
+//        homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: 0);
+        self.physicsBody?.pinned = true
         let particle = SKEmitterNode(fileNamed: "popo")!
         addChild(particle)
         particle.position = CGPoint(x: 0, y: 10)
         let wait = SKAction.wait(forDuration: 5)
         let remove = SKAction.removeFromParent()
         let seq = SKAction.sequence([wait,remove])
-
+        particle.isUserInteractionEnabled = false
         particle.run(seq)
         self.run(seq)
         self.run(SKAction(named: "bombFire")!)
+        
+    }
+    
+    func explode()  {
+        homeScene.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: true))
+        
+        for log in homeScene.logList{
+            if log.position.distanceTo(self.position) < 100{
+                log.beingHit()
+            }
+        }
         
     }
     

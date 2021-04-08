@@ -12,7 +12,7 @@ class Box: SKSpriteNode {
     
     var selectHandler: () -> Void = {print("box touch not implemented!")}
     var isOpen = false
-    var boxSize = CGSize(width: 49, height: 30)
+    var boxSize = CGSize(width: 30, height: 20)
     init(){
         let texture = SKTexture(imageNamed: "box_1")
         super.init(texture: texture, color: .clear, size: boxSize)

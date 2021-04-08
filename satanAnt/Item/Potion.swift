@@ -28,20 +28,28 @@ class Potion: Item {
         self.homeScene = scene
         self.removeFromParent()
         //remove in item list
-        for i in 0..<homeScene.player.itemList.count{
-            if homeScene.player.itemList[i].name == self.name{
-                homeScene.player.itemList.remove(at: i)
-                break
-            }
+//        for i in 0..<homeScene.player.itemList.count{
+//            if homeScene.player.itemList[i].name == self.name{
+//                homeScene.player.itemList.remove(at: i)
+//                break
+//            }
+//        }
+        homeScene.player.itemList.remove(at: homeScene.player.inItemListNumber)
+        
+        if homeScene.player.inItemListNumber == homeScene.player.itemList.count{
+            homeScene.player.inItemListNumber -= 1
         }
+        
         //set player item to next in itemlist
         if homeScene.player.itemList.count > 0 {
-            homeScene.player.item = homeScene.player.itemList[0]
+            homeScene.player.item = homeScene.player.itemList[homeScene.player.inItemListNumber]
         }else {
             homeScene.player.item = nil
         }
         
         homeScene.player.itemChanged = true
+        
+        
         
 //        for node in homeScene.player.itemList{
 //            if node == nil{
@@ -50,7 +58,7 @@ class Potion: Item {
 //        }
         
         
-        
+        homeScene.run(SKAction.playSoundFileNamed("bigger.wav", waitForCompletion: true))
         
         let bigger = SKAction.scale(to: CGSize(width: 50, height: 50), duration: 1)
         let wait = SKAction.wait(forDuration: 5)

@@ -139,9 +139,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //setupDoor()
             leftButton = (self.childNode(withName: "left") as! MSButtonNode)
             leftButton.selectedHandler = {
-                if self.player.itemList.count < 2 {return}
-                if self.player.inItemListNumber == 0 {return}
-                
+                if self.player.itemList.count < 2 {
+                    self.run(SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true))
+                    return}
+                if self.player.inItemListNumber == 0 {self.run(SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true));return}
+                self.run(SKAction.playSoundFileNamed("slide.wav", waitForCompletion: false))
                 self.player.item = self.player.itemList[self.player.inItemListNumber-1]
                 self.player.inItemListNumber -= 1
                 self.player.itemChanged = true
@@ -149,9 +151,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             rightButton = (self.childNode(withName: "right") as! MSButtonNode)
             rightButton.selectedHandler = {
-                if self.player.itemList.count < 2 {return}
-                if self.player.inItemListNumber == self.player.itemList.count-1 {return}
-                
+                if self.player.itemList.count < 2 {self.run(SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true));return}
+                if self.player.inItemListNumber == self.player.itemList.count-1 {self.run(SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true));return}
+                self.run(SKAction.playSoundFileNamed("slide.wav", waitForCompletion: false))
                 self.player.item = self.player.itemList[self.player.inItemListNumber+1]
                 self.player.inItemListNumber += 1
                 self.player.itemChanged = true
@@ -555,24 +557,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 box.open()
                 box.isOpen = true
                 //pop some item
-                let texture1 = SKTexture(imageNamed: "potion")
-                let potion = SKSpriteNode(texture: texture1, color: .clear, size: CGSize(width: 20, height: 30))
-                potion.name = "potion"
-                potion.position = box.position + CGPoint(x: CGFloat.random(in: -30..<30), y: CGFloat.random(in: -30..<30))
-                potion.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
-                potion.physicsBody?.affectedByGravity = false
-                potion.physicsBody?.contactTestBitMask = 1
-                addChild(potion)
                 
-                let texture2 = SKTexture(imageNamed: "fireBomb_1")
-                let fireBomb = SKSpriteNode(texture: texture2, color: .clear, size: CGSize(width: 30, height: 30))
-                fireBomb.name = "fireBomb"
-                fireBomb.position = box.position + CGPoint(x: CGFloat.random(in: -30..<30), y: CGFloat.random(in: -30..<30))
-                fireBomb.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-                fireBomb.physicsBody?.affectedByGravity = false
-                fireBomb.physicsBody?.contactTestBitMask = 1
-                addChild(fireBomb)
                 
+                let action = SKAction.run({
+                
+                    let texture1 = SKTexture(imageNamed: "potion")
+                    let potion = SKSpriteNode(texture: texture1, color: .clear, size: CGSize(width: 20, height: 30))
+                    potion.name = "potion"
+                    potion.position = self.box.position + CGPoint(x: CGFloat.random(in: -10..<10), y: CGFloat.random(in: -10..<10))
+                    potion.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
+                    potion.physicsBody?.affectedByGravity = false
+                    potion.physicsBody?.contactTestBitMask = 1
+                    self.addChild(potion)
+                    
+                    let texture2 = SKTexture(imageNamed: "fireBomb_1")
+                    let fireBomb = SKSpriteNode(texture: texture2, color: .clear, size: CGSize(width: 20, height: 20))
+                    fireBomb.name = "fireBomb"
+                    fireBomb.position = self.box.position + CGPoint(x: CGFloat.random(in: -10..<10), y: CGFloat.random(in: -10..<10))
+                    fireBomb.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
+                    fireBomb.physicsBody?.affectedByGravity = false
+                    fireBomb.physicsBody?.contactTestBitMask = 1
+                    self.addChild(fireBomb)
+                })
+                self.run(SKAction.sequence([SKAction.wait(forDuration: 1),action]))
             }
             
         }
@@ -657,7 +664,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 item.zPosition = 1
                 item.position = CGPoint(x: 0, y: 0)
                 popoButton.addChild(item)
-                
+                item.run(SKAction(named: "coinPop")!)
                 
             }else {
                 let popoButton = (self.childNode(withName: "popoButton") as! SKSpriteNode)
@@ -876,17 +883,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
                 player.itemList.append(Potion())
                 setupItemOrder()
+            self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
             
-            nodeA.removeFromParent()
-
+            
+            let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+            let action = SKAction.move(to: popoButton.position, duration: 0.5)
+            action.timingMode = .easeInEaseOut
+            
+            nodeA.run(SKAction.sequence([action,SKAction.removeFromParent()]))
+            nodeA.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
+            
         }
         
         if nodeA.name == "player" && nodeB.name == "potion"{
             
                 player.itemList.append(Potion())
                 setupItemOrder()
+            self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
             
-            nodeB.removeFromParent()
+            let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+            let action = SKAction.move(to: popoButton.position, duration: 0.5)
+            action.timingMode = .easeInEaseOut
+            
+            nodeB.run(SKAction.sequence([action,SKAction.removeFromParent()]))
+            nodeB.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
             
         }
         
@@ -894,8 +914,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
                 player.itemList.append(FireBomb())
                 setupItemOrder()
+            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
             
-            nodeA.removeFromParent()
+            let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+            let action = SKAction.move(to: popoButton.position, duration: 0.5)
+            action.timingMode = .easeInEaseOut
+            
+            nodeA.run(SKAction.sequence([action,SKAction.removeFromParent()]))
+            nodeA.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
 
         }
         
@@ -903,8 +929,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
                 player.itemList.append(FireBomb())
                 setupItemOrder()
-           
-            nodeB.removeFromParent()
+            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
+            let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+            let action = SKAction.move(to: popoButton.position, duration: 0.5)
+            action.timingMode = .easeInEaseOut
+            
+            nodeB.run(SKAction.sequence([action,SKAction.removeFromParent()]))
+            nodeB.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
             
         }
         
