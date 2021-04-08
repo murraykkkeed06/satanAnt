@@ -27,6 +27,8 @@ class Player: SKSpriteNode {
     var walkSound: NSURL!
     var dieSound: NSURL!
     
+    
+    
     var isFiring = false
     var sinceFire: TimeInterval = 0
     
@@ -107,6 +109,9 @@ class Player: SKSpriteNode {
     //weapon
     var weapon: Weapon!
     var weaponChanged = true
+    
+    var item: Item!
+    var itemChanged = true
     
     var homeScene: GameScene!
     
@@ -298,7 +303,8 @@ class Player: SKSpriteNode {
         self.health = 2.75
         self.money = 178
         self.weapon = Weapon(name: "staff")
-       
+        self.item = Potion()
+        
         self.baseBulletRangePoint = 0
         self.baseBulletSpeedPoint = 0
         self.baseAttackPoint = 0

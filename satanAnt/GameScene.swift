@@ -191,10 +191,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         popoButton.selectedHandler = {
             //if !(self.popoStart > 6){return}
-            self.popo = Popo(position: self.player.position + self.player.facing * 30,scene: self)
-            self.addChild(self.popo)
-            self.popo.shoot()
-            self.player.popoStart = 0
+//            self.popo = Popo(position: self.player.position + self.player.facing * 30,scene: self)
+//            self.addChild(self.popo)
+//            self.popo.shoot()
+//            self.player.popoStart = 0
+            //print(<#T##items: Any...##Any#>)
             
         }
         
@@ -313,7 +314,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             white.yScale = CGFloat(player.rStart)/5
             rButton.isUserInteractionEnabled = false
         }
-
+        
+        
+        
         
     }
     
@@ -557,6 +560,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func playerSetupHud() {
+        
+        //set item
+        if player.itemChanged{
+            let popoButton = (self.childNode(withName: "popoButton") as! SKSpriteNode)
+            popoButton.removeAllChildren()
+            popoButton.alpha = 1
+            let texture = SKTexture(imageNamed: player.item.name!)
+            let item = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 25, height: 25))
+            
+            item.position = CGPoint(x: 0, y: 0)
+            popoButton.addChild(item)
+            
+            player.itemChanged = false
+        }
+        
+        
         //set game level
         if levelChanged{
             //print("\(level)")
