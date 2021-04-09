@@ -309,11 +309,14 @@ class Player: SKSpriteNode {
         self.money = 178
         self.weapon = Weapon(name: "staff")
         
-        let potion = Potion()
-        let fireBomb = FireBomb()
-        self.itemList.append(potion)
-        self.itemList.append(fireBomb)
-        self.item = potion
+        
+        
+//        let potion = Potion()
+//        let fireBomb = FireBomb()
+        
+        self.itemList.append(fromType(type: ItemType.random()))
+        self.itemList.append(fromType(type: ItemType.random()))
+        self.item = itemList[0]
         
         
         self.baseBulletRangePoint = 0

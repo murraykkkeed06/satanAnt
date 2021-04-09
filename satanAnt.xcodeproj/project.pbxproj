@@ -142,6 +142,8 @@
 		729E9432260E33CA00DFF2D0 /* portal_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E942E260E33CA00DFF2D0 /* portal_1.png */; };
 		729E9437260E38A100DFF2D0 /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 729E9436260E38A100DFF2D0 /* Level_2.sks */; };
 		729E943A260E38DD00DFF2D0 /* background_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 729E9439260E38DD00DFF2D0 /* background_2.png */; };
+		72AC0194262060AA007F6133 /* drink.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72AC0193262060AA007F6133 /* drink.mp3 */; };
+		72AC01972620644F007F6133 /* land.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72AC01962620644F007F6133 /* land.wav */; };
 		72B30114260B7E0B008063D7 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B30113260B7E0B008063D7 /* Door.swift */; };
 		72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4663C260B2A1400BC5E56 /* AppDelegate.swift */; };
 		72B4663F260B2A1400BC5E56 /* Level_1_0.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B4663E260B2A1400BC5E56 /* Level_1_0.sks */; };
@@ -286,6 +288,11 @@
 		72E7F4C6261C4694006A7AB1 /* playerWalk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E7F4C5261C4694006A7AB1 /* playerWalk.mp3 */; };
 		72E7F4C9261C46C8006A7AB1 /* logWalk.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72E7F4C8261C46C8006A7AB1 /* logWalk.wav */; };
 		72E7F4CC261C4FC1006A7AB1 /* playerDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72E7F4CB261C4FC1006A7AB1 /* playerDie.wav */; };
+		72F4410D26205CD1006F450B /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 72F4410C26205CD1006F450B /* apple.png */; };
+		72F4411026205CD9006F450B /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4410F26205CD9006F450B /* Apple.swift */; };
+		72F4411326205DA3006F450B /* eat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72F4411226205DA3006F450B /* eat.mp3 */; };
+		72F4411626205F9A006F450B /* coke.png in Resources */ = {isa = PBXBuildFile; fileRef = 72F4411526205F9A006F450B /* coke.png */; };
+		72F4411926205FA6006F450B /* Coke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4411826205FA6006F450B /* Coke.swift */; };
 		72FE1592261DC858008870C6 /* shoot.caf in Resources */ = {isa = PBXBuildFile; fileRef = 72FE1587261DC605008870C6 /* shoot.caf */; };
 		72FE15C3261DCF5D008870C6 /* shoot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72FE15C2261DCF5D008870C6 /* shoot.mp3 */; };
 		72FE15CE261DE27E008870C6 /* coinDrop_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 72FE15C6261DE27D008870C6 /* coinDrop_1.png */; };
@@ -439,6 +446,8 @@
 		729E942E260E33CA00DFF2D0 /* portal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portal_1.png; sourceTree = "<group>"; };
 		729E9436260E38A100DFF2D0 /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
 		729E9439260E38DD00DFF2D0 /* background_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_2.png; sourceTree = "<group>"; };
+		72AC0193262060AA007F6133 /* drink.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drink.mp3; sourceTree = "<group>"; };
+		72AC01962620644F007F6133 /* land.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = land.wav; sourceTree = "<group>"; };
 		72B30113260B7E0B008063D7 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		72B46639260B2A1400BC5E56 /* satanAnt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = satanAnt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B4663C260B2A1400BC5E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -585,6 +594,11 @@
 		72E7F4C5261C4694006A7AB1 /* playerWalk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerWalk.mp3; sourceTree = "<group>"; };
 		72E7F4C8261C46C8006A7AB1 /* logWalk.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = logWalk.wav; sourceTree = "<group>"; };
 		72E7F4CB261C4FC1006A7AB1 /* playerDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = playerDie.wav; sourceTree = "<group>"; };
+		72F4410C26205CD1006F450B /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		72F4410F26205CD9006F450B /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
+		72F4411226205DA3006F450B /* eat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eat.mp3; sourceTree = "<group>"; };
+		72F4411526205F9A006F450B /* coke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coke.png; sourceTree = "<group>"; };
+		72F4411826205FA6006F450B /* Coke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coke.swift; sourceTree = "<group>"; };
 		72FE1587261DC605008870C6 /* shoot.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = shoot.caf; sourceTree = "<group>"; };
 		72FE15C2261DCF5D008870C6 /* shoot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shoot.mp3; sourceTree = "<group>"; };
 		72FE15C6261DE27D008870C6 /* coinDrop_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coinDrop_1.png; sourceTree = "<group>"; };
@@ -616,6 +630,9 @@
 		72500A7E261B3E7C00EAE276 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				72AC01962620644F007F6133 /* land.wav */,
+				72AC0193262060AA007F6133 /* drink.mp3 */,
+				72F4411226205DA3006F450B /* eat.mp3 */,
 				72052D6C2620035200808095 /* start.wav */,
 				72CF1AA3261F607600FA90BE /* explosion.wav */,
 				72CF1A9C261F5A3D00FA90BE /* pick.mp3 */,
@@ -655,6 +672,8 @@
 			children = (
 				72777320261ECF6D009F823F /* FireBomb.swift */,
 				72777326261ED0F3009F823F /* Potion.swift */,
+				72F4410F26205CD9006F450B /* Apple.swift */,
+				72F4411826205FA6006F450B /* Coke.swift */,
 				72777329261ED13B009F823F /* Item.swift */,
 			);
 			path = Item;
@@ -708,6 +727,8 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72F4411526205F9A006F450B /* coke.png */,
+				72F4410C26205CD1006F450B /* apple.png */,
 				72D92E26261EEC18006DB779 /* leftButton.png */,
 				72D92E27261EEC18006DB779 /* rightButton.png */,
 				72777323261ED0C0009F823F /* potion.png */,
@@ -1110,6 +1131,7 @@
 				724213E9261A0CB300CA5F97 /* book_3.png in Resources */,
 				729E943A260E38DD00DFF2D0 /* background_2.png in Resources */,
 				720A426E2618C7C0002D589C /* logDie_1.png in Resources */,
+				72F4410D26205CD1006F450B /* apple.png in Resources */,
 				72D638A12619753000A43D41 /* dialogue_3.png in Resources */,
 				729E9421260E2FBE00DFF2D0 /* new_right_3.png in Resources */,
 				72052D662620002400808095 /* erro.wav in Resources */,
@@ -1193,6 +1215,7 @@
 				727F3562261EACEC00BB8E02 /* rHandler.png in Resources */,
 				72E7F4C6261C4694006A7AB1 /* playerWalk.mp3 in Resources */,
 				72D6388C26196A4700A43D41 /* npcLeft_2.png in Resources */,
+				72AC0194262060AA007F6133 /* drink.mp3 in Resources */,
 				72FE15E5261DE81B008870C6 /* healParticle.sks in Resources */,
 				720A425526189C31002D589C /* attack_5.png in Resources */,
 				72D6389026196A4700A43D41 /* npcRight_2.png in Resources */,
@@ -1208,6 +1231,7 @@
 				72210553261AB32100B2EEAC /* cancelButton.png in Resources */,
 				724213EC261A0CB300CA5F97 /* book_1.png in Resources */,
 				720A42792618CBE9002D589C /* bomb_1.png in Resources */,
+				72F4411326205DA3006F450B /* eat.mp3 in Resources */,
 				72727451260F84AE00141766 /* staffBullet.png in Resources */,
 				72500A60261AFEBE00EAE276 /* enterButton.png in Resources */,
 				72E7F45A261C1203006A7AB1 /* talking.mp3 in Resources */,
@@ -1258,6 +1282,7 @@
 				7279A987260D94A5000EB14F /* player_left_3.png in Resources */,
 				72E4849E260F338C00D1C2DA /* six.png in Resources */,
 				7279A980260D93D4000EB14F /* player_right_1.png in Resources */,
+				72AC01972620644F007F6133 /* land.wav in Resources */,
 				729E941C260E2FBE00DFF2D0 /* new_forward_2.png in Resources */,
 				72E7F466261C1798006A7AB1 /* bulletHitPoint_2.png in Resources */,
 				72E48490260F338C00D1C2DA /* heart_1.png in Resources */,
@@ -1271,6 +1296,7 @@
 				72E48491260F338C00D1C2DA /* money_background.png in Resources */,
 				72E48438260EFEFC00D1C2DA /* Level_1_5.sks in Resources */,
 				72E4847B260F2F2800D1C2DA /* log_right_4.png in Resources */,
+				72F4411626205F9A006F450B /* coke.png in Resources */,
 				72E7F4B9261C4217006A7AB1 /* caveDoor_4.png in Resources */,
 				72FE15D5261DE27E008870C6 /* heartDrop_1.png in Resources */,
 				72E48414260EEB2200D1C2DA /* background_3.png in Resources */,
@@ -1323,6 +1349,7 @@
 				72D704D3260F5E54007326C3 /* Num.swift in Sources */,
 				7277732A261ED13B009F823F /* Item.swift in Sources */,
 				720A42852618CD1E002D589C /* Tomb.swift in Sources */,
+				72F4411926205FA6006F450B /* Coke.swift in Sources */,
 				724213FF261A18DC00CA5F97 /* AbilityHud.swift in Sources */,
 				72D3A55A260B618100E65281 /* Map.swift in Sources */,
 				7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */,
@@ -1349,6 +1376,7 @@
 				72B4BD83260B4BCE0063ED38 /* Bullet.swift in Sources */,
 				72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */,
 				72B46645260B2A1400BC5E56 /* GameViewController.swift in Sources */,
+				72F4411026205CD9006F450B /* Apple.swift in Sources */,
 				72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */,
 				72500A64261AFED000EAE276 /* wordButton.swift in Sources */,
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,

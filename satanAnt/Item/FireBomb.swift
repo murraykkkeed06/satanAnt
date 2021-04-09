@@ -33,20 +33,7 @@ class FireBomb: Item {
         self.homeScene = scene
         self.removeFromParent()
         //remove in item list
-        homeScene.player.itemList.remove(at: homeScene.player.inItemListNumber)
-        
-        if homeScene.player.inItemListNumber == homeScene.player.itemList.count{
-            homeScene.player.inItemListNumber -= 1
-        }
-        
-        //set player item to next in itemlist
-        if homeScene.player.itemList.count > 0 {
-            homeScene.player.item = homeScene.player.itemList[homeScene.player.inItemListNumber]
-        }else {
-            homeScene.player.item = nil
-        }
-        
-        homeScene.player.itemChanged = true
+        removeItemAndReset(homeScene: scene)
         
         //bomb throw and explode
         shoot()
