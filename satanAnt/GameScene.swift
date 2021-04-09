@@ -23,11 +23,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var portalBornSound: NSURL!
     //move from gameviewcontroller
     var sceneList = [GameScene]()
+    
     var map = [[Int]]()
     
     
     var levelChanged = true
-    var logList = [Log]()
+    
+    var monsterList = [Monster]()
     
     var player: Player!
     var mount: SKSpriteNode!
@@ -173,6 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 addChild(box)
             }
         }
+        
         if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
         if isBedRoom{
             player.health = 2.5 + player.baseHealth
@@ -181,18 +184,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         setupNpc()
-        
-        //        if player.round > round {
-        //            round = player.round
-        //            //print("door")
-        //            if isMonsterRoom{
-        //                cleanMonster()
-        //                setupMonster()
-        //                cleanDoor()
-        //
-        //                //setupDoor()
-        //            }
-        //        }
         
         self.view?.isUserInteractionEnabled = true
         player.isHidden = false
@@ -224,12 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fireButton.selectedHandler = {self.player.isFiring = false}
         
         popoButton.selectedHandler = {
-            //if !(self.popoStart > 6){return}
-            //            self.popo = Popo(position: self.player.position + self.player.facing * 30,scene: self)
-            //            self.addChild(self.popo)
-            //            self.popo.shoot()
-            //            self.player.popoStart = 0
-            
+ 
             if self.player.item == nil {return}
             switch self.player.item.name {
             case "potion":
@@ -248,16 +234,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             default:
                 break
             }
-            
-            
         }
-        
-        
-        
-        
-        
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -300,16 +277,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        //print("\(player.itemList.count)")
-        
+   
         player.popoStart += eachFrame
         player.sinceFire += eachFrame
         player.rStart += eachFrame
         //player.fireStart += eachFrame
         sinceStart += eachFrame
         
-        for i in 0..<logList.count{
-            logList[i].sinceStart += eachFrame
+
+        for monster in monsterList{
+            monster.sinceStart += eachFrame
         }
         
         playerSetupHud()
@@ -333,18 +310,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //finsh cleaning monster
         if isBornRoom || isBonusRoom {if !isDoorSet{setupDoor();isDoorSet=true}
         }else if isEnterCaveRoom {
-            for i in 0..<logList.count{
-                if logList[i].isAlived{break}
-                if i == logList.count - 1 && !isDoorSet{
+            for i in 0..<monsterList.count{
+                if monsterList[i].isAlived{break}
+                if i == monsterList.count - 1 && !isDoorSet{
                     setupHomeOrKeepGoing()
                     isDoorSet=true
                 }
             }
         }
         else{
-            for i in 0..<logList.count{
-                if logList[i].isAlived{break}
-                if i == logList.count - 1 && !isDoorSet{setupDoor();isDoorSet=true}
+            for i in 0..<monsterList.count{
+                if monsterList[i].isAlived{break}
+                if i == monsterList.count - 1 && !isDoorSet{setupDoor();isDoorSet=true}
             }
         }
         
@@ -371,19 +348,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rButton.selectedHandler = {}
         }
         
-        //        for i in 0..<player.itemList.count{
-        //            if player.itemList[i].parent == nil {
-        //                player.itemList.remove(at: i)
-        //            }
-        //        }
-        
+
         checkBoxAround()
         
-        for node in logList{
-            if !player.isAlived{
-                node.AudioPlayer2.stop()
-            }
-        }
         
     }
     
@@ -405,6 +372,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
+    
     func setupCave()  {
         let cavePosition = (self.childNode(withName: "cavePosition") as! SKSpriteNode)
         cave = Cave()
@@ -435,12 +403,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func cleanMonster()  {
-        for log in logList{
-            log.removeFromParent()
-        }
-        logList = []
-    }
+
     
     func cleanDoor()  {
         
@@ -1113,6 +1076,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
+        if (nodeA.name == "staffBullet" && nodeB.name == "slime"){
+            //            let bullet = nodeA as! Bullet
+            //            bullet.removeFromParent()
+            let slime = nodeB as! Slime
+            slime.beingHit()
+            
+            
+        }
+        if (nodeA.name == "slime" && nodeB.name == "staffBullet"){
+            //            let bullet = nodeB as! Bullet
+            //            bullet.removeFromParent()
+            let slime = nodeA as! Slime
+            slime.beingHit()
+            
+        }
+        if (nodeA.name == "staffBullet" && nodeB.name == "ghost"){
+            //            let bullet = nodeA as! Bullet
+            //            bullet.removeFromParent()
+            let ghost = nodeB as! Ghost
+            ghost.beingHit()
+            
+            
+        }
+        if (nodeA.name == "ghost" && nodeB.name == "staffBullet"){
+            //            let bullet = nodeB as! Bullet
+            //            bullet.removeFromParent()
+            let ghost = nodeA as! Ghost
+            ghost.beingHit()
+            
+        }
+        
         if (nodeA.name == "log" && nodeB.name == "player"){
             
             player.beingHit()
@@ -1122,6 +1116,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         if (nodeA.name == "player" && nodeB.name == "log"){
+            
+            player.beingHit()
+            //let log = nodeB as! Log
+            //log.health -= 0.25
+            
+        }
+        
+        if (nodeA.name == "slime" && nodeB.name == "player"){
+            
+            player.beingHit()
+            //let log = nodeA as! Log
+            //log.health -= 0.25
+            
+            
+        }
+        if (nodeA.name == "player" && nodeB.name == "slime"){
             
             player.beingHit()
             //let log = nodeB as! Log
@@ -1149,7 +1159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupMonster() {
-        for _ in 0..<3 {
+        for _ in 0..<5 {
             var borned = false
             var check = 0
             var bornX = CGFloat.random(in: 50..<self.frame.width-50)
@@ -1166,11 +1176,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
-            let newLog = Log(scene: self)
-            newLog.position = CGPoint(x: bornX, y: bornY)
-            addChild(newLog)
-            logList.append(newLog)
+            //let newLog = Log(scene: self)
+            
+            let monster = fromType(type: MonsterType.random(), homeScene: self)
+            monster.position = CGPoint(x: bornX, y: bornY)
+            addChild(monster)
+            monsterList.append(monster)
+            //ogList.append(newLog)
+            
         }
+        
+
+        
+        
         
     }
     

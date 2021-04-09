@@ -91,9 +91,9 @@ class FireBomb: Item {
         
         homeScene.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: true))
         
-        for log in homeScene.logList{
-            if log.position.distanceTo(self.position) < 100{
-                log.beingHit()
+        for monster in homeScene.monsterList{
+            if monster.position.distanceTo(self.position) < 100{
+                monster.beingHit()
             }
         }
         

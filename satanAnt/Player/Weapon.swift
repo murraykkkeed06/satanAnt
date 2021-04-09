@@ -98,16 +98,16 @@ class Weapon: SKSpriteNode {
         
         //use sword in distance < 30
         let distance: CGFloat = 60
-        for i in 0..<homeScene.logList.count{
-            let diff = homeScene.logList[i].position.distanceTo(homeScene.player.position)
-            var vec = homeScene.logList[i].position - homeScene.player.position
-            if diff<distance && abs(vec.normalize().angle - homeScene.player.facing.angle)<30 && homeScene.logList[i].isAlived{
+        for i in 0..<homeScene.monsterList.count{
+            let diff = homeScene.monsterList[i].position.distanceTo(homeScene.player.position)
+            var vec = homeScene.monsterList[i].position - homeScene.player.position
+            if diff<distance && abs(vec.normalize().angle - homeScene.player.facing.angle)<30 && homeScene.monsterList[i].isAlived{
                 let attackPoint = AttackPoint()
-                let bornPoint = homeScene.player.position + (homeScene.logList[i].position - homeScene.player.position)/2
+                let bornPoint = homeScene.player.position + (homeScene.monsterList[i].position - homeScene.player.position)/2
                 attackPoint.position = bornPoint
                 homeScene.addChild(attackPoint)
                 attackPoint.startPoint()
-                homeScene.logList[i].beingHit()
+                homeScene.monsterList[i].beingHit()
                 useSword = true
                 
                 //sound
