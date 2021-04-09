@@ -20,6 +20,8 @@ enum playerState {
 
 class Player: SKSpriteNode {
     
+    
+    
     var AudioPlayer = AVAudioPlayer()
     var AudioPlayer2 = AVAudioPlayer()
     var AudioPlayer3 = AVAudioPlayer()
@@ -297,7 +299,7 @@ class Player: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = true
-        //self.physicsBody?.collisionBitMask = 2
+        self.physicsBody?.collisionBitMask = 2
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 3
         self.name = "player"

@@ -162,7 +162,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if isMonsterRoom {setupMonster()}
             setupIsSet = true
-            if isBedRoom{setupBedRoom()}
+            if isBedRoom{
+                setupBedRoom()
+                self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
+            }
             if isCaveRoom{setupCave()}
             if isBornRoom{
                 box = Box()
@@ -243,13 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        rButton.selectedHandler = {
-            self.player.rStart = 0
-            let wait = SKAction.wait(forDuration: 0.1)
-            let fire = SKAction.run({
-                                        self.player.weapon.rAttack(direction: self.player.facing,homeScene: self) })
-            self.run(SKAction.sequence([fire,wait,fire,wait,fire]))
-        }
+        
         
         
         
@@ -354,12 +351,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if player.rStart > 5 {
             player.rStart = 5
-            rButton.isUserInteractionEnabled = true
+            rButton.selectedHandler = {
+                self.player.rStart = 0
+                let wait = SKAction.wait(forDuration: 0.1)
+                let fire = SKAction.run({
+                                            self.player.weapon.rAttack(direction: self.player.facing,homeScene: self) })
+                self.run(SKAction.sequence([fire,wait,fire,wait,fire]))
+            }
             
         }else {
             let white = (rButton.childNode(withName: "white") as! SKSpriteNode)
             white.yScale = CGFloat(player.rStart)/5
-            rButton.isUserInteractionEnabled = false
+            rButton.selectedHandler = {}
         }
         
 //        for i in 0..<player.itemList.count{
@@ -369,6 +372,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        }
         
         checkBoxAround()
+        
+        for node in logList{
+            if !player.isAlived{
+                node.AudioPlayer2.stop()
+            }
+        }
         
     }
     
@@ -559,31 +568,76 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //pop some item
                 
                 
-                let action = SKAction.run({
+                
                 
                     let texture1 = SKTexture(imageNamed: "potion")
                     let potion = SKSpriteNode(texture: texture1, color: .clear, size: CGSize(width: 20, height: 30))
                     potion.name = "potion"
-                    potion.position = self.box.position + CGPoint(x: CGFloat.random(in: -10..<10), y: CGFloat.random(in: -10..<10))
+                    potion.zPosition = 10
+                    potion.position = self.box.position
+                        //+ CGPoint(x: CGFloat.random(in: -10..<10), y: CGFloat.random(in: -10..<10))
                     potion.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
-                    potion.physicsBody?.affectedByGravity = false
+                    potion.physicsBody?.affectedByGravity = true
                     potion.physicsBody?.contactTestBitMask = 1
+                potion.physicsBody?.collisionBitMask = 0
+                potion.physicsBody?.categoryBitMask = 128
+                    potion.physicsBody?.allowsRotation = false
+                potion.physicsBody?.mass = 0.5
                     self.addChild(potion)
+                    let wait = SKAction.wait(forDuration: 0.2)
+                    let up = SKAction.run({
+                        let force = CGFloat.random(in: 180..<220)
+                        // Apply an impulse at the vector.
+                        let v = CGVector(dx: CGFloat.random(in: -0.2..<0.2) * force, dy: CGFloat.random(in: 0.8..<1) * force)
+                        
+                        potion.physicsBody?.applyImpulse(v)
+                        
+                    })
+                    let down = SKAction.run({
+                        potion.physicsBody?.pinned = true
+                    })
+                potion.run(SKAction.sequence([up,wait,down]))
+                    
+                    
                     
                     let texture2 = SKTexture(imageNamed: "fireBomb_1")
                     let fireBomb = SKSpriteNode(texture: texture2, color: .clear, size: CGSize(width: 20, height: 20))
                     fireBomb.name = "fireBomb"
-                    fireBomb.position = self.box.position + CGPoint(x: CGFloat.random(in: -10..<10), y: CGFloat.random(in: -10..<10))
+                    fireBomb.zPosition = 10
+                    fireBomb.position = self.box.position
+                        //+ CGPoint(x: CGFloat.random(in: -10..<10), y: CGFloat.random(in: -10..<10))
                     fireBomb.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-                    fireBomb.physicsBody?.affectedByGravity = false
+                    fireBomb.physicsBody?.affectedByGravity = true
                     fireBomb.physicsBody?.contactTestBitMask = 1
+                    fireBomb.physicsBody?.allowsRotation = false
+                fireBomb.physicsBody?.collisionBitMask = 0
+                fireBomb.physicsBody?.categoryBitMask = 128
+                fireBomb.physicsBody?.mass = 0.5
                     self.addChild(fireBomb)
+                let up2 = SKAction.run({
+                    let force = CGFloat.random(in: 180..<220)
+                    // Apply an impulse at the vector.
+                    let v2 = CGVector(dx: CGFloat.random(in: -0.2..<0.2) * force, dy: CGFloat.random(in: 0.8..<1) * force)
+                    
+                    fireBomb.physicsBody?.applyImpulse(v2)
                 })
-                self.run(SKAction.sequence([SKAction.wait(forDuration: 1),action]))
+                let down2 = SKAction.run({
+                    fireBomb.physicsBody?.pinned = true
+                })
+                fireBomb.run(SKAction.sequence([up2,wait,down2]))
+                
+            
+                
+                
+                //self.run(SKAction.sequence([SKAction.wait(forDuration: 1),action]))
             }
             
         }
     }
+    
+   
+    
+    
     
     func checkNpcAround() {
         let dist = player.position.distanceTo(npc.position)
@@ -885,11 +939,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupItemOrder()
             self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
             
-            
             let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+            
             let action = SKAction.move(to: popoButton.position, duration: 0.5)
             action.timingMode = .easeInEaseOut
-            
+            nodeA.physicsBody = nil
             nodeA.run(SKAction.sequence([action,SKAction.removeFromParent()]))
             nodeA.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
             
@@ -904,7 +958,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
             let action = SKAction.move(to: popoButton.position, duration: 0.5)
             action.timingMode = .easeInEaseOut
-            
+            nodeB.physicsBody = nil
             nodeB.run(SKAction.sequence([action,SKAction.removeFromParent()]))
             nodeB.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
             
@@ -919,7 +973,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
             let action = SKAction.move(to: popoButton.position, duration: 0.5)
             action.timingMode = .easeInEaseOut
-            
+            nodeA.physicsBody = nil
             nodeA.run(SKAction.sequence([action,SKAction.removeFromParent()]))
             nodeA.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
 
@@ -933,7 +987,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
             let action = SKAction.move(to: popoButton.position, duration: 0.5)
             action.timingMode = .easeInEaseOut
-            
+            nodeB.physicsBody = nil
             nodeB.run(SKAction.sequence([action,SKAction.removeFromParent()]))
             nodeB.run(SKAction.fadeAlpha(to: 0, duration: 0.5))
             

@@ -104,7 +104,7 @@ class Log: SKSpriteNode{
             }
             
             //set walk sound
-            if logState != .idle && isAlived{
+            if logState != .idle && isAlived && homeScene.player.isAlived{
                 self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.walkSound as URL)
 
                 self.AudioPlayer2.volume = 0.5

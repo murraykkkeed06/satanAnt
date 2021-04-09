@@ -93,7 +93,7 @@ class FireBomb: Item {
         let wait = SKAction.wait(forDuration: 5)
         let remove = SKAction.removeFromParent()
         let seq = SKAction.sequence([wait,remove])
-        particle.isUserInteractionEnabled = false
+        particle.zPosition = 1
         particle.run(seq)
         self.run(seq)
         self.run(SKAction(named: "bombFire")!)
@@ -101,6 +101,7 @@ class FireBomb: Item {
     }
     
     func explode()  {
+        
         homeScene.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: true))
         
         for log in homeScene.logList{
