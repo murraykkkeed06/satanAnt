@@ -56,6 +56,16 @@ extension CGPoint {
   public func length() -> CGFloat {
     return sqrt(x*x + y*y)
   }
+    
+    
+    /**
+     * return new cgpoint but won't modify origin value
+     */
+    public func randomPointInDistamce(distance: CGFloat) -> CGPoint {
+        let newX = x + CGFloat.random(in: -distance..<distance)
+        let newY = y + CGFloat.random(in: -distance..<distance)
+      return CGPoint(x: newX, y: newY)
+    }
 
   /**
    * Returns the squared length of the vector described by the CGPoint.

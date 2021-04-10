@@ -14,7 +14,7 @@ enum WeaponType: Int {
     case candyBar
     
     static func random() -> WeaponType{
-        return WeaponType(rawValue: 0)!
+        return WeaponType(rawValue: Int.random(in: 0..<2))!
     }
 }
 
@@ -70,14 +70,85 @@ func fromTypeTexture(type: WeaponType) -> SKNode{
     case .staff:
         let texture = SKTexture(imageNamed: "staff")
         result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
+        result.name = "staffTexture"
+        
+     
     case .candyBar:
         let texture = SKTexture(imageNamed: "candyBar")
         result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
+        result.name = "candyBarTexture"
+      
         
     }
-    
+    result.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 24))
+    result.physicsBody?.affectedByGravity = false
+    result.physicsBody?.contactTestBitMask = 1
+    result.physicsBody?.collisionBitMask = 0
+    result.physicsBody?.categoryBitMask = 512
     result.zPosition = 10
     return result
 }
 
+func bornWeaponTexture(num: Int, position: CGPoint, homeScene: GameScene) {
+    
+    for _ in 0..<num{
+        
+        //sound and born action
+        
+        let node = fromTypeTexture(type: WeaponType.random())
+        node.position = position
+        homeScene.addChild(node)
+        shootUp(node: node)
 
+        
+    }
+    
+}
+
+func shootUp(node: SKNode) {
+    
+    node.physicsBody?.affectedByGravity = true
+    node.physicsBody?.mass = 0.5
+        
+    
+    let wait = SKAction.wait(forDuration: 0.2)
+    let up = SKAction.run({
+        let force = CGFloat.random(in: 180..<220)
+        // Apply an impulse at the vector.
+        let v = CGVector(dx: CGFloat.random(in: -0.5..<0.5) * force, dy: CGFloat.random(in: 0.8..<1) * force)
+        
+        node.physicsBody?.applyImpulse(v)
+        
+    })
+    let down = SKAction.run({
+        node.physicsBody?.pinned = true
+    })
+    node.run(SKAction.sequence([up,wait,down]))
+}
+
+func shootWithDirection(node: SKNode, homeScene: GameScene) {
+    
+    if homeScene.player.facing.y > 0 {
+        homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: -3);
+    }else{
+        homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: 0);
+    }
+    
+    node.physicsBody?.affectedByGravity = true
+    node.physicsBody?.mass = 0.5
+        
+    
+    let wait = SKAction.wait(forDuration: 0.2)
+    let up = SKAction.run({
+        let force = CGFloat.random(in: 80..<120)
+        // Apply an impulse at the vector.
+        let v = CGVector(dx: homeScene.player.facing.x * force, dy: homeScene.player.facing.y * force)
+        
+        node.physicsBody?.applyImpulse(v)
+        
+    })
+    let down = SKAction.run({
+        node.physicsBody?.pinned = true
+    })
+    node.run(SKAction.sequence([up,wait,down]))
+}

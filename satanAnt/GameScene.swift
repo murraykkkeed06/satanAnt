@@ -186,7 +186,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.isAlived = true
         levelChanged = true
         player.isFiring = false
-        player.popoStart = 6
+       
         
         
         //if npc != nil {npc.position = npcBornPoint}
@@ -257,7 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         
    
-        player.popoStart += eachFrame
+        //player.popoStart += eachFrame
         player.sinceFire += eachFrame
         player.rStart += eachFrame
         //player.fireStart += eachFrame
@@ -506,7 +506,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 box.isOpen = true
                 //pop some item
                 bornItemTexture(num: 3, position: box.position, homeScene: self)
-                
+                bornWeaponTexture(num: 1, position: box.position, homeScene: self)
             }
         }
     }
@@ -817,100 +817,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             slime.bigger(scale: 1.2)
         }
         
-        
-//        if nodeA.name == "slime" && nodeB.name == "heart"{
-//            let slime = nodeA as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeB.removeFromParent()
-//
-//
-//        }
-//        if nodeA.name == "heart" && nodeB.name == "slime"{
-//            let slime = nodeB as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeA.removeFromParent()
-//        }
-//        if nodeA.name == "slime" && nodeB.name == "cokeTexture"{
-//            let slime = nodeA as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeB.removeFromParent()
-//
-//
-//        }
-//        if nodeA.name == "cokeTexture" && nodeB.name == "slime"{
-//            let slime = nodeB as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeA.removeFromParent()
-//        }
-//
-//        if nodeA.name == "slime" && nodeB.name == "appleTexture"{
-//            let slime = nodeA as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeB.removeFromParent()
-//
-//
-//        }
-//        if nodeA.name == "appleTexture" && nodeB.name == "slime"{
-//            let slime = nodeB as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeA.removeFromParent()
-//        }
-//
-//        if nodeA.name == "slime" && nodeB.name == "potionTexture"{
-//            let slime = nodeA as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeB.removeFromParent()
-//
-//
-//        }
-//        if nodeA.name == "potionTexture" && nodeB.name == "slime"{
-//            let slime = nodeB as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeA.removeFromParent()
-//        }
-//
-//        if nodeA.name == "slime" && nodeB.name == "fireBombTexture"{
-//            let slime = nodeA as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeB.removeFromParent()
-//
-//
-//        }
-//        if nodeA.name == "fireBombTexture" && nodeB.name == "slime"{
-//            let slime = nodeB as! Slime
-//            slime.health += 1
-//            slime.run(SKAction.scale(by: 1.2, duration: 1))
-//            slime.bigger(scale: 1.2)
-//
-//            nodeA.removeFromParent()
-//        }
+
     }
     
     
@@ -919,6 +826,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var drop: Drop!
         var itemTexture: SKNode!
+        var weaponTexture: SKNode!
         var playerNode: Player!
         
         
@@ -937,6 +845,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             itemTexture = nodeA
         case "cokeTexture":
             itemTexture = nodeA
+        case "staffTexture":
+            weaponTexture = nodeA
+        case "candyBarTexture":
+            weaponTexture = nodeA
         default:
             break
         }
@@ -956,6 +868,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             itemTexture = nodeB
         case "cokeTexture":
             itemTexture = nodeB
+        case "staffTexture":
+            weaponTexture = nodeB
+        case "candyBarTexture":
+            weaponTexture = nodeB
         default:
             break
         }
@@ -987,6 +903,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             movToPopo(node: itemTexture)
         }
         
+        //pick up weapon
+        if playerNode != nil && weaponTexture != nil {
+            
+            //make a reload sound
+            
+            let node = fromTypeTexture(type: player.weapon.weaponType)
+            node.position = player.position  +  player.facing * 50
+            self.addChild(node)
+            shootWithDirection(node: node, homeScene: self)
+            
+            player.rStart = 0
+            
+            switch weaponTexture.name {
+            case "staffTexture":
+                player.weapon = fromType(type: .staff)
+                player.weaponChanged = true
+            case "candyBarTexture":
+                player.weapon = fromType(type: .candyBar)
+                player.weaponChanged = true
+            default:
+                break
+            }
+            
+            weaponTexture.removeFromParent()
+            
+        }
+        
+        
     }
     
     func movToPopo(node: SKNode)  {
@@ -1010,25 +954,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupBulletHit(nodeA: SKNode, nodeB: SKNode)  {
-        if nodeA.name == "staffBullet" {
-            //print("hit!")
-
+        
+        var ammo: Ammo!
+        
+        switch nodeA.name {
+        case "staffBullet":
+            ammo = (nodeA as! Ammo)
+        case "candy":
+            ammo = (nodeA as! Ammo)
+        default:
+            break
+        }
+        switch nodeB.name {
+        case "staffBullet":
+            ammo = (nodeB as! Ammo)
+        case "candy":
+            ammo = (nodeB as! Ammo)
+        default:
+            break
+        }
+        
+        if ammo != nil {
+            
             let bulletHitPoint = BulletHitPoint(scene: self)
-            bulletHitPoint.position = nodeA.position
+            bulletHitPoint.position = ammo.position
             addChild(bulletHitPoint)
             bulletHitPoint.hit()
-            nodeA.removeFromParent()
+            ammo.removeFromParent()
         }
-        if nodeB.name == "staffBullet" {
-            
-           
-            let bulletHitPoint = BulletHitPoint(scene: self)
-            bulletHitPoint.position = nodeB.position
-            addChild(bulletHitPoint)
-            bulletHitPoint.hit()
-            nodeB.removeFromParent()
-            
-        }
+        
+//        if nodeA.name == "staffBullet" {
+//            //print("hit!")
+//
+//            let bulletHitPoint = BulletHitPoint(scene: self)
+//            bulletHitPoint.position = nodeA.position
+//            addChild(bulletHitPoint)
+//            bulletHitPoint.hit()
+//            nodeA.removeFromParent()
+//        }
+//        if nodeB.name == "staffBullet" {
+//
+//
+//            let bulletHitPoint = BulletHitPoint(scene: self)
+//            bulletHitPoint.position = nodeB.position
+//            addChild(bulletHitPoint)
+//            bulletHitPoint.hit()
+//            nodeB.removeFromParent()
+//
+//        }
         
     }
     
@@ -1182,7 +1155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if sinceStart > eachFrame{
             handler.isHidden = false
         }
-        if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
+//        if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
         
         //        if player.fireStart < player.weapon.attackSpeed {fireButton.isHidden = true} else{
         //            fireButton.isHidden = false

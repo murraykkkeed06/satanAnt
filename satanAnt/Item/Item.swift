@@ -58,52 +58,32 @@ func fromTypeTexture(type: ItemType) -> SKNode {
         
         item = SKSpriteNode(texture: SKTexture(imageNamed: "fireBomb_1"), color: .clear, size: CGSize(width: 20, height: 20))
         item.name = "fireBombTexture"
-        item.zPosition = 10
-        item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-        item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1 + 4
-        item.physicsBody?.allowsRotation = false
-        item.physicsBody?.collisionBitMask = 0
-        item.physicsBody?.categoryBitMask = 128
-        item.physicsBody?.mass = 0.5
         
     case .potion:
         item = SKSpriteNode(texture: SKTexture(imageNamed: "potion"), color: .clear, size: CGSize(width: 20, height: 30))
         item.name = "potionTexture"
-        item.zPosition = 10
-        item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
-        item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1 + 4
-        item.physicsBody?.collisionBitMask = 0
-        item.physicsBody?.categoryBitMask = 128
-        item.physicsBody?.allowsRotation = false
-        item.physicsBody?.mass = 0.5
+       
         
     case .apple:
         item = SKSpriteNode(texture: SKTexture(imageNamed: "apple"), color: .clear, size: CGSize(width: 20, height: 20))
         item.name = "appleTexture"
-        item.zPosition = 10
-        item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
-        item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1 + 4
-        item.physicsBody?.collisionBitMask = 0
-        item.physicsBody?.categoryBitMask = 128
-        item.physicsBody?.allowsRotation = false
-        item.physicsBody?.mass = 0.5
+        
         
     case .coke:
         item = SKSpriteNode(texture: SKTexture(imageNamed: "coke"), color: .clear, size: CGSize(width: 10, height: 30))
         item.name = "cokeTexture"
-        item.zPosition = 10
-        item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
-        item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1 + 4
-        item.physicsBody?.collisionBitMask = 0
-        item.physicsBody?.categoryBitMask = 128
-        item.physicsBody?.allowsRotation = false
-        item.physicsBody?.mass = 0.5
+        
+        
     }
     
+    item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
+    item.physicsBody?.affectedByGravity = true
+    item.physicsBody?.contactTestBitMask = 1 + 4
+    item.physicsBody?.collisionBitMask = 0
+    item.physicsBody?.categoryBitMask = 128
+    item.physicsBody?.allowsRotation = false
+    item.physicsBody?.mass = 0.5
+    item.zPosition = 10
     return item
 }
 
