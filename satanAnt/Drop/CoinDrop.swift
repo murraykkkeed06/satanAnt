@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class CoinDrop: SKSpriteNode {
+class CoinDrop: Drop {
     
     var coinSize = CGSize(width: 20, height: 20)
     
@@ -17,10 +17,13 @@ class CoinDrop: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: coinSize)
         self.zPosition = 30
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 10))
-        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.pinned = true
-        self.physicsBody?.contactTestBitMask = 1
+        self.physicsBody?.contactTestBitMask = 1 + 256
+        //self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.categoryBitMask = 256
+        self.physicsBody?.mass = 0.5
         self.run(SKAction(named: "coinAction")!)
         self.name = "coin"
     }
@@ -31,3 +34,5 @@ class CoinDrop: SKSpriteNode {
     
     
 }
+
+

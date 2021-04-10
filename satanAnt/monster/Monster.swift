@@ -19,12 +19,35 @@ enum MonsterType: Int{
 }
 
 class Monster: SKSpriteNode {
-    private var _sinceStart: TimeInterval!
     var sinceStart: TimeInterval!
     var isAlived = true
+    var health: CGFloat!
     
-    func beingHit()  {
+    func beingHit(homeScene: GameScene)  {
         
+        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
+        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
+        let back = SKAction.moveBy(x: homeScene.player.facing.x*10, y: homeScene.player.facing.y*10, duration: 0.1)
+        self.run(back)
+        self.run(SKAction.sequence([red,clear]))
+        
+        self.health -= (homeScene.player.weapon.attackPoint + homeScene.player.baseAttackPoint)
+
+        let sound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
+        homeScene.run(sound)
+    }
+    
+    func beingHit(homeScene: GameScene, damage: CGFloat)  {
+        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
+        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
+        let back = SKAction.moveBy(x: homeScene.player.facing.x*10, y: homeScene.player.facing.y*10, duration: 0.1)
+        self.run(back)
+        self.run(SKAction.sequence([red,clear]))
+        
+        self.health -= damage
+
+        let sound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
+        homeScene.run(sound)
     }
     
 }

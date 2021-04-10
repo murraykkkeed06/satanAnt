@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class HeartDrop: SKSpriteNode {
+class HeartDrop: Drop {
     
     var heartSize = CGSize(width: 20, height: 20)
     
@@ -17,11 +17,14 @@ class HeartDrop: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: heartSize)
         self.zPosition = 30
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 10))
-        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.pinned = true
         self.name = "heart"
-        self.physicsBody?.contactTestBitMask = 1
+        self.physicsBody?.contactTestBitMask = 1 + 4
+        //self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.categoryBitMask = 256
+        self.physicsBody?.mass = 0.5
         self.run(SKAction(named: "heartAction")!)
     }
     

@@ -29,7 +29,7 @@ class Log: Monster{
     
     var homeScene: GameScene!
     private var _health: CGFloat!
-    var health: CGFloat{
+    override var health: CGFloat!{
         set{
             if self.isAlived {
                 _health = newValue
@@ -47,25 +47,9 @@ class Log: Monster{
                     tomb.position = self.position
                     self.homeScene.addChild(tomb)
                     
-                    if Int.random(in: 0..<10) < 5 {
-                    
-                        let heart = HeartDrop()
-                        
-                        let x = CGFloat.random(in: 0..<10)
-                        let y = CGFloat.random(in: 0..<10)
-                        heart.position = self.position + CGPoint(x: x, y: y)
-                        self.homeScene.addChild(heart)
-                    }
-                    
-                    if Int.random(in: 0..<10) < 5 {
-                        
-                        let money = CoinDrop()
-                        
-                        let x = CGFloat.random(in: 0..<10)
-                        let y = CGFloat.random(in: 0..<10)
-                        money.position = self.position + CGPoint(x: x, y: y)
-                        self.homeScene.addChild(money)
-                    }
+                 
+                    bornDrop(num: 1, position: self.position, homeScene: homeScene)
+                    bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
                     
                     
                     let dieAction = SKAction(named: "monsterDie")!
@@ -73,6 +57,8 @@ class Log: Monster{
                     //self.removeFromParent()
                     
                 }
+            }else{
+                self.physicsBody = nil
             }
         }
         get{
@@ -160,6 +146,7 @@ class Log: Monster{
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.contactTestBitMask = 7 + 64
         self.physicsBody?.categoryBitMask = 4
+        self.physicsBody?.collisionBitMask = 2
         self.name = "log"
         self.sinceStart = TimeInterval.random(in: 0..<2)
         self.health = 1
@@ -180,23 +167,7 @@ class Log: Monster{
         sinceStart = 0
         logState = LogState.random()
     }
-   override func beingHit(){
-        //let sound = SKAction.playSoundFileNamed("hit", waitForCompletion: false)
-        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
-        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
-        let back = SKAction.moveBy(x: self.homeScene.player.facing.x*10, y: self.homeScene.player.facing.y*10, duration: 0.1)
-        self.run(back)
-        self.run(SKAction.sequence([red,clear]))
-        
-        self.health -= (homeScene.player.weapon.attackPoint + homeScene.player.baseAttackPoint)
-        
-//        self.AudioPlayer.volume = 5
-//        self.AudioPlayer.prepareToPlay()
-//        self.AudioPlayer.play()
-        let sound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
-        homeScene.run(sound)
-        
-    }
+   
     
     
 }

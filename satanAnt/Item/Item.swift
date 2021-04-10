@@ -61,7 +61,7 @@ func fromTypeTexture(type: ItemType) -> SKNode {
         item.zPosition = 10
         item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
         item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1
+        item.physicsBody?.contactTestBitMask = 1 + 4
         item.physicsBody?.allowsRotation = false
         item.physicsBody?.collisionBitMask = 0
         item.physicsBody?.categoryBitMask = 128
@@ -73,7 +73,7 @@ func fromTypeTexture(type: ItemType) -> SKNode {
         item.zPosition = 10
         item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
         item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1
+        item.physicsBody?.contactTestBitMask = 1 + 4
         item.physicsBody?.collisionBitMask = 0
         item.physicsBody?.categoryBitMask = 128
         item.physicsBody?.allowsRotation = false
@@ -85,7 +85,7 @@ func fromTypeTexture(type: ItemType) -> SKNode {
         item.zPosition = 10
         item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
         item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1
+        item.physicsBody?.contactTestBitMask = 1 + 4
         item.physicsBody?.collisionBitMask = 0
         item.physicsBody?.categoryBitMask = 128
         item.physicsBody?.allowsRotation = false
@@ -97,7 +97,7 @@ func fromTypeTexture(type: ItemType) -> SKNode {
         item.zPosition = 10
         item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
         item.physicsBody?.affectedByGravity = true
-        item.physicsBody?.contactTestBitMask = 1
+        item.physicsBody?.contactTestBitMask = 1 + 4
         item.physicsBody?.collisionBitMask = 0
         item.physicsBody?.categoryBitMask = 128
         item.physicsBody?.allowsRotation = false

@@ -53,6 +53,8 @@
 		72210570261AF14A00B2EEAC /* soilder_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221056C261AF14A00B2EEAC /* soilder_1.png */; };
 		72210573261AF18C00B2EEAC /* Soilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210572261AF18C00B2EEAC /* Soilder.swift */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
+		723C7AC32621735700D9026C /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723C7AC22621735700D9026C /* Drop.swift */; };
+		723D45C92621580B0046ABAC /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D45C82621580B0046ABAC /* Staff.swift */; };
 		7240ED372620848200745815 /* slime_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2C2620848200745815 /* slime_11.png */; };
 		7240ED382620848200745815 /* slime_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2D2620848200745815 /* slime_8.png */; };
 		7240ED392620848200745815 /* slime_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2E2620848200745815 /* slime_1.png */; };
@@ -385,6 +387,8 @@
 		7221056C261AF14A00B2EEAC /* soilder_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_1.png; sourceTree = "<group>"; };
 		72210572261AF18C00B2EEAC /* Soilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soilder.swift; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
+		723C7AC22621735700D9026C /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
+		723D45C82621580B0046ABAC /* Staff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
 		7240ED2C2620848200745815 /* slime_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_11.png; sourceTree = "<group>"; };
 		7240ED2D2620848200745815 /* slime_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_8.png; sourceTree = "<group>"; };
 		7240ED2E2620848200745815 /* slime_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_1.png; sourceTree = "<group>"; };
@@ -683,6 +687,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		723D45C5262157900046ABAC /* Weapon */ = {
+			isa = PBXGroup;
+			children = (
+				72727447260F761D00141766 /* Weapon.swift */,
+				723D45C82621580B0046ABAC /* Staff.swift */,
+				72B4BD82260B4BCE0063ED38 /* Bullet.swift */,
+			);
+			path = Weapon;
+			sourceTree = "<group>";
+		};
 		72500A7E261B3E7C00EAE276 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -754,6 +768,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				723D45C5262157900046ABAC /* Weapon */,
 				7277731F261ECF60009F823F /* Item */,
 				72FE15D7261DE28D008870C6 /* Drop */,
 				72500A7E261B3E7C00EAE276 /* Sounds */,
@@ -1021,8 +1036,6 @@
 			isa = PBXGroup;
 			children = (
 				72B46652260B2C5E00BC5E56 /* Player.swift */,
-				72B4BD82260B4BCE0063ED38 /* Bullet.swift */,
-				72727447260F761D00141766 /* Weapon.swift */,
 				72D6389726196B9400A43D41 /* Npc.swift */,
 				72D638AB261978B700A43D41 /* BigDialogue.swift */,
 				72D638AE26197FE200A43D41 /* Word.swift */,
@@ -1096,6 +1109,7 @@
 			children = (
 				72FE15D8261DE29C008870C6 /* HeartDrop.swift */,
 				72FE15DB261DE32E008870C6 /* CoinDrop.swift */,
+				723C7AC22621735700D9026C /* Drop.swift */,
 			);
 			path = Drop;
 			sourceTree = "<group>";
@@ -1468,6 +1482,7 @@
 				72E48443260F0F7000D1C2DA /* Log.swift in Sources */,
 				724213E0261A091400CA5F97 /* Box.swift in Sources */,
 				72B46653260B2C5E00BC5E56 /* Player.swift in Sources */,
+				723C7AC32621735700D9026C /* Drop.swift in Sources */,
 				72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */,
 				72777327261ED0F3009F823F /* Potion.swift in Sources */,
 				72D638A42619756E00A43D41 /* Dialogue.swift in Sources */,
@@ -1484,6 +1499,7 @@
 				72E484A7260F435800D1C2DA /* Heart.swift in Sources */,
 				72FE15D9261DE29C008870C6 /* HeartDrop.swift in Sources */,
 				72D638AC261978B700A43D41 /* BigDialogue.swift in Sources */,
+				723D45C92621580B0046ABAC /* Staff.swift in Sources */,
 				72B4BD83260B4BCE0063ED38 /* Bullet.swift in Sources */,
 				7240ED47262096D200745815 /* Monster.swift in Sources */,
 				72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */,

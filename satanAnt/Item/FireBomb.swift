@@ -54,7 +54,7 @@ class FireBomb: Item {
         }
         
         let wait1 = SKAction.wait(forDuration: 0.3)
-        let wait2 = SKAction.wait(forDuration: 5)
+        let wait2 = SKAction.wait(forDuration: 3)
         self.run(SKAction.sequence([SKAction.run(up),wait1,SKAction.run(down),wait2,SKAction.run(explode),SKAction.removeFromParent()]))
         
     }
@@ -77,7 +77,7 @@ class FireBomb: Item {
         let particle = SKEmitterNode(fileNamed: "popo")!
         addChild(particle)
         particle.position = CGPoint(x: 0, y: 10)
-        let wait = SKAction.wait(forDuration: 5)
+        let wait = SKAction.wait(forDuration: 3)
         let remove = SKAction.removeFromParent()
         let seq = SKAction.sequence([wait,remove])
         particle.zPosition = 1
@@ -93,7 +93,7 @@ class FireBomb: Item {
         
         for monster in homeScene.monsterList{
             if monster.position.distanceTo(self.position) < 100{
-                monster.beingHit()
+                monster.beingHit(homeScene: homeScene, damage: 1)
             }
         }
         

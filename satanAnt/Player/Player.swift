@@ -48,14 +48,14 @@ class Player: SKSpriteNode {
     var baseBulletSpeedPoint: TimeInterval{
         set{
             _baseBulletSpeedPoint = newValue
-            baseBulletSpeed = _baseBulletSpeedPoint * (-0.05)
+            baseBulletSpeed = _baseBulletSpeedPoint * (-0.0125)
         }
         get{return _baseBulletSpeedPoint}
     }
     var baseAttackPointPoint: CGFloat{
         set{
             _baseAttackPoint = newValue
-            baseAttackPoint = _baseAttackPoint * 0.25
+            baseAttackPoint = _baseAttackPoint * 0.125
         }
         get{return _baseAttackPoint}
     }
@@ -63,7 +63,7 @@ class Player: SKSpriteNode {
         set{
             _baseHealthPoint = newValue
             baseHealth = _baseHealthPoint * 0.25
-            health = baseHealth + 2.5
+            health = baseHealth + bornHealth
             healthChanged = true
         }
         get{return _baseHealthPoint}
@@ -120,6 +120,7 @@ class Player: SKSpriteNode {
     
     var homeScene: GameScene!
     
+    let bornHealth: CGFloat = 2.5
     //player ability
     private var _health: CGFloat!
     var health: CGFloat{
@@ -128,7 +129,7 @@ class Player: SKSpriteNode {
             //print("\(_health)")
             if _health <= 0 && isAlived{
                 
-                
+                self.physicsBody = nil
                 
                 
                 isAlived = false
@@ -304,15 +305,11 @@ class Player: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = 3
         self.name = "player"
         self.exp = 89
-        self.level = 3
-        self.health = 2.75
+        self.level = 32
+        self.health = bornHealth
         self.money = 178
-        self.weapon = Weapon(name: "staff")
-        
-        
-        
-//        let potion = Potion()
-//        let fireBomb = FireBomb()
+        self.weapon = fromType(type: WeaponType.random())
+
         
         self.itemList.append(fromType(type: ItemType.random()))
         self.itemList.append(fromType(type: ItemType.random()))
@@ -354,5 +351,14 @@ class Player: SKSpriteNode {
 
     }
     
+    func setupPhysics() {
+        self.physicsBody = SKPhysicsBody(rectangleOf: playerSize)
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.collisionBitMask = 2
+        self.physicsBody?.categoryBitMask = 1
+        self.physicsBody?.contactTestBitMask = 3
+    }
     
 }
