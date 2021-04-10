@@ -12,6 +12,9 @@ class Word {
     
     var helloWord: String = "Hello, welcome to my village! Our village is now being destroyed by the log, will you help us?"
     
-    var caveWord: String = "Better stay away to keep yourself alive!" 
+    var caveWord: String = "Better stay away to keep yourself alive!"
+    
+    
+    var buyWord: String = "Hey there, pay 20 dollars to get somthing cool ?"
     
 }

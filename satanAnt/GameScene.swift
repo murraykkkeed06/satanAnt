@@ -74,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var book: Book!
     var npc: Npc!
     var soilder: Soilder!
+    var girl: VillageGirl!
     var cave: Cave!
     
     var levelNumber: Num!
@@ -153,6 +154,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 box.position = CGPoint(x: 320, y: 120)
                 addChild(box)
             }
+            if isBonusRoom{
+                girl = VillageGirl()
+                girl.position = CGPoint(x: 350, y: 110)
+                addChild(girl)
+            }
+            
         }
         
         if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
@@ -279,6 +286,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if soilder != nil {
             checkSoilderAround()
         }
+        if girl != nil{
+            checkGirlAround()
+        }
         
         if player.isFiring{
             self.player.weapon.attack(direction: self.player.facing,homeScene: self)
@@ -327,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         checkBoxAround()
         
-        
+        //print("\(player.itemList.count),\(player.inItemListNumber)")
     }
     
     
@@ -433,6 +443,78 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func checkGirlAround()  {
+        
+        let dist = player.position.distanceTo(girl.position)
+        if dist < 50 {
+            if !dialogueIsSet {
+                dialogueIsSet = true
+                //sound
+                self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
+                
+                dialogue = Dialogue()
+                dialogue.position = girl.position + CGPoint(x: 0, y: 30)
+                dialogue.selectHandler = {
+                    
+                    self.bigDialogue = BigDialogue(scene: self)
+                    self.bigDialogue.position = self.dialogue.position
+                    self.addChild(self.bigDialogue)
+                    self.bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
+                    self.bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
+                    
+                    //tricky way to disable handler
+                    self.inDialogue = true
+                    self.popoButton.isUserInteractionEnabled = false
+                    self.fireButton.isUserInteractionEnabled = false
+                    self.dialogue.removeFromParent()
+                    
+                    self.bigDialogue.startWord(sentence: Word().buyWord)
+                    self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run(self.addbuyButton)]))
+                    
+                }
+                
+                addChild(dialogue)
+                dialogue.start()
+                
+            }
+        }else{
+            if dialogue != nil {
+                dialogue.removeFromParent()
+                dialogueIsSet = false
+            }
+        }
+    }
+    
+    func addbuyButton()  {
+        let buyButton = WordButton(name: "buy")
+        buyButton.position = CGPoint(x: 450, y: 100)
+        self.addChild(buyButton)
+        
+        buyButton.selectHandler = {
+            if self.bigDialogue.isFinish{
+                self.bigDialogue.removeFromParent()
+                for node in self.bigDialogue.wordList{
+                    node.removeFromParent()
+                }
+                //tricky way to enable handler
+                self.inDialogue = false
+                self.popoButton.isUserInteractionEnabled = true
+                self.fireButton.isUserInteractionEnabled = true
+                buyButton.removeFromParent()
+                
+                if self.player.money > 20{
+                    self.player.money -= 20
+                    self.player.moneyChanged = true
+                    bornItemTexture(num: 1, position: self.girl.position, homeScene: self)
+                }
+                
+            }
+              
+        }
+    }
+    
+    
+    
     func addWordButton()  {
         let enterButton = WordButton(name: "enter")
         let leaveButton = WordButton(name: "leave")
@@ -454,23 +536,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //homeScene.dialogue.isHidden = false
                 enterButton.removeFromParent()
                 leaveButton.removeFromParent()
-            }
             
-            if  let view = self.view as SKView?{
-                if let scene = GameScene.level(5){
-                    // Set the scale mode to scale to fit the window
-                    scene.isEnterCaveRoom = true
-                    scene.isMonsterRoom = true
-                    scene.scaleMode = .aspectFit
-                    scene.player = self.player
-                    scene.player.position = CGPoint(x: 160, y: 250)
-                    //let fadeAction = SKTransition.fade(withDuration: 1)
-                    view.presentScene(scene)
-                    
-                    
-                    view.ignoresSiblingOrder = true
-                    view.showsFPS = true
-                    view.showsNodeCount = true
+            
+                if  let view = self.view as SKView?{
+                    if let scene = GameScene.level(5){
+                        // Set the scale mode to scale to fit the window
+                        scene.isEnterCaveRoom = true
+                        scene.isMonsterRoom = true
+                        scene.scaleMode = .aspectFit
+                        scene.player = self.player
+                        scene.player.position = CGPoint(x: 160, y: 250)
+                        //let fadeAction = SKTransition.fade(withDuration: 1)
+                        view.presentScene(scene)
+                        
+                        
+                        view.ignoresSiblingOrder = true
+                        view.showsFPS = true
+                        view.showsNodeCount = true
+                    }
                 }
             }
             
@@ -892,7 +975,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case "potionTexture":
                 player.itemList.append(Potion())
                 self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
-            case "fireBombTextuer":
+            case "fireBombTexture":
                 player.itemList.append(FireBomb())
                 self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
             case "appleTexture":
@@ -902,7 +985,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.itemList.append(Coke())
                 self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
             default:
-                break
+                 print("break")
             }
             setupItemOrder()
             movToPopo(node: itemTexture)
@@ -953,9 +1036,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupItemOrder()  {
+        
+        
         if player.itemList.count == 1{
             player.item = player.itemList[0]
+            player.inItemListNumber = 0
         }else{
+            //print("\(player.itemList.count)")
             player.item = player.itemList[player.itemList.count-1]
             player.inItemListNumber = player.itemList.count-1
         }

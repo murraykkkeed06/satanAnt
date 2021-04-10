@@ -19,6 +19,8 @@ class WordButton: SKSpriteNode {
             newTexture = SKTexture(imageNamed: "enterButton")
         case "leave":
             newTexture = SKTexture(imageNamed: "leaveButton")
+        case "buy":
+            newTexture = SKTexture(imageNamed: "buyButton")
         default:
             break
         }
