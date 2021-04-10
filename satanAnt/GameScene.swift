@@ -719,6 +719,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponBorn.removeAllChildren()
             
             let newWeapon = fromTypeTexture(type: player.weapon.weaponType)
+            newWeapon.name = " "
             newWeapon.position = CGPoint(x: 0, y: 0)
             weaponBorn.addChild(newWeapon)
             
@@ -849,6 +850,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponTexture = nodeA
         case "candyBarTexture":
             weaponTexture = nodeA
+        case "swordTexture":
+            weaponTexture = nodeA
         default:
             break
         }
@@ -871,6 +874,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "staffTexture":
             weaponTexture = nodeB
         case "candyBarTexture":
+            weaponTexture = nodeB
+        case "swordTexture":
             weaponTexture = nodeB
         default:
             break
@@ -907,7 +912,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if playerNode != nil && weaponTexture != nil {
             
             //make a reload sound
-            
+            self.run(SKAction.playSoundFileNamed("wear.wav", waitForCompletion: true))
             let node = fromTypeTexture(type: player.weapon.weaponType)
             node.position = player.position  +  player.facing * 50
             self.addChild(node)
@@ -922,6 +927,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case "candyBarTexture":
                 player.weapon = fromType(type: .candyBar)
                 player.weaponChanged = true
+            case "swordTexture":
+                player.weapon = fromType(type: .sword)
+                player.weaponChanged = true
+            
             default:
                 break
             }
@@ -1106,6 +1115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var monster: Monster!
         var ammo: Ammo!
         var playerNode: Player!
+       
         
         switch nodeA.name {
         case "log":
@@ -1120,6 +1130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeA as! Ammo)
         case "player":
             playerNode = player
+       
         default:
             break
         }
@@ -1137,6 +1148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeB as! Ammo)
         case "player":
             playerNode = player
+       
         default:
           break
         }
@@ -1145,9 +1157,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             monster.beingHit(homeScene: self)
         }
         
+    
+        
         if monster != nil && playerNode != nil{
             player.beingHit()
         }
+        
+        
         
     }
     
@@ -1167,7 +1183,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupMonster() {
-        for _ in 0..<5 {
+        
+        for _ in 0..<Int.random(in: 5..<10) {
             var borned = false
             var check = 0
             var bornX = CGFloat.random(in: 50..<self.frame.width-50)

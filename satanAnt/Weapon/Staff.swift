@@ -24,7 +24,7 @@ class Staff: Weapon {
         self.zPosition = 6
         
         self.attackPoint = 0.25
-        //self.attackSpeed = 0.3
+        self.attackSpeed = 0.5
         
         //staff attack speed must be > 0.5
         //attackspeed and bulletspeed are different
@@ -111,7 +111,7 @@ class Staff: Weapon {
        
         if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
             let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
-            let bullet = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
+            let bullet = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: self.attackSpeed ,bulletSize: CGSize(width: 10, height: 10))
             homeScene.addChild(bullet)
             bullet.flyTo(direction: direction)
             

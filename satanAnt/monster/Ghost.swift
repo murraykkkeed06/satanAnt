@@ -96,7 +96,7 @@ class Ghost: Monster {
         self._ghostState = .right
         self.sinceStart = TimeInterval.random(in: 0..<1)
         self.name = "ghost"
-        self.health = 1
+        self.health = 2
     }
     
     required init?(coder aDecoder: NSCoder) {

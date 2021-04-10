@@ -12,9 +12,11 @@ import AVFoundation
 enum WeaponType: Int {
     case staff
     case candyBar
+    case sword
     
     static func random() -> WeaponType{
-        return WeaponType(rawValue: Int.random(in: 0..<2))!
+        return WeaponType(rawValue: Int.random(in: 0..<3))!
+        //return WeaponType(rawValue: 2)!
     }
 }
 
@@ -57,6 +59,8 @@ func fromType(type: WeaponType) -> Weapon {
         weapon = Staff()
     case .candyBar:
         weapon = CandyBar()
+    case .sword:
+        weapon = Sword()
     }
     
     return weapon
@@ -78,12 +82,16 @@ func fromTypeTexture(type: WeaponType) -> SKNode{
         result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         result.name = "candyBarTexture"
       
+    case .sword:
+        let texture = SKTexture(imageNamed: "sword")
+        result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
+        result.name = "swordTexture"
         
     }
     result.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 24))
     result.physicsBody?.affectedByGravity = false
     result.physicsBody?.contactTestBitMask = 1
-    result.physicsBody?.collisionBitMask = 0
+    result.physicsBody?.collisionBitMask = 2
     result.physicsBody?.categoryBitMask = 512
     result.zPosition = 10
     return result
