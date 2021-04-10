@@ -127,6 +127,9 @@ class Player: SKSpriteNode {
         set{
             _health = newValue
             //print("\(_health)")
+            
+            if _health>6{_health = 6;return}
+            
             if _health <= 0 && isAlived{
                 
                 self.physicsBody = nil

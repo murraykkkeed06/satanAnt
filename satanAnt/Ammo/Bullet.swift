@@ -8,11 +8,10 @@
 import Foundation
 import SpriteKit
 
-class Bullet: SKSpriteNode {
+class Bullet: Ammo {
     
-    var range: CGFloat!
+    var bulletRange: CGFloat!
     var bulletSpeed: TimeInterval!
-    //var bulletSize: CGSize = CGSize(width: 10, height: 10)
     var homeScene: GameScene!
     
     init(position: CGPoint, name: String, homeScene: GameScene, bulletRange: CGFloat, bulletSpeed: TimeInterval, bulletSize: CGSize){
@@ -28,7 +27,7 @@ class Bullet: SKSpriteNode {
         self.physicsBody?.categoryBitMask = 16
         self.homeScene = homeScene
         
-        self.range = bulletRange + homeScene.player.baseBulletRange
+        self.bulletRange = bulletRange + homeScene.player.baseBulletRange
         self.bulletSpeed = bulletSpeed + homeScene.player.baseBulletSpeed
     }
     
@@ -44,7 +43,7 @@ class Bullet: SKSpriteNode {
         let monsterList = homeScene.monsterList
         for i in 0..<monsterList.count{
             let diff = (monsterList[i].position - homeScene.player.position)
-            if monsterList[i].position.distanceTo(homeScene.player.position) < range && abs(diff.angle - homeScene.player.facing.angle) < 30 {
+            if monsterList[i].position.distanceTo(homeScene.player.position) < bulletRange && abs(diff.angle - homeScene.player.facing.angle) < 30 {
                 newDirection = diff.normalized()
                 targetMonster = monsterList[i]
                 break
@@ -52,12 +51,12 @@ class Bullet: SKSpriteNode {
         }
 
         if targetMonster != nil {
-            let flyAction = SKAction.moveBy(x: newDirection.x*range, y: newDirection.y*range, duration: self.bulletSpeed)
+            let flyAction = SKAction.moveBy(x: newDirection.x*bulletRange, y: newDirection.y*bulletRange, duration: self.bulletSpeed)
             let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
             self.run(seq)
         }else {
 
-            let flyAction = SKAction.moveBy(x: direction.x*range, y: direction.y*range, duration: self.bulletSpeed)
+            let flyAction = SKAction.moveBy(x: direction.x*bulletRange, y: direction.y*bulletRange, duration: self.bulletSpeed)
             let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
             self.run(seq)
         }
@@ -86,7 +85,7 @@ class Bullet: SKSpriteNode {
             x = cos(newDegree * CGFloat.pi / 180)
             y = -sin(newDegree * CGFloat.pi / 180)
         }
-        let flyAction = SKAction.moveBy(x: x*range, y: y*range, duration: self.bulletSpeed)
+        let flyAction = SKAction.moveBy(x: x*bulletRange, y: y*bulletRange, duration: self.bulletSpeed)
         let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
         self.run(seq)
     }

@@ -11,9 +11,10 @@ import AVFoundation
 
 enum WeaponType: Int {
     case staff
+    case candyBar
     
     static func random() -> WeaponType{
-        return WeaponType(rawValue: Int.random(in: 0..<1))!
+        return WeaponType(rawValue: 0)!
     }
 }
 
@@ -54,6 +55,8 @@ func fromType(type: WeaponType) -> Weapon {
     switch type {
     case .staff:
         weapon = Staff()
+    case .candyBar:
+        weapon = CandyBar()
     }
     
     return weapon
@@ -66,6 +69,9 @@ func fromTypeTexture(type: WeaponType) -> SKNode{
     switch type {
     case .staff:
         let texture = SKTexture(imageNamed: "staff")
+        result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
+    case .candyBar:
+        let texture = SKTexture(imageNamed: "candyBar")
         result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         
     }

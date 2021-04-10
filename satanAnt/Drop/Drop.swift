@@ -19,6 +19,9 @@ enum DropType: Int {
 
 class Drop: SKSpriteNode {
     
+    func pickUpEffect(homeScene: GameScene)  {
+        
+    }
     
 }
 

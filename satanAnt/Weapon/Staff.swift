@@ -26,11 +26,13 @@ class Staff: Weapon {
         self.attackPoint = 0.25
         //self.attackSpeed = 0.3
         
-        //staff attack speed can not be changed
+        //staff attack speed must be > 0.5
         //attackspeed and bulletspeed are different
-        
+        //it diverse from different weapon
         
         self.weaponType = .staff
+       
+       
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -39,21 +41,27 @@ class Staff: Weapon {
     
     
     override func rAttack(direction: CGPoint, homeScene: GameScene){
-        
+       
         if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
             let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
-            let bullet1 = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
-            let bullet2 = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
-            let bullet3 = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
-            homeScene.addChild(bullet1)
-            homeScene.addChild(bullet2)
-            homeScene.addChild(bullet3)
-            bullet1.flyTo(degree: direction.angle)
-            bullet2.flyTo(degree: direction.angle + 20)
-            bullet3.flyTo(degree: direction.angle - 20)
             
-            let sound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
-            homeScene.run(sound)
+            let wait = SKAction.wait(forDuration: 0.1)
+            
+            let fire = SKAction.run({
+                let bullet1 = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
+                let bullet2 = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
+                let bullet3 = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
+                homeScene.addChild(bullet1)
+                homeScene.addChild(bullet2)
+                homeScene.addChild(bullet3)
+                bullet1.flyTo(degree: homeScene.player.facing.angle)
+                bullet2.flyTo(degree: homeScene.player.facing.angle + 20)
+                bullet3.flyTo(degree: homeScene.player.facing.angle - 20)
+             
+                homeScene.run(SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false))
+            })
+            
+            homeScene.run(SKAction.sequence([fire,wait,fire,wait,fire]))
             
             
         }
@@ -61,7 +69,7 @@ class Staff: Weapon {
     
     override func attack(direction: CGPoint, homeScene: GameScene){
         
-        if homeScene.player.sinceFire < tempTime + homeScene.player.baseBulletSpeed {return}
+        if homeScene.player.sinceFire < tempTime {return}
         
         switch tempTime {
         case 0.3:
@@ -100,19 +108,19 @@ class Staff: Weapon {
        
         //use bullet
         if useSword {return}
-        if self.name == "staff"{
-            if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
-                let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
-                let bullet = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
-                homeScene.addChild(bullet)
-                bullet.flyTo(direction: direction)
-                
-                let sound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
-                homeScene.run(sound)
-                
-                
-            }
+       
+        if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
+            let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)
+            let bullet = Bullet(position: position, name: "staffBullet",homeScene: homeScene,bulletRange: 150,bulletSpeed: 0.5,bulletSize: CGSize(width: 10, height: 10))
+            homeScene.addChild(bullet)
+            bullet.flyTo(direction: direction)
+            
+            let sound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
+            homeScene.run(sound)
+            
+            
         }
+        
         
         
     }

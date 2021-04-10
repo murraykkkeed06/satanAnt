@@ -32,6 +32,14 @@ class CoinDrop: Drop {
         super.init(coder: aDecoder)
     }
     
+    override func pickUpEffect(homeScene: GameScene) {
+        homeScene.player.money += CGFloat.random(in: 5..<10)
+        homeScene.player.moneyChanged = true
+        
+        let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
+        homeScene.run(sound)
+    }
+    
     
 }
 

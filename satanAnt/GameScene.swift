@@ -315,10 +315,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.rStart = 5
             rButton.selectedHandler = {
                 self.player.rStart = 0
-                let wait = SKAction.wait(forDuration: 0.1)
-                let fire = SKAction.run({
-                                            self.player.weapon.rAttack(direction: self.player.facing,homeScene: self) })
-                self.run(SKAction.sequence([fire,wait,fire,wait,fire]))
+                self.player.weapon.rAttack(direction: self.player.facing, homeScene: self)
             }
             
         }else {
@@ -763,233 +760,231 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupMonsterGetHeartDrop(nodeA: SKNode, nodeB: SKNode){
-        if nodeA.name == "slime" && nodeB.name == "heart"{
-            let slime = nodeA as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeB.removeFromParent()
-            
-            
-        }
-        if nodeA.name == "heart" && nodeB.name == "slime"{
-            let slime = nodeB as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeA.removeFromParent()
-        }
-        if nodeA.name == "slime" && nodeB.name == "cokeTexture"{
-            let slime = nodeA as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeB.removeFromParent()
-            
-            
-        }
-        if nodeA.name == "cokeTexture" && nodeB.name == "slime"{
-            let slime = nodeB as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeA.removeFromParent()
+        
+        var slime: Slime!
+        var drop: Drop!
+        var itemTexture: SKNode!
+        
+        switch nodeA.name {
+        case "slime":
+            slime = (nodeA as! Slime)
+        case "heart":
+            drop = (nodeA as! Drop)
+        case "coin":
+            drop = (nodeA as! Drop)
+        case "appleTexture":
+            itemTexture = nodeA
+        case "potionTexture":
+            itemTexture = nodeA
+        case "fireBombTexture":
+            itemTexture = nodeA
+        case "cokeTexture":
+            itemTexture = nodeA
+        default:
+            break
         }
         
-        if nodeA.name == "slime" && nodeB.name == "appleTexture"{
-            let slime = nodeA as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeB.removeFromParent()
-            
-            
-        }
-        if nodeA.name == "appleTexture" && nodeB.name == "slime"{
-            let slime = nodeB as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeA.removeFromParent()
-        }
-        
-        if nodeA.name == "slime" && nodeB.name == "potionTexture"{
-            let slime = nodeA as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeB.removeFromParent()
-            
-            
-        }
-        if nodeA.name == "potionTexture" && nodeB.name == "slime"{
-            let slime = nodeB as! Slime
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
-            slime.bigger(scale: 1.2)
-            
-            nodeA.removeFromParent()
+        switch nodeB.name {
+        case "slime":
+            slime = (nodeB as! Slime)
+        case "heart":
+            drop = (nodeB as! Drop)
+        case "coin":
+            drop = (nodeB as! Drop)
+        case "appleTexture":
+            itemTexture = nodeB
+        case "potionTexture":
+            itemTexture = nodeB
+        case "fireBombTexture":
+            itemTexture = nodeB
+        case "cokeTexture":
+            itemTexture = nodeB
+        default:
+            break
         }
         
-        if nodeA.name == "slime" && nodeB.name == "fireBombTexture"{
-            let slime = nodeA as! Slime
+        if slime != nil && drop != nil {
+            drop.removeFromParent()
             slime.health += 1
             slime.run(SKAction.scale(by: 1.2, duration: 1))
             slime.bigger(scale: 1.2)
-            
-            nodeB.removeFromParent()
-            
-            
         }
-        if nodeA.name == "fireBombTexture" && nodeB.name == "slime"{
-            let slime = nodeB as! Slime
+        
+        if slime != nil && itemTexture != nil {
+            itemTexture.removeFromParent()
             slime.health += 1
             slime.run(SKAction.scale(by: 1.2, duration: 1))
             slime.bigger(scale: 1.2)
-            
-            nodeA.removeFromParent()
         }
+        
+        
+//        if nodeA.name == "slime" && nodeB.name == "heart"{
+//            let slime = nodeA as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeB.removeFromParent()
+//
+//
+//        }
+//        if nodeA.name == "heart" && nodeB.name == "slime"{
+//            let slime = nodeB as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeA.removeFromParent()
+//        }
+//        if nodeA.name == "slime" && nodeB.name == "cokeTexture"{
+//            let slime = nodeA as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeB.removeFromParent()
+//
+//
+//        }
+//        if nodeA.name == "cokeTexture" && nodeB.name == "slime"{
+//            let slime = nodeB as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeA.removeFromParent()
+//        }
+//
+//        if nodeA.name == "slime" && nodeB.name == "appleTexture"{
+//            let slime = nodeA as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeB.removeFromParent()
+//
+//
+//        }
+//        if nodeA.name == "appleTexture" && nodeB.name == "slime"{
+//            let slime = nodeB as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeA.removeFromParent()
+//        }
+//
+//        if nodeA.name == "slime" && nodeB.name == "potionTexture"{
+//            let slime = nodeA as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeB.removeFromParent()
+//
+//
+//        }
+//        if nodeA.name == "potionTexture" && nodeB.name == "slime"{
+//            let slime = nodeB as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeA.removeFromParent()
+//        }
+//
+//        if nodeA.name == "slime" && nodeB.name == "fireBombTexture"{
+//            let slime = nodeA as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeB.removeFromParent()
+//
+//
+//        }
+//        if nodeA.name == "fireBombTexture" && nodeB.name == "slime"{
+//            let slime = nodeB as! Slime
+//            slime.health += 1
+//            slime.run(SKAction.scale(by: 1.2, duration: 1))
+//            slime.bigger(scale: 1.2)
+//
+//            nodeA.removeFromParent()
+//        }
     }
     
     
     func setupPickUp(nodeA: SKNode, nodeB: SKNode)  {
-        if nodeA.name == "heart" && nodeB.name == "player"{
-            //print("hit!")
-            let heart = nodeA as! HeartDrop
-            heart.removeFromParent()
-            player.health += 0.25
-            player.healthChanged = true
-            let sound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
-            self.run(sound)
-            let healEffect = SKEmitterNode(fileNamed: "healParticle")!
-            healEffect.name = "heal"
-            healEffect.position = player.position
-            addChild(healEffect)
-            healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
-        }
-        if nodeB.name == "heart" && nodeA.name == "player"{
-            
-            let heart = nodeB as! HeartDrop
-            heart.removeFromParent()
-            
-            player.health += 0.25
-            player.healthChanged = true
-            let sound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
-            self.run(sound)
-            let healEffect = SKEmitterNode(fileNamed: "healParticle")!
-            healEffect.name = "heal"
-            healEffect.position = player.position
-            addChild(healEffect)
-            healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
+        
+        
+        var drop: Drop!
+        var itemTexture: SKNode!
+        var playerNode: Player!
+        
+        
+        switch nodeA.name {
+        case "player":
+            playerNode = player
+        case "heart":
+            drop = (nodeA as! Drop)
+        case "coin":
+            drop = (nodeA as! Drop)
+        case "potionTexture":
+            itemTexture = nodeA
+        case "fireBombTexture":
+            itemTexture = nodeA
+        case "appleTexture":
+            itemTexture = nodeA
+        case "cokeTexture":
+            itemTexture = nodeA
+        default:
+            break
         }
         
-        if nodeA.name == "coin" && nodeB.name == "player"{
-            //print("hit!")
-            let coin = nodeA as! CoinDrop
-            coin.removeFromParent()
-            player.money += CGFloat.random(in: 5..<10)
-            player.moneyChanged = true
-            let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
-            self.run(sound)
-            
+        switch nodeB.name {
+        case "player":
+            playerNode = player
+        case "heart":
+            drop = (nodeB as! Drop)
+        case "coin":
+            drop = (nodeB as! Drop)
+        case "potionTexture":
+            itemTexture = nodeB
+        case "fireBombTexture":
+            itemTexture = nodeB
+        case "appleTexture":
+            itemTexture = nodeB
+        case "cokeTexture":
+            itemTexture = nodeB
+        default:
+            break
         }
         
-        if nodeB.name == "coin" && nodeA.name == "player"{
-            //print("hit!")
-            let coin = nodeB as! CoinDrop
-            coin.removeFromParent()
-            player.money += CGFloat.random(in: 5..<10)
-            player.moneyChanged = true
-            let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
-            self.run(sound)
-            
+        if drop != nil && playerNode != nil {
+            drop.pickUpEffect(homeScene: self)
+            drop.removeFromParent()
         }
         
-        if nodeA.name == "potionTexture" && nodeB.name == "player"{
-            
-            player.itemList.append(Potion())
+        
+        if playerNode != nil  && itemTexture != nil{
+            switch itemTexture.name {
+            case "potionTexture":
+                player.itemList.append(Potion())
+                self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
+            case "fireBombTextuer":
+                player.itemList.append(FireBomb())
+                self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
+            case "appleTexture":
+                player.itemList.append(Apple())
+                self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
+            case "cokeTexture":
+                player.itemList.append(Coke())
+                self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
+            default:
+                break
+            }
             setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
-            
-            movToPopo(node: nodeA)
-            
-        }
-        
-        if nodeA.name == "player" && nodeB.name == "potionTexture"{
-            
-            player.itemList.append(Potion())
-            setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
-            
-            movToPopo(node: nodeB)
-            
-        }
-        
-        if nodeA.name == "fireBombTexture" && nodeB.name == "player"{
-            
-            player.itemList.append(FireBomb())
-            setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
-            
-            movToPopo(node: nodeA)
-            
-        }
-        
-        if nodeA.name == "player" && nodeB.name == "fireBombTexture"{
-            
-            player.itemList.append(FireBomb())
-            setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
-            
-            movToPopo(node: nodeB)
-            
-        }
-        
-        if nodeA.name == "appleTexture" && nodeB.name == "player"{
-            
-            player.itemList.append(Apple())
-            setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
-            
-            movToPopo(node: nodeA)
-            
-        }
-        
-        if nodeA.name == "player" && nodeB.name == "appleTexture"{
-            
-            player.itemList.append(Apple())
-            setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
-            
-            movToPopo(node: nodeB)
-            
-        }
-        
-        if nodeA.name == "cokeTexture" && nodeB.name == "player"{
-            
-            player.itemList.append(Coke())
-            setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
-            
-            movToPopo(node: nodeA)
-            
-        }
-        
-        if nodeA.name == "player" && nodeB.name == "cokeTexture"{
-            
-            player.itemList.append(Coke())
-            setupItemOrder()
-            self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
-            
-            movToPopo(node: nodeB)
-            
+            movToPopo(node: itemTexture)
         }
         
     }
@@ -1017,19 +1012,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupBulletHit(nodeA: SKNode, nodeB: SKNode)  {
         if nodeA.name == "staffBullet" {
             //print("hit!")
-            let bullet = nodeA as! Bullet
-            bullet.removeFromParent()
+
             let bulletHitPoint = BulletHitPoint(scene: self)
+            bulletHitPoint.position = nodeA.position
+            addChild(bulletHitPoint)
             bulletHitPoint.hit()
+            nodeA.removeFromParent()
         }
         if nodeB.name == "staffBullet" {
             
-            let bullet = nodeB as! Bullet
+           
             let bulletHitPoint = BulletHitPoint(scene: self)
-            bulletHitPoint.position = bullet.position
+            bulletHitPoint.position = nodeB.position
             addChild(bulletHitPoint)
             bulletHitPoint.hit()
-            bullet.removeFromParent()
+            nodeB.removeFromParent()
+            
         }
         
     }
@@ -1130,86 +1128,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupDamage(nodeA: SKNode, nodeB: SKNode) {
-        if (nodeA.name == "staffBullet" && nodeB.name == "log"){
-            //            let bullet = nodeA as! Bullet
-            //            bullet.removeFromParent()
-            let log = nodeB as! Log
-            log.beingHit(homeScene: self)
-            
-            
-        }
-        if (nodeA.name == "log" && nodeB.name == "staffBullet"){
-            //            let bullet = nodeB as! Bullet
-            //            bullet.removeFromParent()
-            let log = nodeA as! Log
-            log.beingHit(homeScene: self)
-            
+        
+        //bullet and monster
+        var monster: Monster!
+        var ammo: Ammo!
+        var playerNode: Player!
+        
+        switch nodeA.name {
+        case "log":
+            monster = (nodeA as! Monster)
+        case "slime":
+            monster = (nodeA as! Monster)
+        case "ghost":
+            monster = (nodeA as! Monster)
+        case "staffBullet":
+           ammo = (nodeA as! Ammo)
+        case "candy":
+            ammo = (nodeA as! Ammo)
+        case "player":
+            playerNode = player
+        default:
+            break
         }
         
-        if (nodeA.name == "staffBullet" && nodeB.name == "slime"){
-            //            let bullet = nodeA as! Bullet
-            //            bullet.removeFromParent()
-            let slime = nodeB as! Slime
-            slime.beingHit(homeScene: self)
-            
-            
-        }
-        if (nodeA.name == "slime" && nodeB.name == "staffBullet"){
-            //            let bullet = nodeB as! Bullet
-            //            bullet.removeFromParent()
-            let slime = nodeA as! Slime
-            slime.beingHit(homeScene: self)
-            
-        }
-        if (nodeA.name == "staffBullet" && nodeB.name == "ghost"){
-            //            let bullet = nodeA as! Bullet
-            //            bullet.removeFromParent()
-            let ghost = nodeB as! Ghost
-            ghost.beingHit(homeScene: self)
-            
-            
-        }
-        if (nodeA.name == "ghost" && nodeB.name == "staffBullet"){
-            //            let bullet = nodeB as! Bullet
-            //            bullet.removeFromParent()
-            let ghost = nodeA as! Ghost
-            ghost.beingHit(homeScene: self)
-            
+        switch nodeB.name {
+        case "log":
+            monster = (nodeB as! Monster)
+        case "slime":
+            monster = (nodeB as! Monster)
+        case "ghost":
+            monster = (nodeB as! Monster)
+        case "staffBullet":
+            ammo = (nodeB as! Ammo)
+        case "candy":
+            ammo = (nodeB as! Ammo)
+        case "player":
+            playerNode = player
+        default:
+          break
         }
         
-        if (nodeA.name == "log" && nodeB.name == "player"){
-            
+        if monster != nil && ammo != nil {
+            monster.beingHit(homeScene: self)
+        }
+        
+        if monster != nil && playerNode != nil{
             player.beingHit()
-            //let log = nodeA as! Log
-            //log.health -= 0.25
-            
-            
         }
-        if (nodeA.name == "player" && nodeB.name == "log"){
-            
-            player.beingHit()
-            //let log = nodeB as! Log
-            //log.health -= 0.25
-            
-        }
-        
-        if (nodeA.name == "slime" && nodeB.name == "player"){
-            
-            player.beingHit()
-            //let log = nodeA as! Log
-            //log.health -= 0.25
-            
-            
-        }
-        if (nodeA.name == "player" && nodeB.name == "slime"){
-            
-            player.beingHit()
-            //let log = nodeB as! Log
-            //log.health -= 0.25
-            
-        }
-        
-        
         
     }
     
