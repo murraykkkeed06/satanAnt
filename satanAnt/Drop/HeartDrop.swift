@@ -22,7 +22,7 @@ class HeartDrop: Drop {
         self.physicsBody?.pinned = true
         self.name = "heart"
         self.physicsBody?.contactTestBitMask = 1 + 4
-        //self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.categoryBitMask = 256
         self.physicsBody?.mass = 0.5
         self.run(SKAction(named: "heartAction")!)

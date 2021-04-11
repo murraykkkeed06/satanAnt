@@ -51,7 +51,7 @@ class Candy: Ammo {
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = true
         self.physicsBody?.mass = 0.5
-        self.physicsBody?.contactTestBitMask = 4 + 2 + 64 + 256
+        self.physicsBody?.contactTestBitMask = 4 + 2 + 64 
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.categoryBitMask = 16
         

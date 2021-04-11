@@ -61,7 +61,7 @@ func fromType(type: MonsterType, homeScene: GameScene) -> Monster {
     case .log:
         monster = Log(scene: homeScene)
     case .slime:
-        monster = Slime(scene: homeScene)
+        monster = Slime(scene: homeScene, color: SlimeColor.green)
     case .ghost:
         monster = Ghost(scene: homeScene)
         

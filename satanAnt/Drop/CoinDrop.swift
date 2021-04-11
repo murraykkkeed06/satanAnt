@@ -21,7 +21,7 @@ class CoinDrop: Drop {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.pinned = true
         self.physicsBody?.contactTestBitMask = 1 + 256
-        //self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.categoryBitMask = 256
         self.physicsBody?.mass = 0.5
         self.run(SKAction(named: "coinAction")!)

@@ -64,6 +64,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isBreakRoom = false
     var YX: GridYX!
     
+    var isClean = false
+    
+    
     var isDoorSet = false
     var dialogueIsSet = false
     var dialogue: Dialogue!
@@ -139,7 +142,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if isMonsterRoom {
                 let wait = SKAction.wait(forDuration: 1)
-                self.run(SKAction.sequence([wait,SKAction.run(setupMonster)]))
+                self.run(SKAction.sequence([wait,SKAction.run({
+                    self.setupMonster(num: Int.random(in: 5..<10))
+                })]))
                 //setupMonster()
                 
             }
@@ -160,14 +165,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 addChild(girl)
             }
             
+            if isEnterCaveRoom{
+                setupCaveMonster(level: player.gameLevel)
+            }
+            
+            
         }
+        
+        //setupisset end
         
         if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
         if isBedRoom{
             player.health = player.bornHealth + player.baseHealth
             player.healthChanged = true
             player.setupPhysics()
+
+            
         }
+        
+        
         
         setupNpc()
         
@@ -299,18 +315,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //finsh cleaning monster
         if isBornRoom || isBonusRoom {if !isDoorSet{setupDoor();isDoorSet=true}
         }else if isEnterCaveRoom {
-            for i in 0..<monsterList.count{
-                if monsterList[i].isAlived{break}
-                if i == monsterList.count - 1 && !isDoorSet{
-                    setupHomeOrKeepGoing()
-                    isDoorSet=true
+ 
+            switch player.gameLevel {
+            case 1:
+                if sinceStart>30{
+                    for i in 0..<monsterList.count{
+                        if monsterList[i].isAlived{break}
+                        if i == monsterList.count - 1 && !isDoorSet{
+                            setupHomeOrKeepGoing()
+                            isDoorSet=true
+                        }
+                    }
                 }
+            default:
+                break
             }
+            
+            
         }
         else{
             for i in 0..<monsterList.count{
                 if monsterList[i].isAlived{break}
-                if i == monsterList.count - 1 && !isDoorSet{setupDoor();isDoorSet=true}
+                if i == monsterList.count - 1 && !isDoorSet{
+                    setupDoor()
+                    isDoorSet=true
+                    
+                }
             }
         }
         
@@ -357,6 +387,67 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupMonsterGetHeartDrop(nodeA: nodeA, nodeB: nodeB)
             }
         }
+        
+    }
+    
+    func setupCaveMonster(level: Int)  {
+        
+        switch level {
+        case 1:
+            let start = SKAction.wait(forDuration: 1)
+            let wait = SKAction.wait(forDuration: 10)
+            let born = SKAction.run({
+                self.bornSlime(num: Int.random(in: 15..<20))
+            })
+            self.run(SKAction.sequence([start,born,wait,born,wait,born]))
+            
+        case 2:
+            let start = SKAction.wait(forDuration: 1)
+            let wait = SKAction.wait(forDuration: 10)
+            let born = SKAction.run({
+                self.bornSlime(num: Int.random(in: 15..<20))
+            })
+            self.run(SKAction.sequence([start,born,wait,born,wait,born]))
+        default:
+            break
+        }
+        
+        
+    }
+    
+    func bornSlime(num: Int)  {
+        for _ in 0..<num {
+            var borned = false
+            var check = 0
+            var bornX = CGFloat.random(in: 50..<self.frame.width-50)
+            var bornY = CGFloat.random(in: 50..<self.frame.height-50)
+            while !borned {
+                for node in self.children {
+                    if node.physicsBody != nil && node.frame.contains(CGPoint(x: bornX, y: bornY)) {
+                        bornX = CGFloat.random(in: 50..<self.frame.width-50)
+                        bornY = CGFloat.random(in: 50..<self.frame.height-50)
+                        break
+                    }else {
+                        check += 1
+                        if check == self.children.count {borned = true}
+                    }
+                }
+            }
+            //let newLog = Log(scene: self)
+            
+            let monster = Slime(scene: self, color: SlimeColor.random())
+            monster.position = CGPoint(x: bornX, y: bornY)
+            if Int.random(in: 0..<10)<2{
+                monster.bigger(scale: CGFloat.random(in: 1..<4))
+            }
+            
+            addChild(monster)
+            
+            monsterList.append(monster)
+            //ogList.append(newLog)
+            
+        }
+        
         
     }
     
@@ -542,7 +633,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if let scene = GameScene.level(5){
                         // Set the scale mode to scale to fit the window
                         scene.isEnterCaveRoom = true
-                        scene.isMonsterRoom = true
+                        //scene.isMonsterRoom = true
                         scene.scaleMode = .aspectFit
                         scene.player = self.player
                         scene.player.position = CGPoint(x: 160, y: 250)
@@ -889,15 +980,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if slime != nil && drop != nil {
             drop.removeFromParent()
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
             slime.bigger(scale: 1.2)
         }
         
         if slime != nil && itemTexture != nil {
             itemTexture.removeFromParent()
-            slime.health += 1
-            slime.run(SKAction.scale(by: 1.2, duration: 1))
             slime.bigger(scale: 1.2)
         }
         
@@ -1269,9 +1356,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func setupMonster() {
+    func setupMonster(num: Int) {
         
-        for _ in 0..<Int.random(in: 5..<10) {
+        for _ in 0..<num {
             var borned = false
             var check = 0
             var bornX = CGFloat.random(in: 50..<self.frame.width-50)

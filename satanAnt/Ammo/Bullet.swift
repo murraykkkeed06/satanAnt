@@ -22,7 +22,7 @@ class Bullet: Ammo {
         self.name = name
         self.physicsBody = SKPhysicsBody(circleOfRadius: 5)
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.contactTestBitMask = 4 + 2 + 64 + 256
+        self.physicsBody?.contactTestBitMask = 4 + 2 + 64 
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.categoryBitMask = 16
         self.homeScene = homeScene

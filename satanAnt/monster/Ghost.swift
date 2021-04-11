@@ -85,7 +85,7 @@ class Ghost: Monster {
     init(scene: GameScene){
         let texture = SKTexture(imageNamed: "ghostRight_1")
         super.init(texture: texture, color: .clear, size: ghostSize)
-        self.zPosition = 10
+        self.zPosition = 11
         self.homeScene = scene
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
         self.physicsBody?.affectedByGravity = false

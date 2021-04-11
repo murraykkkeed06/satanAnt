@@ -8,6 +8,19 @@
 import Foundation
 import SpriteKit
 
+enum SlimeColor: Int {
+    case green
+    case red
+    case blue
+    case purple
+    
+    static func random() -> SlimeColor{
+        return SlimeColor(rawValue: Int.random(in: 0..<4))!
+    }
+    
+}
+
+
 class Slime: Monster {
     
     var slimeSize = CGSize(width: 25, height: 25)
@@ -64,11 +77,33 @@ class Slime: Monster {
         }
     }
     
-    init(scene: GameScene){
-        let texture = SKTexture(imageNamed: "slime_1")
-        super.init(texture: texture, color: .clear, size: slimeSize)
-        self.run(SKAction(named: "slimeIdle")!)
+    init(scene: GameScene, color: SlimeColor){
+        var texture: SKTexture!
         
+        switch color {
+        case .green:
+            texture = SKTexture(imageNamed: "slime_1")
+        case .purple:
+            texture = SKTexture(imageNamed: "slimePurple_1")
+        case .red:
+            texture = SKTexture(imageNamed: "slimeRed_1")
+        case .blue:
+            texture = SKTexture(imageNamed: "slimeBlue_1")
+        
+        }
+        
+        super.init(texture: texture, color: .clear, size: slimeSize)
+        
+        switch color {
+        case .green:
+            self.run(SKAction(named: "slimeIdle")!)
+        case .purple:
+            self.run(SKAction(named: "slimePurlpleIdle")!)
+        case .red:
+            self.run(SKAction(named: "slimeRedIdle")!)
+        case .blue:
+            self.run(SKAction(named: "slimeBlueIdle")!)
+        }
         self.physicsBody = SKPhysicsBody(rectangleOf: slimeSize)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
@@ -113,7 +148,16 @@ class Slime: Monster {
     }
     
     func bigger(scale: CGFloat)  {
-        let newSize = CGSize(width: self.slimeSize.width * scale, height: self.slimeSize.height * scale)
+        self.health += 1
+        
+        var newSize: CGSize!
+        if self.slimeSize.width * scale >= 100 || self.slimeSize.height >= 100 {
+            newSize = CGSize(width: 100, height: 100)
+            self.run(SKAction.scale(to: newSize, duration: 1))
+        }else {
+            newSize = CGSize(width: self.slimeSize.width * scale, height: self.slimeSize.height * scale)
+            self.run(SKAction.scale(by: scale, duration: 1))
+        }
         self.physicsBody = SKPhysicsBody(rectangleOf: newSize)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
