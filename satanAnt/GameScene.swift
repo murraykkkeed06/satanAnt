@@ -167,13 +167,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 addChild(girl)
             }
             
-            if isEnterCaveRoom{
-                setupCaveMonster(level: player.gameLevel)
-            }
+            //canon set up
+            setupCanon()
+            
+            
             
             
         }
-        
+        if isEnterCaveRoom{
+            setupCaveMonster(level: player.gameLevel)
+        }
         //setupisset end
         
         if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
@@ -379,6 +382,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        
+        canonDetect()
+        
     }
     
     //update end
@@ -397,6 +403,66 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupBulletHit(nodeA: nodeA, nodeB: nodeB)
                 setupPickUp(nodeA: nodeA, nodeB: nodeB)
                 setupMonsterGetHeartDrop(nodeA: nodeA, nodeB: nodeB)
+            }
+        }
+        
+    }
+    
+    func setupCanon()  {
+        
+       // if let canonBorn = self.childNode(withName: "canonBorn") as? SKSpriteNode {
+        for node in self.children{
+            if node.name == "canonBorn"{
+                var canon: Canon!
+                
+                if node.position.x > self.frame.width/2 {
+                    canon = Canon(canonDirection: .left, scene: self)
+                }else {
+                    canon = Canon(canonDirection: .right, scene: self)
+                }
+                canon.position = node.position
+                
+                addChild(canon)
+            }
+        }
+       // }
+    }
+    
+    func canonDetect() {
+        
+        for node in self.children{
+            if node.isMember(of: Canon.self){
+                
+                let canon = (node as! Canon)
+                canon.sinceStart += eachFrame
+                
+                var fireAllowed = false
+                for monster in monsterList{
+                    if abs( monster.position.y-canon.position.y) < 20{
+                        fireAllowed = true
+                        break
+                    }
+                }
+                
+                if abs(player.position.y - canon.position.y) < 20{
+                    fireAllowed = true
+                }
+                
+                
+                //print("\(player.position.y) , \(canon.position.y)")
+                
+                if canon.sinceStart > 3 && fireAllowed{
+                    switch canon.canonDirection {
+                    case .right:
+                        canon.fireRight()
+                    case .left:
+                        canon.fireLeft()
+                    default:
+                        break
+                    }
+                    canon.sinceStart = 0
+                }
+
             }
         }
         
@@ -1183,6 +1249,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeA as! Ammo)
         case "candy":
             ammo = (nodeA as! Ammo)
+        case "canonBall":
+            ammo = (nodeA as! Ammo)
         default:
             break
         }
@@ -1190,6 +1258,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "staffBullet":
             ammo = (nodeB as! Ammo)
         case "candy":
+            ammo = (nodeB as! Ammo)
+        case "canonBall":
             ammo = (nodeB as! Ammo)
         default:
             break
@@ -1340,6 +1410,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            ammo = (nodeA as! Ammo)
         case "candy":
             ammo = (nodeA as! Ammo)
+        case "canonBall":
+            ammo = (nodeA as! Ammo)
         case "player":
             playerNode = player
        
@@ -1358,6 +1430,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeB as! Ammo)
         case "candy":
             ammo = (nodeB as! Ammo)
+        case "canonBall":
+            ammo = (nodeB as! Ammo)
         case "player":
             playerNode = player
        
@@ -1366,7 +1440,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if monster != nil && ammo != nil {
-            monster.beingHit(homeScene: self)
+            
+            if ammo.name == "canonBall"{
+                monster.beingHit(homeScene: self, damage: 0.25)
+            }else{
+                monster.beingHit(homeScene: self)
+            }
         }
         
     
@@ -1375,6 +1454,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.beingHit()
         }
         
+        if playerNode != nil && ammo != nil {
+            player.beingHit()
+        }
         
         
     }
