@@ -159,7 +159,7 @@ class Slime: Monster {
         self.health += 1
         
         var newSize: CGSize!
-        if self.slimeSize.width * scale >= 100 || self.slimeSize.height >= 100 {
+        if self.frame.size.width * scale >= 100 || self.frame.size.height >= 100 {
             newSize = CGSize(width: 100, height: 100)
             self.run(SKAction.scale(to: newSize, duration: 1))
         }else {

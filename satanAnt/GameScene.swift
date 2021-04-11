@@ -184,9 +184,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             
         }
-        
-        setupBornEffect()
-        
+        if isBedRoom{
+            setupBornEffect()
+        }
         setupNpc()
         
         self.view?.isUserInteractionEnabled = true
@@ -373,7 +373,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if sinceStart<0.1{
                 bornEffect.position = player.position - CGPoint(x: 0, y: 10)
             }
-            if sinceStart > 3{
+            if sinceStart > 1{
                 bornEffect.removeFromParent()
             }
         }
@@ -455,17 +455,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let monster = Slime(scene: self, color: SlimeColor.random())
             monster.position = CGPoint(x: bornX, y: bornY)
-            if Int.random(in: 0..<10)<2{
-                monster.bigger(scale: CGFloat.random(in: 1..<4))
-            }
+//            if Int.random(in: 0..<10)<2{
+//                monster.bigger(scale: CGFloat.random(in: 1..<4))
+//            }
             
-            addChild(monster)
-            
+            //addChild(monster)
+            monsterFall(monster: monster)
             monsterList.append(monster)
             //ogList.append(newLog)
             
         }
         
+        
+    }
+    
+    func monsterFall(monster: SKNode) {
+        let fallPosition = monster.position
+        
+        let shadow = SKSpriteNode(texture: SKTexture(imageNamed: "shadow"), color: .clear, size: CGSize(width: 30, height: 20))
+        shadow.position = fallPosition
+        shadow.zPosition = 1
+        addChild(shadow)
+        let wait = SKAction.wait(forDuration: 4)
+        shadow.run(SKAction.sequence([wait,SKAction.removeFromParent()]))
+        
+        let start = SKAction.wait(forDuration: 1)
+        monster.position = CGPoint(x: fallPosition.x, y: 800)
+        let fallAction = SKAction.move(to: fallPosition, duration: 1)
+        fallAction.timingMode = .easeIn
+        
+        addChild(monster)
+        monster.run(SKAction.sequence([start,fallAction]))
         
     }
     
@@ -1602,7 +1622,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let homePosition = (self.childNode(withName: "homePosition") as! SKSpriteNode)
         homeBoard.position = homePosition.position
         homeBoard.selectHandler = {
-            let homePortal = Door(position: homeBoard.position + CGPoint(x: 0, y: 50), name: "homeDoor")
+            //let homePortal = Door(position: homeBoard.position + CGPoint(x: 0, y: 50), name: "homeDoor", doorDirection: .up)
+            let homePortal = Portal(position: homeBoard.position + CGPoint(x: 0, y: 50), name: "homeDoor")
             self.addChild(homePortal)
         }
         addChild(homeBoard)
@@ -1613,7 +1634,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let continuePosition = (self.childNode(withName: "continuePosition") as! SKSpriteNode)
         continueBoard.position = continuePosition.position
         continueBoard.selectHandler = {
-            let continuePortal = Door(position: continueBoard.position + CGPoint(x: 0, y: 50), name: "continueDoor")
+            //let continuePortal = Door(position: continueBoard.position + CGPoint(x: 0, y: 50), name: "continueDoor", doorDirection: .up)
+            let continuePortal = Portal(position: continueBoard.position + CGPoint(x: 0, y: 50), name: "continueDoor")
             
             self.addChild(continuePortal)
         }
@@ -1631,8 +1653,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let wait = SKAction.wait(forDuration: 0.5)
         let firstAction = SKAction.run({
             if self.top != nil {
-                let door = Door(position: self.topDoor.position,name: "topDoor")
+                let door = Door(position: self.topDoor.position,name: "topDoor", doorDirection: .up)
                 self.addChild(door)
+                door.alpha = 0
+                door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 
                 self.run(SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true))
                 
@@ -1641,9 +1665,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let secondAction = SKAction.run({
             if self.bototm != nil {
                 
-                let door = Door(position: self.bottomDoor.position,name: "bottomDoor")
+                let door = Door(position: self.bottomDoor.position,name: "bottomDoor", doorDirection: .down)
                 self.addChild(door)
-                
+                door.alpha = 0
+                door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 self.run(SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true))
                 
             }
@@ -1652,17 +1677,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let thirdAction = SKAction.run({
             if self.left != nil {
                 
-                let door = Door(position: self.leftDoor.position,name: "leftDoor")
+                let door = Door(position: self.leftDoor.position,name: "leftDoor",doorDirection: .left)
                 self.addChild(door)
+                door.alpha = 0
+                door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 self.run(SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true))
             }
         })
         let fourthAction = SKAction.run({
             if self.right != nil {
                 
-                let door = Door(position: self.rightDoor.position,name: "rightDoor")
+                let door = Door(position: self.rightDoor.position,name: "rightDoor",doorDirection: .right)
                 self.addChild(door)
-                
+                door.alpha = 0
+                door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 self.run(SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true))
                 
             }

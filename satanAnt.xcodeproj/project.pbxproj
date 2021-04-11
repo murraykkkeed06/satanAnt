@@ -258,6 +258,10 @@
 		72CF1A91261F55D000FA90BE /* bottle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72CF1A90261F55D000FA90BE /* bottle.wav */; };
 		72CF1A9D261F5A3D00FA90BE /* pick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72CF1A9C261F5A3D00FA90BE /* pick.mp3 */; };
 		72CF1AA4261F607600FA90BE /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72CF1AA3261F607600FA90BE /* explosion.wav */; };
+		72D01BA82622EAD300459733 /* bridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D01BA72622EAD300459733 /* bridge.png */; };
+		72D01BAC2622EFE700459733 /* Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D01BAB2622EFE700459733 /* Portal.swift */; };
+		72D01BB32622F74A00459733 /* bridge_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D01BB22622F74A00459733 /* bridge_top.png */; };
+		72D01BB62622FB4300459733 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D01BB52622FB4300459733 /* shadow.png */; };
 		72D3A534260B522F00E65281 /* popo.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D3A533260B522F00E65281 /* popo.png */; };
 		72D3A537260B524D00E65281 /* Popo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3A536260B524D00E65281 /* Popo.swift */; };
 		72D3A552260B575D00E65281 /* popo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72D3A550260B575D00E65281 /* popo.sks */; };
@@ -671,6 +675,10 @@
 		72CF1A90261F55D000FA90BE /* bottle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bottle.wav; sourceTree = "<group>"; };
 		72CF1A9C261F5A3D00FA90BE /* pick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pick.mp3; sourceTree = "<group>"; };
 		72CF1AA3261F607600FA90BE /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		72D01BA72622EAD300459733 /* bridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bridge.png; sourceTree = "<group>"; };
+		72D01BAB2622EFE700459733 /* Portal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portal.swift; sourceTree = "<group>"; };
+		72D01BB22622F74A00459733 /* bridge_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bridge_top.png; sourceTree = "<group>"; };
+		72D01BB52622FB4300459733 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
 		72D3A533260B522F00E65281 /* popo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popo.png; sourceTree = "<group>"; };
 		72D3A536260B524D00E65281 /* Popo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popo.swift; sourceTree = "<group>"; };
 		72D3A550260B575D00E65281 /* popo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = popo.sks; sourceTree = "<group>"; };
@@ -987,6 +995,9 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72D01BB52622FB4300459733 /* shadow.png */,
+				72D01BB22622F74A00459733 /* bridge_top.png */,
+				72D01BA72622EAD300459733 /* bridge.png */,
 				725A372E2622D9B000340C82 /* monsterBornEffect_1.png */,
 				725A372B2622D9AF00340C82 /* monsterBornEffect_2.png */,
 				725A372D2622D9AF00340C82 /* monsterBornEffect_3.png */,
@@ -1336,6 +1347,7 @@
 				72500A63261AFED000EAE276 /* wordButton.swift */,
 				72500A72261B0AEF00EAE276 /* Board.swift */,
 				725A36FF2622B45700340C82 /* DeadSlime.swift */,
+				72D01BAB2622EFE700459733 /* Portal.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -1482,6 +1494,7 @@
 				725A373C2622DFDF00340C82 /* levelUp.mp3 in Resources */,
 				7277731C261ECF4B009F823F /* fireBomb_2.png in Resources */,
 				7240ED3E2620848200745815 /* slime_7.png in Resources */,
+				72D01BB32622F74A00459733 /* bridge_top.png in Resources */,
 				72E48420260EEE5000D1C2DA /* Level_1_3.sks in Resources */,
 				72210563261AC0C500B2EEAC /* cave2.png in Resources */,
 				72E7F4C0261C4217006A7AB1 /* caveDoor_13.png in Resources */,
@@ -1605,6 +1618,7 @@
 				729E9424260E2FBE00DFF2D0 /* new_right_4.png in Resources */,
 				725A37222622CF0800340C82 /* bornEffect_1.png in Resources */,
 				727F3569261EADB100BB8E02 /* lightening.png in Resources */,
+				72D01BB62622FB4300459733 /* shadow.png in Resources */,
 				72E48492260F338C00D1C2DA /* three.png in Resources */,
 				725A36FA2622B29600340C82 /* slimeDie_1.png in Resources */,
 				7279A97B260D92ED000EB14F /* player_forward_2.png in Resources */,
@@ -1662,6 +1676,7 @@
 				723C7AD526218B6B00D9026C /* candy_5.png in Resources */,
 				724213F9261A18D000CA5F97 /* point_red.png in Resources */,
 				72FE15CF261DE27E008870C6 /* coinDrop_3.png in Resources */,
+				72D01BA82622EAD300459733 /* bridge.png in Resources */,
 				72FE15D4261DE27E008870C6 /* heartDrop_4.png in Resources */,
 				72E484AB260F43AA00D1C2DA /* heart_2.png in Resources */,
 				720A427F2618CBE9002D589C /* bomb_2.png in Resources */,
@@ -1820,6 +1835,7 @@
 				72B46643260B2A1400BC5E56 /* GameScene.swift in Sources */,
 				72D3A537260B524D00E65281 /* Popo.swift in Sources */,
 				72E484A7260F435800D1C2DA /* Heart.swift in Sources */,
+				72D01BAC2622EFE700459733 /* Portal.swift in Sources */,
 				72FE15D9261DE29C008870C6 /* HeartDrop.swift in Sources */,
 				723C7ADE26219E0F00D9026C /* Ammo.swift in Sources */,
 				72D638AC261978B700A43D41 /* BigDialogue.swift in Sources */,
