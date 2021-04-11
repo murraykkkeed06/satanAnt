@@ -33,9 +33,17 @@ class Ghost: Monster {
                     self.physicsBody = nil
                     //self.run(SKAction.fadeAlpha(by: 0, duration: 1))
                     
-                    let tomb = Tomb()
-                    tomb.position = self.position
-                    self.homeScene.addChild(tomb)
+//                    let tomb = Tomb()
+//                    tomb.position = self.position
+//                    self.homeScene.addChild(tomb)
+                    
+                    let deadGhost = SKSpriteNode(texture: SKTexture(imageNamed: "deadGhost"), color: .clear, size: CGSize(width: 20, height: 20))
+                    deadGhost.zPosition = 1
+                    deadGhost.position = self.position
+                    homeScene.addChild(deadGhost)
+                    
+                    //play dead sound
+                    homeScene.run(SKAction.playSoundFileNamed("ghostDie.wav", waitForCompletion: true))
                     
                     bornDrop(num: 1, position: self.position, homeScene: homeScene)
                     bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
@@ -85,7 +93,7 @@ class Ghost: Monster {
     init(scene: GameScene){
         let texture = SKTexture(imageNamed: "ghostRight_1")
         super.init(texture: texture, color: .clear, size: ghostSize)
-        self.zPosition = 11
+        self.zPosition = 3
         self.homeScene = scene
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
         self.physicsBody?.affectedByGravity = false
@@ -106,6 +114,7 @@ class Ghost: Monster {
     
     func rightAttack()  {
         self.run(SKAction(named: "ghostRightAttack")!)
+        homeScene.run(SKAction.playSoundFileNamed("ghostAttack.mp3", waitForCompletion: false))
         if homeScene.player.isAlived{
             homeScene.player.beingHit()
         }
@@ -113,18 +122,24 @@ class Ghost: Monster {
     
     func leftAttack()  {
         self.run(SKAction(named: "ghostLeftAttack")!)
+        homeScene.run(SKAction.playSoundFileNamed("ghostAttack.mp3", waitForCompletion: false))
         if homeScene.player.isAlived{
             homeScene.player.beingHit()
         }
     }
     
     func move()  {
+        //fly sound
+//        if Int.random(in: 0..<10)<2{
+//            homeScene.run(SKAction.playSoundFileNamed("ghostFly.wav", waitForCompletion: false))
+//        }
         //if very close to player then attack and return
         if self.position.distanceTo(homeScene.player.position) < 50 {
             if self.ghostState == .left{leftAttack()}
             else{rightAttack()}
             return
         }
+        
         
         
         //set state

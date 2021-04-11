@@ -43,6 +43,10 @@ class Log: Monster{
                     self.physicsBody = nil
                     //self.run(SKAction.fadeAlpha(by: 0, duration: 1))
                     
+                    
+                    //play dead sound
+                    homeScene.run(SKAction.playSoundFileNamed("logDie.wav", waitForCompletion: true))
+                    
                     let tomb = Tomb()
                     tomb.position = self.position
                     self.homeScene.addChild(tomb)
@@ -112,7 +116,7 @@ class Log: Monster{
     override var sinceStart: TimeInterval!{
         set{
             _sinceStart = newValue
-            if _sinceStart > 2 {
+            if isAlived && _sinceStart > 2 {
                 
                 if logState == .idle {
                     logState = LogState.random()
@@ -138,7 +142,7 @@ class Log: Monster{
         
         let texture = SKTexture(imageNamed: "log_forward_1")
         super.init(texture: texture, color: .clear, size: logSize)
-        self.zPosition = 5
+        self.zPosition = 2
         self.logState = .idle
         self.physicsBody = SKPhysicsBody(rectangleOf: logSize)
         self.physicsBody?.affectedByGravity = false

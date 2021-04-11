@@ -12,7 +12,7 @@ class Tomb: SKSpriteNode {
     init(){
         let texture = SKTexture(imageNamed: "tomb")
         super.init(texture: texture, color: .clear, size: CGSize(width: 30, height: 30))
-        self.zPosition = 4
+        self.zPosition = 1
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

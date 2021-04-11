@@ -167,6 +167,28 @@
 		725A36FB2622B29600340C82 /* slimeDie_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A36F72622B29600340C82 /* slimeDie_3.png */; };
 		725A36FC2622B29600340C82 /* slimeDie_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A36F82622B29600340C82 /* slimeDie_4.png */; };
 		725A36FD2622B29600340C82 /* slimeDie_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A36F92622B29600340C82 /* slimeDie_2.png */; };
+		725A37002622B45700340C82 /* DeadSlime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725A36FF2622B45700340C82 /* DeadSlime.swift */; };
+		725A37032622B68300340C82 /* slimeJump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 725A37022622B68300340C82 /* slimeJump.mp3 */; };
+		725A37062622B72600340C82 /* ghostAttack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 725A37052622B72600340C82 /* ghostAttack.mp3 */; };
+		725A37092622B7A800340C82 /* slimeDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 725A37082622B7A800340C82 /* slimeDie.wav */; };
+		725A370F2622BA6900340C82 /* deadGhost.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A370E2622BA6900340C82 /* deadGhost.png */; };
+		725A37122622BB5800340C82 /* logDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 725A37112622BB5800340C82 /* logDie.wav */; };
+		725A37162622C88400340C82 /* candyBarAttack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 725A37152622C88400340C82 /* candyBarAttack.wav */; };
+		725A37192622CAC600340C82 /* ghostDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 725A37182622CAC600340C82 /* ghostDie.wav */; };
+		725A371F2622CF0800340C82 /* bornEffect_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A371B2622CF0800340C82 /* bornEffect_2.png */; };
+		725A37202622CF0800340C82 /* bornEffect_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A371C2622CF0800340C82 /* bornEffect_4.png */; };
+		725A37212622CF0800340C82 /* bornEffect_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A371D2622CF0800340C82 /* bornEffect_3.png */; };
+		725A37222622CF0800340C82 /* bornEffect_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A371E2622CF0800340C82 /* bornEffect_1.png */; };
+		725A37252622CF1900340C82 /* BornEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725A37242622CF1900340C82 /* BornEffect.swift */; };
+		725A37282622D02C00340C82 /* bornSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 725A37272622D02C00340C82 /* bornSound.wav */; };
+		725A37302622D9B000340C82 /* monsterBornEffect_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A372B2622D9AF00340C82 /* monsterBornEffect_2.png */; };
+		725A37312622D9B000340C82 /* monsterBornEffect_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A372C2622D9AF00340C82 /* monsterBornEffect_4.png */; };
+		725A37322622D9B000340C82 /* monsterBornEffect_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A372D2622D9AF00340C82 /* monsterBornEffect_3.png */; };
+		725A37332622D9B000340C82 /* monsterBornEffect_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A372E2622D9B000340C82 /* monsterBornEffect_1.png */; };
+		725A37342622D9B000340C82 /* monsterBornEffect_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 725A372F2622D9B000340C82 /* monsterBornEffect_5.png */; };
+		725A37382622DA4000340C82 /* MonsterBornEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725A37372622DA4000340C82 /* MonsterBornEffect.swift */; };
+		725A373C2622DFDF00340C82 /* levelUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 725A373B2622DFDE00340C82 /* levelUp.mp3 */; };
+		725A37422622E0F200340C82 /* monsterShow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 725A37412622E0F200340C82 /* monsterShow.mp3 */; };
 		72727448260F761D00141766 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72727447260F761D00141766 /* Weapon.swift */; };
 		7272744B260F774200141766 /* spear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7272744A260F774200141766 /* spear.png */; };
 		72727451260F84AE00141766 /* staffBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72727450260F84AE00141766 /* staffBullet.png */; };
@@ -556,6 +578,28 @@
 		725A36F72622B29600340C82 /* slimeDie_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slimeDie_3.png; sourceTree = "<group>"; };
 		725A36F82622B29600340C82 /* slimeDie_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slimeDie_4.png; sourceTree = "<group>"; };
 		725A36F92622B29600340C82 /* slimeDie_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slimeDie_2.png; sourceTree = "<group>"; };
+		725A36FF2622B45700340C82 /* DeadSlime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadSlime.swift; sourceTree = "<group>"; };
+		725A37022622B68300340C82 /* slimeJump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slimeJump.mp3; sourceTree = "<group>"; };
+		725A37052622B72600340C82 /* ghostAttack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ghostAttack.mp3; sourceTree = "<group>"; };
+		725A37082622B7A800340C82 /* slimeDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slimeDie.wav; sourceTree = "<group>"; };
+		725A370E2622BA6900340C82 /* deadGhost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deadGhost.png; sourceTree = "<group>"; };
+		725A37112622BB5800340C82 /* logDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = logDie.wav; sourceTree = "<group>"; };
+		725A37152622C88400340C82 /* candyBarAttack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = candyBarAttack.wav; sourceTree = "<group>"; };
+		725A37182622CAC600340C82 /* ghostDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ghostDie.wav; sourceTree = "<group>"; };
+		725A371B2622CF0800340C82 /* bornEffect_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bornEffect_2.png; sourceTree = "<group>"; };
+		725A371C2622CF0800340C82 /* bornEffect_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bornEffect_4.png; sourceTree = "<group>"; };
+		725A371D2622CF0800340C82 /* bornEffect_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bornEffect_3.png; sourceTree = "<group>"; };
+		725A371E2622CF0800340C82 /* bornEffect_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bornEffect_1.png; sourceTree = "<group>"; };
+		725A37242622CF1900340C82 /* BornEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BornEffect.swift; sourceTree = "<group>"; };
+		725A37272622D02C00340C82 /* bornSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bornSound.wav; sourceTree = "<group>"; };
+		725A372B2622D9AF00340C82 /* monsterBornEffect_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterBornEffect_2.png; sourceTree = "<group>"; };
+		725A372C2622D9AF00340C82 /* monsterBornEffect_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterBornEffect_4.png; sourceTree = "<group>"; };
+		725A372D2622D9AF00340C82 /* monsterBornEffect_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterBornEffect_3.png; sourceTree = "<group>"; };
+		725A372E2622D9B000340C82 /* monsterBornEffect_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterBornEffect_1.png; sourceTree = "<group>"; };
+		725A372F2622D9B000340C82 /* monsterBornEffect_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterBornEffect_5.png; sourceTree = "<group>"; };
+		725A37372622DA4000340C82 /* MonsterBornEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterBornEffect.swift; sourceTree = "<group>"; };
+		725A373B2622DFDE00340C82 /* levelUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelUp.mp3; sourceTree = "<group>"; };
+		725A37412622E0F200340C82 /* monsterShow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monsterShow.mp3; sourceTree = "<group>"; };
 		72727447260F761D00141766 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7272744A260F774200141766 /* spear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spear.png; sourceTree = "<group>"; };
 		72727450260F84AE00141766 /* staffBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staffBullet.png; sourceTree = "<group>"; };
@@ -821,6 +865,15 @@
 		72500A7E261B3E7C00EAE276 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				725A37412622E0F200340C82 /* monsterShow.mp3 */,
+				725A373B2622DFDE00340C82 /* levelUp.mp3 */,
+				725A37272622D02C00340C82 /* bornSound.wav */,
+				725A37182622CAC600340C82 /* ghostDie.wav */,
+				725A37152622C88400340C82 /* candyBarAttack.wav */,
+				725A37112622BB5800340C82 /* logDie.wav */,
+				725A37082622B7A800340C82 /* slimeDie.wav */,
+				725A37052622B72600340C82 /* ghostAttack.mp3 */,
+				725A37022622B68300340C82 /* slimeJump.mp3 */,
 				72E573792621F7D900FDC1F0 /* hello.wav */,
 				721879842621E5DC00E98B28 /* wind.wav */,
 				72E986062621C78500382784 /* wear.wav */,
@@ -861,6 +914,17 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		725A37362622D9B700340C82 /* Effect */ = {
+			isa = PBXGroup;
+			children = (
+				725A37242622CF1900340C82 /* BornEffect.swift */,
+				72E7F46A261C17A5006A7AB1 /* BulletHitPoint.swift */,
+				720A425726189E7D002D589C /* AttackPoint.swift */,
+				725A37372622DA4000340C82 /* MonsterBornEffect.swift */,
+			);
+			path = Effect;
+			sourceTree = "<group>";
+		};
 		7277731F261ECF60009F823F /* Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,6 +956,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				725A37362622D9B700340C82 /* Effect */,
 				723C7ADC26219DD700D9026C /* Ammo */,
 				723D45C5262157900046ABAC /* Weapon */,
 				7277731F261ECF60009F823F /* Item */,
@@ -922,6 +987,16 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				725A372E2622D9B000340C82 /* monsterBornEffect_1.png */,
+				725A372B2622D9AF00340C82 /* monsterBornEffect_2.png */,
+				725A372D2622D9AF00340C82 /* monsterBornEffect_3.png */,
+				725A372C2622D9AF00340C82 /* monsterBornEffect_4.png */,
+				725A372F2622D9B000340C82 /* monsterBornEffect_5.png */,
+				725A371E2622CF0800340C82 /* bornEffect_1.png */,
+				725A371B2622CF0800340C82 /* bornEffect_2.png */,
+				725A371D2622CF0800340C82 /* bornEffect_3.png */,
+				725A371C2622CF0800340C82 /* bornEffect_4.png */,
+				725A370E2622BA6900340C82 /* deadGhost.png */,
 				725A36F62622B29600340C82 /* slimeDie_1.png */,
 				725A36F92622B29600340C82 /* slimeDie_2.png */,
 				725A36F72622B29600340C82 /* slimeDie_3.png */,
@@ -1251,7 +1326,6 @@
 				72B30113260B7E0B008063D7 /* Door.swift */,
 				72E484A6260F435800D1C2DA /* Heart.swift */,
 				72D638A32619756E00A43D41 /* Dialogue.swift */,
-				720A425726189E7D002D589C /* AttackPoint.swift */,
 				724213DF261A091400CA5F97 /* Box.swift */,
 				724213EF261A0CBE00CA5F97 /* Book.swift */,
 				724213FE261A18DC00CA5F97 /* AbilityHud.swift */,
@@ -1261,7 +1335,7 @@
 				7221055B261ABD4000B2EEAC /* Cave.swift */,
 				72500A63261AFED000EAE276 /* wordButton.swift */,
 				72500A72261B0AEF00EAE276 /* Board.swift */,
-				72E7F46A261C17A5006A7AB1 /* BulletHitPoint.swift */,
+				725A36FF2622B45700340C82 /* DeadSlime.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -1362,12 +1436,14 @@
 				7279A998260DAAC2000EB14F /* player_backward_3.png in Resources */,
 				725A36DC262298C300340C82 /* slimeBlue_11.png in Resources */,
 				720A427E2618CBE9002D589C /* bomb_6.png in Resources */,
+				725A37342622D9B000340C82 /* monsterBornEffect_5.png in Resources */,
 				72E7F4C1261C4217006A7AB1 /* caveDoor_14.png in Resources */,
 				72E7F49E261C3F2A006A7AB1 /* newPortal_1.png in Resources */,
 				7277731B261ECF4B009F823F /* fireBomb_1.png in Resources */,
 				72D92E29261EEC18006DB779 /* rightButton.png in Resources */,
 				729E9432260E33CA00DFF2D0 /* portal_1.png in Resources */,
 				7279A976260D913C000EB14F /* playerAction.sks in Resources */,
+				725A37092622B7A800340C82 /* slimeDie.wav in Resources */,
 				72E7F4BB261C4217006A7AB1 /* caveDoor_2.png in Resources */,
 				72E7F473261C1D88006A7AB1 /* fireHit.mp3 in Resources */,
 				72FE15D3261DE27E008870C6 /* coinDrop_2.png in Resources */,
@@ -1386,6 +1462,7 @@
 				725A36ED262298C300340C82 /* slimeRed_8.png in Resources */,
 				72FE15D2261DE27E008870C6 /* heartDrop_2.png in Resources */,
 				72500A79261B131100EAE276 /* breakRoom.png in Resources */,
+				725A371F2622CF0800340C82 /* bornEffect_2.png in Resources */,
 				720A42632618A81D002D589C /* fire_7.png in Resources */,
 				720A427A2618CBE9002D589C /* bomb_3.png in Resources */,
 				7240ED802620A8D300745815 /* ghostLeftAttack_3.png in Resources */,
@@ -1402,6 +1479,7 @@
 				72E48428260EF83D00D1C2DA /* background_6.png in Resources */,
 				725A36F3262298C300340C82 /* slimeRed_11.png in Resources */,
 				7221056F261AF14A00B2EEAC /* soilder_4.png in Resources */,
+				725A373C2622DFDF00340C82 /* levelUp.mp3 in Resources */,
 				7277731C261ECF4B009F823F /* fireBomb_2.png in Resources */,
 				7240ED3E2620848200745815 /* slime_7.png in Resources */,
 				72E48420260EEE5000D1C2DA /* Level_1_3.sks in Resources */,
@@ -1409,6 +1487,7 @@
 				72E7F4C0261C4217006A7AB1 /* caveDoor_13.png in Resources */,
 				72D3A552260B575D00E65281 /* popo.sks in Resources */,
 				720A425426189C31002D589C /* attack_2.png in Resources */,
+				725A37212622CF0800340C82 /* bornEffect_3.png in Resources */,
 				72E48493260F338C00D1C2DA /* two.png in Resources */,
 				72D6388D26196A4700A43D41 /* npcRight_4.png in Resources */,
 				7240ED7E2620A8D300745815 /* ghostLeftAttack_5.png in Resources */,
@@ -1442,6 +1521,7 @@
 				72E4849D260F338C00D1C2DA /* zero.png in Resources */,
 				7240ED7C2620A8D300745815 /* ghostLeftAttack_2.png in Resources */,
 				724213FA261A18D000CA5F97 /* point_white.png in Resources */,
+				725A37332622D9B000340C82 /* monsterBornEffect_1.png in Resources */,
 				7240ED3C2620848200745815 /* slime_6.png in Resources */,
 				725A36D7262298C300340C82 /* slimePurple_3.png in Resources */,
 				7240ED372620848200745815 /* slime_11.png in Resources */,
@@ -1458,6 +1538,7 @@
 				72052D642620002400808095 /* throw.wav in Resources */,
 				72E48498260F338C00D1C2DA /* five.png in Resources */,
 				720A426D2618C7C0002D589C /* logDie_2.png in Resources */,
+				725A37312622D9B000340C82 /* monsterBornEffect_4.png in Resources */,
 				72500A8C261B585700EAE276 /* type2.mp3 in Resources */,
 				720A42702618C7C0002D589C /* logDie_3.png in Resources */,
 				72210570261AF14A00B2EEAC /* soilder_1.png in Resources */,
@@ -1486,6 +1567,7 @@
 				72E4849C260F338C00D1C2DA /* one.png in Resources */,
 				72D6389526196A6F00A43D41 /* npcAction.sks in Resources */,
 				72E48417260EEDAA00D1C2DA /* background_4.png in Resources */,
+				725A37192622CAC600340C82 /* ghostDie.wav in Resources */,
 				725A36F2262298C300340C82 /* slimePurple_9.png in Resources */,
 				72D3A553260B575D00E65281 /* Assets.xcassets in Resources */,
 				72D6388E26196A4700A43D41 /* npcLeft_4.png in Resources */,
@@ -1519,7 +1601,9 @@
 				725A36EE262298C300340C82 /* slimeBlue_4.png in Resources */,
 				7276B4ED2619F65700C4918F /* Level_4.sks in Resources */,
 				72E48495260F338C00D1C2DA /* heart_3.png in Resources */,
+				725A37032622B68300340C82 /* slimeJump.mp3 in Resources */,
 				729E9424260E2FBE00DFF2D0 /* new_right_4.png in Resources */,
+				725A37222622CF0800340C82 /* bornEffect_1.png in Resources */,
 				727F3569261EADB100BB8E02 /* lightening.png in Resources */,
 				72E48492260F338C00D1C2DA /* three.png in Resources */,
 				725A36FA2622B29600340C82 /* slimeDie_1.png in Resources */,
@@ -1530,7 +1614,9 @@
 				723C7AD326218B6B00D9026C /* candy_1.png in Resources */,
 				727F3562261EACEC00BB8E02 /* rHandler.png in Resources */,
 				72E7F4C6261C4694006A7AB1 /* playerWalk.mp3 in Resources */,
+				725A37422622E0F200340C82 /* monsterShow.mp3 in Resources */,
 				72D6388C26196A4700A43D41 /* npcLeft_2.png in Resources */,
+				725A37322622D9B000340C82 /* monsterBornEffect_3.png in Resources */,
 				72AC0194262060AA007F6133 /* drink.mp3 in Resources */,
 				72FE15E5261DE81B008870C6 /* healParticle.sks in Resources */,
 				720A425526189C31002D589C /* attack_5.png in Resources */,
@@ -1560,6 +1646,7 @@
 				724213EA261A0CB300CA5F97 /* book_2.png in Resources */,
 				72210550261AA6B200B2EEAC /* pressButton.png in Resources */,
 				72E7F468261C1798006A7AB1 /* bulletHitPoint_1.png in Resources */,
+				725A37282622D02C00340C82 /* bornSound.wav in Resources */,
 				720A42652618A81D002D589C /* fire_4.png in Resources */,
 				72E48456260F110600D1C2DA /* log_backward_1.png in Resources */,
 				72E48432260EFCAF00D1C2DA /* Level_1_4.sks in Resources */,
@@ -1568,6 +1655,7 @@
 				72500A7C261B3CA900EAE276 /* rainy.mp3 in Resources */,
 				72CF1A91261F55D000FA90BE /* bottle.wav in Resources */,
 				72E48468260F11D700D1C2DA /* monsterAction.sks in Resources */,
+				725A37162622C88400340C82 /* candyBarAttack.wav in Resources */,
 				7240ED7A2620A8D300745815 /* ghostRightAttack_3.png in Resources */,
 				7272744B260F774200141766 /* spear.png in Resources */,
 				72E4842B260EF85700D1C2DA /* Level_3.sks in Resources */,
@@ -1596,9 +1684,11 @@
 				72E7F49B261C3F2A006A7AB1 /* newPortal_4.png in Resources */,
 				725A36EA262298C300340C82 /* slimePurple_1.png in Resources */,
 				729E941B260E2FBE00DFF2D0 /* new_forward_3.png in Resources */,
+				725A37122622BB5800340C82 /* logDie.wav in Resources */,
 				720A42822618CD0D002D589C /* tomb.png in Resources */,
 				72E4845A260F110600D1C2DA /* log_backward_3.png in Resources */,
 				725A36E5262298C300340C82 /* slimePurple_5.png in Resources */,
+				725A37062622B72600340C82 /* ghostAttack.mp3 in Resources */,
 				720A42622618A81D002D589C /* fire_6.png in Resources */,
 				72E7F485261C2DD3006A7AB1 /* portal.mp3 in Resources */,
 				725A36DB262298C300340C82 /* slimeRed_6.png in Resources */,
@@ -1615,6 +1705,7 @@
 				7279A980260D93D4000EB14F /* player_right_1.png in Resources */,
 				725A36F4262298C300340C82 /* slimeBlue_3.png in Resources */,
 				72AC01972620644F007F6133 /* land.wav in Resources */,
+				725A370F2622BA6900340C82 /* deadGhost.png in Resources */,
 				725A36FB2622B29600340C82 /* slimeDie_3.png in Resources */,
 				729E941C260E2FBE00DFF2D0 /* new_forward_2.png in Resources */,
 				725A36FC2622B29600340C82 /* slimeDie_4.png in Resources */,
@@ -1626,6 +1717,8 @@
 				72500A70261B0AE600EAE276 /* homeBoard.png in Resources */,
 				72E48497260F338C00D1C2DA /* seven.png in Resources */,
 				724213EB261A0CB300CA5F97 /* platform.png in Resources */,
+				725A37302622D9B000340C82 /* monsterBornEffect_2.png in Resources */,
+				725A37202622CF0800340C82 /* bornEffect_4.png in Resources */,
 				72B4BD7D260B4B570063ED38 /* bullet.png in Resources */,
 				7279A981260D93D4000EB14F /* player_right_3.png in Resources */,
 				724213D9261A064700CA5F97 /* box_1.png in Resources */,
@@ -1699,6 +1792,7 @@
 				72E9860D2621C8E500382784 /* Sword.swift in Sources */,
 				724213FF261A18DC00CA5F97 /* AbilityHud.swift in Sources */,
 				72D3A55A260B618100E65281 /* Map.swift in Sources */,
+				725A37382622DA4000340C82 /* MonsterBornEffect.swift in Sources */,
 				7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */,
 				7240ED44262085F900745815 /* Slime.swift in Sources */,
 				72777321261ECF6D009F823F /* FireBomb.swift in Sources */,
@@ -1717,6 +1811,8 @@
 				72210556261AB33700B2EEAC /* CancelButton.swift in Sources */,
 				72727448260F761D00141766 /* Weapon.swift in Sources */,
 				72210573261AF18C00B2EEAC /* Soilder.swift in Sources */,
+				725A37252622CF1900340C82 /* BornEffect.swift in Sources */,
+				725A37002622B45700340C82 /* DeadSlime.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
 				723C7ADA26218B7800D9026C /* Candy.swift in Sources */,
 				723C7AC92621871500D9026C /* CandyBar.swift in Sources */,

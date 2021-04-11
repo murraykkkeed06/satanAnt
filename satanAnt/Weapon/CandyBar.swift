@@ -15,7 +15,7 @@ class CandyBar: Weapon {
         let texture = SKTexture(imageNamed: "candyBar")
         super.init(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         self.name = "candyBar"
-        self.zPosition = 6
+        self.zPosition = 3
         self.attackPoint = 0.25
         self.weaponType = .candyBar
         
@@ -51,7 +51,7 @@ class CandyBar: Weapon {
             homeScene.addChild(candy)
             candy.flyTo(direction: direction)
             
-            let sound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
+            let sound = SKAction.playSoundFileNamed("candyBarAttack.wav", waitForCompletion: false)
             homeScene.run(sound)
             
             

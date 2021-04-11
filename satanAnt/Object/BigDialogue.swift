@@ -27,7 +27,7 @@ class BigDialogue: SKSpriteNode {
         //super.init(texture: texture, color: .clear, size: CGSize(width: 412, height: 124))
         super.init(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
         //self.position = CGPoint(x: 337, y: 116)
-        self.zPosition = 20
+        self.zPosition = 200
         self.name = "bigDialgoue"
         self.homeScene = scene
         self.anchorPoint = CGPoint(x: 0, y: 1)
@@ -54,7 +54,7 @@ class BigDialogue: SKSpriteNode {
             let word = SKLabelNode.init(fontNamed: "Chalkduster")
             word.fontSize = 16
             word.fontColor = .black
-            word.zPosition = 21
+            word.zPosition = 201
             //word.alpha = 0
             let index = newWordString.index(newWordString.startIndex, offsetBy: i)
             word.text = "\(newWordString[index])"

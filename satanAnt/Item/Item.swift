@@ -79,7 +79,7 @@ func fromTypeTexture(type: ItemType) -> SKNode {
     item.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 30))
     item.physicsBody?.affectedByGravity = true
     item.physicsBody?.contactTestBitMask = 1 + 4
-    item.physicsBody?.collisionBitMask = 0
+    item.physicsBody?.collisionBitMask = 2
     item.physicsBody?.categoryBitMask = 128
     item.physicsBody?.allowsRotation = false
     item.physicsBody?.mass = 0.5

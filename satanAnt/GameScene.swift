@@ -84,6 +84,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bigDialogue: BigDialogue!
     
+    var bornEffect: BornEffect!
+    
     var popo: Popo!
     var box: Box!
     var boxIsSet = false
@@ -183,7 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        
+        setupBornEffect()
         
         setupNpc()
         
@@ -367,9 +369,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         checkBoxAround()
         
-        //print("\(player.itemList.count),\(player.inItemListNumber)")
+        if bornEffect != nil{
+            if sinceStart<0.1{
+                bornEffect.position = player.position - CGPoint(x: 0, y: 10)
+            }
+            if sinceStart > 3{
+                bornEffect.removeFromParent()
+            }
+        }
+        
+        
     }
     
+    //update end
     
     func didBegin(_ contact: SKPhysicsContact) {
         let nodeA = contact.bodyA.node
@@ -388,6 +400,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+    }
+    
+    func setupBornEffect()  {
+        bornEffect = BornEffect(scene: self)
+        //bornEffect.position = player.position - CGPoint(x: 0, y: 10)
+        addChild(bornEffect)
     }
     
     func setupCaveMonster(level: Int)  {
@@ -1377,12 +1395,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             //let newLog = Log(scene: self)
             
-            let monster = fromType(type: MonsterType.random(), homeScene: self)
-            monster.position = CGPoint(x: bornX, y: bornY)
-            addChild(monster)
-            monsterList.append(monster)
-            //ogList.append(newLog)
+            let wait = SKAction.wait(forDuration: TimeInterval.random(in: 0..<2))
             
+            let born = SKAction.run({
+                let monster = fromType(type: MonsterType.random(), homeScene: self)
+                monster.position = CGPoint(x: bornX, y: bornY)
+                //self.addChild(monster)
+                self.monsterBorn(monster: monster)
+                self.monsterList.append(monster)
+            })
+           
+            self.run(SKAction.sequence([wait,born]))
         }
         
 
@@ -1391,6 +1414,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    
+    func monsterBorn(monster: SKNode)  {
+        let bornEffect = MonsterBornEffect(scene: self)
+        bornEffect.position = monster.position
+        addChild(bornEffect)
+        
+        let wait = SKAction.wait(forDuration: 1)
+        
+        let born = SKAction.run({
+            self.addChild(monster)
+
+        })
+
+        self.run(SKAction.sequence([SKAction.run(bornEffect.start),wait,born]))
+        
+    }
     
     
     func setupMap(mapNumber: Int) {
@@ -1420,7 +1459,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if map[y][x] != 0 {
                     let newRoom = SKSpriteNode(color: .white, size: CGSize(width: 20, height: 20))
                     newRoom.name = "newRoom"
-                    newRoom.zPosition = 2
+                    newRoom.zPosition = 100
                     newRoom.alpha = 0.5
                     //player room
                     

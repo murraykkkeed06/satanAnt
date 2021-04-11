@@ -26,7 +26,7 @@ class WordButton: SKSpriteNode {
         }
         
         super.init(texture: newTexture, color: .clear, size: CGSize(width: 60, height: 40))
-        self.zPosition = 21
+        self.zPosition = 201
         self.isUserInteractionEnabled = true
     }
     

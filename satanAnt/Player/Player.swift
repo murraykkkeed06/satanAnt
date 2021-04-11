@@ -198,6 +198,7 @@ class Player: SKSpriteNode {
             if _exp > 100 {
                 self.level += 1
                 self.levelChanged = true
+                homeScene.run(SKAction.playSoundFileNamed("levelUp.mp3", waitForCompletion: true))
                 _exp = _exp - 100
             }
         }
@@ -295,7 +296,7 @@ class Player: SKSpriteNode {
         
         let texture = SKTexture(imageNamed: "new_forward_1")
         super.init(texture: texture, color: .clear, size: playerSize)
-        self.zPosition = 6
+        self.zPosition = 2
         self.state = .idle
         self._facing = CGPoint(x: 0, y: 0)
         //self.idleStart = 0

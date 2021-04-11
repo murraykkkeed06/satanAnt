@@ -41,16 +41,23 @@ class Slime: Monster {
                     self.physicsBody = nil
                     //self.run(SKAction.fadeAlpha(by: 0, duration: 1))
                     
-                    let tomb = Tomb()
-                    tomb.position = self.position
-                    self.homeScene.addChild(tomb)
+//                    let tomb = Tomb()
+//                    tomb.position = self.position
+//                    self.homeScene.addChild(tomb)
+                    
+                    let deadSlime = DeadSlime()
+                    deadSlime.position = self.position
+                    homeScene.addChild(deadSlime)
+                    
+                    homeScene.run(SKAction.playSoundFileNamed("slimeDie.wav", waitForCompletion: true))
                     
                     bornDrop(num: 1, position: self.position, homeScene: homeScene)
                     bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
                     
-                    
+                    //let dieAction = SKAction(named: "slimeDie")!
                     let dieAction = SKAction(named: "monsterDie")!
-                    self.run(SKAction.sequence([dieAction,SKAction.removeFromParent()]))
+                    
+                    self.run(SKAction.sequence([dieAction,SKAction.run(deadSlime.dieAction),SKAction.removeFromParent()]))
                     //self.removeFromParent()
                     
                 }
@@ -67,7 +74,7 @@ class Slime: Monster {
     override var sinceStart: TimeInterval!{
         set{
             _sinceStart = newValue
-            if _sinceStart > TimeInterval.random(in: 2..<3) {
+            if isAlived && _sinceStart > TimeInterval.random(in: 2..<3) {
                 _sinceStart = 0
                 move()
             }
@@ -110,7 +117,7 @@ class Slime: Monster {
         self.physicsBody?.contactTestBitMask = 1
         self.physicsBody?.categoryBitMask = 4
         self.physicsBody?.collisionBitMask = 2
-        self.zPosition = 10
+        self.zPosition = 2
         self.homeScene = scene
         self.isAlived = true
         self.name = "slime"
@@ -135,6 +142,7 @@ class Slime: Monster {
         
         self.run(SKAction.moveBy(x: x * range, y: y * range, duration: duration))
        
+        homeScene.run(SKAction.playSoundFileNamed("slimeJump.mp3", waitForCompletion: false))
     }
     
     
