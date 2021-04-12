@@ -21,7 +21,7 @@ class Staff: Weapon {
         let texture = SKTexture(imageNamed: "staff")
         super.init(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         self.name = "staff"
-        self.zPosition = 3
+        self.zPosition = 1
         
         self.attackPoint = 0.25
         self.attackSpeed = 0.5

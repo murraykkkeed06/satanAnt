@@ -21,6 +21,7 @@ class VillageGirl: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.pinned = true
         self.physicsBody?.allowsRotation = false
+        self.name = "villageGirl"
     }
     
     required init?(coder aDecoder: NSCoder) {

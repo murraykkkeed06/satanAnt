@@ -19,6 +19,7 @@ class CanonBall: Ammo {
         self.zPosition = 2
         self.physicsBody = SKPhysicsBody(rectangleOf: cannonBallSize)
         self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
         self.physicsBody?.contactTestBitMask = 1 + 4 + 2
         self.physicsBody?.categoryBitMask = 16
         self.physicsBody?.collisionBitMask = 0

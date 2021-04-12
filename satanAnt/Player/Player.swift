@@ -117,6 +117,9 @@ class Player: SKSpriteNode {
     var weapon: Weapon!
     var weaponChanged = true
     
+    var hat: Hat!
+    var hatChanged = true
+    
     var item: Item!
     var itemChanged = true
     
@@ -313,7 +316,7 @@ class Player: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.collisionBitMask = 2
+        self.physicsBody?.collisionBitMask = 2 
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 3
         self.name = "player"
@@ -322,7 +325,7 @@ class Player: SKSpriteNode {
         self.health = bornHealth
         self.money = 178
         self.weapon = fromType(type: WeaponType.random())
-
+        self.hat = PlantDog()
         
         self.itemList.append(fromType(type: ItemType.random()))
         self.itemList.append(fromType(type: ItemType.random()))

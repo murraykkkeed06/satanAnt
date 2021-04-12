@@ -85,6 +85,7 @@ class Npc: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.contactTestBitMask = 0
         self.physicsBody?.isDynamic = false
+        self.name = "npc"
     }
     
     required init?(coder aDecoder: NSCoder) {

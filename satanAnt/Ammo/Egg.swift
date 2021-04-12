@@ -11,8 +11,8 @@ import SpriteKit
 class Egg: Ammo {
     
     var eggSize = CGSize(width: 15, height: 20)
-    
-    init(){
+    var homeScene: GameScene!
+    init(scene: GameScene){
         let texture = SKTexture(imageNamed: "egg")
         super.init(texture: texture, color: .clear, size: eggSize)
         self.zPosition = 500
@@ -26,7 +26,8 @@ class Egg: Ammo {
         self.physicsBody?.collisionBitMask = 0
         self.name = "egg"
         removeAfter()
-        
+        self.homeScene = scene
+        self.homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8);
     }
     
     required init?(coder aDecoder: NSCoder) {

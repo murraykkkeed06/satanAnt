@@ -197,6 +197,16 @@
 		725A37382622DA4000340C82 /* MonsterBornEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725A37372622DA4000340C82 /* MonsterBornEffect.swift */; };
 		725A373C2622DFDF00340C82 /* levelUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 725A373B2622DFDE00340C82 /* levelUp.mp3 */; };
 		725A37422622E0F200340C82 /* monsterShow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 725A37412622E0F200340C82 /* monsterShow.mp3 */; };
+		7264DBFD26247A3800D7722B /* bird.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7264DBFC26247A3800D7722B /* bird.wav */; };
+		7264DC0726247FB500D7722B /* plantDog_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DBFF26247FB500D7722B /* plantDog_7.png */; };
+		7264DC0826247FB500D7722B /* plantDog_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DC0026247FB500D7722B /* plantDog_8.png */; };
+		7264DC0926247FB500D7722B /* plantDog_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DC0126247FB500D7722B /* plantDog_4.png */; };
+		7264DC0A26247FB500D7722B /* plantDog_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DC0226247FB500D7722B /* plantDog_2.png */; };
+		7264DC0B26247FB500D7722B /* plantDog_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DC0326247FB500D7722B /* plantDog_3.png */; };
+		7264DC0C26247FB500D7722B /* plantDog_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DC0426247FB500D7722B /* plantDog_6.png */; };
+		7264DC0D26247FB500D7722B /* plantDog_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DC0526247FB500D7722B /* plantDog_5.png */; };
+		7264DC0E26247FB500D7722B /* plantDog_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7264DC0626247FB500D7722B /* plantDog_1.png */; };
+		7264DC1626247FDF00D7722B /* PlantDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7264DC1526247FDF00D7722B /* PlantDog.swift */; };
 		72727448260F761D00141766 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72727447260F761D00141766 /* Weapon.swift */; };
 		7272744B260F774200141766 /* spear.png in Resources */ = {isa = PBXBuildFile; fileRef = 7272744A260F774200141766 /* spear.png */; };
 		72727451260F84AE00141766 /* staffBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72727450260F84AE00141766 /* staffBullet.png */; };
@@ -224,6 +234,9 @@
 		7279A998260DAAC2000EB14F /* player_backward_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279A995260DAAC1000EB14F /* player_backward_3.png */; };
 		7279A999260DAAC2000EB14F /* player_backward_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279A996260DAAC1000EB14F /* player_backward_2.png */; };
 		7279A99A260DAAC2000EB14F /* player_backward_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279A997260DAAC2000EB14F /* player_backward_1.png */; };
+		727B279B2624836700240223 /* Hat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B279A2624836700240223 /* Hat.swift */; };
+		727B279F26248C2000240223 /* scarecrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 727B279E26248C2000240223 /* scarecrow.png */; };
+		727B27A226248C4500240223 /* Scarecrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B27A126248C4500240223 /* Scarecrow.swift */; };
 		727F3562261EACEC00BB8E02 /* rHandler.png in Resources */ = {isa = PBXBuildFile; fileRef = 727F3561261EACEC00BB8E02 /* rHandler.png */; };
 		727F3569261EADB100BB8E02 /* lightening.png in Resources */ = {isa = PBXBuildFile; fileRef = 727F3568261EADB100BB8E02 /* lightening.png */; };
 		727F356C261EB64300BB8E02 /* fire.wav in Resources */ = {isa = PBXBuildFile; fileRef = 727F356B261EB64300BB8E02 /* fire.wav */; };
@@ -640,6 +653,16 @@
 		725A37372622DA4000340C82 /* MonsterBornEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterBornEffect.swift; sourceTree = "<group>"; };
 		725A373B2622DFDE00340C82 /* levelUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelUp.mp3; sourceTree = "<group>"; };
 		725A37412622E0F200340C82 /* monsterShow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monsterShow.mp3; sourceTree = "<group>"; };
+		7264DBFC26247A3800D7722B /* bird.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bird.wav; sourceTree = "<group>"; };
+		7264DBFF26247FB500D7722B /* plantDog_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_7.png; sourceTree = "<group>"; };
+		7264DC0026247FB500D7722B /* plantDog_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_8.png; sourceTree = "<group>"; };
+		7264DC0126247FB500D7722B /* plantDog_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_4.png; sourceTree = "<group>"; };
+		7264DC0226247FB500D7722B /* plantDog_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_2.png; sourceTree = "<group>"; };
+		7264DC0326247FB500D7722B /* plantDog_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_3.png; sourceTree = "<group>"; };
+		7264DC0426247FB500D7722B /* plantDog_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_6.png; sourceTree = "<group>"; };
+		7264DC0526247FB500D7722B /* plantDog_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_5.png; sourceTree = "<group>"; };
+		7264DC0626247FB500D7722B /* plantDog_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plantDog_1.png; sourceTree = "<group>"; };
+		7264DC1526247FDF00D7722B /* PlantDog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDog.swift; sourceTree = "<group>"; };
 		72727447260F761D00141766 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7272744A260F774200141766 /* spear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spear.png; sourceTree = "<group>"; };
 		72727450260F84AE00141766 /* staffBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staffBullet.png; sourceTree = "<group>"; };
@@ -667,6 +690,9 @@
 		7279A995260DAAC1000EB14F /* player_backward_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_backward_3.png; sourceTree = "<group>"; };
 		7279A996260DAAC1000EB14F /* player_backward_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_backward_2.png; sourceTree = "<group>"; };
 		7279A997260DAAC2000EB14F /* player_backward_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_backward_1.png; sourceTree = "<group>"; };
+		727B279A2624836700240223 /* Hat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hat.swift; sourceTree = "<group>"; };
+		727B279E26248C2000240223 /* scarecrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scarecrow.png; sourceTree = "<group>"; };
+		727B27A126248C4500240223 /* Scarecrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scarecrow.swift; sourceTree = "<group>"; };
 		727F3561261EACEC00BB8E02 /* rHandler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rHandler.png; sourceTree = "<group>"; };
 		727F3568261EADB100BB8E02 /* lightening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightening.png; sourceTree = "<group>"; };
 		727F356B261EB64300BB8E02 /* fire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fire.wav; sourceTree = "<group>"; };
@@ -931,6 +957,7 @@
 		72500A7E261B3E7C00EAE276 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				7264DBFC26247A3800D7722B /* bird.wav */,
 				7281EBD52623446700EE69F9 /* canonFire.wav */,
 				725A37412622E0F200340C82 /* monsterShow.mp3 */,
 				725A373B2622DFDE00340C82 /* levelUp.mp3 */,
@@ -993,6 +1020,15 @@
 			path = Effect;
 			sourceTree = "<group>";
 		};
+		7264DC1426247FD000D7722B /* Hat */ = {
+			isa = PBXGroup;
+			children = (
+				7264DC1526247FDF00D7722B /* PlantDog.swift */,
+				727B279A2624836700240223 /* Hat.swift */,
+			);
+			path = Hat;
+			sourceTree = "<group>";
+		};
 		7277731F261ECF60009F823F /* Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -1033,6 +1069,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				7264DC1426247FD000D7722B /* Hat */,
 				7281EBC726232DED00EE69F9 /* Obstacle */,
 				725A37362622D9B700340C82 /* Effect */,
 				723C7ADC26219DD700D9026C /* Ammo */,
@@ -1065,6 +1102,15 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				727B279E26248C2000240223 /* scarecrow.png */,
+				7264DC0626247FB500D7722B /* plantDog_1.png */,
+				7264DC0226247FB500D7722B /* plantDog_2.png */,
+				7264DC0326247FB500D7722B /* plantDog_3.png */,
+				7264DC0126247FB500D7722B /* plantDog_4.png */,
+				7264DC0526247FB500D7722B /* plantDog_5.png */,
+				7264DC0426247FB500D7722B /* plantDog_6.png */,
+				7264DBFF26247FB500D7722B /* plantDog_7.png */,
+				7264DC0026247FB500D7722B /* plantDog_8.png */,
 				724470372624572D00FF052E /* egg.png */,
 				724470292624545100FF052E /* bird_1.png */,
 				7244702B2624545100FF052E /* bird_2.png */,
@@ -1450,6 +1496,7 @@
 				72E48442260F0F7000D1C2DA /* Log.swift */,
 				7240ED43262085F900745815 /* Slime.swift */,
 				7240ED662620A16800745815 /* Ghost.swift */,
+				727B27A126248C4500240223 /* Scarecrow.swift */,
 				7240ED46262096D200745815 /* Monster.swift */,
 			);
 			path = monster;
@@ -1552,6 +1599,7 @@
 				72E7F4BB261C4217006A7AB1 /* caveDoor_2.png in Resources */,
 				72E7F473261C1D88006A7AB1 /* fireHit.mp3 in Resources */,
 				72FE15D3261DE27E008870C6 /* coinDrop_2.png in Resources */,
+				7264DC0826247FB500D7722B /* plantDog_8.png in Resources */,
 				72210567261AC30F00B2EEAC /* cave.png in Resources */,
 				72E7F4BC261C4217006A7AB1 /* caveDoor_7.png in Resources */,
 				725A36E9262298C300340C82 /* slimeBlue_5.png in Resources */,
@@ -1632,6 +1680,7 @@
 				725A37332622D9B000340C82 /* monsterBornEffect_1.png in Resources */,
 				7240ED3C2620848200745815 /* slime_6.png in Resources */,
 				725A36D7262298C300340C82 /* slimePurple_3.png in Resources */,
+				7264DC0926247FB500D7722B /* plantDog_4.png in Resources */,
 				7240ED372620848200745815 /* slime_11.png in Resources */,
 				725A36FD2622B29600340C82 /* slimeDie_2.png in Resources */,
 				72D6389126196A4700A43D41 /* npcRight_3.png in Resources */,
@@ -1653,9 +1702,11 @@
 				72500A8C261B585700EAE276 /* type2.mp3 in Resources */,
 				720A42702618C7C0002D589C /* logDie_3.png in Resources */,
 				72210570261AF14A00B2EEAC /* soilder_1.png in Resources */,
+				7264DC0C26247FB500D7722B /* plantDog_6.png in Resources */,
 				72E7F4C9261C46C8006A7AB1 /* logWalk.wav in Resources */,
 				72500A67261B03D000EAE276 /* caveRoom.png in Resources */,
 				7240ED402620848200745815 /* slime_9.png in Resources */,
+				727B279F26248C2000240223 /* scarecrow.png in Resources */,
 				72FE15E2261DE790008870C6 /* heal.mp3 in Resources */,
 				729E9426260E2FBE00DFF2D0 /* new_backward_1.png in Resources */,
 				72500A6F261B0AE600EAE276 /* continueBoard.png in Resources */,
@@ -1673,8 +1724,10 @@
 				72E7F4BF261C4217006A7AB1 /* caveDoor_3.png in Resources */,
 				72E7F488261C3698006A7AB1 /* portalBorn.wav in Resources */,
 				720A42662618A81D002D589C /* fire_5.png in Resources */,
+				7264DC0A26247FB500D7722B /* plantDog_2.png in Resources */,
 				720A424A26174C44002D589C /* hit.wav in Resources */,
 				72E48425260EF26500D1C2DA /* background_1.png in Resources */,
+				7264DC0B26247FB500D7722B /* plantDog_3.png in Resources */,
 				7281EBC226232DD800EE69F9 /* canonFire_3.png in Resources */,
 				72E4849C260F338C00D1C2DA /* one.png in Resources */,
 				72D6389526196A6F00A43D41 /* npcAction.sks in Resources */,
@@ -1730,6 +1783,7 @@
 				723C7AD326218B6B00D9026C /* candy_1.png in Resources */,
 				727F3562261EACEC00BB8E02 /* rHandler.png in Resources */,
 				7281EBAC26232D9900EE69F9 /* canonLeft_4.png in Resources */,
+				7264DC0726247FB500D7722B /* plantDog_7.png in Resources */,
 				72E7F4C6261C4694006A7AB1 /* playerWalk.mp3 in Resources */,
 				725A37422622E0F200340C82 /* monsterShow.mp3 in Resources */,
 				72D6388C26196A4700A43D41 /* npcLeft_2.png in Resources */,
@@ -1744,6 +1798,7 @@
 				72D6388726196A4700A43D41 /* npcBack_2.png in Resources */,
 				724213ED261A0CB300CA5F97 /* book_5.png in Resources */,
 				7279A97A260D92ED000EB14F /* player_forward_3.png in Resources */,
+				7264DC0E26247FB500D7722B /* plantDog_1.png in Resources */,
 				72E573722621F52500FDC1F0 /* villageGirl.png in Resources */,
 				7244702E2624545100FF052E /* bird_1.png in Resources */,
 				72E7F4BA261C4217006A7AB1 /* caveDoor_6.png in Resources */,
@@ -1786,10 +1841,12 @@
 				72FE15D4261DE27E008870C6 /* heartDrop_4.png in Resources */,
 				72E484AB260F43AA00D1C2DA /* heart_2.png in Resources */,
 				720A427F2618CBE9002D589C /* bomb_2.png in Resources */,
+				7264DC0D26247FB500D7722B /* plantDog_5.png in Resources */,
 				72777324261ED0C0009F823F /* potion.png in Resources */,
 				7240ED862620A8D300745815 /* ghostRight_2.png in Resources */,
 				7279A999260DAAC2000EB14F /* player_backward_2.png in Resources */,
 				72E7F4B3261C4217006A7AB1 /* caveDoor_9.png in Resources */,
+				7264DBFD26247A3800D7722B /* bird.wav in Resources */,
 				72777314261EC7CD009F823F /* coin.wav in Resources */,
 				72E48435260EFEE700D1C2DA /* background_8.png in Resources */,
 				724213E8261A0CB300CA5F97 /* book_4.png in Resources */,
@@ -1935,6 +1992,7 @@
 				72B46653260B2C5E00BC5E56 /* Player.swift in Sources */,
 				723C7AC32621735700D9026C /* Drop.swift in Sources */,
 				72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */,
+				727B279B2624836700240223 /* Hat.swift in Sources */,
 				72777327261ED0F3009F823F /* Potion.swift in Sources */,
 				72D638A42619756E00A43D41 /* Dialogue.swift in Sources */,
 				7240ED672620A16800745815 /* Ghost.swift in Sources */,
@@ -1955,6 +2013,7 @@
 				72D01BAC2622EFE700459733 /* Portal.swift in Sources */,
 				72FE15D9261DE29C008870C6 /* HeartDrop.swift in Sources */,
 				723C7ADE26219E0F00D9026C /* Ammo.swift in Sources */,
+				727B27A226248C4500240223 /* Scarecrow.swift in Sources */,
 				72D638AC261978B700A43D41 /* BigDialogue.swift in Sources */,
 				723D45C92621580B0046ABAC /* Staff.swift in Sources */,
 				724470352624545E00FF052E /* Bird.swift in Sources */,
@@ -1967,6 +2026,7 @@
 				72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */,
 				72500A64261AFED000EAE276 /* wordButton.swift in Sources */,
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
+				7264DC1626247FDF00D7722B /* PlantDog.swift in Sources */,
 				720A425826189E7D002D589C /* AttackPoint.swift in Sources */,
 				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,
 				7244703C2624574D00FF052E /* Egg.swift in Sources */,

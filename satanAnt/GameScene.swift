@@ -77,9 +77,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var inDialogue = false
     
     var book: Book!
-    var npc: Npc!
+    
     var soilder: Soilder!
-    var girl: VillageGirl!
+    
     var cave: Cave!
     
     var levelNumber: Num!
@@ -89,8 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bornEffect: BornEffect!
     
     var popo: Popo!
-    var box: Box!
-    var boxIsSet = false
+    
+    
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
         
@@ -158,16 +158,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
             }
             if isCaveRoom{setupCave()}
-            if isBornRoom{
-                box = Box()
-                box.position = CGPoint(x: 320, y: 120)
-                addChild(box)
+            
+            for node in self.children{
+                if node.name == "boxBorn"{
+                    let box = Box()
+                    box.position = node.position
+                    addChild(box)
+                }
+                if node.name == "girlBorn"{
+                    let girl = VillageGirl()
+                    girl.position = node.position
+                    addChild(girl)
+                }
+                if node.name == "scarecrowBorn"{
+                    let scarecrow = Scarecrow(scene: self)
+                    scarecrow.position = node.position
+                    addChild(scarecrow)
+                    monsterList.append(scarecrow)
+                }
             }
-            if isBonusRoom{
-                girl = VillageGirl()
-                girl.position = CGPoint(x: 350, y: 110)
-                addChild(girl)
-            }
+            
+            
+
+            
+//            if isBedRoom{
+//                let hat = PlantDog(scene: self)
+//                hat.position = CGPoint(x: 300, y: 150)
+//                addChild(hat)
+//            }
             
             //canon set up
             setupCanon()
@@ -192,7 +210,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if isBedRoom || isBreakRoom{
             setupBornEffect()
         }
-        setupNpc()
+        
+        
         
         self.view?.isUserInteractionEnabled = true
         player.isHidden = false
@@ -212,6 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.moneyChanged = true
         player.weaponChanged = true
         player.itemChanged = true
+        player.hatChanged = true
         
         player.isAlived = true
         levelChanged = true
@@ -253,7 +273,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //
 //            }
 //        }
-        
+        for node in self.children{
+            if node.name == "npc"{ node.removeFromParent()}
+            if node.name == "npcBorn"{
+                let npc = Npc()
+                npc.position = node.position
+                addChild(npc)
+            }
+        }
         
         
         
@@ -301,32 +328,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-   
-        //player.popoStart += eachFrame
+        playerSetupHud()
         player.sinceFire += eachFrame
         player.rStart += eachFrame
-        //player.fireStart += eachFrame
+        if player.playerIsMoving{
+            player.position+=(player.movingDirection * player.moveDistance)
+        }
         sinceStart += eachFrame
         birdBornStart += eachFrame
 
         for monster in monsterList{
             monster.sinceStart += eachFrame
         }
-        
-        playerSetupHud()
-        timeControl()
-        
-        if npc != nil{
-            npc.sinceBorn += eachFrame
-            checkNpcAround()
+        if sinceStart > eachFrame{
+            handler.isHidden = false
         }
+        for node in self.children{
+            if node.name == "npc"{
+                let npc = node as! Npc
+                npc.sinceBorn += eachFrame
+                checkNpcAround(npc: npc)
+            }
+        }
+ 
+//        if npc != nil{
+//            npc.sinceBorn += eachFrame
+//            checkNpcAround()
+//        }
         
         if soilder != nil {
             checkSoilderAround()
         }
-        if girl != nil{
-            checkGirlAround()
-        }
+        
+        checkGirlAround()
+        
         
         if player.isFiring{
             self.player.weapon.attack(direction: self.player.facing,homeScene: self)
@@ -416,15 +451,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if isMonsterRoom || isBornRoom{
-            if birdBornStart > 1{
+            if birdBornStart > 6{
                 if Int.random(in: 0..<10) < 5 {
                     let bird = Bird(scene: self)
-                    bird.position = CGPoint(x: 700, y: CGFloat.random(in: 200..<375))
+                    bird.position = CGPoint(x: CGFloat.random(in: 700..<800), y: CGFloat.random(in: 200..<360))
                     addChild(bird)
-                    birdBornStart = 0
+                    
                 }
+                birdBornStart = 0
             }
             
+        }
+        
+        
+        
+        //zposition setting
+        
+        for node in self.children{
+            if node.name == "scarecrow"{
+                if player.position.y < node.position.y{
+                    player.zPosition = node.zPosition + 1
+                }else{
+                    player.zPosition = 2
+                }
+            }
         }
         
     }
@@ -716,44 +766,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func checkGirlAround()  {
         
-        let dist = player.position.distanceTo(girl.position)
-        if dist < 50 {
-            if !dialogueIsSet {
-                dialogueIsSet = true
-                //sound
-                self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
-                
-                dialogue = Dialogue()
-                dialogue.position = girl.position + CGPoint(x: 0, y: 30)
-                dialogue.selectHandler = {
-                    
-                    self.bigDialogue = BigDialogue(scene: self)
-                    self.bigDialogue.position = self.dialogue.position
-                    self.addChild(self.bigDialogue)
-                    self.bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
-                    self.bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
-                    
-                    //tricky way to disable handler
-                    self.inDialogue = true
-                    self.popoButton.isUserInteractionEnabled = false
-                    self.fireButton.isUserInteractionEnabled = false
-                    self.dialogue.removeFromParent()
-                    
-                    self.bigDialogue.startWord(sentence: Word().buyWord)
-                    self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run(self.addbuyButton)]))
-                    
+        for node in self.children{
+            if node.name == "villageGirl"{
+                let girl = node as! VillageGirl
+                let dist = player.position.distanceTo(girl.position)
+                if dist < 50 {
+                    if !dialogueIsSet {
+                        dialogueIsSet = true
+                        //sound
+                        self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
+                        
+                        dialogue = Dialogue()
+                        dialogue.position = girl.position + CGPoint(x: 0, y: 30)
+                        dialogue.selectHandler = {
+                            
+                            self.bigDialogue = BigDialogue(scene: self)
+                            self.bigDialogue.position = self.dialogue.position
+                            self.addChild(self.bigDialogue)
+                            self.bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
+                            self.bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
+                            
+                            //tricky way to disable handler
+                            self.inDialogue = true
+                            self.popoButton.isUserInteractionEnabled = false
+                            self.fireButton.isUserInteractionEnabled = false
+                            self.dialogue.removeFromParent()
+                            
+                            self.bigDialogue.startWord(sentence: Word().buyWord)
+                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run(self.addbuyButton)]))
+                            
+                        }
+                        
+                        addChild(dialogue)
+                        dialogue.start()
+                        
+                    }
+                }else{
+                    if dialogue != nil {
+                        dialogue.removeFromParent()
+                        dialogueIsSet = false
+                    }
                 }
-                
-                addChild(dialogue)
-                dialogue.start()
-                
             }
-        }else{
-            if dialogue != nil {
-                dialogue.removeFromParent()
-                dialogueIsSet = false
-            }
+            
         }
+ 
     }
     
     func addbuyButton()  {
@@ -776,7 +833,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if self.player.money > 20{
                     self.player.money -= 20
                     self.player.moneyChanged = true
-                    bornItemTexture(num: 1, position: self.girl.position, homeScene: self)
+                    for node in self.children{
+                        if node.name == "villageGirl"{
+                            bornItemTexture(num: 1, position: node.position, homeScene: self)
+                        }
+                    }
+                    
                 }
                 
             }
@@ -851,16 +913,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func checkBoxAround() {
-        if box == nil {return}
-        let dist = player.position.distanceTo(box.position)
-        if !boxIsSet{
-            if dist < 50 && !box.isOpen{
-                boxIsSet = true
-                box.open()
-                box.isOpen = true
-                //pop some item
-                bornItemTexture(num: 3, position: box.position, homeScene: self)
-                bornWeaponTexture(num: 1, position: box.position, homeScene: self)
+        
+        for node in self.children{
+            if node.name == "box"{
+                let box = node as! Box
+                let dist = player.position.distanceTo(box.position)
+                if !box.boxIsSet{
+                    if dist < 50 && !box.isOpen{
+                        box.boxIsSet = true
+                        box.open()
+                        box.isOpen = true
+                        //pop some item
+                        bornItemTexture(num: 3, position: box.position, homeScene: self)
+                        bornWeaponTexture(num: 1, position: box.position, homeScene: self)
+                    }
+                }
+                
             }
         }
     }
@@ -869,7 +937,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    func checkNpcAround() {
+    func checkNpcAround(npc: Npc) {
+        
         let dist = player.position.distanceTo(npc.position)
         if dist < 60 {
             if !dialogueIsSet {
@@ -917,15 +986,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    
-    func setupNpc() {
-        if !isBornRoom{return}
-        if isBreakRoom{return}
-        if npc != nil {npc.removeFromParent()}
-        npc = Npc()
-        npc.position = npcBornPoint
-        self.addChild(npc)
-    }
+   
     
     
     func playerSetupHud() {
@@ -1090,6 +1151,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.addChild(weaponOnHand)
             player.weaponChanged = false
         }
+        
+        if player.hatChanged{
+            for node in player.children{
+                if node.name == "hat"{
+                    node.removeFromParent()
+                    break
+                }
+            }
+            
+            let hatOnHead = player.hat!
+            hatOnHead.position = CGPoint(x: 0, y: 30)
+            hatOnHead.zPosition = 1
+            player.addChild(hatOnHead)
+            
+            player.hatChanged = false
+        }
+        
         
         //weapon on hand rotate each frame
         if weaponOnHand != nil {
@@ -1486,6 +1564,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             monster = (nodeA as! Monster)
         case "ghost":
             monster = (nodeA as! Monster)
+        case "scarecrow":
+            monster = (nodeA as! Monster)
         case "staffBullet":
            ammo = (nodeA as! Ammo)
         case "candy":
@@ -1507,6 +1587,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "slime":
             monster = (nodeB as! Monster)
         case "ghost":
+            monster = (nodeB as! Monster)
+        case "scarecrow":
             monster = (nodeB as! Monster)
         case "staffBullet":
             ammo = (nodeB as! Ammo)
@@ -1535,6 +1617,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
         
         if monster != nil && playerNode != nil{
+            if monster.name == "scarecrow"{return}
             player.beingHit()
         }
         
@@ -1545,20 +1628,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func timeControl()  {
-        if sinceStart > eachFrame{
-            handler.isHidden = false
-        }
-//        if player.popoStart < 6 {popoButton.isHidden = true} else {popoButton.isHidden = false}
-        
-        //        if player.fireStart < player.weapon.attackSpeed {fireButton.isHidden = true} else{
-        //            fireButton.isHidden = false
-        //        }
-        
-        if player.playerIsMoving{
-            player.position+=(player.movingDirection * player.moveDistance)
-        }
-    }
+    
     
     func setupMonster(num: Int) {
         
