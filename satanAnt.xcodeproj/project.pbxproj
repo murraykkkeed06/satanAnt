@@ -116,6 +116,14 @@
 		72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72421402261A194A00CA5F97 /* AbilityPoint.swift */; };
 		72421407261A1A6900CA5F97 /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72421406261A1A6900CA5F97 /* plusButton.png */; };
 		7242140A261A1C3B00CA5F97 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72421409261A1C3B00CA5F97 /* PlusButton.swift */; };
+		7244702E2624545100FF052E /* bird_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 724470292624545100FF052E /* bird_1.png */; };
+		7244702F2624545100FF052E /* bird_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7244702A2624545100FF052E /* bird_5.png */; };
+		724470302624545100FF052E /* bird_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7244702B2624545100FF052E /* bird_2.png */; };
+		724470312624545100FF052E /* bird_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7244702C2624545100FF052E /* bird_4.png */; };
+		724470322624545100FF052E /* bird_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7244702D2624545100FF052E /* bird_3.png */; };
+		724470352624545E00FF052E /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724470342624545E00FF052E /* Bird.swift */; };
+		724470382624572D00FF052E /* egg.png in Resources */ = {isa = PBXBuildFile; fileRef = 724470372624572D00FF052E /* egg.png */; };
+		7244703C2624574D00FF052E /* Egg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244703B2624574D00FF052E /* Egg.swift */; };
 		72500A60261AFEBE00EAE276 /* enterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A5E261AFEBE00EAE276 /* enterButton.png */; };
 		72500A61261AFEBE00EAE276 /* leaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A5F261AFEBE00EAE276 /* leaveButton.png */; };
 		72500A64261AFED000EAE276 /* wordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72500A63261AFED000EAE276 /* wordButton.swift */; };
@@ -551,6 +559,14 @@
 		72421402261A194A00CA5F97 /* AbilityPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityPoint.swift; sourceTree = "<group>"; };
 		72421406261A1A6900CA5F97 /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
 		72421409261A1C3B00CA5F97 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		724470292624545100FF052E /* bird_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_1.png; sourceTree = "<group>"; };
+		7244702A2624545100FF052E /* bird_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_5.png; sourceTree = "<group>"; };
+		7244702B2624545100FF052E /* bird_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_2.png; sourceTree = "<group>"; };
+		7244702C2624545100FF052E /* bird_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_4.png; sourceTree = "<group>"; };
+		7244702D2624545100FF052E /* bird_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_3.png; sourceTree = "<group>"; };
+		724470342624545E00FF052E /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
+		724470372624572D00FF052E /* egg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg.png; sourceTree = "<group>"; };
+		7244703B2624574D00FF052E /* Egg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egg.swift; sourceTree = "<group>"; };
 		72500A5E261AFEBE00EAE276 /* enterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enterButton.png; sourceTree = "<group>"; };
 		72500A5F261AFEBE00EAE276 /* leaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaveButton.png; sourceTree = "<group>"; };
 		72500A63261AFED000EAE276 /* wordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordButton.swift; sourceTree = "<group>"; };
@@ -892,6 +908,7 @@
 		723C7ADC26219DD700D9026C /* Ammo */ = {
 			isa = PBXGroup;
 			children = (
+				7244703B2624574D00FF052E /* Egg.swift */,
 				723C7ADD26219E0F00D9026C /* Ammo.swift */,
 				72B4BD82260B4BCE0063ED38 /* Bullet.swift */,
 				723C7AD926218B7800D9026C /* Candy.swift */,
@@ -992,6 +1009,7 @@
 			isa = PBXGroup;
 			children = (
 				7281EBC826232EA500EE69F9 /* Canon.swift */,
+				724470342624545E00FF052E /* Bird.swift */,
 			);
 			path = Obstacle;
 			sourceTree = "<group>";
@@ -1047,6 +1065,12 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				724470372624572D00FF052E /* egg.png */,
+				724470292624545100FF052E /* bird_1.png */,
+				7244702B2624545100FF052E /* bird_2.png */,
+				7244702D2624545100FF052E /* bird_3.png */,
+				7244702C2624545100FF052E /* bird_4.png */,
+				7244702A2624545100FF052E /* bird_5.png */,
 				7281EBD226233FC800EE69F9 /* canonBall.png */,
 				7281EBBC26232DD800EE69F9 /* canonFire_1.png */,
 				7281EBC026232DD800EE69F9 /* canonFire_2.png */,
@@ -1694,6 +1718,7 @@
 				725A37032622B68300340C82 /* slimeJump.mp3 in Resources */,
 				729E9424260E2FBE00DFF2D0 /* new_right_4.png in Resources */,
 				725A37222622CF0800340C82 /* bornEffect_1.png in Resources */,
+				724470302624545100FF052E /* bird_2.png in Resources */,
 				727F3569261EADB100BB8E02 /* lightening.png in Resources */,
 				72D01BB62622FB4300459733 /* shadow.png in Resources */,
 				72E48492260F338C00D1C2DA /* three.png in Resources */,
@@ -1710,6 +1735,7 @@
 				72D6388C26196A4700A43D41 /* npcLeft_2.png in Resources */,
 				725A37322622D9B000340C82 /* monsterBornEffect_3.png in Resources */,
 				72AC0194262060AA007F6133 /* drink.mp3 in Resources */,
+				724470312624545100FF052E /* bird_4.png in Resources */,
 				72FE15E5261DE81B008870C6 /* healParticle.sks in Resources */,
 				720A425526189C31002D589C /* attack_5.png in Resources */,
 				72D6389026196A4700A43D41 /* npcRight_2.png in Resources */,
@@ -1719,8 +1745,10 @@
 				724213ED261A0CB300CA5F97 /* book_5.png in Resources */,
 				7279A97A260D92ED000EB14F /* player_forward_3.png in Resources */,
 				72E573722621F52500FDC1F0 /* villageGirl.png in Resources */,
+				7244702E2624545100FF052E /* bird_1.png in Resources */,
 				72E7F4BA261C4217006A7AB1 /* caveDoor_6.png in Resources */,
 				723C7AD726218B6B00D9026C /* candy_6.png in Resources */,
+				724470322624545100FF052E /* bird_3.png in Resources */,
 				723C7AD426218B6B00D9026C /* candy_2.png in Resources */,
 				72E48411260EEAC800D1C2DA /* Level_1_1.sks in Resources */,
 				72500A88261B4B9D00EAE276 /* door.mp3 in Resources */,
@@ -1801,6 +1829,7 @@
 				72AC01972620644F007F6133 /* land.wav in Resources */,
 				725A370F2622BA6900340C82 /* deadGhost.png in Resources */,
 				725A36FB2622B29600340C82 /* slimeDie_3.png in Resources */,
+				724470382624572D00FF052E /* egg.png in Resources */,
 				729E941C260E2FBE00DFF2D0 /* new_forward_2.png in Resources */,
 				725A36FC2622B29600340C82 /* slimeDie_4.png in Resources */,
 				7240ED3A2620848200745815 /* slime_2.png in Resources */,
@@ -1865,6 +1894,7 @@
 				7281EBC426232DD800EE69F9 /* canonFire_4.png in Resources */,
 				7240ED382620848200745815 /* slime_8.png in Resources */,
 				725A36EC262298C300340C82 /* slimeBlue_1.png in Resources */,
+				7244702F2624545100FF052E /* bird_5.png in Resources */,
 				72E4849A260F338C00D1C2DA /* four.png in Resources */,
 				72D6388826196A4700A43D41 /* npcBack_1.png in Resources */,
 				729E9423260E2FBE00DFF2D0 /* new_left_3.png in Resources */,
@@ -1927,6 +1957,7 @@
 				723C7ADE26219E0F00D9026C /* Ammo.swift in Sources */,
 				72D638AC261978B700A43D41 /* BigDialogue.swift in Sources */,
 				723D45C92621580B0046ABAC /* Staff.swift in Sources */,
+				724470352624545E00FF052E /* Bird.swift in Sources */,
 				72B4BD83260B4BCE0063ED38 /* Bullet.swift in Sources */,
 				7281EBCF2623314900EE69F9 /* CanonBall.swift in Sources */,
 				7240ED47262096D200745815 /* Monster.swift in Sources */,
@@ -1938,6 +1969,7 @@
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
 				720A425826189E7D002D589C /* AttackPoint.swift in Sources */,
 				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,
+				7244703C2624574D00FF052E /* Egg.swift in Sources */,
 				7242140A261A1C3B00CA5F97 /* PlusButton.swift in Sources */,
 				72FE15DC261DE32E008870C6 /* CoinDrop.swift in Sources */,
 			);

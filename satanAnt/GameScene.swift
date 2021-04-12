@@ -37,6 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var sinceStart: TimeInterval = 0
     var eachFrame: TimeInterval = 1/60
     
+    var birdBornStart: TimeInterval = 0
+    
     var top: GameScene!
     var bototm: GameScene!
     var left: GameScene!
@@ -242,7 +244,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break
             }
         }
+        
+//        for node in self.children{
+//            if node.name == "birdBorn"{
+//                let bird = Bird(scene: self)
+//                bird.position = node.position
+//                addChild(bird)
+//
+//            }
+//        }
+        
+        
+        
+        
     }
+    
+    //end didmove
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
@@ -290,7 +307,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.rStart += eachFrame
         //player.fireStart += eachFrame
         sinceStart += eachFrame
-        
+        birdBornStart += eachFrame
 
         for monster in monsterList{
             monster.sinceStart += eachFrame
@@ -387,7 +404,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      
         monsterAutoAttackDetect()
        
+        for node in self.children{
+            if node.isMember(of: Bird.self) {
+                let bird = node as! Bird
+                bird.sinceStart += eachFrame
+                bird.forRemove += eachFrame
+                if bird.forRemove > 10{
+                    bird.removeFromParent()
+                }
+            }
+        }
         
+        if isMonsterRoom || isBornRoom{
+            if birdBornStart > 1{
+                if Int.random(in: 0..<10) < 5 {
+                    let bird = Bird(scene: self)
+                    bird.position = CGPoint(x: 700, y: CGFloat.random(in: 200..<375))
+                    addChild(bird)
+                    birdBornStart = 0
+                }
+            }
+            
+        }
         
     }
     
@@ -1289,6 +1327,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeA as! Ammo)
         case "canonBall":
             ammo = (nodeA as! Ammo)
+        case "egg":
+            ammo = (nodeA as! Ammo)
         default:
             break
         }
@@ -1298,6 +1338,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "candy":
             ammo = (nodeB as! Ammo)
         case "canonBall":
+            ammo = (nodeB as! Ammo)
+        case "egg":
             ammo = (nodeB as! Ammo)
         default:
             break
@@ -1450,6 +1492,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeA as! Ammo)
         case "canonBall":
             ammo = (nodeA as! Ammo)
+        case "egg":
+            ammo = (nodeA as! Ammo)
         case "player":
             playerNode = player
        
@@ -1470,6 +1514,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeB as! Ammo)
         case "canonBall":
             ammo = (nodeB as! Ammo)
+        case "egg":
+            ammo = (nodeB as! Ammo)
         case "player":
             playerNode = player
        
@@ -1479,7 +1525,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if monster != nil && ammo != nil {
             
-            if ammo.name == "canonBall"{
+            if ammo.name == "canonBall" || ammo.name == "egg"{
                 monster.beingHit(homeScene: self, damage: 0.25)
             }else{
                 monster.beingHit(homeScene: self)
