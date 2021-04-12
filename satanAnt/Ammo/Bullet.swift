@@ -37,33 +37,33 @@ class Bullet: Ammo {
     
     func flyTo(direction: CGPoint)  {
         
-        var targetMonster: SKSpriteNode!
-        var newDirection: CGPoint!
-        //auto detect monster and fly to in 30 degree in range
-        let monsterList = homeScene.monsterList
-        for i in 0..<monsterList.count{
-            let diff = (monsterList[i].position - homeScene.player.position)
-            if monsterList[i].position.distanceTo(homeScene.player.position) < bulletRange && abs(diff.angle - homeScene.player.facing.angle) < 30 {
-                newDirection = diff.normalized()
-                targetMonster = monsterList[i]
-                break
-            }
-        }
-
-        if targetMonster != nil {
-            let flyAction = SKAction.moveBy(x: newDirection.x*bulletRange, y: newDirection.y*bulletRange, duration: self.bulletSpeed)
-            let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
-            self.run(seq)
-        }else {
-
-            let flyAction = SKAction.moveBy(x: direction.x*bulletRange, y: direction.y*bulletRange, duration: self.bulletSpeed)
-            let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
-            self.run(seq)
-        }
+//        var targetMonster: SKSpriteNode!
+//        var newDirection: CGPoint!
+//        //auto detect monster and fly to in 30 degree in range
+//        let monsterList = homeScene.monsterList
+//        for i in 0..<monsterList.count{
+//            let diff = (monsterList[i].position - homeScene.player.position)
+//            if monsterList[i].position.distanceTo(homeScene.player.position) < bulletRange && abs(diff.angle - homeScene.player.facing.angle) < 30 {
+//                newDirection = diff.normalized()
+//                targetMonster = monsterList[i]
+//                break
+//            }
+//        }
 //
-//        let flyAction = SKAction.moveBy(x: direction.x*range, y: direction.y*range, duration: self.bulletSpeed)
-//        let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
-//        self.run(seq)
+//        if targetMonster != nil {
+//            let flyAction = SKAction.moveBy(x: newDirection.x*bulletRange, y: newDirection.y*bulletRange, duration: self.bulletSpeed)
+//            let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
+//            self.run(seq)
+//        }else {
+//
+//            let flyAction = SKAction.moveBy(x: direction.x*bulletRange, y: direction.y*bulletRange, duration: self.bulletSpeed)
+//            let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
+//            self.run(seq)
+//        }
+
+        let flyAction = SKAction.moveBy(x: direction.x*bulletRange, y: direction.y*bulletRange, duration: self.bulletSpeed)
+        let seq = SKAction.sequence([flyAction,SKAction.removeFromParent()])
+        self.run(seq)
     }
     
     func  flyTo(degree: CGFloat)  {

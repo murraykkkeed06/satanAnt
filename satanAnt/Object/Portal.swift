@@ -24,7 +24,7 @@ class Portal: SKSpriteNode {
         self.run(SKAction(named: "bornEffect")!)
         self.position = position
         self.name = name
-        self.zPosition = 2
+        self.zPosition = 1
         self.physicsBody = SKPhysicsBody(rectangleOf: doorSize)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = false

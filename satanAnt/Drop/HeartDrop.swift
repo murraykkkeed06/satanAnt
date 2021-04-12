@@ -38,11 +38,12 @@ class HeartDrop: Drop {
         
         let sound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
         homeScene.run(sound)
-        let healEffect = SKEmitterNode(fileNamed: "healParticle")!
-        healEffect.name = "heal"
-        healEffect.position = homeScene.player.position
-        homeScene.addChild(healEffect)
-        healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
+        if let healEffect = SKEmitterNode(fileNamed: "healParticle") {
+            healEffect.name = "heal"
+            healEffect.position = homeScene.player.position
+            homeScene.addChild(healEffect)
+            healEffect.run(SKAction.sequence([SKAction.wait(forDuration: 3),SKAction.removeFromParent()]))
+        }
     }
     
     

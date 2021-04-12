@@ -81,15 +81,20 @@ class Player: SKSpriteNode {
     var playerIsMoving: Bool = false{
         didSet{
             if playerIsMoving{
-                self.AudioPlayer3 = try! AVAudioPlayer(contentsOf: self.walkSound as URL)
-
-                self.AudioPlayer3.volume = 3
-                self.AudioPlayer3.numberOfLoops = -1
-                self.AudioPlayer3.prepareToPlay()
-                self.AudioPlayer3.play()
+                do {
+                    self.AudioPlayer3 = try AVAudioPlayer(contentsOf: self.walkSound as URL)
+                    self.AudioPlayer3.volume = 3
+                    self.AudioPlayer3.numberOfLoops = -1
+                    self.AudioPlayer3.prepareToPlay()
+                    self.AudioPlayer3.play()}
+                catch{
+                    print("walk sound error!")
+                }
+                
 
             }else{
                 self.AudioPlayer3.stop()
+                //self.state = .idle
             }
         }
     }
@@ -117,6 +122,8 @@ class Player: SKSpriteNode {
     
     var itemList = [Item]()
     var inItemListNumber: Int = 0
+    
+    var monsterInAutoDetectRange = false
     
     var homeScene: GameScene!
     
@@ -291,6 +298,8 @@ class Player: SKSpriteNode {
         }
     }
     
+    var movingDirection = CGPoint(x: 0, y: 0)
+    
     init(){
         
         
@@ -347,11 +356,16 @@ class Player: SKSpriteNode {
         
         self.health -= 0.25
         self.healthChanged = true
+        do{
+            self.AudioPlayer = try AVAudioPlayer(contentsOf: self.hurtSound as URL)
+            self.AudioPlayer.volume = 3
+            self.AudioPlayer.prepareToPlay()
+            self.AudioPlayer.play()
+        }
+        catch{
+            print("hurt sound error!")
+        }
         
-        self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.hurtSound as URL)
-        self.AudioPlayer.volume = 3
-        self.AudioPlayer.prepareToPlay()
-        self.AudioPlayer.play()
 
     }
     

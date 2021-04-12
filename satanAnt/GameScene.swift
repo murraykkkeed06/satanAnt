@@ -187,7 +187,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             
         }
-        if isBedRoom{
+        if isBedRoom || isBreakRoom{
             setupBornEffect()
         }
         setupNpc()
@@ -384,6 +384,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         canonDetect()
+     
+        monsterAutoAttackDetect()
+       
+        
         
     }
     
@@ -428,6 +432,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        // }
     }
     
+    func monsterAutoAttackDetect() {
+        for monster in monsterList{
+            if monster.position.distanceTo(player.position) < 150 + player.baseBulletRange && monster.isAlived && player.playerIsMoving{
+
+                player.monsterInAutoDetectRange = true
+                let vec = monster.position - player.position
+                player.facing = vec.normalized()
+                break
+            }
+            player.monsterInAutoDetectRange = false
+        }
+    }
+    
+    
     func canonDetect() {
         
         for node in self.children{
@@ -437,16 +455,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 canon.sinceStart += eachFrame
                 
                 var fireAllowed = false
-                for monster in monsterList{
-                    if abs( monster.position.y-canon.position.y) < 20{
-                        fireAllowed = true
-                        break
+                
+                switch canon.canonDirection {
+                case .left:
+                    for monster in monsterList{
+                        if abs( monster.position.y-canon.position.y) < 20 && monster.position.x < canon.position.x{
+                            fireAllowed = true
+                            break
+                        }
                     }
+                    
+                    if abs(player.position.y - canon.position.y) < 20 && player.position.x < canon.position.x{
+                        fireAllowed = true
+                    }
+                case .right:
+                    for monster in monsterList{
+                        if abs( monster.position.y-canon.position.y) < 20 && monster.position.x > canon.position.x{
+                            fireAllowed = true
+                            break
+                        }
+                    }
+                    
+                    if abs(player.position.y - canon.position.y) < 20 && player.position.x > canon.position.x{
+                        fireAllowed = true
+                    }
+                default:
+                    break
+    
                 }
                 
-                if abs(player.position.y - canon.position.y) < 20{
-                    fireAllowed = true
-                }
+                
                 
                 
                 //print("\(player.position.y) , \(canon.position.y)")
@@ -1472,7 +1510,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        }
         
         if player.playerIsMoving{
-            player.position+=(player.facing * player.moveDistance)
+            player.position+=(player.movingDirection * player.moveDistance)
         }
     }
     
@@ -1803,7 +1841,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let vec = location - mount.position
             //print("\(vec)")
-            player.facing = vec.normalized()
+            if !player.monsterInAutoDetectRange{
+                player.facing = vec.normalized()
+            }
+            player.movingDirection = vec.normalized()
             //print("\(player.facing)")
             
             //if !handlerBackground.frame.contains(location){

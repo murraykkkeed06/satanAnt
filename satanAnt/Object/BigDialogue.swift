@@ -21,8 +21,7 @@ class BigDialogue: SKSpriteNode {
     
     init(scene: GameScene){
         typeSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "talking", ofType: "mp3")!)
-        AudioPlayer = try! AVAudioPlayer(contentsOf: self.typeSound as URL)
-        AudioPlayer.volume = 5
+        
         let texture = SKTexture(imageNamed: "bigDialogue")
         //super.init(texture: texture, color: .clear, size: CGSize(width: 412, height: 124))
         super.init(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
@@ -74,8 +73,15 @@ class BigDialogue: SKSpriteNode {
     
     func runStart(){
         timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(addWord), userInfo: nil, repeats: true)
-        AudioPlayer.prepareToPlay()
-        AudioPlayer.play()
+        do {
+            AudioPlayer = try AVAudioPlayer(contentsOf: self.typeSound as URL)
+            AudioPlayer.volume = 5
+            AudioPlayer.prepareToPlay()
+            AudioPlayer.play()
+        }
+        catch{
+            print("typeSound error!")
+        }
         
     }
     

@@ -22,7 +22,7 @@ enum LogState: Int{
 }
 
 class Log: Monster{
-    var AudioPlayer = AVAudioPlayer()
+    
     var AudioPlayer2 = AVAudioPlayer()
     var hurtSound: NSURL!
     var walkSound: NSURL!
@@ -94,16 +94,22 @@ class Log: Monster{
             }
             
             //set walk sound
-            if logState != .idle && isAlived && homeScene.player.isAlived{
-                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.walkSound as URL)
+            
+            do{
+                if logState != .idle && isAlived && homeScene.player.isAlived{
+                
+                    self.AudioPlayer2 = try AVAudioPlayer(contentsOf: self.walkSound as URL)
 
-                self.AudioPlayer2.volume = 0.5
-                self.AudioPlayer2.prepareToPlay()
-                self.AudioPlayer2.numberOfLoops = -1
-                self.AudioPlayer2.play()
-            }else{
-                self.AudioPlayer2.stop()
+                    self.AudioPlayer2.volume = 0.5
+                    self.AudioPlayer2.prepareToPlay()
+                    self.AudioPlayer2.numberOfLoops = -1
+                    self.AudioPlayer2.play()
+                }else{
+                    self.AudioPlayer2.stop()
+                }
+                
             }
+            catch{print("walk sound error!")}
             
         }
         get{
@@ -137,8 +143,8 @@ class Log: Monster{
 
         hurtSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "logHurt", ofType: "mp3")!)
         walkSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "logWalk", ofType: "wav")!)
-
-        self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.hurtSound as URL)
+        
+        
         
         let texture = SKTexture(imageNamed: "log_forward_1")
         super.init(texture: texture, color: .clear, size: logSize)

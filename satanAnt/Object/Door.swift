@@ -53,7 +53,7 @@ class Door: SKSpriteNode {
 
         self.position = position
         self.name = name
-        self.zPosition = 2
+        self.zPosition = 1
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 1, height: 1))
         self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = false
