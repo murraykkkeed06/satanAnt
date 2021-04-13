@@ -452,7 +452,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if isMonsterRoom || isBornRoom{
             if birdBornStart > 6{
-                if Int.random(in: 0..<10) < 5 {
+                if Int.random(in: 0..<100) < 5 {
                     let bird = Bird(scene: self)
                     bird.position = CGPoint(x: CGFloat.random(in: 700..<800), y: CGFloat.random(in: 200..<360))
                     addChild(bird)
@@ -1128,7 +1128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.moneyChanged = false
         }
         //set weapon on hud and player
-        if player.weaponChanged{
+        if player.weaponChanged || player.hatChanged{
             
             let weaponBorn = (self.childNode(withName: "//weaponBorn") as! SKSpriteNode)
             weaponBorn.removeAllChildren()
@@ -1139,7 +1139,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponBorn.addChild(newWeapon)
             
             player.removeAllChildren()
-            weaponOnHand = player.weapon
+            weaponOnHand = player.weapon!
+            weaponOnHand.name = "weaponOnHand"
             weaponOnHand.position = CGPoint(x: 10, y: -8)
             weaponOnHand.anchorPoint = CGPoint(x: 0.2, y: 0.3)
             
@@ -1147,32 +1148,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bornPoint.position = CGPoint(x: 28.4, y: 3.3)
             bornPoint.name = "bornPoint"
             weaponOnHand.addChild(bornPoint)
-            
             player.addChild(weaponOnHand)
-            player.weaponChanged = false
-        }
-        
-        if player.hatChanged{
-            for node in player.children{
-                if node.name == "hat"{
-                    node.removeFromParent()
-                    break
-                }
-            }
             
             let hatOnHead = player.hat!
             hatOnHead.position = CGPoint(x: 0, y: 30)
             hatOnHead.zPosition = 1
             player.addChild(hatOnHead)
             
+            
             player.hatChanged = false
+            player.weaponChanged = false
         }
+        
+//        if player.hatChanged{
+//            for node in player.children{
+//                if node.name == "hat"{
+//                    node.removeFromParent()
+//                    break
+//                }
+//            }
+//
+//            let hatOnHead = player.hat!
+//            hatOnHead.position = CGPoint(x: 0, y: 30)
+//            hatOnHead.zPosition = 1
+//            player.addChild(hatOnHead)
+//
+//            player.hatChanged = false
+//        }
         
         
         //weapon on hand rotate each frame
         if weaponOnHand != nil {
             weaponOnHand.zRotation  = (player.facing.angle) * (3.14/180)
         }
+//        for node in player.children{
+//            if node.name == "weaponOnHand"{
+//                node.zRotation  = (player.facing.angle) * (3.14/180)
+//            }
+//        }
         
         
     }
