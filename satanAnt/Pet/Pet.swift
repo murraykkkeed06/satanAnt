@@ -1,20 +1,18 @@
 //
-//  Hat.swift
+//  Pet.swift
 //  satanAnt
 //
-//  Created by 劉孟學 on 2021/4/12.
+//  Created by 劉孟學 on 2021/4/13.
 //
 
 import Foundation
 import SpriteKit
 
-class Hat: SKSpriteNode {
+class Pet: SKSpriteNode {
     
     var sinceStart: TimeInterval!
     
     func setup(scene: GameScene)  {
         
     }
-    
-    
 }

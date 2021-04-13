@@ -232,6 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.weaponChanged = true
         player.itemChanged = true
         player.hatChanged = true
+        player.petChanged = true
         
         player.isAlived = true
         levelChanged = true
@@ -348,6 +349,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let npc = node as! Npc
                 npc.sinceBorn += eachFrame
                 checkNpcAround(npc: npc)
+            }
+            if node.name == "panda"{
+                let panda = node as! Panda
+                panda.sinceStart += eachFrame
+                
+            }
+        }
+        
+        for node in player.children{
+            if node.name == "plantDog"{
+                let plantDog = node as! PlantDog
+                plantDog.sinceStart += eachFrame
+               
             }
         }
  
@@ -477,6 +491,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+    
+        
     }
     
     //update end
@@ -495,6 +511,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupBulletHit(nodeA: nodeA, nodeB: nodeB)
                 setupPickUp(nodeA: nodeA, nodeB: nodeB)
                 setupMonsterGetHeartDrop(nodeA: nodeA, nodeB: nodeB)
+                
             }
         }
         
@@ -1027,6 +1044,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(levelNumber)
             levelChanged = false
         }
+        //set pet
+        
+        if player.petChanged {
+            for node in self.children{
+                if node.name == "panda"{
+                    node.removeFromParent()
+                }
+            }
+            
+            if let pet = player.pet {
+                pet.setup(scene: self)
+                pet.position = player.position.randomPointInDistamce(distance: 50)
+                pet.move(toParent: self)
+            }
+            
+            player.petChanged = false
+        }
+        
         
         //set exp
         if player.expChanged{
@@ -1150,10 +1185,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponOnHand.addChild(bornPoint)
             player.addChild(weaponOnHand)
             
-            let hatOnHead = player.hat!
-            hatOnHead.position = CGPoint(x: 0, y: 30)
-            hatOnHead.zPosition = 1
-            player.addChild(hatOnHead)
+            if let hatOnHead = player.hat {
+                hatOnHead.setup(scene: self)
+                hatOnHead.position = CGPoint(x: 0, y: 30)
+                hatOnHead.zPosition = 1
+                player.addChild(hatOnHead)
+            }
             
             
             player.hatChanged = false
@@ -1203,7 +1240,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.bump()
             
         }
+        if nodeA.name == "panda" {
+            
+            let node = nodeA as! Panda
+            node.bump()
+            
+            
+        }
+        if nodeB.name == "panda" {
+            
+            let node = nodeB as! Panda
+            node.bump()
+            
+            
+        }
     }
+    
     
     func setupMonsterGetHeartDrop(nodeA: SKNode, nodeB: SKNode){
         
@@ -1270,7 +1322,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var itemTexture: SKNode!
         var weaponTexture: SKNode!
         var playerNode: Player!
-        
+        var pet: Pet!
         
         switch nodeA.name {
         case "player":
@@ -1293,6 +1345,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponTexture = nodeA
         case "swordTexture":
             weaponTexture = nodeA
+        case "panda":
+            pet = (nodeA as! Panda)
         default:
             break
         }
@@ -1318,6 +1372,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponTexture = nodeB
         case "swordTexture":
             weaponTexture = nodeB
+        case "panda":
+            pet = (nodeB as! Panda)
         default:
             break
         }
@@ -1348,6 +1404,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupItemOrder()
             movToPopo(node: itemTexture)
         }
+        
+        if pet != nil  && itemTexture != nil{
+            if pet.name == "panda"{
+                
+                let panda = pet as! Panda
+                panda.targetNode = nil
+                
+                switch itemTexture.name {
+                case "potionTexture":
+                    player.itemList.append(Potion())
+                    self.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
+                case "fireBombTexture":
+                    player.itemList.append(FireBomb())
+                    self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
+                case "appleTexture":
+                    player.itemList.append(Apple())
+                    self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
+                case "cokeTexture":
+                    player.itemList.append(Coke())
+                    self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
+                default:
+                     print("break")
+                }
+                setupItemOrder()
+                movToPopo(node: itemTexture)
+            }
+        }
+        
+        
+        
         
         //pick up weapon
         if playerNode != nil && weaponTexture != nil {

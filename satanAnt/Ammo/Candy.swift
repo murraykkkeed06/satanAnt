@@ -65,12 +65,12 @@ class Candy: Ammo {
     
     func flyTo(direction: CGPoint)  {
         
-        if homeScene.player.facing.y > 0 {
-            homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: -3);
-        }else{
-            homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: 0);
-        }
-        
+//        if homeScene.player.facing.y > 0 {
+//            homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: -3);
+//        }else{
+//            homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: 0);
+//        }
+        homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: 0);
         let wait = SKAction.wait(forDuration: 0.5)
         let up = SKAction.run({
 

@@ -27,7 +27,8 @@ class Monster: SKSpriteNode {
         
         let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
         let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
-        let back = SKAction.moveBy(x: homeScene.player.facing.x*10, y: homeScene.player.facing.y*10, duration: 0.1)
+        let vec = self.position - homeScene.player.position
+        let back = SKAction.moveBy(x: vec.normalized().x*10, y: vec.normalized().y*10, duration: 0.1)
         self.run(back)
         self.run(SKAction.sequence([red,clear]))
         
@@ -40,7 +41,8 @@ class Monster: SKSpriteNode {
     func beingHit(homeScene: GameScene, damage: CGFloat)  {
         let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
         let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
-        let back = SKAction.moveBy(x: homeScene.player.facing.x*10, y: homeScene.player.facing.y*10, duration: 0.1)
+        let vec = self.position - homeScene.player.position
+        let back = SKAction.moveBy(x: vec.normalized().x*10, y: vec.normalized().y*10, duration: 0.1)
         self.run(back)
         self.run(SKAction.sequence([red,clear]))
         

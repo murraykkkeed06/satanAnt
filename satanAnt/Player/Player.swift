@@ -120,6 +120,9 @@ class Player: SKSpriteNode {
     var hat: Hat!
     var hatChanged = true
     
+    var pet: Pet!
+    var petChanged = true
+    
     var item: Item!
     var itemChanged = true
     
@@ -326,7 +329,7 @@ class Player: SKSpriteNode {
         self.money = 178
         self.weapon = fromType(type: WeaponType.random())
         self.hat = PlantDog()
-        
+        self.pet = Panda()
         self.itemList.append(fromType(type: ItemType.random()))
         self.itemList.append(fromType(type: ItemType.random()))
         self.item = itemList[0]
