@@ -64,6 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isCaveRoom = false
     var isEnterCaveRoom = false
     var isBreakRoom = false
+    var isSecretRoom = false
     var YX: GridYX!
     
     var isClean = false
@@ -188,7 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if villageGirl == nil && !isBedRoom && !isEnterCaveRoom {
+            if villageGirl == nil && !isBedRoom && !isEnterCaveRoom && !isSecretRoom{
                 if Int.random(in: 0..<10)<1{
                     villageGirl = VillageGirl()
                     
@@ -210,7 +211,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if scientist == nil  && !isBedRoom && !isEnterCaveRoom{
+            if scientist == nil  && !isBedRoom && !isEnterCaveRoom && !isSecretRoom{
                 if Int.random(in: 0..<10)<1{
                     scientist = Scientist()
                     
@@ -266,16 +267,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupCanon()
             
             
+            if isMonsterRoom || isBornRoom{
+                bornBreak(num: Int.random(in: 5..<10), homeScene: self)
+            }
             
             
             
         }
+        
         if isEnterCaveRoom{
             setupCaveMonster(level: player.gameLevel)
         }
         //setupisset end
         
-        if !isEnterCaveRoom && !isBedRoom {mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
+        if !isEnterCaveRoom && !isBedRoom && !isSecretRoom{mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
         if isBedRoom{
             player.health = player.bornHealth + player.baseHealth
             player.healthChanged = true
@@ -345,8 +350,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    
-    //end didmove
+   
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
@@ -627,11 +631,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupBulletHit(nodeA: nodeA, nodeB: nodeB)
                 setupPickUp(nodeA: nodeA, nodeB: nodeB)
                 setupMonsterGetHeartDrop(nodeA: nodeA, nodeB: nodeB)
-                
+                setupHitBreak(nodeA: nodeA, nodeB: nodeB)
+                setupHoleEnter(nodeA: nodeA, nodeB: nodeB)
             }
         }
         
     }
+    
+    
+    
     
     func setupCanon()  {
         
@@ -1665,6 +1673,138 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
 
+    }
+    
+    func setupHoleEnter(nodeA: SKNode, nodeB: SKNode)  {
+        if nodeA.name == "hole" && nodeB.name == "player"{
+            player.enterSecretRoomScene = self
+            if  let view = self.view as SKView?{
+                let scene = GameScene.level(7)
+                scene?.scaleMode = .aspectFit
+                scene?.isSecretRoom = true
+                scene?.player = player
+                scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+                scene?.run(SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true))
+                scene?.sceneList = sceneList
+                view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true
+
+            }
+            
+        }
+        
+        if nodeA.name == "player" && nodeB.name == "hole"{
+            player.enterSecretRoomScene = self
+            if  let view = self.view as SKView?{
+                let scene = GameScene.level(7)
+                scene?.scaleMode = .aspectFit
+                scene?.isSecretRoom = true
+                scene?.player = player
+                scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+                scene?.run(SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true))
+                scene?.sceneList = sceneList
+                view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true
+                
+            }
+        }
+        if nodeA.name == "backHole" && nodeB.name == "player"{
+            
+            if  let view = self.view as SKView?{
+                let scene = player.enterSecretRoomScene
+                scene?.scaleMode = .aspectFit
+                scene?.isSecretRoom = true
+                scene?.player = player
+                scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+                scene?.run(SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true))
+                scene?.sceneList = sceneList
+                view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true
+
+            }
+            
+        }
+        
+        if nodeA.name == "player" && nodeB.name == "backHole"{
+            if  let view = self.view as SKView?{
+                let scene = player.enterSecretRoomScene
+                scene?.scaleMode = .aspectFit
+                scene?.isSecretRoom = true
+                scene?.player = player
+                scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+                scene?.run(SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true))
+                scene?.sceneList = sceneList
+                view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.ignoresSiblingOrder = true
+
+            }
+        }
+    }
+    
+    func setupHitBreak(nodeA: SKNode, nodeB: SKNode)  {
+        var stuff: Break!
+        var ammo: Ammo!
+        
+        switch nodeA.name {
+        case "stone":
+            stuff = nodeA as! Stone
+        case "bucket":
+            stuff = nodeA as! Bucket
+        case "van":
+            stuff = nodeA as! Van
+        case "stock":
+            stuff = nodeA as! Stock
+        case "staffBullet":
+            ammo = nodeA as! Bullet
+        case "candy":
+            ammo = nodeA as! Candy
+        case "egg":
+            ammo = nodeA as! Egg
+        case "canonBall":
+            ammo  = nodeA as! CanonBall
+        
+        default:
+            break
+        }
+        
+        switch nodeB.name {
+        case "stone":
+            stuff = nodeB as! Stone
+        case "bucket":
+            stuff = nodeB as! Bucket
+        case "van":
+            stuff = nodeB as! Van
+        case "stock":
+            stuff = nodeB as! Stock
+        case "staffBullet":
+            ammo = nodeB as! Bullet
+        case "candy":
+            ammo = nodeB as! Candy
+        case "egg":
+            ammo = nodeB as! Egg
+        case "canonBall":
+            ammo  = nodeB as! CanonBall
+        
+        default:
+            break
+        }
+        
+        if ammo != nil && stuff != nil{
+            stuff.beingHit(scene: self)
+
+        }
+        
+        
+        
+        
     }
     
     

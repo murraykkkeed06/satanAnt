@@ -20,7 +20,7 @@ enum playerState {
 
 class Player: SKSpriteNode {
     
-    
+    var enterSecretRoomScene: GameScene!
     
     var AudioPlayer = AVAudioPlayer()
     var AudioPlayer2 = AVAudioPlayer()
@@ -146,7 +146,7 @@ class Player: SKSpriteNode {
             if _health <= 0 && isAlived{
                 
                 self.physicsBody = nil
-                
+                print("enter!")
                 
                 isAlived = false
                 round += 1

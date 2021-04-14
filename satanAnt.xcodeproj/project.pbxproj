@@ -82,6 +82,18 @@
 		723C7ADA26218B7800D9026C /* Candy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723C7AD926218B7800D9026C /* Candy.swift */; };
 		723C7ADE26219E0F00D9026C /* Ammo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723C7ADD26219E0F00D9026C /* Ammo.swift */; };
 		723D45C92621580B0046ABAC /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723D45C82621580B0046ABAC /* Staff.swift */; };
+		723E80052627266A002C54B9 /* Level_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 723E80042627266A002C54B9 /* Level_7.png */; };
+		723E800826272684002C54B9 /* Level_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = 723E800726272684002C54B9 /* Level_7.sks */; };
+		723E800B26272828002C54B9 /* bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = 723E800A26272828002C54B9 /* bucket.png */; };
+		723E800F26272938002C54B9 /* Break.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E800E26272938002C54B9 /* Break.swift */; };
+		723E801426272A6A002C54B9 /* van.png in Resources */ = {isa = PBXBuildFile; fileRef = 723E801126272A6A002C54B9 /* van.png */; };
+		723E801526272A6A002C54B9 /* stock.png in Resources */ = {isa = PBXBuildFile; fileRef = 723E801226272A6A002C54B9 /* stock.png */; };
+		723E801626272A6A002C54B9 /* stone.png in Resources */ = {isa = PBXBuildFile; fileRef = 723E801326272A6A002C54B9 /* stone.png */; };
+		723E801926272A81002C54B9 /* Stone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E801826272A81002C54B9 /* Stone.swift */; };
+		723E801C26272B48002C54B9 /* Van.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E801B26272B48002C54B9 /* Van.swift */; };
+		723E801F26272B71002C54B9 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E801E26272B71002C54B9 /* Stock.swift */; };
+		723E802226272B91002C54B9 /* Bucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E802126272B91002C54B9 /* Bucket.swift */; };
+		723E802726273A20002C54B9 /* hole.png in Resources */ = {isa = PBXBuildFile; fileRef = 723E802626273A20002C54B9 /* hole.png */; };
 		7240ED372620848200745815 /* slime_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2C2620848200745815 /* slime_11.png */; };
 		7240ED382620848200745815 /* slime_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2D2620848200745815 /* slime_8.png */; };
 		7240ED392620848200745815 /* slime_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2E2620848200745815 /* slime_1.png */; };
@@ -620,6 +632,18 @@
 		723C7AD926218B7800D9026C /* Candy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candy.swift; sourceTree = "<group>"; };
 		723C7ADD26219E0F00D9026C /* Ammo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ammo.swift; sourceTree = "<group>"; };
 		723D45C82621580B0046ABAC /* Staff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
+		723E80042627266A002C54B9 /* Level_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Level_7.png; sourceTree = "<group>"; };
+		723E800726272684002C54B9 /* Level_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_7.sks; sourceTree = "<group>"; };
+		723E800A26272828002C54B9 /* bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bucket.png; sourceTree = "<group>"; };
+		723E800E26272938002C54B9 /* Break.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Break.swift; sourceTree = "<group>"; };
+		723E801126272A6A002C54B9 /* van.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = van.png; sourceTree = "<group>"; };
+		723E801226272A6A002C54B9 /* stock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stock.png; sourceTree = "<group>"; };
+		723E801326272A6A002C54B9 /* stone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone.png; sourceTree = "<group>"; };
+		723E801826272A81002C54B9 /* Stone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stone.swift; sourceTree = "<group>"; };
+		723E801B26272B48002C54B9 /* Van.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Van.swift; sourceTree = "<group>"; };
+		723E801E26272B71002C54B9 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		723E802126272B91002C54B9 /* Bucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bucket.swift; sourceTree = "<group>"; };
+		723E802626273A20002C54B9 /* hole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole.png; sourceTree = "<group>"; };
 		7240ED2C2620848200745815 /* slime_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_11.png; sourceTree = "<group>"; };
 		7240ED2D2620848200745815 /* slime_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_8.png; sourceTree = "<group>"; };
 		7240ED2E2620848200745815 /* slime_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_1.png; sourceTree = "<group>"; };
@@ -1118,6 +1142,18 @@
 			path = Weapon;
 			sourceTree = "<group>";
 		};
+		723E800D26272833002C54B9 /* Break */ = {
+			isa = PBXGroup;
+			children = (
+				723E800E26272938002C54B9 /* Break.swift */,
+				723E801826272A81002C54B9 /* Stone.swift */,
+				723E801B26272B48002C54B9 /* Van.swift */,
+				723E801E26272B71002C54B9 /* Stock.swift */,
+				723E802126272B91002C54B9 /* Bucket.swift */,
+			);
+			path = Break;
+			sourceTree = "<group>";
+		};
 		72500A7E261B3E7C00EAE276 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -1251,6 +1287,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				723E800D26272833002C54B9 /* Break */,
 				72558C362626C9FE0012DA21 /* PetEgg */,
 				72F2E30C2625C1A000D9DC6D /* Pet */,
 				7264DC1426247FD000D7722B /* Hat */,
@@ -1286,6 +1323,12 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				723E802626273A20002C54B9 /* hole.png */,
+				723E801226272A6A002C54B9 /* stock.png */,
+				723E801326272A6A002C54B9 /* stone.png */,
+				723E801126272A6A002C54B9 /* van.png */,
+				723E800A26272828002C54B9 /* bucket.png */,
+				723E80042627266A002C54B9 /* Level_7.png */,
 				7220E30F2626F3BD00DADDCB /* scientist.png */,
 				7220E2F82626EA3F00DADDCB /* catBack_1.png */,
 				7220E2F22626EA3E00DADDCB /* catBack_2.png */,
@@ -1703,6 +1746,7 @@
 				7276B4EC2619F65700C4918F /* Level_4.sks */,
 				72500A69261B044000EAE276 /* Level_5.sks */,
 				72500A75261B12EE00EAE276 /* Level_6.sks */,
+				723E800726272684002C54B9 /* Level_7.sks */,
 				7279A975260D913C000EB14F /* playerAction.sks */,
 				72B46640260B2A1400BC5E56 /* Actions.sks */,
 				72E48467260F11D700D1C2DA /* monsterAction.sks */,
@@ -1867,6 +1911,7 @@
 				72FE15D3261DE27E008870C6 /* coinDrop_2.png in Resources */,
 				7264DC0826247FB500D7722B /* plantDog_8.png in Resources */,
 				72210567261AC30F00B2EEAC /* cave.png in Resources */,
+				723E80052627266A002C54B9 /* Level_7.png in Resources */,
 				72E7F4BC261C4217006A7AB1 /* caveDoor_7.png in Resources */,
 				725A36E9262298C300340C82 /* slimeBlue_5.png in Resources */,
 				72E4845B260F110600D1C2DA /* log_forward_2.png in Resources */,
@@ -1877,6 +1922,7 @@
 				729E941F260E2FBE00DFF2D0 /* new_left_2.png in Resources */,
 				72FE15CE261DE27E008870C6 /* coinDrop_1.png in Resources */,
 				72E48494260F338C00D1C2DA /* eight.png in Resources */,
+				723E800B26272828002C54B9 /* bucket.png in Resources */,
 				724213FB261A18D000CA5F97 /* point_purple.png in Resources */,
 				724213D6261A064700CA5F97 /* box_4.png in Resources */,
 				725A36ED262298C300340C82 /* slimeRed_8.png in Resources */,
@@ -1933,6 +1979,7 @@
 				720A426E2618C7C0002D589C /* logDie_1.png in Resources */,
 				725A36E3262298C300340C82 /* slimePurple_2.png in Resources */,
 				72558C0F2626BC760012DA21 /* love_1.png in Resources */,
+				723E801526272A6A002C54B9 /* stock.png in Resources */,
 				72F4410D26205CD1006F450B /* apple.png in Resources */,
 				72D638A12619753000A43D41 /* dialogue_3.png in Resources */,
 				72558BFB2626A9BF0012DA21 /* runAway.wav in Resources */,
@@ -2028,6 +2075,7 @@
 				7281EBC226232DD800EE69F9 /* canonFire_3.png in Resources */,
 				72E4849C260F338C00D1C2DA /* one.png in Resources */,
 				72D6389526196A6F00A43D41 /* npcAction.sks in Resources */,
+				723E800826272684002C54B9 /* Level_7.sks in Resources */,
 				72E48417260EEDAA00D1C2DA /* background_4.png in Resources */,
 				725A37192622CAC600340C82 /* ghostDie.wav in Resources */,
 				725A36F2262298C300340C82 /* slimePurple_9.png in Resources */,
@@ -2072,6 +2120,7 @@
 				7276B4ED2619F65700C4918F /* Level_4.sks in Resources */,
 				72684BA926254BD1006B6DC9 /* foxidle1.png in Resources */,
 				72558C2D2626C3D20012DA21 /* chickenBack_3.png in Resources */,
+				723E801626272A6A002C54B9 /* stone.png in Resources */,
 				72E48495260F338C00D1C2DA /* heart_3.png in Resources */,
 				7220E3052626EA3F00DADDCB /* catFor_1.png in Resources */,
 				725A37032622B68300340C82 /* slimeJump.mp3 in Resources */,
@@ -2089,6 +2138,7 @@
 				720A425126189C31002D589C /* attack_1.png in Resources */,
 				72E48459260F110600D1C2DA /* log_left_2.png in Resources */,
 				723C7AD326218B6B00D9026C /* candy_1.png in Resources */,
+				723E802726273A20002C54B9 /* hole.png in Resources */,
 				727F3562261EACEC00BB8E02 /* rHandler.png in Resources */,
 				7281EBAC26232D9900EE69F9 /* canonLeft_4.png in Resources */,
 				7264DC0726247FB500D7722B /* plantDog_7.png in Resources */,
@@ -2098,6 +2148,7 @@
 				725A37322622D9B000340C82 /* monsterBornEffect_3.png in Resources */,
 				72AC0194262060AA007F6133 /* drink.mp3 in Resources */,
 				724470312624545100FF052E /* bird_4.png in Resources */,
+				723E801426272A6A002C54B9 /* van.png in Resources */,
 				72FE15E5261DE81B008870C6 /* healParticle.sks in Resources */,
 				720A425526189C31002D589C /* attack_5.png in Resources */,
 				72D6389026196A4700A43D41 /* npcRight_2.png in Resources */,
@@ -2330,10 +2381,12 @@
 				724213E0261A091400CA5F97 /* Box.swift in Sources */,
 				72B46653260B2C5E00BC5E56 /* Player.swift in Sources */,
 				723C7AC32621735700D9026C /* Drop.swift in Sources */,
+				723E802226272B91002C54B9 /* Bucket.swift in Sources */,
 				72F2E32E2625CA5300D9DC6D /* Pet.swift in Sources */,
 				72421403261A194A00CA5F97 /* AbilityPoint.swift in Sources */,
 				727B279B2624836700240223 /* Hat.swift in Sources */,
 				72777327261ED0F3009F823F /* Potion.swift in Sources */,
+				723E801F26272B71002C54B9 /* Stock.swift in Sources */,
 				72D638A42619756E00A43D41 /* Dialogue.swift in Sources */,
 				7240ED672620A16800745815 /* Ghost.swift in Sources */,
 				724213F0261A0CBE00CA5F97 /* Book.swift in Sources */,
@@ -2348,6 +2401,7 @@
 				723C7ADA26218B7800D9026C /* Candy.swift in Sources */,
 				723C7AC92621871500D9026C /* CandyBar.swift in Sources */,
 				72D6389826196B9400A43D41 /* Npc.swift in Sources */,
+				723E800F26272938002C54B9 /* Break.swift in Sources */,
 				72B46643260B2A1400BC5E56 /* GameScene.swift in Sources */,
 				72D3A537260B524D00E65281 /* Popo.swift in Sources */,
 				72E484A7260F435800D1C2DA /* Heart.swift in Sources */,
@@ -2372,6 +2426,8 @@
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
 				7264DC1626247FDF00D7722B /* PlantDog.swift in Sources */,
 				720A425826189E7D002D589C /* AttackPoint.swift in Sources */,
+				723E801926272A81002C54B9 /* Stone.swift in Sources */,
+				723E801C26272B48002C54B9 /* Van.swift in Sources */,
 				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,
 				7244703C2624574D00FF052E /* Egg.swift in Sources */,
 				7242140A261A1C3B00CA5F97 /* PlusButton.swift in Sources */,
