@@ -17,4 +17,10 @@ class Word {
     
     var buyWord: String = "Hey there, pay 20 dollars to get somthing cool ?"
     
+    var farmWord: String = "Try to find some animal and keep it here! "
+    
+    var farmHasWord: String = "i would born all the animal for you !!"
+    
+    var scientistWod: String = " .................................................. "
+    
 }

@@ -21,7 +21,7 @@ class FireBomb: Item {
         self.physicsBody = SKPhysicsBody(circleOfRadius: bombSize.width/2)
         //self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = true
-        self.physicsBody?.allowsRotation = true
+        self.physicsBody?.allowsRotation = false
         self.physicsBody?.mass = 0.5
         
     }
@@ -74,16 +74,17 @@ class FireBomb: Item {
 //        self.physicsBody = nil
 //        homeScene.physicsWorld.gravity = CGVector(dx: 0, dy: 0);
         self.physicsBody?.pinned = true
-        let particle = SKEmitterNode(fileNamed: "popo")!
-        addChild(particle)
-        particle.position = CGPoint(x: 0, y: 10)
-        let wait = SKAction.wait(forDuration: 3)
-        let remove = SKAction.removeFromParent()
-        let seq = SKAction.sequence([wait,remove])
-        particle.zPosition = 1
-        particle.run(seq)
-        self.run(seq)
-        self.run(SKAction(named: "bombFire")!)
+        if let particle = SKEmitterNode(fileNamed: "popo"){
+            addChild(particle)
+            particle.position = CGPoint(x: 0, y: 10)
+            let wait = SKAction.wait(forDuration: 3)
+            let remove = SKAction.removeFromParent()
+            let seq = SKAction.sequence([wait,remove])
+            particle.zPosition = 1
+            particle.run(seq)
+            self.run(seq)
+            self.run(SKAction(named: "bombFire")!)
+        }
         
     }
     

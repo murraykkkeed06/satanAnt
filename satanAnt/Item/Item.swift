@@ -14,7 +14,6 @@ enum ItemType: Int{
     case apple
     case coke
     
-    
     static func random() -> ItemType{
         return ItemType(rawValue: Int.random(in: 0..<4))!
     }

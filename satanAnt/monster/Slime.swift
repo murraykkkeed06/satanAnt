@@ -51,9 +51,10 @@ class Slime: Monster {
                     
                     homeScene.run(SKAction.playSoundFileNamed("slimeDie.wav", waitForCompletion: true))
                     
-                    bornDrop(num: 1, position: self.position, homeScene: homeScene)
-                    bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
-                    
+                    if Int.random(in: 0..<10)<3{
+                        bornDrop(num: 1, position: self.position, homeScene: homeScene)
+                        bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
+                    }
                     //let dieAction = SKAction(named: "slimeDie")!
                     let dieAction = SKAction(named: "monsterDie")!
                     

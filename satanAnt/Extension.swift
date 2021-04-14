@@ -62,8 +62,15 @@ extension CGPoint {
      * return new cgpoint but won't modify origin value
      */
     public func randomPointInDistamce(distance: CGFloat) -> CGPoint {
-        let newX = x + CGFloat.random(in: -distance..<distance)
-        let newY = y + CGFloat.random(in: -distance..<distance)
+        
+        var newX = x + CGFloat.random(in: -distance..<distance)
+        var newY = y + CGFloat.random(in: -distance..<distance)
+        
+        while abs(newX - x) < distance - 5 || abs(newY - y) < distance - 5{
+            newX = x + CGFloat.random(in: -distance..<distance)
+            newY = y + CGFloat.random(in: -distance..<distance)
+        }
+        
       return CGPoint(x: newX, y: newY)
     }
 

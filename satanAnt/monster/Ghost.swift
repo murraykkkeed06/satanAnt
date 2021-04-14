@@ -45,9 +45,10 @@ class Ghost: Monster {
                     //play dead sound
                     homeScene.run(SKAction.playSoundFileNamed("ghostDie.wav", waitForCompletion: true))
                     
-                    bornDrop(num: 1, position: self.position, homeScene: homeScene)
-                    bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
-                    
+                    if Int.random(in: 0..<10)<3{
+                        bornDrop(num: 1, position: self.position, homeScene: homeScene)
+                        bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
+                    }
                     
                     let dieAction = SKAction(named: "monsterDie")!
                     self.run(SKAction.sequence([dieAction,SKAction.removeFromParent()]))

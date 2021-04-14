@@ -226,8 +226,8 @@ class Player: SKSpriteNode {
     var expChanged = true
     var gameLevelChanged = true
     
-    
-    
+    var eggTextureList = [SKNode]()
+    var eggChanged = true
     
     
     private var _state: playerState!

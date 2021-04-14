@@ -51,10 +51,10 @@ class Log: Monster{
                     tomb.position = self.position
                     self.homeScene.addChild(tomb)
                     
-                 
-                    bornDrop(num: 1, position: self.position, homeScene: homeScene)
-                    bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
-                    
+                    if Int.random(in: 0..<10)<3{
+                        bornDrop(num: 1, position: self.position, homeScene: homeScene)
+                        bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
+                    }
                     
                     let dieAction = SKAction(named: "monsterDie")!
                     self.run(SKAction.sequence([dieAction,SKAction.removeFromParent()]))
