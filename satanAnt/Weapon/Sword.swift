@@ -18,7 +18,7 @@ class Sword: Weapon {
         let texture = SKTexture(imageNamed: "sword")
         super.init(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         self.name = "sword"
-        self.zPosition = 1
+        self.zPosition = 2
         self.attackPoint = 0.25
         self.attackSpeed = 0.3
         self.weaponType = .sword

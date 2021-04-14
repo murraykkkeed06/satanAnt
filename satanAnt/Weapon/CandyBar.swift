@@ -15,7 +15,7 @@ class CandyBar: Weapon {
         let texture = SKTexture(imageNamed: "candyBar")
         super.init(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         self.name = "candyBar"
-        self.zPosition = 1
+        self.zPosition = 2
         self.attackPoint = 0.25
         self.weaponType = .candyBar
         

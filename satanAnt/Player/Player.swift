@@ -234,11 +234,12 @@ class Player: SKSpriteNode {
     var state: playerState {
         set{
             _state = newValue
-            //self.removeAllActions()
+            
             switch newValue {
             case .idle:
                 //self.removeAllActions()
                 if idleIsSet{break}
+                self.removeAllActions()
                 self.run(SKAction(named: "playerIdle")!)
                 
                 leftIsSet = false
@@ -247,6 +248,7 @@ class Player: SKSpriteNode {
                 forIsSet = false
             case .left:
                 if leftIsSet {break}
+                self.removeAllActions()
                 self.run(SKAction(named: "playerLeft")!)
                 //self.playerIsMoving = true
                 leftIsSet = true
@@ -256,6 +258,7 @@ class Player: SKSpriteNode {
                 
             case .right:
                 if rightIsSet {break}
+                self.removeAllActions()
                 self.run(SKAction(named: "playerRight")!)
                 //self.playerIsMoving = true
                 rightIsSet = true
@@ -264,6 +267,7 @@ class Player: SKSpriteNode {
                 forIsSet = false
             case .forward:
                 if forIsSet {break}
+                self.removeAllActions()
                 self.run(SKAction(named: "playerForward")!)
                 //self.playerIsMoving = true
                 forIsSet = true
@@ -272,6 +276,7 @@ class Player: SKSpriteNode {
                 backIsSet = false
             case .backward:
                 if backIsSet {return}
+                self.removeAllActions()
                 self.run(SKAction(named: "playerBackward")!)
                 //self.playerIsMoving = true
                 backIsSet = true

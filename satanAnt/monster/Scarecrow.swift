@@ -43,8 +43,35 @@ class Scarecrow: Monster {
         super.init(coder: aDecoder)
         
     }
-
-
+    
+    override func beingHit(homeScene: GameScene) {
+        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
+        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
+        let vec = self.position - homeScene.player.position
+        let back = SKAction.moveBy(x: vec.normalized().x*10, y: vec.normalized().y*10, duration: 0.1)
+        self.run(back)
+        self.run(SKAction.sequence([red,clear]))
+        
+        
+        let sound: SKAction!
+        switch Int.random(in: 0..<5) {
+        case 0:
+            sound = SKAction.playSoundFileNamed("hit_1.wav", waitForCompletion: false)
+        case 1:
+            sound = SKAction.playSoundFileNamed("hit_2.wav", waitForCompletion: false)
+        case 2:
+            sound = SKAction.playSoundFileNamed("hit_3.wav", waitForCompletion: false)
+        case 3:
+            sound = SKAction.playSoundFileNamed("hit_4.wav", waitForCompletion: false)
+        case 4:
+            sound = SKAction.playSoundFileNamed("hit_5.wav", waitForCompletion: false)
+        default:
+            sound = SKAction.playSoundFileNamed("hit_1.wav", waitForCompletion: false)
+        }
+    
+        homeScene.run(sound)
+    }
     
     
 }
+

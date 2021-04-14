@@ -21,8 +21,7 @@ enum NpcState: Int {
 }
 
 class Npc: SKSpriteNode {
-    
-    
+   
     
     private var _state: NpcState!
     var state: NpcState{
@@ -54,18 +53,7 @@ class Npc: SKSpriteNode {
         set{
             _sinceBorn = newValue
             if _sinceBorn > 3 {
-                switch state {
-                case .idle:
-                    self.state = .right
-                case .right:
-                    state = .forward
-                case .forward:
-                    state = .left
-                case .left:
-                    state = .backward
-                case .backward:
-                    state = .idle
-                }
+                state = NpcState.random()
             _sinceBorn = 0            
             }
         }
@@ -83,9 +71,11 @@ class Npc: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 28, height: 34))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.contactTestBitMask = 0
-        self.physicsBody?.isDynamic = false
+        self.physicsBody?.contactTestBitMask = 2 
+        self.physicsBody?.collisionBitMask = 2
+        self.physicsBody?.isDynamic = true 
         self.name = "npc"
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -93,7 +83,11 @@ class Npc: SKSpriteNode {
     }
 
     func bump() {
-        self.state = NpcState.random()
+        var tempState = NpcState.random()
+        while tempState == self.state {
+            tempState = NpcState.random()
+        }
+        state = tempState
         self.sinceBorn = 0
     }
 }

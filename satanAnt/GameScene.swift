@@ -90,6 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var popo: Popo!
     
+    var npc: Npc!
     
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
@@ -177,6 +178,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     monsterList.append(scarecrow)
                 }
             }
+        
+            
+            for node in self.children{
+                if node.name == "npcBorn"{
+                    npc = Npc()
+                    npc.position = node.position
+                    addChild(npc)
+                    
+                    for scene in sceneList{
+                        scene.npc = npc
+                    }
+                }
+            }
+            
             
             
 
@@ -266,24 +281,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-//        for node in self.children{
-//            if node.name == "birdBorn"{
-//                let bird = Bird(scene: self)
-//                bird.position = node.position
-//                addChild(bird)
-//
-//            }
-//        }
-        for node in self.children{
-            if node.name == "npc"{ node.removeFromParent()}
-            if node.name == "npcBorn"{
-                let npc = Npc()
-                npc.position = node.position
-                addChild(npc)
-            }
-        }
-        
-        
         
     }
     
@@ -344,18 +341,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if sinceStart > eachFrame{
             handler.isHidden = false
         }
+        
         for node in self.children{
-            if node.name == "npc"{
-                let npc = node as! Npc
-                npc.sinceBorn += eachFrame
-                checkNpcAround(npc: npc)
-            }
             if node.name == "panda"{
                 let panda = node as! Panda
                 panda.sinceStart += eachFrame
-                
             }
+            if node.name == "npc"{
+                let npc = node as! Npc
+                checkNpcAround(npc: npc)
+            }
+            
         }
+        
+//        for scene in sceneList{
+//            if let npc = scene.npc{
+//                npc.sinceBorn += eachFrame
+//            }
+//        }
+        
+        if let npc = npc{
+            npc.sinceBorn += eachFrame
+            //print("\(npc.sinceBorn)")
+        }
+        
+        
         
         for node in player.children{
             if node.name == "plantDog"{
@@ -491,7 +501,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-    
+        
         
     }
     
@@ -1254,6 +1264,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             
         }
+        
+        if nodeA.name == "npc" {
+            
+            let node = nodeA as! Npc
+            node.bump()
+            
+            
+        }
+        if nodeB.name == "npc" {
+            
+            let node = nodeB as! Npc
+            node.bump()
+            
+            
+        }
+        
+        
     }
     
     
