@@ -636,21 +636,46 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupCanon()  {
         
        // if let canonBorn = self.childNode(withName: "canonBorn") as? SKSpriteNode {
-        for node in self.children{
-            if node.name == "canonBorn"{
+//        for node in self.children{
+//            if node.name == "canonBorn"{
+//                var canon: Canon!
+//
+//                if node.position.x > self.frame.width/2 {
+//                    canon = Canon(canonDirection: .left, scene: self)
+//                }else {
+//                    canon = Canon(canonDirection: .right, scene: self)
+//                }
+//                canon.position = node.position
+//
+//                addChild(canon)
+//            }
+//        }
+       // }
+        if isMonsterRoom{
+            for _ in 0..<Int.random(in: 0..<4){
+                
                 var canon: Canon!
                 
-                if node.position.x > self.frame.width/2 {
+                var newX = CGFloat.random(in: 50..<self.frame.width-50)
+                var newY = CGFloat.random(in: 50..<self.frame.height-50)
+                
+                while atPoint(CGPoint(x: newX, y: newY)).physicsBody != nil {
+                    newX = CGFloat.random(in: 50..<self.frame.width-50)
+                    newY = CGFloat.random(in: 50..<self.frame.height-50)
+                }
+                
+                if newX > self.frame.width/2 {
                     canon = Canon(canonDirection: .left, scene: self)
                 }else {
                     canon = Canon(canonDirection: .right, scene: self)
                 }
-                canon.position = node.position
-                
+                canon.position = CGPoint(x: newX, y: newY)
+
                 addChild(canon)
+                
             }
         }
-       // }
+        
     }
     
     func monsterAutoAttackDetect() {

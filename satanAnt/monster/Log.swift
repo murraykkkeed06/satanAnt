@@ -51,7 +51,7 @@ class Log: Monster{
                     tomb.position = self.position
                     self.homeScene.addChild(tomb)
                     
-                    if Int.random(in: 0..<10)<3{
+                    if Int.random(in: 0..<10)<1{
                         bornDrop(num: 1, position: self.position, homeScene: homeScene)
                         bornItemTexture(num: 1, position: self.position, homeScene: homeScene)
                     }
