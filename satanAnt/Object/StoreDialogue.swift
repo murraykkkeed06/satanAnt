@@ -17,7 +17,7 @@ class StoreDialogue: SKSpriteNode {
     var num: Int = 0
     var wordList = [SKLabelNode]()
     var isFinish = false
-    
+    var selectionNode: SKNode!
     
     init(scene: GameScene){
         typeSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "talking", ofType: "mp3")!)
@@ -41,13 +41,68 @@ class StoreDialogue: SKSpriteNode {
     }
     
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        
+        if atPoint(location).name == "buyWordButton"{
+            if let selectionNode = selectionNode{
+                switch selectionNode.name {
+                case "fireBombTextureOnHud":
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .fireBomb)
+                    if homeScene.player.money < fromType(type: .fireBomb).price{return}
+                    homeScene.player.money -= fromType(type: .fireBomb).price
+                    homeScene.player.moneyChanged = true
+                case "potionTextureOnHud":
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .potion)
+                    if homeScene.player.money < fromType(type: .potion).price{return}
+                    homeScene.player.money -= fromType(type: .potion).price
+                    homeScene.player.moneyChanged = true
+                case "cokeTextureOnHud":
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .coke)
+                    if homeScene.player.money < fromType(type: .coke).price{return}
+                    homeScene.player.money -= fromType(type: .coke).price
+                    homeScene.player.moneyChanged = true
+                case "appleTextureOnHud":
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .apple)
+                    if homeScene.player.money < fromType(type: .apple).price{return}
+                    homeScene.player.money -= fromType(type: .apple).price
+                    homeScene.player.moneyChanged = true
+                default:
+                    break
+                }
+            }
+            return
+        }
+        
+        
+        selectionNode = atPoint(location)
+        if let selectionNode = selectionNode{
+            for node in self.children{
+                if node.name == "pointing"{
+                    node.removeFromParent()
+                }
+            }
+            
+            let pointing = SKSpriteNode(texture: SKTexture(imageNamed: "pointing"), color: .clear, size: CGSize(width: 20, height: 30))
+            pointing.position = selectionNode.position + CGPoint(x: 0, y: 20)
+            pointing.run(SKAction(named: "idle")!)
+            pointing.name = "pointing"
+            pointing.zPosition = 50
+            addChild(pointing)
+        }
+        
+    }
+    
+    
+    
     func render()  {
         
         let type1 = ItemType.random()
         let itemTexture1 =  fromTypeTexture(type: type1)
         itemTexture1.position = CGPoint(x: 64, y: -60)
         itemTexture1.zPosition = 1
-        itemTexture1.name = itemTexture1.name! + "onHud"
+        itemTexture1.name = itemTexture1.name! + "OnHud"
         itemTexture1.physicsBody = nil
         let price1 = fromType(type: type1).price!
         let firstMoney1: Int = Int(price1/10)
@@ -66,7 +121,7 @@ class StoreDialogue: SKSpriteNode {
         let itemTexture2 =  fromTypeTexture(type: type2)
         itemTexture2.position = CGPoint(x: 134, y: -60)
         itemTexture2.zPosition = 1
-        itemTexture2.name = itemTexture2.name! + "onHud"
+        itemTexture2.name = itemTexture2.name! + "OnHud"
         itemTexture2.physicsBody = nil
         let price2 = fromType(type: type2).price!
         let firstMoney2: Int = Int(price2/10)
@@ -85,7 +140,7 @@ class StoreDialogue: SKSpriteNode {
         let itemTexture3 =  fromTypeTexture(type: type3)
         itemTexture3.position = CGPoint(x: 64, y: -111)
         itemTexture3.zPosition = 1
-        itemTexture3.name = itemTexture3.name! + "onHud"
+        itemTexture3.name = itemTexture3.name! + "OnHud"
         itemTexture3.physicsBody = nil
         let price3 = fromType(type: type3).price!
         let firstMoney3: Int = Int(price3/10)
@@ -104,7 +159,7 @@ class StoreDialogue: SKSpriteNode {
         let itemTexture4 =  fromTypeTexture(type: type4)
         itemTexture4.position = CGPoint(x: 135, y: -111)
         itemTexture4.zPosition = 1
-        itemTexture4.name = itemTexture4.name! + "onHud"
+        itemTexture4.name = itemTexture4.name! + "OnHud"
         itemTexture4.physicsBody = nil
         let price4 = fromType(type: type4).price!
         let firstMoney4: Int = Int(price4/10)
@@ -124,7 +179,7 @@ class StoreDialogue: SKSpriteNode {
         let itemTexture5 =  fromTypeTexture(type: type5)
         itemTexture5.position = CGPoint(x: 64, y: -162)
         itemTexture5.zPosition = 1
-        itemTexture5.name = itemTexture5.name! + "onHud"
+        itemTexture5.name = itemTexture5.name! + "OnHud"
         itemTexture5.physicsBody = nil
         let price5 = fromType(type: type5).price!
         let firstMoney5: Int = Int(price5/10)
@@ -144,7 +199,7 @@ class StoreDialogue: SKSpriteNode {
         let itemTexture6 =  fromTypeTexture(type: type6)
         itemTexture6.position = CGPoint(x: 135, y: -163)
         itemTexture6.zPosition = 1
-        itemTexture6.name = itemTexture6.name! + "onHud"
+        itemTexture6.name = itemTexture6.name! + "OnHud"
         itemTexture6.physicsBody = nil
         let price6 = fromType(type: type6).price!
         let firstMoney6: Int = Int(price6/10)
@@ -158,6 +213,13 @@ class StoreDialogue: SKSpriteNode {
         addChild(firstNum6)
         addChild(secondNum6)
         addChild(itemTexture6)
+        
+        
+        let buyButton = SKSpriteNode(texture: SKTexture(imageNamed: "buyWordButton"), color: .clear, size: CGSize(width: 72, height: 21))
+        buyButton.position = CGPoint(x: 110, y: -192)
+        buyButton.name = "buyWordButton"
+        buyButton.zPosition = 1
+        addChild(buyButton)
         
         
     }
@@ -177,6 +239,9 @@ class StoreDialogue: SKSpriteNode {
             self.homeScene.fireButton.isUserInteractionEnabled = true
         }
     }
+    
+    
+   
 }
 
 

@@ -270,7 +270,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupCanon()
             
             
-            if isMonsterRoom || isBornRoom{
+            if isMonsterRoom {
                 bornBreak(num: Int.random(in: 5..<10), homeScene: self)
             }
             
@@ -901,7 +901,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //sound
                 self.run(SKAction.playSoundFileNamed("stop.mp3", waitForCompletion: true))
                 
-                dialogue = Dialogue()
+                dialogue = Dialogue(dialogueType: "...")
                 dialogue.position = soilder.position + CGPoint(x: 0, y: 30)
                 dialogue.selectHandler = {
                     
@@ -939,14 +939,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if node.name == "vendingMachine"{
                 let vendingMachine = node as SKNode
                 let dist = player.position.distanceTo(vendingMachine.position)
-                if dist < 80 {
+                if dist < 200 {
                     if !vendingMachineDialogueIsSet {
                         vendingMachineDialogueIsSet = true
                         //sound
                         self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
                         
-                        vendingMachineDialogue = Dialogue()
-                        vendingMachineDialogue.position = vendingMachine.position + CGPoint(x: 0, y: 10)
+                        vendingMachineDialogue = Dialogue(dialogueType: "surprise")
+                        vendingMachineDialogue.position = vendingMachine.position + CGPoint(x: 5, y: 20)
                         vendingMachineDialogue.selectHandler = {
                             
                             self.storeDialogue = StoreDialogue(scene: self)
@@ -997,7 +997,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         //sound
                         self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
                         
-                        scientistDialogue = Dialogue()
+                        scientistDialogue = Dialogue(dialogueType: "...")
                         scientistDialogue.position = scientist.position + CGPoint(x: 0, y: 30)
                         scientistDialogue.selectHandler = {
                             
@@ -1046,7 +1046,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         //sound
                         self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
                         
-                        girlDialogue = Dialogue()
+                        girlDialogue = Dialogue(dialogueType: "...")
                         girlDialogue.position = girl.position + CGPoint(x: 0, y: 30)
                         girlDialogue.selectHandler = {
                             
@@ -1217,10 +1217,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for node in self.children{
             if node.name == "farmBar"{
                 let dist = player.position.distanceTo(node.position)
-                if dist < 30 {
+                if dist < 100 {
                     if !farmBarDialogueIsSet {
                         farmBarDialogueIsSet = true
-                        farmDialogue = Dialogue()
+                        farmDialogue = Dialogue(dialogueType: "...")
                         farmDialogue.position = node.position + CGPoint(x: 0, y: 30)
                                                
                         farmDialogue.selectHandler = {
@@ -1301,7 +1301,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if dist < 60 {
             if !dialogueIsSet {
                 dialogueIsSet = true
-                dialogue = Dialogue()
+                dialogue = Dialogue(dialogueType: "...")
                 dialogue.position = npc.position + CGPoint(x: 0, y: 30)
                 //set hello
                 self.run(SKAction.playSoundFileNamed("hello.mp3", waitForCompletion: true))
@@ -1733,6 +1733,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupHoleEnter(nodeA: SKNode, nodeB: SKNode)  {
         if nodeA.name == "hole" && nodeB.name == "player"{
+            nodeA.removeFromParent()
             player.enterSecretRoomScene = self
             if  let view = self.view as SKView?{
                 let scene = GameScene.level(7)
@@ -1752,6 +1753,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if nodeA.name == "player" && nodeB.name == "hole"{
+            nodeB.removeFromParent()
             player.enterSecretRoomScene = self
             if  let view = self.view as SKView?{
                 let scene = GameScene.level(7)
