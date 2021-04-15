@@ -80,6 +80,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var girlDialogueIsSet = false
     var scientistDialogue: Dialogue!
     var scientistDialogueIsSet = false
+    var vendingMachineDialogue: Dialogue!
+    var vendingMachineDialogueIsSet = false
     var weaponOnHand: SKSpriteNode!
     var npcBornPoint = CGPoint(x: 350, y: 220)
     var inDialogue = false
@@ -93,6 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var levelNumber: Num!
     
     var bigDialogue: BigDialogue!
+    var storeDialogue: StoreDialogue!
     
     var bornEffect: BornEffect!
     
@@ -452,6 +455,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         checkGirlAround()
         checkScientistAround()
+        checkVendingMachineAround()
         
         if player.isFiring{
             self.player.weapon.attack(direction: self.player.facing,homeScene: self)
@@ -929,6 +933,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    func checkVendingMachineAround()  {
+        for node in self.children{
+            if node.name == "vendingMachine"{
+                let vendingMachine = node as SKNode
+                let dist = player.position.distanceTo(vendingMachine.position)
+                if dist < 80 {
+                    if !vendingMachineDialogueIsSet {
+                        vendingMachineDialogueIsSet = true
+                        //sound
+                        self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
+                        
+                        vendingMachineDialogue = Dialogue()
+                        vendingMachineDialogue.position = vendingMachine.position + CGPoint(x: 0, y: 10)
+                        vendingMachineDialogue.selectHandler = {
+                            
+                            self.storeDialogue = StoreDialogue(scene: self)
+                            self.storeDialogue.position = self.vendingMachineDialogue.position
+                            self.addChild(self.storeDialogue)
+                            self.storeDialogue.run(SKAction.move(to: CGPoint(x: 194, y: 320), duration: 0.5))
+//                            self.storeDialogue.run(SKAction.scale(to: CGSize(width: 228, height: 227), duration: 0.5))
+                            
+                            //tricky way to disable handler
+                            self.inDialogue = true
+                            self.popoButton.isUserInteractionEnabled = false
+                            self.fireButton.isUserInteractionEnabled = false
+                            self.vendingMachineDialogue.removeFromParent()
+                            
+                            //self.storeDialogue.startWord(sentence: Word().scientistWod)
+                            
+//                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run({self.addbuyButton(money: CGFloat.random(in: 50..<100))})]))
+                            
+                        }
+                        
+                        addChild(vendingMachineDialogue)
+                        vendingMachineDialogue.start()
+                        
+                    }
+                }else{
+                    if vendingMachineDialogue != nil {
+                        vendingMachineDialogue.removeFromParent()
+                        vendingMachineDialogueIsSet = false
+                    }
+                }
+            }
+            
+        }
+        
+        
+        
+    }
+    
     
     func checkScientistAround()  {
         for node in self.children{

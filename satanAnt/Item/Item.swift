@@ -20,7 +20,7 @@ enum ItemType: Int{
 }
 
 class Item : SKSpriteNode {
-    
+    var price: CGFloat!
     
     
     

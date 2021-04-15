@@ -17,7 +17,7 @@ class Potion: Item {
         super.init(texture: texture, color: .clear, size: CGSize(width: 20, height: 30))
         self.zPosition = 50
         self.name = "potion"
-       
+        self.price = 30
     }
     
     required init?(coder aDecoder: NSCoder) {

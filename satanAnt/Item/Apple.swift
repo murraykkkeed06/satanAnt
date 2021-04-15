@@ -17,7 +17,7 @@ class Apple: Item {
         super.init(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
         self.zPosition = 50
         self.name = "apple"
-       
+        self.price = 15
     }
     
     required init?(coder aDecoder: NSCoder) {

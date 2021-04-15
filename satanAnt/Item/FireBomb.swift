@@ -23,7 +23,7 @@ class FireBomb: Item {
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.mass = 0.5
-        
+        self.price = 25
     }
     
     required init?(coder aDecoder: NSCoder) {
