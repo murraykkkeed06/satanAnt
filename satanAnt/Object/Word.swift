@@ -19,8 +19,11 @@ class Word {
     
     var farmWord: String = "Try to find some animal and keep it here! "
     
-    var farmHasWord: String = "i would born all the animal for you !!"
+    var farmHasWord: String = "I would born all the animal for you !!"
     
     var scientistWod: String = " .................................................. "
+    
+    var statueWord: String = "Give me money, pussy !"
+    
     
 }

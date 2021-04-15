@@ -24,7 +24,8 @@ enum ChickenSate: Int {
 class Chicken: Pet {
     
     var chickenSize = CGSize(width: 20, height: 20)
-   
+    
+    var bornCollectionTime: Int = 0
     
     var homeScene: GameScene!
     
@@ -56,6 +57,8 @@ class Chicken: Pet {
         }
     }
     
+    
+    
     private var _sinceStart: TimeInterval!
     override var sinceStart: TimeInterval!{
         set{
@@ -63,7 +66,14 @@ class Chicken: Pet {
             
             if _sinceStart > 5{
                 _sinceStart = 0
+                bornCollectionTime += 1
                 self.state = ChickenSate.random()
+                
+                if bornCollectionTime == 10{
+                    bornCollection(num: 1, scene: homeScene, position: self.position)
+                    bornCollectionTime = 0
+                }
+                
             }
             
         }

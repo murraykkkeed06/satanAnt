@@ -226,7 +226,12 @@ class Player: SKSpriteNode {
     var expChanged = true
     var gameLevelChanged = true
     
+    var collectionChanged = true
+    var powerChanged = true
+    
     var eggTextureList = [SKNode]()
+    var collectionList = [Collection]()
+    var powerList = [Power]()
     var eggChanged = true
     
     
@@ -338,8 +343,8 @@ class Player: SKSpriteNode {
         self.itemList.append(fromType(type: ItemType.random()))
         self.itemList.append(fromType(type: ItemType.random()))
         self.item = itemList[0]
-        
-        
+        self.collectionList.append(fromType(type: .ducky))
+        self.powerList.append(fromType(type: .halfMonster))
         self.baseBulletRangePoint = 0
         self.baseBulletSpeedPoint = 0
         self.baseAttackPoint = 0

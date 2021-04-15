@@ -69,6 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isClean = false
     
+    var statueIsMoving = false
     
     var isDoorSet = false
     var dialogueIsSet = false
@@ -78,6 +79,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var loveDialogueIsSet = false
     var girlDialogue: Dialogue!
     var girlDialogueIsSet = false
+    var statueDialogue: Dialogue!
+    var statueDialogueIsSet = false
+    var makerDialogue: Dialogue!
+    var makerDialogueIsSet = false
     var scientistDialogue: Dialogue!
     var scientistDialogueIsSet = false
     var vendingMachineDialogue: Dialogue!
@@ -96,6 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bigDialogue: BigDialogue!
     var storeDialogue: StoreDialogue!
+    var transferDialogue: TransferDialogue!
     
     var bornEffect: BornEffect!
     
@@ -104,6 +110,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var npc: Npc!
     var villageGirl: VillageGirl!
     var scientist: Scientist!
+    
+    var collectionBorn: SKNode!
+    var eggBorn: SKNode!
+    var powerBorn: SKNode!
     
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
@@ -192,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if villageGirl == nil && !isBedRoom && !isEnterCaveRoom && !isSecretRoom{
+            if villageGirl == nil && isMonsterRoom{
                 if Int.random(in: 0..<10)<1{
                     villageGirl = VillageGirl()
                     
@@ -214,7 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if scientist == nil  && !isBedRoom && !isEnterCaveRoom && !isSecretRoom{
+            if scientist == nil  && isMonsterRoom{
                 if Int.random(in: 0..<10)<1{
                     scientist = Scientist()
                     
@@ -318,6 +328,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.hatChanged = true
         player.petChanged = true
         player.eggChanged = true
+        player.powerChanged = true
+        player.collectionChanged = true
+        
         
         player.isAlived = true
         levelChanged = true
@@ -454,6 +467,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         checkGirlAround()
+        checkStatueAround()
+        checkMakerAround()
         checkScientistAround()
         checkVendingMachineAround()
         
@@ -563,11 +578,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //zposition setting
         
         for node in self.children{
-            if node.name == "scarecrow"{
+            if node.name == "scarecrow" && player.position.distanceTo(node.position)<50{
                 if player.position.y < node.position.y{
                     player.zPosition = node.zPosition + 1
                 }else{
-                    player.zPosition = 2
+                    player.zPosition = 1
+                }
+            }
+            if node.name == "statue" && player.position.distanceTo(node.position)<50{
+                if player.position.y < node.position.y{
+                    player.zPosition = node.zPosition + 1
+                }else{
+                    player.zPosition = 1
                 }
             }
         }
@@ -616,6 +638,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+
         
     }
     
@@ -637,6 +660,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupMonsterGetHeartDrop(nodeA: nodeA, nodeB: nodeB)
                 setupHitBreak(nodeA: nodeA, nodeB: nodeB)
                 setupHoleEnter(nodeA: nodeA, nodeB: nodeB)
+            
             }
         }
         
@@ -939,7 +963,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if node.name == "vendingMachine"{
                 let vendingMachine = node as SKNode
                 let dist = player.position.distanceTo(vendingMachine.position)
-                if dist < 200 {
+                if dist < 100 {
                     if !vendingMachineDialogueIsSet {
                         vendingMachineDialogueIsSet = true
                         //sound
@@ -985,6 +1009,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func checkMakerAround()  {
+        for node in self.children{
+            if node.name == "maker"{
+                let dist = player.position.distanceTo(node.position)
+                if dist < 80 {
+                    if !makerDialogueIsSet {
+                        makerDialogueIsSet = true
+                        //sound
+                       // self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
+                        
+                        makerDialogue = Dialogue(dialogueType: "...")
+                        makerDialogue.position = node.position + CGPoint(x: 0, y: 30)
+                        makerDialogue.selectHandler = {
+                            
+                            self.transferDialogue = TransferDialogue(scene: self)
+                            self.transferDialogue.position = self.makerDialogue.position
+                            self.addChild(self.transferDialogue)
+                            self.transferDialogue.run(SKAction.move(to: CGPoint(x: 235, y: 235), duration: 0.5))
+                           
+                            //tricky way to disable handler
+                            self.inDialogue = true
+                            self.popoButton.isUserInteractionEnabled = false
+                            self.fireButton.isUserInteractionEnabled = false
+                            self.makerDialogue.removeFromParent()
+                            
+                        
+                            
+                        }
+                        
+                        addChild(makerDialogue)
+                        makerDialogue.start()
+                        
+                    }
+                }else{
+                    if makerDialogue != nil {
+                        makerDialogue.removeFromParent()
+                        makerDialogueIsSet = false
+                    }
+                }
+            }
+            
+        }
+    }
+    
     
     func checkScientistAround()  {
         for node in self.children{
@@ -1014,7 +1082,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             self.scientistDialogue.removeFromParent()
                             
                             self.bigDialogue.startWord(sentence: Word().scientistWod)
-                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run({self.addbuyButton(money: CGFloat.random(in: 50..<100))})]))
+                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run({self.addbuyButton(money: CGFloat.random(in: 50..<100),characterName: "scientist",buttonName: "buy")})]))
                             
                         }
                         
@@ -1026,6 +1094,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if scientistDialogue != nil {
                         scientistDialogue.removeFromParent()
                         scientistDialogueIsSet = false
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    func checkStatueAround()  {
+        for node in self.children{
+            if node.name == "statue"{
+                let dist = player.position.distanceTo(node.position)
+                if dist < 80 {
+                    if !statueDialogueIsSet {
+                        statueDialogueIsSet = true
+                        //sound
+                        self.run(SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true))
+                        
+                        statueDialogue = Dialogue(dialogueType: "...")
+                        statueDialogue.position = node.position + CGPoint(x: 10, y: 50)
+                        statueDialogue.selectHandler = {
+                            
+                            self.bigDialogue = BigDialogue(scene: self)
+                            self.bigDialogue.position = self.statueDialogue.position
+                            self.addChild(self.bigDialogue)
+                            self.bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
+                            self.bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
+                            
+                            //tricky way to disable handler
+                            self.inDialogue = true
+                            self.popoButton.isUserInteractionEnabled = false
+                            self.fireButton.isUserInteractionEnabled = false
+                            self.statueDialogue.removeFromParent()
+                            
+                            self.bigDialogue.startWord(sentence: Word().statueWord)
+                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run({self.addbuyButton(money: CGFloat.random(in: 30..<50),characterName: "statue",buttonName: "give")})]))
+                            //self.bigDialogue.selectHandler = {self.bigDialogue.justClose()}
+                            
+                        }
+                        
+                        addChild(statueDialogue)
+                        statueDialogue.start()
+                        
+                    }
+                }else{
+                    if statueDialogue != nil {
+                        statueDialogue.removeFromParent()
+                        statueDialogueIsSet = false
                     }
                 }
             }
@@ -1063,7 +1178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             self.girlDialogue.removeFromParent()
                             
                             self.bigDialogue.startWord(sentence: Word().buyWord)
-                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run({self.addbuyButton(money: 20)})]))
+                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run({self.addbuyButton(money: 20,characterName: "villageGirl",buttonName: "buy")})]))
                             
                         }
                         
@@ -1083,8 +1198,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
  
     }
     
-    func addbuyButton(money: CGFloat)  {
-        let buyButton = WordButton(name: "buy")
+    func addbuyButton(money: CGFloat, characterName: String, buttonName: String)  {
+        let buyButton = WordButton(name: buttonName)
         buyButton.position = CGPoint(x: 450, y: 100)
         self.addChild(buyButton)
         
@@ -1103,19 +1218,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if self.player.money > money{
                     self.player.money -= money
                     self.player.moneyChanged = true
-                    for node in self.children{
-            
-                        if node.name == "villageGirl"{
-                            bornItemTexture(num: 1, position: node.position, homeScene: self)
-                            bornPetEggTexture(num: 1, position: node.position, homeScene: self)
-                            
+                    
+                    switch characterName {
+                    case "villageGirl":
+                        bornItemTexture(num: 1, position: self.villageGirl.position, homeScene: self)
+                        if Int.random(in: 0..<10)<3{
+                            bornPetEggTexture(num: 1, position: self.villageGirl.position, homeScene: self)
                         }
-                        else if node.name == "scientist"{
-                            bornItemTexture(num: 1, position: node.position, homeScene: self)
-
-                            
-                        }
+                    case "scientist":
+                        bornItemTexture(num: 1, position: self.scientist.position, homeScene: self)
+                    case "statue":
+                        self.player.health += 0.25
+                        self.player.healthChanged = true
+                    default:
+                        break
                     }
+                    
                     
                 }
                 
@@ -1349,13 +1467,76 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func playerSetupHud() {
         
-        //set egglist
         
+        if player.collectionChanged{
+            
+            if collectionBorn == nil{
+                collectionBorn = SKSpriteNode(color: .red, size: CGSize(width: 1, height: 1))
+                collectionBorn.position = CGPoint(x: 650, y: 300)
+                collectionBorn.zPosition = 100
+                addChild(collectionBorn)
+            }
+            
+            for node in collectionBorn.children{
+                node.removeFromParent()
+            }
+            var action = [SKAction]()
+            let wait = SKAction.wait(forDuration: 0.5)
+            for i in 0..<player.collectionList.count{
+                let node = player.collectionList[i].copy() as! SKNode
+                node.position = CGPoint(x: 0, y: -30 * i)
+                node.zPosition = 1
+                action.append(SKAction.run({node.run(SKAction(named: "idle")!)}))
+                action.append(wait)
+                collectionBorn.addChild(node)
+            }
+            self.run(SKAction.sequence(action))
+            player.collectionChanged = false
+        }
+        
+        if player.powerChanged{
+            
+            if powerBorn == nil{
+                powerBorn = SKSpriteNode(color: .red, size: CGSize(width: 1, height: 1))
+                powerBorn.position = CGPoint(x: 20, y: 300)
+                powerBorn.zPosition = 100
+                addChild(powerBorn)
+            }
+            
+            for node in powerBorn.children{
+                node.removeFromParent()
+            }
+            var action = [SKAction]()
+            let wait = SKAction.wait(forDuration: 0.5)
+            for i in 0..<player.powerList.count{
+                let node = player.powerList[i].copy() as! SKNode
+                node.position = CGPoint(x: 0, y: -30 * i)
+                node.zPosition = 1
+                action.append(SKAction.run({node.run(SKAction(named: "coinPop")!)}))
+                action.append(wait)
+                powerBorn.addChild(node)
+            }
+            self.run(SKAction.sequence(action))
+            player.powerChanged = false
+        }
+        
+        
+        
+        
+        //set egglist
         if player.eggChanged{
-            for node in self.children{
-                if node.name == "chickenEggOnPocket" || node.name == "catEggOnPocket"{
-                    node.removeFromParent()
-                }
+            
+            
+            if eggBorn == nil{
+                eggBorn = SKSpriteNode(color: .red, size: CGSize(width: 1, height: 1))
+                eggBorn.position = CGPoint(x: 191, y: 22)
+                eggBorn.zPosition = 5
+                addChild(eggBorn)
+            }
+            
+            
+            for node in eggBorn.children{
+                node.removeFromParent()
             }
             
             for i in 0..<player.eggTextureList.count{
@@ -1372,9 +1553,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 default:
                     break
                 }
-                eggTexture.zPosition = 10
-                eggTexture.position = CGPoint(x: 650, y: 300 + -30 * i)
-                addChild(eggTexture)
+                eggTexture.zPosition = 1
+                eggTexture.position =   CGPoint(x: -30 * i, y: 0 )
+                eggBorn.addChild(eggTexture)
             }
             player.eggChanged = false
         }
@@ -1875,6 +2056,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var eggTexture: SKNode!
         var playerNode: Player!
         var pet: Pet!
+        var collection: Collection!
         
         switch nodeA.name {
         case "player":
@@ -1903,6 +2085,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponTexture = nodeA
         case "panda":
             pet = (nodeA as! Panda)
+        case "poop":
+            collection = (nodeA as! Collection)
+        case "truffle":
+            collection = (nodeA as! Truffle)
+        case "ducky":
+            collection = (nodeA as! Ducky)
         default:
             break
         }
@@ -1934,9 +2122,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponTexture = nodeB
         case "panda":
             pet = (nodeB as! Panda)
+        case "poop":
+            collection = (nodeB as! Collection)
+        case "truffle":
+            collection = (nodeB as! Truffle)
+        case "ducky":
+            collection = (nodeB as! Ducky)
         default:
             break
         }
+        
+        if playerNode != nil && collection != nil{
+            let add = SKAction.run({
+                self.player.collectionList.append(fromType(type: collection.type))
+                self.player.collectionChanged = true
+            })
+            let action = SKAction.move(to: collectionBorn.position + CGPoint(x: 0, y: -30 * player.collectionList.count), duration: 0.5)
+            collection.physicsBody = nil
+            collection.run(SKAction.sequence([action,SKAction.removeFromParent(),add]))
+        }
+        
         
         if drop != nil && playerNode != nil {
             drop.pickUpEffect(homeScene: self)
@@ -1950,7 +2155,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             })
             //print("enter!")
             eggTexture.physicsBody = nil
-            let moveAction = SKAction.move(to: CGPoint(x: 650, y: 300 + -30 * player.eggTextureList.count), duration: 0.5)
+            let levelBornPos = self.childNode(withName: "levelBorn")!.position
+            let moveAction = SKAction.move(to: levelBornPos +  CGPoint(x: -10 + -30 * player.eggTextureList.count, y:  -10 ), duration: 0.5)
             self.run(SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true))
             eggTexture.run(SKAction.sequence([moveAction,SKAction.removeFromParent(),render]))
             
