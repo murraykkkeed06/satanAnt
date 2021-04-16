@@ -20,8 +20,8 @@ class Cave: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.pinned = true
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.categoryBitMask = 64
-        self.physicsBody?.contactTestBitMask = 1
+        self.physicsBody?.categoryBitMask = 2
+       
     }
     
     required init?(coder aDecoder: NSCoder) {

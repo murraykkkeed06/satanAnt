@@ -29,7 +29,7 @@ class Break: SKSpriteNode {
             let dieAction = SKAction(named: "monsterDie")!
             self.run(SKAction.sequence([dieAction,SKAction.removeFromParent()]))
             
-            if Int.random(in: 0..<100)<100{
+            if Int.random(in: 0..<100)<1{
                 
                 let hole = SKSpriteNode(texture: SKTexture(imageNamed: "hole"), color: .clear, size: CGSize(width: 15, height: 15))
                 hole.zPosition = 1

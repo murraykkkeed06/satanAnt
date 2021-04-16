@@ -22,29 +22,32 @@ class Monster: SKSpriteNode {
     var sinceStart: TimeInterval!
     var isAlived = true
     var health: CGFloat!
+    let hurtAction = SKAction.sequence([SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1),SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)])
     
     func beingHit(homeScene: GameScene)  {
         
-        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
-        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
+//        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
+//        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
         let vec = self.position - homeScene.player.position
         let back = SKAction.moveBy(x: vec.normalized().x*10, y: vec.normalized().y*10, duration: 0.1)
         self.run(back)
-        self.run(SKAction.sequence([red,clear]))
+        self.run(hurtAction)
         
         self.health -= (homeScene.player.weapon.attackPoint + homeScene.player.baseAttackPoint)
 
       
         homeScene.run(homeScene.logHurtSound)
+        
+        
     }
     
     func beingHit(homeScene: GameScene, damage: CGFloat)  {
-        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
-        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
+//        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1)
+//        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
         let vec = self.position - homeScene.player.position
         let back = SKAction.moveBy(x: vec.normalized().x*10, y: vec.normalized().y*10, duration: 0.1)
         self.run(back)
-        self.run(SKAction.sequence([red,clear]))
+        self.run(hurtAction)
         
         self.health -= damage
 

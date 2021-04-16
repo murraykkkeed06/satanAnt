@@ -24,7 +24,7 @@ class Ghost: Monster {
                 _health = newValue
                 if _health<=0 {
                     
-                    self.removeAllActions()
+                    //self.removeAllActions()
                     //first run action
                     homeScene.player.exp += 10
                     homeScene.player.expChanged = true

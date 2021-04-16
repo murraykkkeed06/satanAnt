@@ -51,7 +51,7 @@ class Canon: SKSpriteNode {
     
     func fireRight()  {
         
-        homeScene.run(homeScene.canonFireSound)
+        //homeScene.run(homeScene.canonFireSound)
         
         self.run(SKAction(named: "canonFireRight")!)
         let point = CanonFirePoint()
@@ -69,7 +69,7 @@ class Canon: SKSpriteNode {
     
     func fireLeft()  {
         
-        homeScene.run(homeScene.canonFireSound)
+        //homeScene.run(homeScene.canonFireSound)
         
         self.run(SKAction(named: "canonFireLeft")!)
         let point = CanonFirePoint()

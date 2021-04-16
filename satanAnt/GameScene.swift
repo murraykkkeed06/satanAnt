@@ -12,48 +12,48 @@ import AVFoundation
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
-    let portalsound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-    let portalBornSound = SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true)
-    let stopSound = SKAction.playSoundFileNamed("stop.mp3", waitForCompletion: true)
-    let helloSound = SKAction.playSoundFileNamed("hello.mp3", waitForCompletion: true)
-    let pickSound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-    let bottleSound = SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true)
-    let doorSound = SKAction.playSoundFileNamed("door.mp3", waitForCompletion: true)
-    let errorSound = SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true)
+    
+    let portalsound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: false)
+    let portalBornSound = SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: false)
+    let stopSound = SKAction.playSoundFileNamed("stop.mp3", waitForCompletion: false)
+    let helloSound = SKAction.playSoundFileNamed("hello.mp3", waitForCompletion: false)
+    let pickSound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: false)
+    let bottleSound = SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: false)
+    let doorSound = SKAction.playSoundFileNamed("door.mp3", waitForCompletion: false)
+    let errorSound = SKAction.playSoundFileNamed("erro.wav", waitForCompletion: false)
     let slideSound = SKAction.playSoundFileNamed("slide.wav", waitForCompletion: false)
     let startSound = SKAction.playSoundFileNamed("start.wav", waitForCompletion: false)
-    let barkSound = SKAction.playSoundFileNamed("bark.wav", waitForCompletion: true)
-    let openChestSound = SKAction.playSoundFileNamed("openChest.wav", waitForCompletion: true)
-    let wearSound = SKAction.playSoundFileNamed("wear.wav", waitForCompletion: true)
+    let barkSound = SKAction.playSoundFileNamed("bark.wav", waitForCompletion: false)
+    let openChestSound = SKAction.playSoundFileNamed("openChest.wav", waitForCompletion: false)
+    let wearSound = SKAction.playSoundFileNamed("wear.wav", waitForCompletion: false)
     let landSound = SKAction.playSoundFileNamed("land.wav", waitForCompletion: false)
     let chickenSound = SKAction.playSoundFileNamed("chickenSound.mp3", waitForCompletion: false)
-    let meowSound = SKAction.playSoundFileNamed("meow.wav", waitForCompletion: true)
-    let plantDogScreamSound = SKAction.playSoundFileNamed("plantDogScream.wav", waitForCompletion: true)
-    let canonFireSound = SKAction.playSoundFileNamed("canonFire.wav", waitForCompletion: true)
-    let birdSound = SKAction.playSoundFileNamed("bird.wav", waitForCompletion: true)
-    let bornSound = SKAction.playSoundFileNamed("bornSound.wav", waitForCompletion: true)
+    let meowSound = SKAction.playSoundFileNamed("meow.wav", waitForCompletion: false)
+    let plantDogScreamSound = SKAction.playSoundFileNamed("plantDogScream.wav", waitForCompletion: false)
+    let canonFireSound = SKAction.playSoundFileNamed("canonFire.wav", waitForCompletion: false)
+    let birdSound = SKAction.playSoundFileNamed("bird.wav", waitForCompletion: false)
+    let bornSound = SKAction.playSoundFileNamed("bornSound.wav", waitForCompletion: false)
     let fireHitSound = SKAction.playSoundFileNamed("fireHit.mp3", waitForCompletion: false)
     let monsterShowSound = SKAction.playSoundFileNamed("monsterShow.mp3", waitForCompletion: false)
     let shootSound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
-    let healSound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
+    let healSound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: false)
     let candyBarAttackSound = SKAction.playSoundFileNamed("candyBarAttack.wav", waitForCompletion: false)
     let windSound = SKAction.playSoundFileNamed("wind.wav", waitForCompletion: false)
     let swordHitSound = SKAction.playSoundFileNamed("swordHit.wav", waitForCompletion: false)
-    let throwSound = SKAction.playSoundFileNamed("throw.wav", waitForCompletion: true)
-    let explosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: true)
-    let biggerSound = SKAction.playSoundFileNamed("bigger.wav", waitForCompletion: true)
-    let eatSound = SKAction.playSoundFileNamed("eat.mp3", waitForCompletion: true)
-    let coinSound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
+    let throwSound = SKAction.playSoundFileNamed("throw.wav", waitForCompletion: false)
+    let explosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
+    let biggerSound = SKAction.playSoundFileNamed("bigger.wav", waitForCompletion: false)
+    let eatSound = SKAction.playSoundFileNamed("eat.mp3", waitForCompletion: false)
+    let coinSound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
     let pressSound = SKAction.playSoundFileNamed("press.mp3", waitForCompletion: false)
     let transferSound = SKAction.playSoundFileNamed("transfer.mp3", waitForCompletion: true)
-    let logDieSound = SKAction.playSoundFileNamed("logDie.wav", waitForCompletion: true)
+    let logDieSound = SKAction.playSoundFileNamed("logDie.wav", waitForCompletion: false)
     let slimeJumpSound = SKAction.playSoundFileNamed("slimeJump.mp3", waitForCompletion: false)
-    let slimeDieSound = SKAction.playSoundFileNamed("slimeDie.wav", waitForCompletion: true)
+    let slimeDieSound = SKAction.playSoundFileNamed("slimeDie.wav", waitForCompletion: false)
     let ghostAttackSound = SKAction.playSoundFileNamed("ghostAttack.mp3", waitForCompletion: false)
-    let ghostDieSound = SKAction.playSoundFileNamed("ghostDie.wav", waitForCompletion: true)
+    let ghostDieSound = SKAction.playSoundFileNamed("ghostDie.wav", waitForCompletion: false)
     let logHurtSound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
-    let playerHurtSound = SKAction.playSoundFileNamed("playerHurt.wav", waitForCompletion: true)
-    
+    let playerHurtSound = SKAction.playSoundFileNamed("playerHurt.wav", waitForCompletion: false)
     
     
     
@@ -112,6 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isEnterCaveRoom = false
     var isBreakRoom = false
     var isSecretRoom = false
+    var isBackFromSecretRoom = false
     var YX: GridYX!
     
     var isClean = false
@@ -214,12 +215,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightButton.selectedHandler = {
                 if self.player.itemList.count < 2 {
                     
-                    self.run(self.errorSound);return}
+                    self.rightButton.run(self.errorSound);return}
                 if self.player.inItemListNumber == self.player.itemList.count-1 {
                     
                     self.run(self.errorSound);return}
                
-                self.run(self.slideSound)
+                self.rightButton.run(self.slideSound)
                 self.player.item = self.player.itemList[self.player.inItemListNumber+1]
                 self.player.inItemListNumber += 1
                 self.player.itemChanged = true
@@ -262,7 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if villageGirl == nil && isMonsterRoom{
-                if Int.random(in: 0..<10)<10{
+                if Int.random(in: 0..<10)<2{
                     villageGirl = VillageGirl()
                     
                     var newX = CGFloat.random(in: 50..<self.frame.width-50)
@@ -346,11 +347,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             
         }
+        //setupisset end
+        if isBackFromSecretRoom && !isDoorSet{
+            setupMonster(num: 5)
+            isBackFromSecretRoom = false
+        }
+        
+        
         
         if isEnterCaveRoom{
             setupCaveMonster(level: player.gameLevel)
         }
-        //setupisset end
+        
         
         if !isEnterCaveRoom && !isBedRoom && !isSecretRoom{mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
         if isBedRoom{
@@ -484,9 +492,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sinceStart += eachFrame
         birdBornStart += eachFrame
 
-        for monster in monsterList{
-            monster.sinceStart += eachFrame
-        }
+//        for monster in monsterList{
+//            monster.sinceStart += eachFrame
+//        }
         if sinceStart > eachFrame{
             handler.isHidden = false
         }
@@ -551,6 +559,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
  
             switch player.gameLevel {
             case 1:
+                if sinceStart>30{
+                    for i in 0..<monsterList.count{
+                        if monsterList[i].isAlived{break}
+                        if i == monsterList.count - 1 && !isDoorSet{
+                            setupHomeOrKeepGoing()
+                            isDoorSet=true
+                        }
+                    }
+                }
+            case 2:
                 if sinceStart>30{
                     for i in 0..<monsterList.count{
                         if monsterList[i].isAlived{break}
@@ -718,7 +736,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break
             }
         }
+        
+        for monster in monsterList{
+            monster.sinceStart += eachFrame
+            
+        }
+        //print("\(monsterList.count)")
     }
+    
+    
     
     //update end
     
@@ -794,7 +820,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func monsterAutoAttackDetect() {
         for monster in monsterList{
-            if monster.position.distanceTo(player.position) < 100 && monster.isAlived && player.playerIsMoving{
+            if monster.position.distanceTo(player.position) < 140 && monster.isAlived && player.playerIsMoving{
 
                 player.monsterInAutoDetectRange = true
                 let vec = monster.position - player.position
@@ -858,6 +884,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     default:
                         break
                     }
+                    canon.run(canonFireSound)
                     canon.sinceStart = 0
                 }
 
@@ -1819,6 +1846,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponBorn.removeAllChildren()
             
             let newWeapon = fromTypeTexture(type: player.weapon.weaponType)
+            newWeapon.physicsBody = nil
             newWeapon.name = " "
             newWeapon.position = CGPoint(x: 0, y: 0)
             weaponBorn.addChild(newWeapon)
@@ -2013,6 +2041,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupHoleEnter(nodeA: SKNode, nodeB: SKNode)  {
         if nodeA.name == "hole" && nodeB.name == "player"{
+            for monster in monsterList{
+                monster.removeFromParent()
+            }
+            monsterList = []
             nodeA.removeFromParent()
             player.enterSecretRoomScene = self
             if  let view = self.view as SKView?{
@@ -2021,7 +2053,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene.isSecretRoom = true
                     scene.player = player
                     scene.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-    
+                    
                     scene.run(portalsound)
                     scene.sceneList = sceneList
                     view.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
@@ -2035,6 +2067,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if nodeA.name == "player" && nodeB.name == "hole"{
+            for monster in monsterList{
+                monster.removeFromParent()
+            }
+            monsterList = []
             nodeB.removeFromParent()
             player.enterSecretRoomScene = self
             if  let view = self.view as SKView?{
@@ -2062,7 +2098,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.isSecretRoom = true
                 scene?.player = player
                 scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-               
+                scene?.isBackFromSecretRoom = true
                 scene?.run(portalsound)
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
@@ -2075,13 +2111,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if nodeA.name == "player" && nodeB.name == "backHole"{
+           
             if  let view = self.view as SKView?{
                 let scene = player.enterSecretRoomScene
                 scene?.scaleMode = .aspectFit
                 scene?.isSecretRoom = true
                 scene?.player = player
                 scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-               
+                scene?.isBackFromSecretRoom = true
                 scene?.run(portalsound)
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
@@ -2657,13 +2694,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
             self.run(SKAction.sequence([wait,born]))
         }
-        
 
-        
-        
-        
     }
-    
+
+    func resetMonster(monsterList: [Monster]) {
+        for monster in monsterList{
+            var bornX = CGFloat.random(in: 50..<self.frame.width-50)
+            var bornY = CGFloat.random(in: 50..<self.frame.height-50)
+            while atPoint(CGPoint(x: bornX, y: bornY)).physicsBody != nil{
+                bornX = CGFloat.random(in: 50..<self.frame.width-50)
+                bornY = CGFloat.random(in: 50..<self.frame.height-50)
+            }
+            monster.position = CGPoint(x: bornX, y: bornY)
+            monster.move(toParent: self)
+        }
+    }
     
     func monsterBorn(monster: SKNode)  {
         let bornEffect = MonsterBornEffect(scene: self)

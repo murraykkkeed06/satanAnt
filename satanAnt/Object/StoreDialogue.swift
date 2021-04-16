@@ -50,26 +50,26 @@ class StoreDialogue: SKSpriteNode {
                 switch selectionNode.name {
                 case "fireBombTextureOnHud":
                     
-                    if homeScene.player.money < fromType(type: .fireBomb).price{return}
+                    if homeScene.player.money < fromType(type: .fireBomb).price{homeScene.player.moneyChanged = true;return}
                     homeScene.player.money -= fromType(type: .fireBomb).price
                     homeScene.player.moneyChanged = true
                     bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .fireBomb)
                     
                 case "potionTextureOnHud":
                     
-                    if homeScene.player.money < fromType(type: .potion).price{return}
+                    if homeScene.player.money < fromType(type: .potion).price{homeScene.player.moneyChanged = true;return}
                     homeScene.player.money -= fromType(type: .potion).price
                     homeScene.player.moneyChanged = true
                     bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .potion)
                 case "cokeTextureOnHud":
                    
-                    if homeScene.player.money < fromType(type: .coke).price{return}
+                    if homeScene.player.money < fromType(type: .coke).price{homeScene.player.moneyChanged = true;return}
                     homeScene.player.money -= fromType(type: .coke).price
                     homeScene.player.moneyChanged = true
                     bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .coke)
                 case "appleTextureOnHud":
                     
-                    if homeScene.player.money < fromType(type: .apple).price{return}
+                    if homeScene.player.money < fromType(type: .apple).price{homeScene.player.moneyChanged = true;return}
                     homeScene.player.money -= fromType(type: .apple).price
                     homeScene.player.moneyChanged = true
                     bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .apple)
@@ -97,6 +97,7 @@ class StoreDialogue: SKSpriteNode {
             addChild(pointing)
         }
         
+    
     }
     
     

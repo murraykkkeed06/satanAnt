@@ -270,7 +270,7 @@ class Player: SKSpriteNode {
             case .idle:
                 //self.removeAllActions()
                 if idleIsSet{break}
-                self.removeAllActions()
+                //self.removeAllActions()
                 self.run(SKAction(named: "playerIdle")!)
                 
                 leftIsSet = false
@@ -279,7 +279,7 @@ class Player: SKSpriteNode {
                 forIsSet = false
             case .left:
                 if leftIsSet {break}
-                self.removeAllActions()
+                //self.removeAllActions()
                 self.run(SKAction(named: "playerLeft")!)
                 //self.playerIsMoving = true
                 leftIsSet = true
@@ -289,7 +289,7 @@ class Player: SKSpriteNode {
                 
             case .right:
                 if rightIsSet {break}
-                self.removeAllActions()
+                //self.removeAllActions()
                 self.run(SKAction(named: "playerRight")!)
                 //self.playerIsMoving = true
                 rightIsSet = true
@@ -298,7 +298,7 @@ class Player: SKSpriteNode {
                 forIsSet = false
             case .forward:
                 if forIsSet {break}
-                self.removeAllActions()
+                //self.removeAllActions()
                 self.run(SKAction(named: "playerForward")!)
                 //self.playerIsMoving = true
                 forIsSet = true
@@ -307,7 +307,7 @@ class Player: SKSpriteNode {
                 backIsSet = false
             case .backward:
                 if backIsSet {return}
-                self.removeAllActions()
+                //self.removeAllActions()
                 self.run(SKAction(named: "playerBackward")!)
                 //self.playerIsMoving = true
                 backIsSet = true
@@ -341,6 +341,9 @@ class Player: SKSpriteNode {
     }
     
     var movingDirection = CGPoint(x: 0, y: 0)
+    let hurtAction = SKAction.sequence([SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.1),SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)])
+    
+    
     
     init(){
         
@@ -390,11 +393,9 @@ class Player: SKSpriteNode {
     }
    
     func beingHit()  {
-        let red = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.5)
-        let clear = SKAction.colorize(with: .red, colorBlendFactor: 0, duration: 0.1)
         let back = SKAction.moveBy(x: -self.homeScene.player.facing.x*10, y: -self.homeScene.player.facing.y*10, duration: 0.1)
         
-        self.run(SKAction.sequence([red,clear]))
+        self.run(hurtAction)
         self.run(back)
         
         self.health -= 0.25

@@ -74,7 +74,7 @@ class Log: Monster{
     var logState: LogState {
         set{
             _logState = newValue
-            self.removeAllActions()
+            //self.removeAllActions()
             switch newValue {
             case .idle:
                 self.run(SKAction.resize(toWidth: 36, duration: 0.01))
