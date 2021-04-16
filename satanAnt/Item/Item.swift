@@ -54,22 +54,25 @@ func fromTypeTexture(type: ItemType) -> SKNode {
     
     switch type {
     case .fireBomb:
-        
-        item = SKSpriteNode(texture: SKTexture(imageNamed: "fireBomb_1"), color: .clear, size: CGSize(width: 20, height: 20))
+        let texture = SKTexture(imageNamed: "fireBomb_1")
+        item = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
         item.name = "fireBombTexture"
         
     case .potion:
-        item = SKSpriteNode(texture: SKTexture(imageNamed: "potion"), color: .clear, size: CGSize(width: 20, height: 30))
+        let texture = SKTexture(imageNamed: "potion")
+        item = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 20, height: 30))
         item.name = "potionTexture"
        
         
     case .apple:
-        item = SKSpriteNode(texture: SKTexture(imageNamed: "apple"), color: .clear, size: CGSize(width: 20, height: 20))
+        let texture = SKTexture(imageNamed: "apple")
+        item = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
         item.name = "appleTexture"
         
         
     case .coke:
-        item = SKSpriteNode(texture: SKTexture(imageNamed: "coke"), color: .clear, size: CGSize(width: 10, height: 30))
+        let texture = SKTexture(imageNamed: "coke")
+        item = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 10, height: 30))
         item.name = "cokeTexture"
         
         

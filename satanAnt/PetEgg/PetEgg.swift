@@ -31,10 +31,12 @@ func fromTypeTexture(type: PetEggType) -> SKNode {
     
     switch type {
     case .chicken:
-        result = SKSpriteNode(texture: SKTexture(imageNamed: "egg"), color: .clear, size: CGSize(width: 15, height: 20))
+        let texture = SKTexture(imageNamed: "egg")
+        result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 20))
         result.name = "chickenEggTexture"
     case .cat:
-        result = SKSpriteNode(texture: SKTexture(imageNamed: "catEgg"), color: .clear, size: CGSize(width: 15, height: 20))
+        let texture = SKTexture(imageNamed: "catEgg")
+        result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 20))
         result.name = "catEggTexture"
 
     }

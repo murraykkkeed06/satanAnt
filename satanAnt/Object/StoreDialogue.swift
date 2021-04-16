@@ -49,25 +49,30 @@ class StoreDialogue: SKSpriteNode {
             if let selectionNode = selectionNode{
                 switch selectionNode.name {
                 case "fireBombTextureOnHud":
-                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .fireBomb)
+                    
                     if homeScene.player.money < fromType(type: .fireBomb).price{return}
                     homeScene.player.money -= fromType(type: .fireBomb).price
                     homeScene.player.moneyChanged = true
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .fireBomb)
+                    
                 case "potionTextureOnHud":
-                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .potion)
+                    
                     if homeScene.player.money < fromType(type: .potion).price{return}
                     homeScene.player.money -= fromType(type: .potion).price
                     homeScene.player.moneyChanged = true
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .potion)
                 case "cokeTextureOnHud":
-                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .coke)
+                   
                     if homeScene.player.money < fromType(type: .coke).price{return}
                     homeScene.player.money -= fromType(type: .coke).price
                     homeScene.player.moneyChanged = true
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .coke)
                 case "appleTextureOnHud":
-                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .apple)
+                    
                     if homeScene.player.money < fromType(type: .apple).price{return}
                     homeScene.player.money -= fromType(type: .apple).price
                     homeScene.player.moneyChanged = true
+                    bornItemTexture(num: 1, position: homeScene.player.position, homeScene: homeScene,type: .apple)
                 default:
                     break
                 }

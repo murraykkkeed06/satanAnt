@@ -153,48 +153,75 @@ class Player: SKSpriteNode {
                 //_health = 2.5 + baseHealth
                 self.isHidden = true
                 self.homeScene.view?.isUserInteractionEnabled = false
-               
-                let dieAction = SKAction.run({
-                    
-                    let tomb = Tomb()
-                    tomb.position = self.position
-                    self.homeScene.addChild(tomb)
-
-                })
-                let wait = SKAction.wait(forDuration: 2)
-                let transferAction = SKAction.run({
+//
+//                let dieAction = SKAction.run({
+//
+//                    let tomb = Tomb()
+//                    tomb.position = self.position
+//                    self.homeScene.addChild(tomb)
+//
+//                })
+//                let wait = SKAction.wait(forDuration: 2)
+//                let transferAction = SKAction.run({
+//
+//                    if let view = self.homeScene.view as SKView?{
+//                        print("enter!!")
+//                        if let scene = self.roomScene{
+//                            print("enter!!!")
+//                            // Set the scale mode to scale to fit the window
+//                            scene.scaleMode = .aspectFit
+//                            scene.isBedRoom = true
+//                            //scene.isMonsterRoom = false
+//                            //scene.cleanMonster()
+//                            //setupButton(scene: scene)
+//
+//                            scene.player = self
+//                            scene.player.position = CGPoint(x: 160, y: 250)
+//                            let fade = SKTransition.fade(withDuration: 1)
+//                            // Present the scene
+//                            view.presentScene(scene,transition: fade)
+//
+//
+//                            view.ignoresSiblingOrder = true
+//
+//                            view.showsFPS = true
+//                            view.showsNodeCount = true
+//                        }
+//                    }
+//                })
                 
-                    if  let view = self.homeScene.view as SKView?{
-                        if let scene = self.roomScene{
-                            // Set the scale mode to scale to fit the window
-                            scene.scaleMode = .aspectFit
-                            scene.isBedRoom = true
-                            //scene.isMonsterRoom = false
-                            //scene.cleanMonster()
-                            //setupButton(scene: scene)
-                            
-                            scene.player = self
-                            scene.player.position = CGPoint(x: 160, y: 250)
-                            let fade = SKTransition.fade(withDuration: 1)
-                            // Present the scene
-                            view.presentScene(scene,transition: fade)
-                            
-                            
-                            view.ignoresSiblingOrder = true
-                            
-                            view.showsFPS = true
-                            view.showsNodeCount = true
-                        }
-                    }
-                })
-                
-                self.run(SKAction.sequence([dieAction,wait,transferAction]))
+               // self.run(SKAction.sequence([dieAction,wait,transferAction]))
                 //play sound
-                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.dieSound as URL)
-
-                self.AudioPlayer2.volume = 3
-                self.AudioPlayer2.prepareToPlay()
-                self.AudioPlayer2.play()
+                
+                if let view = self.homeScene.view as SKView?{
+                    print("enter!!")
+                    if let scene = self.roomScene{
+                        print("enter!!!")
+                        // Set the scale mode to scale to fit the window
+                        scene.scaleMode = .aspectFit
+                        scene.isBedRoom = true
+                        //scene.isMonsterRoom = false
+                        //scene.cleanMonster()
+                        //setupButton(scene: scene)
+                        
+                        scene.player = self
+                        scene.player.position = CGPoint(x: 160, y: 250)
+                        let fade = SKTransition.fade(withDuration: 1)
+                        // Present the scene
+                        view.presentScene(scene,transition: fade)
+                        
+                        
+                        view.ignoresSiblingOrder = true
+                        
+                        view.showsFPS = true
+                        view.showsNodeCount = true
+                    }
+                }
+//                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.dieSound as URL)
+//
+//                self.AudioPlayer2.volume = 3
+//                self.AudioPlayer2.prepareToPlay()
+//                self.AudioPlayer2.play()
             }
         }
         get{
