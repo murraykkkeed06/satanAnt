@@ -46,7 +46,7 @@ class Chicken: Pet {
             case .idle:
                 self.run(SKAction(named: "idle")!)
                 if let homeScene = self.homeScene{
-                    homeScene.run(SKAction.playSoundFileNamed("chickenSound.mp3", waitForCompletion: false))
+                    homeScene.run(homeScene.chickenSound)
                 }
             default:
                 break

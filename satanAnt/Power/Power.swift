@@ -20,6 +20,11 @@ enum PowerType: Int {
 
 class Power: SKSpriteNode {
     var type: PowerType!
+    var sinceStart: TimeInterval!
+    var homeScene: GameScene!
+    var start: Bool!
+    var useNumber: Int!
+    
 }
 
 func fromType(type: PowerType) -> Power {

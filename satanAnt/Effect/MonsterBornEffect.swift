@@ -12,8 +12,9 @@ import AVFoundation
 class MonsterBornEffect: SKSpriteNode {
     
     
-    var bornSound: NSURL!
+    
     var homeScene: GameScene!
+    let bornAction = SKAction(named: "monsterBornEffect")!
     
     init(scene: GameScene){
         let texutre = SKTexture(imageNamed: "bornEffect_1")
@@ -30,9 +31,9 @@ class MonsterBornEffect: SKSpriteNode {
     
     func start()  {
        
-        homeScene.run(SKAction.playSoundFileNamed("monsterShow.mp3", waitForCompletion: false))
+        homeScene.run(homeScene.monsterShowSound)
         
-        let bornAction = SKAction(named: "monsterBornEffect")!
+        
         
         let wait = SKAction.wait(forDuration: 2)
         

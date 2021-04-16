@@ -61,7 +61,7 @@ class TransferDialogue: SKSpriteNode {
                 self.homeScene.player.powerChanged = true
             }
             homeScene.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),add]))
-            homeScene.run(SKAction.playSoundFileNamed("transfer.mp3", waitForCompletion: true))
+            homeScene.run(homeScene.transferSound)
             
             leftNode.removeFromParent()
             //rightNode.removeFromParent()

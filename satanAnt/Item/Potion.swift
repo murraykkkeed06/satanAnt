@@ -30,7 +30,7 @@ class Potion: Item {
    
         removeItemAndReset(homeScene: scene)
         
-        homeScene.run(SKAction.playSoundFileNamed("bigger.wav", waitForCompletion: true))
+        homeScene.run(homeScene.biggerSound)
         
         let bigger = SKAction.scale(to: CGSize(width: 50, height: 50), duration: 1)
         let wait = SKAction.wait(forDuration: 5)

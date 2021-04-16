@@ -34,8 +34,8 @@ class Monster: SKSpriteNode {
         
         self.health -= (homeScene.player.weapon.attackPoint + homeScene.player.baseAttackPoint)
 
-        let sound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
-        homeScene.run(sound)
+      
+        homeScene.run(homeScene.logHurtSound)
     }
     
     func beingHit(homeScene: GameScene, damage: CGFloat)  {
@@ -48,8 +48,8 @@ class Monster: SKSpriteNode {
         
         self.health -= damage
 
-        let sound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
-        homeScene.run(sound)
+       
+        homeScene.run(homeScene.logHurtSound)
     }
     
 }

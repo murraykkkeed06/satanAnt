@@ -60,7 +60,7 @@ class FireBomb: Item {
     }
     
     func up()  {
-        homeScene.run(SKAction.playSoundFileNamed("throw.wav", waitForCompletion: true))
+        homeScene.run(homeScene.throwSound)
         let force: CGFloat = 100
         // Apply an impulse at the vector.
         let v = CGVector(dx: homeScene.player.facing.x * force, dy: homeScene.player.facing.y * force)
@@ -90,7 +90,7 @@ class FireBomb: Item {
     
     func explode()  {
         
-        homeScene.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: true))
+        homeScene.run(homeScene.explosionSound)
         
         for monster in homeScene.monsterList{
             if monster.position.distanceTo(self.position) < 100{

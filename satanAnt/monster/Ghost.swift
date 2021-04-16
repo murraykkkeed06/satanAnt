@@ -43,7 +43,7 @@ class Ghost: Monster {
                     homeScene.addChild(deadGhost)
                     
                     //play dead sound
-                    homeScene.run(SKAction.playSoundFileNamed("ghostDie.wav", waitForCompletion: true))
+                    homeScene.run(homeScene.ghostDieSound)
                     
                     if Int.random(in: 0..<10)<1{
                         bornDrop(num: 1, position: self.position, homeScene: homeScene)
@@ -115,7 +115,7 @@ class Ghost: Monster {
     
     func rightAttack()  {
         self.run(SKAction(named: "ghostRightAttack")!)
-        homeScene.run(SKAction.playSoundFileNamed("ghostAttack.mp3", waitForCompletion: false))
+        homeScene.run(homeScene.ghostAttackSound)
         if homeScene.player.isAlived{
             homeScene.player.beingHit()
         }
@@ -123,7 +123,7 @@ class Ghost: Monster {
     
     func leftAttack()  {
         self.run(SKAction(named: "ghostLeftAttack")!)
-        homeScene.run(SKAction.playSoundFileNamed("ghostAttack.mp3", waitForCompletion: false))
+        homeScene.run(homeScene.ghostAttackSound)
         if homeScene.player.isAlived{
             homeScene.player.beingHit()
         }

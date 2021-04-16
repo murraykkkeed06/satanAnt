@@ -11,15 +11,16 @@ import AVFoundation
 
 class BornEffect: SKSpriteNode {
     
-    var AudioPlayer = AVAudioPlayer()
-    var bornSound: NSURL!
+   
     var homeScene: GameScene!
+    
+    let bornAction = SKAction(named: "bornEffect")!
     
     init(scene: GameScene){
         let texutre = SKTexture(imageNamed: "bornEffect_1")
         super.init(texture: texutre, color: .clear, size: CGSize(width: 40, height: 20))
         self.zPosition = 1
-        bornSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "bornSound", ofType: "wav")!)
+        
         self.homeScene = scene
         start()
         
@@ -30,7 +31,7 @@ class BornEffect: SKSpriteNode {
     }
     
     func start()  {
-        let bornAction = SKAction(named: "bornEffect")!
+        
         self.run(bornAction)
 //
 //        self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.bornSound as URL)
@@ -38,7 +39,7 @@ class BornEffect: SKSpriteNode {
 //        self.AudioPlayer.numberOfLoops = -1
 //        self.AudioPlayer.prepareToPlay()
 //        self.AudioPlayer.play()
-        homeScene.run(SKAction.playSoundFileNamed("bornSound.wav", waitForCompletion: true))
+        homeScene.run(homeScene.bornSound)
         
 //        let wait = SKAction.wait(forDuration: 3)
 //

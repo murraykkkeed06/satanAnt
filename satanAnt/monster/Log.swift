@@ -23,8 +23,8 @@ enum LogState: Int{
 
 class Log: Monster{
     
-    var AudioPlayer2 = AVAudioPlayer()
-    var hurtSound: NSURL!
+    var AudioPlayer = AVAudioPlayer()
+    
     var walkSound: NSURL!
     
     var homeScene: GameScene!
@@ -34,7 +34,7 @@ class Log: Monster{
             if self.isAlived {
                 _health = newValue
                 if _health<=0 {
-                    self.AudioPlayer2.stop()
+                    self.AudioPlayer.stop()
                     //first run action
                     homeScene.player.exp += 10
                     homeScene.player.expChanged = true
@@ -45,7 +45,7 @@ class Log: Monster{
                     
                     
                     //play dead sound
-                    homeScene.run(SKAction.playSoundFileNamed("logDie.wav", waitForCompletion: true))
+                    homeScene.run(homeScene.logDieSound)
                     
                     let tomb = Tomb()
                     tomb.position = self.position
@@ -98,14 +98,14 @@ class Log: Monster{
             do{
                 if logState != .idle && isAlived && homeScene.player.isAlived{
                 
-                    self.AudioPlayer2 = try AVAudioPlayer(contentsOf: self.walkSound as URL)
+                    self.AudioPlayer = try AVAudioPlayer(contentsOf: self.walkSound as URL)
 
-                    self.AudioPlayer2.volume = 0.5
-                    self.AudioPlayer2.prepareToPlay()
-                    self.AudioPlayer2.numberOfLoops = -1
-                    self.AudioPlayer2.play()
+                    self.AudioPlayer.volume = 0.5
+                    self.AudioPlayer.prepareToPlay()
+                    self.AudioPlayer.numberOfLoops = -1
+                    self.AudioPlayer.play()
                 }else{
-                    self.AudioPlayer2.stop()
+                    self.AudioPlayer.stop()
                 }
                 
             }
@@ -141,7 +141,7 @@ class Log: Monster{
     
     init(scene: GameScene){
 
-        hurtSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "logHurt", ofType: "mp3")!)
+        
         walkSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "logWalk", ofType: "wav")!)
         
         

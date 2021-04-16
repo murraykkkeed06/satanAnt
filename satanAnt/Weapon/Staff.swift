@@ -12,7 +12,7 @@ import SpriteKit
 
 class Staff: Weapon {
     
-    
+
     
     
     init(){
@@ -31,7 +31,7 @@ class Staff: Weapon {
         //it diverse from different weapon
         
         self.weaponType = .staff
-       
+        self.tempTime = 0.3
        
         
     }
@@ -115,8 +115,8 @@ class Staff: Weapon {
             homeScene.addChild(bullet)
             bullet.flyTo(direction: direction)
             
-            let sound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
-            homeScene.run(sound)
+            
+            homeScene.run(homeScene.shootSound)
             
             
         }

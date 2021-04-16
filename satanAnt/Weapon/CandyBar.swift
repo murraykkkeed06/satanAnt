@@ -31,7 +31,7 @@ class CandyBar: Weapon {
         homeScene.player.health += 1
         homeScene.player.healthChanged = true
        
-        homeScene.run(SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true))
+        homeScene.run(homeScene.healSound)
         if let healEffect = SKEmitterNode(fileNamed: "healParticle"){
             healEffect.name = "heal"
             healEffect.position = homeScene.player.position
@@ -52,8 +52,8 @@ class CandyBar: Weapon {
             homeScene.addChild(candy)
             candy.flyTo(direction: direction)
             
-            let sound = SKAction.playSoundFileNamed("candyBarAttack.wav", waitForCompletion: false)
-            homeScene.run(sound)
+            
+            homeScene.run(homeScene.candyBarAttackSound)
             
             
         }

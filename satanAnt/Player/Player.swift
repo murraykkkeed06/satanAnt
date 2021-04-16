@@ -23,11 +23,10 @@ class Player: SKSpriteNode {
     var enterSecretRoomScene: GameScene!
     
     var AudioPlayer = AVAudioPlayer()
-    var AudioPlayer2 = AVAudioPlayer()
-    var AudioPlayer3 = AVAudioPlayer()
-    var hurtSound: NSURL!
+    
+    
     var walkSound: NSURL!
-    var dieSound: NSURL!
+   
     
     
     
@@ -82,18 +81,18 @@ class Player: SKSpriteNode {
         didSet{
             if playerIsMoving{
                 do {
-                    self.AudioPlayer3 = try AVAudioPlayer(contentsOf: self.walkSound as URL)
-                    self.AudioPlayer3.volume = 3
-                    self.AudioPlayer3.numberOfLoops = -1
-                    self.AudioPlayer3.prepareToPlay()
-                    self.AudioPlayer3.play()}
+                    self.AudioPlayer = try AVAudioPlayer(contentsOf: self.walkSound as URL)
+                    self.AudioPlayer.volume = 3
+                    self.AudioPlayer.numberOfLoops = -1
+                    self.AudioPlayer.prepareToPlay()
+                    self.AudioPlayer.play()}
                 catch{
                     print("walk sound error!")
                 }
                 
 
             }else{
-                self.AudioPlayer3.stop()
+                self.AudioPlayer.stop()
                 //self.state = .idle
             }
         }
@@ -371,14 +370,15 @@ class Player: SKSpriteNode {
         self.itemList.append(fromType(type: ItemType.random()))
         self.item = itemList[0]
         self.collectionList.append(fromType(type: .ducky))
-        self.powerList.append(fromType(type: .halfMonster))
+        self.powerList.append(fromType(type: .healthGainer))
+    
         self.baseBulletRangePoint = 0
         self.baseBulletSpeedPoint = 0
         self.baseAttackPoint = 0
         self.baseHealthPoint = 0
-        self.hurtSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "playerHurt", ofType: "wav")!)
+
         self.walkSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "playerWalk", ofType: "mp3")!)
-        self.dieSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "playerDie", ofType: "wav")!)
+        
 
         
         
@@ -399,15 +399,8 @@ class Player: SKSpriteNode {
         
         self.health -= 0.25
         self.healthChanged = true
-        do{
-            self.AudioPlayer = try AVAudioPlayer(contentsOf: self.hurtSound as URL)
-            self.AudioPlayer.volume = 3
-            self.AudioPlayer.prepareToPlay()
-            self.AudioPlayer.play()
-        }
-        catch{
-            print("hurt sound error!")
-        }
+        
+        homeScene.run(homeScene.playerHurtSound)
         
 
     }

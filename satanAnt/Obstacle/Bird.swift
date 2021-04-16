@@ -17,7 +17,7 @@ class Bird: SKSpriteNode {
             _sinceStart = newValue
             if _sinceStart > TimeInterval.random(in: 2..<4){
                 let egg = Egg(scene: homeScene)
-                homeScene.run(SKAction.playSoundFileNamed("bird.wav", waitForCompletion: true))
+                homeScene.run(homeScene.birdSound)
                 egg.position = self.position + CGPoint(x: 0, y: -10)
                 homeScene.addChild(egg)
                 _sinceStart = 0

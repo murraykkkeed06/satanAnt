@@ -11,9 +11,7 @@ import AVFoundation
 
 class AbilityHud: SKSpriteNode {
     var homeScene: GameScene!
-    var AudioPlayer = AVAudioPlayer()
-    var openBookSound: NSURL!
-    var pressSound: NSURL!
+   
     init(scene: GameScene){
         
         let texture = SKTexture(imageNamed: "abilityHud2")
@@ -21,8 +19,8 @@ class AbilityHud: SKSpriteNode {
         self.zPosition = 15
         self.position = CGPoint(x: 300, y: 120)
         self.homeScene = scene
-        self.openBookSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "openChest", ofType: "wav")!)
-        self.pressSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "press", ofType: "mp3")!)
+
+       
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,10 +62,8 @@ class AbilityHud: SKSpriteNode {
             self.homeScene.player.levelChanged = true
             self.cleanPoint()
             self.renderPoint()
-            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.pressSound as URL)
-            self.AudioPlayer.volume = 5
-            self.AudioPlayer.prepareToPlay()
-            self.AudioPlayer.play()
+          
+            self.homeScene.run(self.homeScene.pressSound)
         }
         speedButton.selectHandler = {
             if self.homeScene.player.level == 0 {return}
@@ -77,10 +73,7 @@ class AbilityHud: SKSpriteNode {
             self.homeScene.player.levelChanged = true
             self.cleanPoint()
             self.renderPoint()
-            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.pressSound as URL)
-            self.AudioPlayer.volume = 5
-            self.AudioPlayer.prepareToPlay()
-            self.AudioPlayer.play()
+            self.homeScene.run(self.homeScene.pressSound)
         }
         attackButton.selectHandler = {
             if self.homeScene.player.level == 0 {return}
@@ -90,10 +83,7 @@ class AbilityHud: SKSpriteNode {
             self.homeScene.player.levelChanged = true
             self.cleanPoint()
             self.renderPoint()
-            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.pressSound as URL)
-            self.AudioPlayer.volume = 5
-            self.AudioPlayer.prepareToPlay()
-            self.AudioPlayer.play()
+            self.homeScene.run(self.homeScene.pressSound)
         }
         healthButton.selectHandler = {
             if self.homeScene.player.level == 0 {return}
@@ -103,10 +93,7 @@ class AbilityHud: SKSpriteNode {
             self.homeScene.player.levelChanged = true
             self.cleanPoint()
             self.renderPoint()
-            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.pressSound as URL)
-            self.AudioPlayer.volume = 5
-            self.AudioPlayer.prepareToPlay()
-            self.AudioPlayer.play()
+            self.homeScene.run(self.homeScene.pressSound)
         }
         
     }
@@ -164,10 +151,7 @@ class AbilityHud: SKSpriteNode {
             }
             self.homeScene.inDialogue = false
             
-            self.AudioPlayer = try! AVAudioPlayer(contentsOf: self.openBookSound as URL)
-            self.AudioPlayer.volume = 5
-            self.AudioPlayer.prepareToPlay()
-            self.AudioPlayer.play()
+            self.homeScene.run(self.homeScene.openChestSound)
         }
     }
     

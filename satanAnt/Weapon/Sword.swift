@@ -41,7 +41,7 @@ class Sword: Weapon {
                 let fly = SKAction.move(to:position, duration: 0.01)
                 flyList.append(fly)
                 monster.beingHit(homeScene: homeScene)
-                homeScene.run(SKAction.playSoundFileNamed("wind.wav", waitForCompletion: false))
+                homeScene.run(homeScene.windSound)
             }
         }
         
@@ -69,7 +69,7 @@ class Sword: Weapon {
         let goIn = SKAction.move(to: originPos, duration: speed/2)
         goIn.timingMode = .easeOut
         self.run(SKAction.sequence([goOut,goIn]))
-        homeScene.run(SKAction.playSoundFileNamed("swordHit.wav", waitForCompletion: false))
+        homeScene.run(homeScene.swordHitSound)
         
         if let bornPoint = homeScene.weaponOnHand.childNode(withName: "bornPoint"){
             let position = homeScene.weaponOnHand.convert(bornPoint.position, to: homeScene)

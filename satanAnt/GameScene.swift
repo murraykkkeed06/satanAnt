@@ -10,7 +10,54 @@ import GameplayKit
 import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-
+    
+    
+    let portalsound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
+    let portalBornSound = SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true)
+    let stopSound = SKAction.playSoundFileNamed("stop.mp3", waitForCompletion: true)
+    let helloSound = SKAction.playSoundFileNamed("hello.mp3", waitForCompletion: true)
+    let pickSound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
+    let bottleSound = SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true)
+    let doorSound = SKAction.playSoundFileNamed("door.mp3", waitForCompletion: true)
+    let errorSound = SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true)
+    let slideSound = SKAction.playSoundFileNamed("slide.wav", waitForCompletion: false)
+    let startSound = SKAction.playSoundFileNamed("start.wav", waitForCompletion: false)
+    let barkSound = SKAction.playSoundFileNamed("bark.wav", waitForCompletion: true)
+    let openChestSound = SKAction.playSoundFileNamed("openChest.wav", waitForCompletion: true)
+    let wearSound = SKAction.playSoundFileNamed("wear.wav", waitForCompletion: true)
+    let landSound = SKAction.playSoundFileNamed("land.wav", waitForCompletion: false)
+    let chickenSound = SKAction.playSoundFileNamed("chickenSound.mp3", waitForCompletion: false)
+    let meowSound = SKAction.playSoundFileNamed("meow.wav", waitForCompletion: true)
+    let plantDogScreamSound = SKAction.playSoundFileNamed("plantDogScream.wav", waitForCompletion: true)
+    let canonFireSound = SKAction.playSoundFileNamed("canonFire.wav", waitForCompletion: true)
+    let birdSound = SKAction.playSoundFileNamed("bird.wav", waitForCompletion: true)
+    let bornSound = SKAction.playSoundFileNamed("bornSound.wav", waitForCompletion: true)
+    let fireHitSound = SKAction.playSoundFileNamed("fireHit.mp3", waitForCompletion: false)
+    let monsterShowSound = SKAction.playSoundFileNamed("monsterShow.mp3", waitForCompletion: false)
+    let shootSound = SKAction.playSoundFileNamed("shoot.mp3", waitForCompletion: false)
+    let healSound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
+    let candyBarAttackSound = SKAction.playSoundFileNamed("candyBarAttack.wav", waitForCompletion: false)
+    let windSound = SKAction.playSoundFileNamed("wind.wav", waitForCompletion: false)
+    let swordHitSound = SKAction.playSoundFileNamed("swordHit.wav", waitForCompletion: false)
+    let throwSound = SKAction.playSoundFileNamed("throw.wav", waitForCompletion: true)
+    let explosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: true)
+    let biggerSound = SKAction.playSoundFileNamed("bigger.wav", waitForCompletion: true)
+    let eatSound = SKAction.playSoundFileNamed("eat.mp3", waitForCompletion: true)
+    let coinSound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
+    let pressSound = SKAction.playSoundFileNamed("press.mp3", waitForCompletion: false)
+    let transferSound = SKAction.playSoundFileNamed("transfer.mp3", waitForCompletion: true)
+    let logDieSound = SKAction.playSoundFileNamed("logDie.wav", waitForCompletion: true)
+    let slimeJumpSound = SKAction.playSoundFileNamed("slimeJump.mp3", waitForCompletion: false)
+    let slimeDieSound = SKAction.playSoundFileNamed("slimeDie.wav", waitForCompletion: true)
+    let ghostAttackSound = SKAction.playSoundFileNamed("ghostAttack.mp3", waitForCompletion: false)
+    let ghostDieSound = SKAction.playSoundFileNamed("ghostDie.wav", waitForCompletion: true)
+    let logHurtSound = SKAction.playSoundFileNamed("logHurt.mp3", waitForCompletion: false)
+    let playerHurtSound = SKAction.playSoundFileNamed("playerHurt.wav", waitForCompletion: true)
+    
+    
+    
+    
+    
     var sceneList = [GameScene]()
     
     var map = [[Int]]()
@@ -148,14 +195,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             leftButton = (self.childNode(withName: "left") as! MSButtonNode)
             leftButton.selectedHandler = {
                 if self.player.itemList.count < 2 {
-                    let sound = SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true)
-                    self.run(sound)
+                    
+                    self.run(self.errorSound)
                     return}
                 if self.player.inItemListNumber == 0 {
-                    let sound = SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true)
-                    self.run(sound);return}
-                let sound = SKAction.playSoundFileNamed("slide.wav", waitForCompletion: false)
-                self.run(sound)
+                   
+                    self.run(self.errorSound);return
+                    
+                }
+                
+                self.run(self.slideSound)
                 self.player.item = self.player.itemList[self.player.inItemListNumber-1]
                 self.player.inItemListNumber -= 1
                 self.player.itemChanged = true
@@ -164,13 +213,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightButton = (self.childNode(withName: "right") as! MSButtonNode)
             rightButton.selectedHandler = {
                 if self.player.itemList.count < 2 {
-                    let sound = SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true)
-                    self.run(sound);return}
+                    
+                    self.run(self.errorSound);return}
                 if self.player.inItemListNumber == self.player.itemList.count-1 {
-                    let sound = SKAction.playSoundFileNamed("erro.wav", waitForCompletion: true)
-                    self.run(sound);return}
-                let sound = SKAction.playSoundFileNamed("slide.wav", waitForCompletion: false)
-                self.run(sound)
+                    
+                    self.run(self.errorSound);return}
+               
+                self.run(self.slideSound)
                 self.player.item = self.player.itemList[self.player.inItemListNumber+1]
                 self.player.inItemListNumber += 1
                 self.player.itemChanged = true
@@ -188,8 +237,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupIsSet = true
             if isBedRoom{
                 setupBedRoom()
-                let sound = SKAction.playSoundFileNamed("start.wav", waitForCompletion: false)
-                self.run(sound)
+                
+                self.run(startSound)
             }
             if isCaveRoom{setupCave()}
             
@@ -371,6 +420,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 item.work(scene: self)
             default:
                 break
+            }
+        }
+        
+        //power start to work when enter each room
+        for power in player.powerList{
+            power.homeScene = self
+            if !power.start{
+                power.start = true
             }
         }
         
@@ -614,8 +671,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         loveDialogue.position = node.position + CGPoint(x: 5, y: 30)
                         addChild(loveDialogue)
                         loveDialogue.start()
-                        let sound = SKAction.playSoundFileNamed("bark.wav", waitForCompletion: true)
-                        self.run(sound)
+                        
+                        self.run(barkSound)
                     }
                         
                         
@@ -648,9 +705,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+        for power in player.powerList{
+            power.sinceStart += eachFrame
+        }
         
-
-        
+        //print("\(player.powerList.count)")
+        for i in 0..<player.powerList.count{
+            
+            if player.powerList[i].useNumber == 0{
+                player.powerList.remove(at: i)
+                player.powerChanged = true
+                break
+            }
+        }
     }
     
     //update end
@@ -727,7 +794,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func monsterAutoAttackDetect() {
         for monster in monsterList{
-            if monster.position.distanceTo(player.position) < 150 + player.baseBulletRange && monster.isAlived && player.playerIsMoving{
+            if monster.position.distanceTo(player.position) < 100 && monster.isAlived && player.playerIsMoving{
 
                 player.monsterInAutoDetectRange = true
                 let vec = monster.position - player.position
@@ -907,8 +974,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let abilityHud = AbilityHud(scene: self)
             self.addChild(abilityHud)
             abilityHud.open()
-            let sound = SKAction.playSoundFileNamed("openChest.wav", waitForCompletion: true)
-            self.run(sound)
+            
+            self.run(self.openChestSound)
         }
         addChild(book)
         
@@ -935,8 +1002,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if !dialogueIsSet {
                 dialogueIsSet = true
                 //sound
-                let sound = SKAction.playSoundFileNamed("stop.mp3", waitForCompletion: true)
-                self.run(sound)
+               
+                self.run(stopSound)
                 
                 dialogue = Dialogue(dialogueType: "...")
                 dialogue.position = soilder.position + CGPoint(x: 0, y: 30)
@@ -980,8 +1047,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if !vendingMachineDialogueIsSet {
                         vendingMachineDialogueIsSet = true
                         //sound
-                        let sound = SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true)
-                        self.run(sound)
+                       
+                        self.run(helloSound)
                         
                         vendingMachineDialogue = Dialogue(dialogueType: "surprise")
                         vendingMachineDialogue.position = vendingMachine.position + CGPoint(x: 5, y: 20)
@@ -1173,8 +1240,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if !girlDialogueIsSet {
                         girlDialogueIsSet = true
                         //sound
-                        let sound = SKAction.playSoundFileNamed("hello.wav", waitForCompletion: true)
-                        self.run(sound)
+                       
+                        self.run(helloSound)
                         
                         girlDialogue = Dialogue(dialogueType: "...")
                         girlDialogue.position = girl.position + CGPoint(x: 0, y: 30)
@@ -1409,11 +1476,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let chicken = Chicken()
                 let pos = self.childNode(withName: "chickenBorn")!.position
                 chicken.position = pos
+                chicken.setup(scene: self)
                 addChild(chicken)
             case "catEggTexture":
                 let cat = Cat()
                 let pos = self.childNode(withName: "chickenBorn")!.position
                 cat.position = pos
+                cat.setup(scene: self)
                 addChild(cat)
             default:
                 break
@@ -1437,8 +1506,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 dialogue = Dialogue(dialogueType: "...")
                 dialogue.position = npc.position + CGPoint(x: 0, y: 30)
                 //set hello
-                let sound = SKAction.playSoundFileNamed("hello.mp3", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(helloSound)
                 
                 
                 
@@ -1522,6 +1591,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for node in powerBorn.children{
                 node.removeFromParent()
             }
+            
             var action = [SKAction]()
             let wait = SKAction.wait(forDuration: 0.5)
             for i in 0..<player.powerList.count{
@@ -1530,6 +1600,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.zPosition = 1
                 action.append(SKAction.run({node.run(SKAction(named: "coinPop")!)}))
                 action.append(wait)
+                
+                let num = player.powerList[i].useNumber!
+                //print("\(num)")
+                let numNode = SKLabelNode(fontNamed: "Chalkduster")
+                numNode.text = String(num)
+                numNode.zPosition = 2
+                numNode.fontSize = 20
+                numNode.fontColor = SKColor.white
+                numNode.position = node.position + CGPoint(x: 15, y: 0)
+                powerBorn.addChild(numNode)
                 powerBorn.addChild(node)
             }
             self.run(SKAction.sequence(action))
@@ -1936,18 +2016,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             nodeA.removeFromParent()
             player.enterSecretRoomScene = self
             if  let view = self.view as SKView?{
-                let scene = GameScene.level(7)
-                scene?.scaleMode = .aspectFit
-                scene?.isSecretRoom = true
-                scene?.player = player
-                scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
-                scene?.sceneList = sceneList
-                view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.ignoresSiblingOrder = true
+                if  let scene = GameScene.level(7){
+                    scene.scaleMode = .aspectFit
+                    scene.isSecretRoom = true
+                    scene.player = player
+                    scene.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+    
+                    scene.run(portalsound)
+                    scene.sceneList = sceneList
+                    view.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
+                }
 
             }
             
@@ -1957,19 +2038,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             nodeB.removeFromParent()
             player.enterSecretRoomScene = self
             if  let view = self.view as SKView?{
-                let scene = GameScene.level(7)
-                scene?.scaleMode = .aspectFit
-                scene?.isSecretRoom = true
-                scene?.player = player
-                scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
-                scene?.sceneList = sceneList
-                view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.ignoresSiblingOrder = true
-                
+                if  let scene = GameScene.level(7){
+                    scene.scaleMode = .aspectFit
+                    scene.isSecretRoom = true
+                    scene.player = player
+                    scene.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+                    
+                    scene.run(portalsound)
+                    scene.sceneList = sceneList
+                    view.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
+                }
+
             }
         }
         if nodeA.name == "backHole" && nodeB.name == "player"{
@@ -1980,8 +2062,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.isSecretRoom = true
                 scene?.player = player
                 scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
+               
+                scene?.run(portalsound)
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
                 view.showsFPS = true
@@ -1999,8 +2081,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.isSecretRoom = true
                 scene?.player = player
                 scene?.player.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
+               
+                scene?.run(portalsound)
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
                 view.showsFPS = true
@@ -2179,8 +2261,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("enter!")
             eggTexture.physicsBody = nil
             let moveAction = SKAction.move(to: CGPoint(x: 191, y: 22) +  CGPoint(x: -30 * player.eggTextureList.count, y:  0 ), duration: 0.5)
-            let sound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-            self.run(sound)
+            
+            self.run(pickSound)
             eggTexture.run(SKAction.sequence([moveAction,SKAction.removeFromParent(),render]))
             
             
@@ -2191,20 +2273,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             switch itemTexture.name {
             case "potionTexture":
                 player.itemList.append(Potion())
-                let sound = SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(bottleSound)
             case "fireBombTexture":
                 player.itemList.append(FireBomb())
-                let sound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(pickSound)
             case "appleTexture":
                 player.itemList.append(Apple())
-                let sound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(pickSound)
             case "cokeTexture":
                 player.itemList.append(Coke())
-                let sound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(pickSound)
             default:
                  print("break")
             }
@@ -2221,20 +2303,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 switch itemTexture.name {
                 case "potionTexture":
                     player.itemList.append(Potion())
-                    let sound = SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true)
-                    self.run(sound)
+                    
+                    self.run(bottleSound)
                 case "fireBombTexture":
                     player.itemList.append(FireBomb())
-                    let sound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-                    self.run(sound)
+                    
+                    self.run(pickSound)
                 case "appleTexture":
                     player.itemList.append(Apple())
-                    let sound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-                    self.run(sound)
+                    
+                    self.run(pickSound)
                 case "cokeTexture":
                     player.itemList.append(Coke())
-                    let sound = SKAction.playSoundFileNamed("pick.mp3", waitForCompletion: true)
-                    self.run(sound)
+                    
+                    self.run(pickSound)
                 default:
                      print("break")
                 }
@@ -2250,8 +2332,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if playerNode != nil && weaponTexture != nil {
             
             //make a reload sound
-            let sound = SKAction.playSoundFileNamed("wear.wav", waitForCompletion: true)
-            self.run(sound)
+            
+            self.run(wearSound)
             let node = fromTypeTexture(type: player.weapon.weaponType)
             node.position = player.position  +  player.facing * 50
             self.addChild(node)
@@ -2443,8 +2525,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene.player.position = CGPoint(x: 209, y: 202)
                     scene.player.run(SKAction(named: "playerForward")!)
                     scene.sceneList = sceneList
-                    let sound = SKAction.playSoundFileNamed("door.mp3", waitForCompletion: true)
-                    scene.run(sound)
+                    
+                    scene.run(doorSound)
                     let fade = SKTransition.fade(withDuration: 1)
                     view.presentScene(scene, transition: fade)
                     
@@ -2698,8 +2780,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = leftDoor.position + CGPoint(x: 70, y: 0)
                 //scene?.handler.position = self.handler.position
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
+               
+                scene?.run(portalsound)
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
@@ -2717,8 +2799,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.player = player
                 scene?.player.position = rightDoor.position + CGPoint(x: -70, y: 0)
                 //scene?.handler.position = self.handler.position
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
+                
+                scene?.run(portalsound)
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
                 view.showsFPS = true
@@ -2735,8 +2817,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.scaleMode = .aspectFit
                 scene?.player = player
                 scene?.player.position = bottomDoor.position + CGPoint(x: 0, y: 70)
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
+                
+                scene?.run(portalsound)
                 //scene?.handler.position = self.handler.position
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
@@ -2752,8 +2834,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scene?.scaleMode = .aspectFit
                 scene?.player = player
                 scene?.player.position = topDoor.position + CGPoint(x: 0, y: -70)
-                let sound = SKAction.playSoundFileNamed("portal.mp3", waitForCompletion: true)
-                scene?.run(sound)
+               
+                scene?.run(portalsound)
                 //scene?.handler.position = self.handler.position
                 scene?.sceneList = sceneList
                 view.presentScene(scene!, transition: fade)
@@ -2809,8 +2891,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
-                let sound = SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(self.portalBornSound)
                 
             }
         })
@@ -2821,8 +2903,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
-                let sound = SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(self.portalBornSound)
                 
             }
         })
@@ -2834,8 +2916,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
-                let sound = SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(self.portalBornSound)
             }
         })
         let fourthAction = SKAction.run({
@@ -2845,8 +2927,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
-                let sound = SKAction.playSoundFileNamed("portalBorn.wav", waitForCompletion: true)
-                self.run(sound)
+                
+                self.run(self.portalBornSound)
                 
             }
         })

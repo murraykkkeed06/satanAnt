@@ -49,7 +49,7 @@ class Slime: Monster {
                     deadSlime.position = self.position
                     homeScene.addChild(deadSlime)
                     
-                    homeScene.run(SKAction.playSoundFileNamed("slimeDie.wav", waitForCompletion: true))
+                    homeScene.run(homeScene.slimeDieSound)
                     
                     if Int.random(in: 0..<10)<1{
                         bornDrop(num: 1, position: self.position, homeScene: homeScene)
@@ -143,7 +143,7 @@ class Slime: Monster {
         
         self.run(SKAction.moveBy(x: x * range, y: y * range, duration: duration))
        
-        homeScene.run(SKAction.playSoundFileNamed("slimeJump.mp3", waitForCompletion: false))
+        homeScene.run(homeScene.slimeJumpSound)
     }
     
     

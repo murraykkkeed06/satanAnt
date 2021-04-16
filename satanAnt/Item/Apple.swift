@@ -30,7 +30,7 @@ class Apple: Item {
         
         removeItemAndReset(homeScene: scene)
         
-        homeScene.run(SKAction.playSoundFileNamed("eat.mp3", waitForCompletion: true))
+        homeScene.run(homeScene.eatSound)
 
         homeScene.player.health += 0.25
         homeScene.player.healthChanged = true

@@ -45,7 +45,7 @@ class Cat: Pet {
             case .idle:
                 self.run(SKAction(named: "idle")!)
                 if let homeScene = self.homeScene{
-                    homeScene.run(SKAction.playSoundFileNamed("meow.wav", waitForCompletion: true))
+                    homeScene.run(homeScene.meowSound)
                 }
             default:
                 break

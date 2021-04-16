@@ -36,8 +36,8 @@ class HeartDrop: Drop {
         homeScene.player.health += 0.25
         homeScene.player.healthChanged = true
         
-        let sound = SKAction.playSoundFileNamed("heal.mp3", waitForCompletion: true)
-        homeScene.run(sound)
+        
+        homeScene.run(homeScene.healSound)
         if let healEffect = SKEmitterNode(fileNamed: "healParticle") {
             healEffect.name = "heal"
             healEffect.position = homeScene.player.position

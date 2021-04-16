@@ -11,14 +11,13 @@ import AVFoundation
 
 class BulletHitPoint: SKSpriteNode {
     
-    var AudioPlayer = AVAudioPlayer()
-    var hitSound: NSURL!
+    
     var homeScene: GameScene!
     init(scene: GameScene){
         let texutre = SKTexture(imageNamed: "bulletHitPoint_1")
         super.init(texture: texutre, color: .clear, size: CGSize(width: 30, height: 30))
         self.zPosition = 5
-        hitSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "fireHit", ofType: "mp3")!)
+        
         self.homeScene = scene
     }
     
@@ -33,8 +32,8 @@ class BulletHitPoint: SKSpriteNode {
 //        self.AudioPlayer.volume = 10
 //        self.AudioPlayer.prepareToPlay()
         //self.AudioPlayer.play()
-        let sound = SKAction.playSoundFileNamed("fireHit.mp3", waitForCompletion: false)
-        homeScene.run(sound)
+        
+        homeScene.run(homeScene.fireHitSound)
         
         self.run(SKAction.sequence([hitAction,SKAction.removeFromParent()]))
         

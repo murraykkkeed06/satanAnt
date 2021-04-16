@@ -55,7 +55,7 @@ func bornPetEggTexture(num: Int, position: CGPoint, homeScene: GameScene) {
     
     for _ in 0..<num{
         
-        homeScene.run(SKAction.playSoundFileNamed("land.wav", waitForCompletion: false))
+        homeScene.run(homeScene.landSound)
         
         let node = fromTypeTexture(type: PetEggType.random())
         node.position = position.randomPointInDistamce(distance: 30)

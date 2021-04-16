@@ -36,8 +36,8 @@ class CoinDrop: Drop {
         homeScene.player.money += CGFloat.random(in: 5..<10)
         homeScene.player.moneyChanged = true
         
-        let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: true)
-        homeScene.run(sound)
+        
+        homeScene.run(homeScene.coinSound)
     }
     
     

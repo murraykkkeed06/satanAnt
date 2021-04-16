@@ -19,6 +19,7 @@ class Truffle: Collection {
         self.type = .truffle
         self.name = "truffle"
         
+        
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
         self.physicsBody?.pinned = true
         self.physicsBody?.affectedByGravity = false

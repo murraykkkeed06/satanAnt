@@ -93,7 +93,7 @@ func bornItemTexture(num: Int, position: CGPoint, homeScene: GameScene) {
     
     for _ in 0..<num{
         
-        homeScene.run(SKAction.playSoundFileNamed("land.wav", waitForCompletion: false))
+        homeScene.run(homeScene.landSound)
         
         let node = fromTypeTexture(type: ItemType.random())
         node.position = position
@@ -123,7 +123,7 @@ func bornItemTexture(num: Int, position: CGPoint, homeScene: GameScene, type: It
     
     for _ in 0..<num{
         
-        homeScene.run(SKAction.playSoundFileNamed("land.wav", waitForCompletion: false))
+        homeScene.run(homeScene.landSound)
         
         let node = fromTypeTexture(type: type)
         node.position = position

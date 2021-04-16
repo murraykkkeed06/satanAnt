@@ -68,7 +68,7 @@ class PlantDog: Hat {
     
     func explode()  {
         
-        self.homeScene.run(SKAction.playSoundFileNamed("plantDogScream.wav", waitForCompletion: true))
+        self.homeScene.run(homeScene.plantDogScreamSound)
         
         //laser eye
         let bigger = SKAction.scale(to: CGSize(width: 120, height: 144), duration: 0.5)

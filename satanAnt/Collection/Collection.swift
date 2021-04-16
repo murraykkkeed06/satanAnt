@@ -20,6 +20,7 @@ enum CollectionType: Int {
 
 class Collection: SKSpriteNode {
     var type: CollectionType!
+    
 }
 
 func fromType(type: CollectionType) -> Collection {

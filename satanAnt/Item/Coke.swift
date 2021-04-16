@@ -31,7 +31,7 @@ class Coke: Item {
         removeItemAndReset(homeScene: scene)
         
         
-        homeScene.run(SKAction.playSoundFileNamed("bottle.wav", waitForCompletion: true))
+        homeScene.run(homeScene.bottleSound)
 
         homeScene.player.health += 0.5
         homeScene.player.healthChanged = true

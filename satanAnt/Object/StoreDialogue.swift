@@ -11,7 +11,7 @@ import AVFoundation
 
 class StoreDialogue: SKSpriteNode {
     var AudioPlayer = AVAudioPlayer()
-    var typeSound: NSURL!
+   
     var homeScene: GameScene!
     var timer: Timer!
     var num: Int = 0
@@ -20,7 +20,7 @@ class StoreDialogue: SKSpriteNode {
     var selectionNode: SKNode!
     
     init(scene: GameScene){
-        typeSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "talking", ofType: "mp3")!)
+        
         
         let texture = SKTexture(imageNamed: "storeHud")
         //super.init(texture: texture, color: .clear, size: CGSize(width: 412, height: 124))
