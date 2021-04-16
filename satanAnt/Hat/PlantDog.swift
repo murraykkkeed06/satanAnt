@@ -21,7 +21,7 @@ class PlantDog: Hat {
             _sinceStart = newValue
             if _sinceStart > 1{
                 if let oldHealthNum = oldHealthNum{
-                    if oldHealthNum - homeScene.player.health > 0.5{
+                    if oldHealthNum - homeScene.player.health > 1.5{
                         explode()
                     }
                     //print("\(homeScene.player.health-oldHealthNum)")

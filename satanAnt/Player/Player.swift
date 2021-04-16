@@ -121,6 +121,7 @@ class Player: SKSpriteNode {
     
     var pet: Pet!
     var petChanged = true
+    var farmList = [Pet]()
     
     var item: Item!
     var itemChanged = true
@@ -152,70 +153,70 @@ class Player: SKSpriteNode {
                 //_health = 2.5 + baseHealth
                 self.isHidden = true
                 self.homeScene.view?.isUserInteractionEnabled = false
-//
-//                let dieAction = SKAction.run({
-//
-//                    let tomb = Tomb()
-//                    tomb.position = self.position
-//                    self.homeScene.addChild(tomb)
-//
-//                })
-//                let wait = SKAction.wait(forDuration: 2)
-//                let transferAction = SKAction.run({
-//
-//                    if let view = self.homeScene.view as SKView?{
-//                        print("enter!!")
-//                        if let scene = self.roomScene{
-//                            print("enter!!!")
-//                            // Set the scale mode to scale to fit the window
-//                            scene.scaleMode = .aspectFit
-//                            scene.isBedRoom = true
-//                            //scene.isMonsterRoom = false
-//                            //scene.cleanMonster()
-//                            //setupButton(scene: scene)
-//
-//                            scene.player = self
-//                            scene.player.position = CGPoint(x: 160, y: 250)
-//                            let fade = SKTransition.fade(withDuration: 1)
-//                            // Present the scene
-//                            view.presentScene(scene,transition: fade)
-//
-//
-//                            view.ignoresSiblingOrder = true
-//
-//                            view.showsFPS = true
-//                            view.showsNodeCount = true
-//                        }
-//                    }
-//                })
+
+                let dieAction = SKAction.run({
+
+                    let tomb = Tomb()
+                    tomb.position = self.position
+                    self.homeScene.addChild(tomb)
+
+                })
+                let wait = SKAction.wait(forDuration: 2)
+                let transferAction = SKAction.run({
+
+                    if let view = self.homeScene.view as SKView?{
+                        print("enter!!")
+                        if let scene = self.roomScene{
+                            print("enter!!!")
+                            // Set the scale mode to scale to fit the window
+                            scene.scaleMode = .aspectFit
+                            scene.isBedRoom = true
+                            //scene.isMonsterRoom = false
+                            //scene.cleanMonster()
+                            //setupButton(scene: scene)
+
+                            scene.player = self
+                            scene.player.position = CGPoint(x: 160, y: 250)
+                            let fade = SKTransition.fade(withDuration: 1)
+                            // Present the scene
+                            view.presentScene(scene,transition: fade)
+
+
+                            view.ignoresSiblingOrder = true
+
+                            view.showsFPS = true
+                            view.showsNodeCount = true
+                        }
+                    }
+                })
                 
-               // self.run(SKAction.sequence([dieAction,wait,transferAction]))
+                self.run(SKAction.sequence([dieAction,wait,transferAction]))
                 //play sound
                 
-                if let view = self.homeScene.view as SKView?{
-                    print("enter!!")
-                    if let scene = self.roomScene{
-                        print("enter!!!")
-                        // Set the scale mode to scale to fit the window
-                        scene.scaleMode = .aspectFit
-                        scene.isBedRoom = true
-                        //scene.isMonsterRoom = false
-                        //scene.cleanMonster()
-                        //setupButton(scene: scene)
-                        
-                        scene.player = self
-                        scene.player.position = CGPoint(x: 160, y: 250)
-                        let fade = SKTransition.fade(withDuration: 1)
-                        // Present the scene
-                        view.presentScene(scene,transition: fade)
-                        
-                        
-                        view.ignoresSiblingOrder = true
-                        
-                        view.showsFPS = true
-                        view.showsNodeCount = true
-                    }
-                }
+//                if let view = self.homeScene.view as SKView?{
+//                    print("enter!!")
+//                    if let scene = self.roomScene{
+//                        print("enter!!!")
+//                        // Set the scale mode to scale to fit the window
+//                        scene.scaleMode = .aspectFit
+//                        scene.isBedRoom = true
+//                        //scene.isMonsterRoom = false
+//                        //scene.cleanMonster()
+//                        //setupButton(scene: scene)
+//
+//                        scene.player = self
+//                        scene.player.position = CGPoint(x: 160, y: 250)
+//                        let fade = SKTransition.fade(withDuration: 1)
+//                        // Present the scene
+//                        view.presentScene(scene,transition: fade)
+//
+//
+//                        view.ignoresSiblingOrder = true
+//
+//                        view.showsFPS = true
+//                        view.showsNodeCount = true
+//                    }
+//                }
 //                self.AudioPlayer2 = try! AVAudioPlayer(contentsOf: self.dieSound as URL)
 //
 //                self.AudioPlayer2.volume = 3
@@ -369,11 +370,14 @@ class Player: SKSpriteNode {
         self.weapon = fromType(type: WeaponType.random())
         self.hat = PlantDog()
         self.pet = Panda()
+        
+        self.farmList.append(Chicken())
+        
         self.itemList.append(fromType(type: ItemType.random()))
         self.itemList.append(fromType(type: ItemType.random()))
         self.item = itemList[0]
         self.collectionList.append(fromType(type: .ducky))
-        self.powerList.append(fromType(type: .healthGainer))
+        self.powerList.append(fromType(type: .halfMonster))
     
         self.baseBulletRangePoint = 0
         self.baseBulletSpeedPoint = 0
@@ -399,6 +403,19 @@ class Player: SKSpriteNode {
         self.run(back)
         
         self.health -= 0.25
+        self.healthChanged = true
+        
+        homeScene.run(homeScene.playerHurtSound)
+        
+
+    }
+    func beingHit(damage: CGFloat)  {
+        let back = SKAction.moveBy(x: -self.homeScene.player.facing.x*10, y: -self.homeScene.player.facing.y*10, duration: 0.1)
+        
+        self.run(hurtAction)
+        self.run(back)
+        
+        self.health -= damage
         self.healthChanged = true
         
         homeScene.run(homeScene.playerHurtSound)

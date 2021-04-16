@@ -455,6 +455,8 @@
 		72D92E28261EEC18006DB779 /* leftButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D92E26261EEC18006DB779 /* leftButton.png */; };
 		72D92E29261EEC18006DB779 /* rightButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72D92E27261EEC18006DB779 /* rightButton.png */; };
 		72DC0FEF2615C55D006E7AA1 /* staff.png in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0FEE2615C55D006E7AA1 /* staff.png */; };
+		72E1D5BC26299B8800F47F88 /* umbrella.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E1D5BB26299B8800F47F88 /* umbrella.png */; };
+		72E1D5BF26299BA200F47F88 /* Umbrella.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1D5BE26299BA200F47F88 /* Umbrella.swift */; };
 		72E48411260EEAC800D1C2DA /* Level_1_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72E48410260EEAC800D1C2DA /* Level_1_1.sks */; };
 		72E48414260EEB2200D1C2DA /* background_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E48413260EEB2100D1C2DA /* background_3.png */; };
 		72E48417260EEDAA00D1C2DA /* background_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E48416260EEDA900D1C2DA /* background_4.png */; };
@@ -1043,6 +1045,8 @@
 		72D92E26261EEC18006DB779 /* leftButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftButton.png; sourceTree = "<group>"; };
 		72D92E27261EEC18006DB779 /* rightButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightButton.png; sourceTree = "<group>"; };
 		72DC0FEE2615C55D006E7AA1 /* staff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staff.png; sourceTree = "<group>"; };
+		72E1D5BB26299B8800F47F88 /* umbrella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = umbrella.png; sourceTree = "<group>"; };
+		72E1D5BE26299BA200F47F88 /* Umbrella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Umbrella.swift; sourceTree = "<group>"; };
 		72E48410260EEAC800D1C2DA /* Level_1_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1_1.sks; sourceTree = "<group>"; };
 		72E48413260EEB2100D1C2DA /* background_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_3.png; sourceTree = "<group>"; };
 		72E48416260EEDA900D1C2DA /* background_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_4.png; sourceTree = "<group>"; };
@@ -1419,6 +1423,7 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72E1D5BB26299B8800F47F88 /* umbrella.png */,
 				72533CF126287B350090A2E4 /* flyingBird.png */,
 				72533CF226287B350090A2E4 /* halfMonster.png */,
 				72533CF326287B350090A2E4 /* healthGainer.png */,
@@ -1905,6 +1910,7 @@
 				724213FE261A18DC00CA5F97 /* AbilityHud.swift */,
 				72C315632627E58E0092C684 /* StoreDialogue.swift */,
 				72533CCE262870660090A2E4 /* TransferDialogue.swift */,
+				72E1D5BE26299BA200F47F88 /* Umbrella.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -1924,8 +1930,8 @@
 		72F2E30C2625C1A000D9DC6D /* Pet */ = {
 			isa = PBXGroup;
 			children = (
-				72F2E30D2625C1AE00D9DC6D /* Panda.swift */,
 				72F2E32D2625CA5300D9DC6D /* Pet.swift */,
+				72F2E30D2625C1AE00D9DC6D /* Panda.swift */,
 				72558C302626C4A50012DA21 /* Chicken.swift */,
 				7220E3092626EA4800DADDCB /* Cat.swift */,
 			);
@@ -2155,6 +2161,7 @@
 				72D6389126196A4700A43D41 /* npcRight_3.png in Resources */,
 				72E7F49D261C3F2A006A7AB1 /* newPortal_3.png in Resources */,
 				7281EBAA26232D9900EE69F9 /* canonLeft_2.png in Resources */,
+				72E1D5BC26299B8800F47F88 /* umbrella.png in Resources */,
 				7240ED7B2620A8D300745815 /* ghostLeft_2.png in Resources */,
 				72D638A9261978AC00A43D41 /* bigDialogue.png in Resources */,
 				72E48458260F110600D1C2DA /* log_backward_4.png in Resources */,
@@ -2554,6 +2561,7 @@
 				725A37002622B45700340C82 /* DeadSlime.swift in Sources */,
 				72558C382626CA110012DA21 /* PetEgg.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
+				72E1D5BF26299BA200F47F88 /* Umbrella.swift in Sources */,
 				72533CE5262877080090A2E4 /* FlyingBird.swift in Sources */,
 				723C7ADA26218B7800D9026C /* Candy.swift in Sources */,
 				723C7AC92621871500D9026C /* CandyBar.swift in Sources */,

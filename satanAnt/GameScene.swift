@@ -241,7 +241,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 self.run(startSound)
             }
-            if isCaveRoom{setupCave()}
+            if isCaveRoom{
+                print("enter!")
+                setupCave()}
             
             for node in self.children{
                 if node.name == "boxBorn"{
@@ -319,16 +321,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            
+//
+//            for node in self.children{
+//                if node.name == "chickenBorn"{
+//                    let chicken = Chicken()
+//                    chicken.position = node.position
+//                    chicken.setup(scene: self)
+//                    addChild(chicken)
+//                    player.farmList.append(chicken)
+//                }
+//            }
+
             for node in self.children{
                 if node.name == "chickenBorn"{
-                    let chicken = Chicken()
-                    chicken.position = node.position
-                    chicken.setup(scene: self)
-                    addChild(chicken)
+                    for animal in player.farmList{
+                        animal.position = node.position
+                        animal.setup(scene: self)
+                        animal.move(toParent: self)
+                        
+                    }
+                    
                 }
             }
-
+            
             
 //            if isBedRoom{
 //                let hat = PlantDog(scene: self)
@@ -360,7 +375,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        if !isEnterCaveRoom && !isBedRoom && !isSecretRoom{mapPosition = (self.childNode(withName: "map") as! SKSpriteNode);setupMap(mapNumber: player.gameLevel)}
+        if !isEnterCaveRoom && !isBedRoom && !isSecretRoom{
+            mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
+            setupMap(mapNumber: player.gameLevel)
+        }
         if isBedRoom{
             player.health = player.bornHealth + player.baseHealth
             player.healthChanged = true
@@ -742,6 +760,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         //print("\(monsterList.count)")
+        
+        for node in self.children{
+            if node.name == "umbrella"{
+                node.position = player.position + CGPoint(x: 0, y: 50)
+            }
+        }
+        
     }
     
     
@@ -1505,12 +1530,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 chicken.position = pos
                 chicken.setup(scene: self)
                 addChild(chicken)
+                player.farmList.append(chicken)
             case "catEggTexture":
                 let cat = Cat()
                 let pos = self.childNode(withName: "chickenBorn")!.position
                 cat.position = pos
                 cat.setup(scene: self)
                 addChild(cat)
+                player.farmList.append(cat)
             default:
                 break
             }
@@ -2653,7 +2680,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if playerNode != nil && ammo != nil {
-            player.beingHit()
+            if ammo.name == "canonBall"{
+                player.beingHit(damage: 1)
+            }else{
+                player.beingHit()
+            }
         }
         
         
@@ -2774,8 +2805,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         newRoom.color = .black
                     }
                     
-                    //home room
-                    if map[y][x] == 2 {
+                    //home room && break room
+                    if map[y][x] == 2 || map[y][x] == 6{
                         newRoom.color = .purple
                     }
                     

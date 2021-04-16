@@ -22,6 +22,7 @@ class FireBomb: Item {
         //self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
+        
         self.physicsBody?.mass = 0.5
         self.price = 25
     }
@@ -97,7 +98,14 @@ class FireBomb: Item {
                 monster.beingHit(homeScene: homeScene, damage: 1)
             }
         }
-        
+        for node in homeScene.children{
+            if node.name == "stone" || node.name == "van" || node.name == "stock" || node.name == "bucket"{
+                if node.position.distanceTo(self.position) < 100{
+                    let item = node as! Break
+                    item.beingHit(scene: homeScene, hit: 5)
+                }
+            }
+        }
     }
     
 }
