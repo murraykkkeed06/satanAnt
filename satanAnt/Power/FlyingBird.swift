@@ -72,7 +72,7 @@ class FlyingBird: Power {
         self.type = .flyingBird
         self.name = "flyingBird"
         self._sinceStart = 0
-        self.useNumber = 5
+        self.useNumber = 3
         self.start = false
     
     }

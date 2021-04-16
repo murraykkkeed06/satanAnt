@@ -25,5 +25,9 @@ class Word {
     
     var statueWord: String = "Give me money, pussy !"
     
+    var flyingBirdWord: String = "Bird attack !"
     
+    var healthGainerWord: String = "Gain one heart !"
+    
+    var halfMonsterWord: String = "Monter die in half !"
 }

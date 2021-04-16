@@ -59,7 +59,7 @@ class HalfMonster: Power {
         self.type = .halfMonster
         self.name = "halfMonster"
         self._sinceStart = 0
-        self.useNumber = 8
+        self.useNumber = 3
         self.start =  false
        
     }

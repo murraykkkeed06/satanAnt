@@ -377,7 +377,7 @@ class Player: SKSpriteNode {
         self.itemList.append(fromType(type: ItemType.random()))
         self.item = itemList[0]
         self.collectionList.append(fromType(type: .ducky))
-        self.powerList.append(fromType(type: .halfMonster))
+        //self.powerList.append(fromType(type: .halfMonster))
     
         self.baseBulletRangePoint = 0
         self.baseBulletSpeedPoint = 0

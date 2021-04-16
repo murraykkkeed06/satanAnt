@@ -42,3 +42,26 @@ func fromType(type: PowerType) -> Power {
     return power
 }
 
+
+func fromTypeTexture(type: PowerType) -> SKNode {
+    
+    var powerTexture: SKNode!
+    
+    switch type {
+    case .flyingBird:
+        let texture = SKTexture(imageNamed: "flyingBird")
+        powerTexture = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 100, height: 100))
+        powerTexture.name = "flyingBirdTexture"
+    case .healthGainer:
+        let texture = SKTexture(imageNamed: "healthGainer")
+        powerTexture = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 100, height: 100))
+        powerTexture.name = "healthGainerTexture"
+    case .halfMonster:
+        let texture = SKTexture(imageNamed: "halfMonster")
+        powerTexture = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 100, height: 100))
+        powerTexture.name = "halfMonsterTexture"
+    }
+    
+    return powerTexture
+    
+}
