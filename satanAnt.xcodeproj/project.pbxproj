@@ -73,6 +73,13 @@
 		7221056F261AF14A00B2EEAC /* soilder_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221056B261AF14A00B2EEAC /* soilder_4.png */; };
 		72210570261AF14A00B2EEAC /* soilder_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221056C261AF14A00B2EEAC /* soilder_1.png */; };
 		72210573261AF18C00B2EEAC /* Soilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210572261AF18C00B2EEAC /* Soilder.swift */; };
+		7227D90A262ADF4200108107 /* gameRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D909262ADF4200108107 /* gameRoom.png */; };
+		7227D90D262ADF4B00108107 /* challengeRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D90C262ADF4B00108107 /* challengeRoom.png */; };
+		7227D910262ADF5300108107 /* farmRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D90F262ADF5300108107 /* farmRoom.png */; };
+		7227D913262ADF5B00108107 /* villageRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D912262ADF5B00108107 /* villageRoom.png */; };
+		7227D916262ADF6500108107 /* fishRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D915262ADF6500108107 /* fishRoom.png */; };
+		7227D919262ADF8A00108107 /* BonusMonsterRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D918262ADF8A00108107 /* BonusMonsterRoom.png */; };
+		7227D91C262ADFB100108107 /* StoneRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D91B262ADFB100108107 /* StoneRoom.png */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
 		723C7AC32621735700D9026C /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723C7AC22621735700D9026C /* Drop.swift */; };
 		723C7AC62621870600D9026C /* candyBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 723C7AC52621870600D9026C /* candyBar.png */; };
@@ -156,6 +163,12 @@
 		724470352624545E00FF052E /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724470342624545E00FF052E /* Bird.swift */; };
 		724470382624572D00FF052E /* egg.png in Resources */ = {isa = PBXBuildFile; fileRef = 724470372624572D00FF052E /* egg.png */; };
 		7244703C2624574D00FF052E /* Egg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7244703B2624574D00FF052E /* Egg.swift */; };
+		7247F991262B0731005B0DCA /* Level_8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7247F990262B0731005B0DCA /* Level_8.sks */; };
+		7247F995262B0777005B0DCA /* Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7247F994262B0777005B0DCA /* Level_9.sks */; };
+		7247F998262B07B2005B0DCA /* Level_10.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7247F997262B07B1005B0DCA /* Level_10.sks */; };
+		7247F99B262B0816005B0DCA /* Level_11.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7247F99A262B0816005B0DCA /* Level_11.sks */; };
+		7247F99E262B0848005B0DCA /* Level_12.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7247F99D262B0848005B0DCA /* Level_12.sks */; };
+		7247F9A1262B0878005B0DCA /* Level_13.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7247F9A0262B0878005B0DCA /* Level_13.sks */; };
 		72500A60261AFEBE00EAE276 /* enterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A5E261AFEBE00EAE276 /* enterButton.png */; };
 		72500A61261AFEBE00EAE276 /* leaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A5F261AFEBE00EAE276 /* leaveButton.png */; };
 		72500A64261AFED000EAE276 /* wordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72500A63261AFED000EAE276 /* wordButton.swift */; };
@@ -664,6 +677,13 @@
 		7221056B261AF14A00B2EEAC /* soilder_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_4.png; sourceTree = "<group>"; };
 		7221056C261AF14A00B2EEAC /* soilder_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_1.png; sourceTree = "<group>"; };
 		72210572261AF18C00B2EEAC /* Soilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soilder.swift; sourceTree = "<group>"; };
+		7227D909262ADF4200108107 /* gameRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameRoom.png; sourceTree = "<group>"; };
+		7227D90C262ADF4B00108107 /* challengeRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = challengeRoom.png; sourceTree = "<group>"; };
+		7227D90F262ADF5300108107 /* farmRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = farmRoom.png; sourceTree = "<group>"; };
+		7227D912262ADF5B00108107 /* villageRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villageRoom.png; sourceTree = "<group>"; };
+		7227D915262ADF6500108107 /* fishRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishRoom.png; sourceTree = "<group>"; };
+		7227D918262ADF8A00108107 /* BonusMonsterRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BonusMonsterRoom.png; sourceTree = "<group>"; };
+		7227D91B262ADFB100108107 /* StoneRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoneRoom.png; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		723C7AC22621735700D9026C /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
 		723C7AC52621870600D9026C /* candyBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = candyBar.png; sourceTree = "<group>"; };
@@ -747,6 +767,12 @@
 		724470342624545E00FF052E /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 		724470372624572D00FF052E /* egg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg.png; sourceTree = "<group>"; };
 		7244703B2624574D00FF052E /* Egg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egg.swift; sourceTree = "<group>"; };
+		7247F990262B0731005B0DCA /* Level_8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_8.sks; sourceTree = "<group>"; };
+		7247F994262B0777005B0DCA /* Level_9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_9.sks; sourceTree = "<group>"; };
+		7247F997262B07B1005B0DCA /* Level_10.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_10.sks; sourceTree = "<group>"; };
+		7247F99A262B0816005B0DCA /* Level_11.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_11.sks; sourceTree = "<group>"; };
+		7247F99D262B0848005B0DCA /* Level_12.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_12.sks; sourceTree = "<group>"; };
+		7247F9A0262B0878005B0DCA /* Level_13.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_13.sks; sourceTree = "<group>"; };
 		72500A5E261AFEBE00EAE276 /* enterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enterButton.png; sourceTree = "<group>"; };
 		72500A5F261AFEBE00EAE276 /* leaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaveButton.png; sourceTree = "<group>"; };
 		72500A63261AFED000EAE276 /* wordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordButton.swift; sourceTree = "<group>"; };
@@ -1431,6 +1457,13 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				7227D918262ADF8A00108107 /* BonusMonsterRoom.png */,
+				7227D91B262ADFB100108107 /* StoneRoom.png */,
+				7227D915262ADF6500108107 /* fishRoom.png */,
+				7227D912262ADF5B00108107 /* villageRoom.png */,
+				7227D90F262ADF5300108107 /* farmRoom.png */,
+				7227D90C262ADF4B00108107 /* challengeRoom.png */,
+				7227D909262ADF4200108107 /* gameRoom.png */,
 				72E02EAB2629C5FB00FFBB81 /* powerSelection.png */,
 				72E1D5BB26299B8800F47F88 /* umbrella.png */,
 				72533CF126287B350090A2E4 /* flyingBird.png */,
@@ -1883,6 +1916,12 @@
 				72500A69261B044000EAE276 /* Level_5.sks */,
 				72500A75261B12EE00EAE276 /* Level_6.sks */,
 				723E800726272684002C54B9 /* Level_7.sks */,
+				7247F990262B0731005B0DCA /* Level_8.sks */,
+				7247F994262B0777005B0DCA /* Level_9.sks */,
+				7247F997262B07B1005B0DCA /* Level_10.sks */,
+				7247F99A262B0816005B0DCA /* Level_11.sks */,
+				7247F99D262B0848005B0DCA /* Level_12.sks */,
+				7247F9A0262B0878005B0DCA /* Level_13.sks */,
 				7279A975260D913C000EB14F /* playerAction.sks */,
 				72B46640260B2A1400BC5E56 /* Actions.sks */,
 				72E48467260F11D700D1C2DA /* monsterAction.sks */,
@@ -2014,6 +2053,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7247F99B262B0816005B0DCA /* Level_11.sks in Resources */,
 				72FE15D0261DE27E008870C6 /* coinDrop_4.png in Resources */,
 				729E9430260E33CA00DFF2D0 /* portal_3.png in Resources */,
 				729E9422260E2FBE00DFF2D0 /* new_backward_2.png in Resources */,
@@ -2043,6 +2083,7 @@
 				7277731B261ECF4B009F823F /* fireBomb_1.png in Resources */,
 				72D92E29261EEC18006DB779 /* rightButton.png in Resources */,
 				729E9432260E33CA00DFF2D0 /* portal_1.png in Resources */,
+				7227D90A262ADF4200108107 /* gameRoom.png in Resources */,
 				72533CDE2628737C0090A2E4 /* truffle.png in Resources */,
 				7279A976260D913C000EB14F /* playerAction.sks in Resources */,
 				725A37092622B7A800340C82 /* slimeDie.wav in Resources */,
@@ -2112,7 +2153,9 @@
 				72684BBB26254E16006B6DC9 /* robot_2.png in Resources */,
 				72684BA726254BD1006B6DC9 /* foxidle3.png in Resources */,
 				725A37212622CF0800340C82 /* bornEffect_3.png in Resources */,
+				7227D913262ADF5B00108107 /* villageRoom.png in Resources */,
 				72F2E3232625C25200D9DC6D /* pandaLeft_3.png in Resources */,
+				7247F998262B07B2005B0DCA /* Level_10.sks in Resources */,
 				72E48493260F338C00D1C2DA /* two.png in Resources */,
 				72D6388D26196A4700A43D41 /* npcRight_4.png in Resources */,
 				7240ED7E2620A8D300745815 /* ghostLeftAttack_5.png in Resources */,
@@ -2127,9 +2170,12 @@
 				723E801526272A6A002C54B9 /* stock.png in Resources */,
 				72F4410D26205CD1006F450B /* apple.png in Resources */,
 				72D638A12619753000A43D41 /* dialogue_3.png in Resources */,
+				7227D90D262ADF4B00108107 /* challengeRoom.png in Resources */,
 				72558BFB2626A9BF0012DA21 /* runAway.wav in Resources */,
 				72684BAA26254BD1006B6DC9 /* foxidle7.png in Resources */,
+				7227D91C262ADFB100108107 /* StoneRoom.png in Resources */,
 				7281EBB626232DA800EE69F9 /* canonRight_2.png in Resources */,
+				7247F995262B0777005B0DCA /* Level_9.sks in Resources */,
 				729E9421260E2FBE00DFF2D0 /* new_right_3.png in Resources */,
 				72558C272626C3D20012DA21 /* chickenFor_3.png in Resources */,
 				725A36DF262298C300340C82 /* slimePurple_8.png in Resources */,
@@ -2143,6 +2189,7 @@
 				720A426F2618C7C0002D589C /* logDie_4.png in Resources */,
 				720A425326189C31002D589C /* attack_4.png in Resources */,
 				72E4843E260F052600D1C2DA /* Level_1_6.sks in Resources */,
+				7227D910262ADF5300108107 /* farmRoom.png in Resources */,
 				72E7F4BD261C4217006A7AB1 /* caveDoor_1.png in Resources */,
 				72D77D1626280977007D9687 /* suprise_8.png in Resources */,
 				7240ED852620A8D300745815 /* ghostLeft_1.png in Resources */,
@@ -2151,6 +2198,7 @@
 				72B46648260B2A1400BC5E56 /* Main.storyboard in Resources */,
 				72E48479260F2F2800D1C2DA /* log_right_1.png in Resources */,
 				7240ED842620A8D300745815 /* ghostRightAttack_5.png in Resources */,
+				7247F99E262B0848005B0DCA /* Level_12.sks in Resources */,
 				72CF1A9D261F5A3D00FA90BE /* pick.mp3 in Resources */,
 				72F2E32A2625C25200D9DC6D /* pandaRight_3.png in Resources */,
 				7240ED392620848200745815 /* slime_1.png in Resources */,
@@ -2264,6 +2312,7 @@
 				725A36D9262298C300340C82 /* slimePurple_10.png in Resources */,
 				725A36E0262298C300340C82 /* slimePurple_4.png in Resources */,
 				72E484A0260F338C00D1C2DA /* heart_4.png in Resources */,
+				7227D916262ADF6500108107 /* fishRoom.png in Resources */,
 				7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */,
 				725A36F0262298C300340C82 /* slimeRed_10.png in Resources */,
 				72CF1A8E261F556E00FA90BE /* bigger.wav in Resources */,
@@ -2289,6 +2338,7 @@
 				72684BBD26254E16006B6DC9 /* robot_4.png in Resources */,
 				725A37222622CF0800340C82 /* bornEffect_1.png in Resources */,
 				724470302624545100FF052E /* bird_2.png in Resources */,
+				7247F991262B0731005B0DCA /* Level_8.sks in Resources */,
 				727F3569261EADB100BB8E02 /* lightening.png in Resources */,
 				72D01BB62622FB4300459733 /* shadow.png in Resources */,
 				72E48492260F338C00D1C2DA /* three.png in Resources */,
@@ -2333,6 +2383,7 @@
 				7220E3072626EA3F00DADDCB /* catFor_2.png in Resources */,
 				72DC0FEF2615C55D006E7AA1 /* staff.png in Resources */,
 				729E942F260E33CA00DFF2D0 /* portal_2.png in Resources */,
+				7247F9A1262B0878005B0DCA /* Level_13.sks in Resources */,
 				72210553261AB32100B2EEAC /* cancelButton.png in Resources */,
 				72558BF826269E1B0012DA21 /* hit_3.wav in Resources */,
 				724213EC261A0CB300CA5F97 /* book_1.png in Resources */,
@@ -2444,6 +2495,7 @@
 				72500A70261B0AE600EAE276 /* homeBoard.png in Resources */,
 				72E48497260F338C00D1C2DA /* seven.png in Resources */,
 				724213EB261A0CB300CA5F97 /* platform.png in Resources */,
+				7227D919262ADF8A00108107 /* BonusMonsterRoom.png in Resources */,
 				7220E2FF2626EA3F00DADDCB /* catLeft_2.png in Resources */,
 				72684BAD26254BD1006B6DC9 /* foxidle5.png in Resources */,
 				725A37302622D9B000340C82 /* monsterBornEffect_2.png in Resources */,

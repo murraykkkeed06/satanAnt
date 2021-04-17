@@ -113,6 +113,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isBreakRoom = false
     var isSecretRoom = false
     var isBackFromSecretRoom = false
+    var isChallengeRoom = false
+    var isVillageRoom = false
+    var isStoneRoom = false
+    var isFishRoom = false
+    var isMonsterBonusRoom = false
+        
     var YX: GridYX!
     
     var isClean = false
@@ -192,7 +198,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !self.setupIsSet {
             setupIsSet = true
             eachRoomSetting()
+           
+            
+            
         }
+        
         eachEnterSetting()
         
     }
@@ -264,6 +274,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupSinceStartCounting()
         setupPowerRemove()
   
+        
         
     }
     
@@ -816,7 +827,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupLevelClean() {
-        if isBornRoom || isBonusRoom {if !isDoorSet{setupDoor();isDoorSet=true}
+        if isBornRoom || isBonusRoom || isFishRoom || isVillageRoom || isStoneRoom{if !isDoorSet{setupDoor();isDoorSet=true}
         }else if isEnterCaveRoom {
         
             switch player.gameLevel {
@@ -3131,6 +3142,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isBreakRoom = true
                         gameScene.isBornRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else if self.map[y][x] == 7 {
+                        let gameScene = GameScene.level(13)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isChallengeRoom = true
+                        gameScene.isMonsterRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else if self.map[y][x] == 8 {
+                        let gameScene = GameScene.level(12)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isVillageRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else if self.map[y][x] == 9 {
+                        let gameScene = GameScene.level(11)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isStoneRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else if self.map[y][x] == 10 {
+                        let gameScene = GameScene.level(10)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isFishRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else if self.map[y][x] == 11 {
+                        let gameScene = GameScene.level(9)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isMonsterBonusRoom = true
+                        gameScene.isMonsterRoom = true
                         sceneList.append(gameScene)
                     }
                 }

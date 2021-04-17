@@ -22,7 +22,8 @@ class Box: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: boxSize)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.pinned = true
+        self.physicsBody?.isDynamic = false
+        //self.physicsBody?.pinned = true
         self.name = "box"
         
     }
