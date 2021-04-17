@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let chickenSound = SKAction.playSoundFileNamed("chickenSound.mp3", waitForCompletion: false)
     let meowSound = SKAction.playSoundFileNamed("meow.wav", waitForCompletion: false)
     let plantDogScreamSound = SKAction.playSoundFileNamed("plantDogScream.wav", waitForCompletion: false)
-    let canonFireSound = SKAction.playSoundFileNamed("canonFire.wav", waitForCompletion: false)
+    let canonFireSound = SKAction.playSoundFileNamed("canonFire.mp3", waitForCompletion: false)
     let birdSound = SKAction.playSoundFileNamed("bird.wav", waitForCompletion: false)
     let bornSound = SKAction.playSoundFileNamed("bornSound.wav", waitForCompletion: false)
     let fireHitSound = SKAction.playSoundFileNamed("fireHit.mp3", waitForCompletion: false)
@@ -190,278 +190,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         if !self.setupIsSet {
-            mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
-            handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
-            
-            handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
-            fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
-            popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
-            rButton = (self.childNode(withName: "rHandler") as! MSButtonNode)
-            //setupDoor()
-            leftButton = (self.childNode(withName: "left") as! MSButtonNode)
-            leftButton.selectedHandler = {
-                if self.player.itemList.count < 2 {
-                    
-                    self.run(self.errorSound)
-                    return}
-                if self.player.inItemListNumber == 0 {
-                    
-                    self.run(self.errorSound);return
-                    
-                }
-                
-                self.run(self.slideSound)
-                self.player.item = self.player.itemList[self.player.inItemListNumber-1]
-                self.player.inItemListNumber -= 1
-                self.player.itemChanged = true
-                
-            }
-            rightButton = (self.childNode(withName: "right") as! MSButtonNode)
-            rightButton.selectedHandler = {
-                if self.player.itemList.count < 2 {
-                    
-                    self.rightButton.run(self.errorSound);return}
-                if self.player.inItemListNumber == self.player.itemList.count-1 {
-                    
-                    self.run(self.errorSound);return}
-                
-                self.rightButton.run(self.slideSound)
-                self.player.item = self.player.itemList[self.player.inItemListNumber+1]
-                self.player.inItemListNumber += 1
-                self.player.itemChanged = true
-                
-            }
-            
-            if isMonsterRoom {
-                let wait = SKAction.wait(forDuration: 1)
-                self.run(SKAction.sequence([wait,SKAction.run({
-                    self.setupMonster(num: Int.random(in: 5..<10))
-                })]))
-                //setupMonster()
-                
-            }
             setupIsSet = true
-            if isBedRoom{
-                setupBedRoom()
-                
-                self.run(startSound)
-            }
-            if isCaveRoom{
-                print("enter!")
-                setupCave()}
-            
-            for node in self.children{
-                if node.name == "boxBorn"{
-                    let box = Box()
-                    box.position = node.position
-                    addChild(box)
-                }
-                //                if node.name == "girlBorn"{
-                //                    let girl = VillageGirl()
-                //                    girl.position = node.position
-                //                    addChild(girl)
-                //                }
-                if node.name == "scarecrowBorn"{
-                    let scarecrow = Scarecrow(scene: self)
-                    scarecrow.position = node.position
-                    addChild(scarecrow)
-                    monsterList.append(scarecrow)
-                }
-            }
-            
-            if villageGirl == nil && isMonsterRoom{
-                if Int.random(in: 0..<10)<2{
-                    villageGirl = VillageGirl()
-                    
-                    var newX = CGFloat.random(in: 50..<self.frame.width-50)
-                    var newY = CGFloat.random(in: 50..<self.frame.height-50)
-                    
-                    while atPoint(CGPoint(x: newX, y: newY)).physicsBody != nil {
-                        newX = CGFloat.random(in: 50..<self.frame.width-50)
-                        newY = CGFloat.random(in: 50..<self.frame.height-50)
-                    }
-                    
-                    villageGirl.position = CGPoint(x: newX, y: newY)
-                    addChild(villageGirl)
-                    
-                    for scene in sceneList{
-                        scene.villageGirl = villageGirl
-                    }
-                    
-                }
-            }
-            
-            if scientist == nil  && isMonsterRoom{
-                if Int.random(in: 0..<10)<1{
-                    scientist = Scientist()
-                    
-                    var newX = CGFloat.random(in: 50..<self.frame.width-50)
-                    var newY = CGFloat.random(in: 50..<self.frame.height-50)
-                    
-                    while atPoint(CGPoint(x: newX, y: newY)).physicsBody != nil {
-                        newX = CGFloat.random(in: 50..<self.frame.width-50)
-                        newY = CGFloat.random(in: 50..<self.frame.height-50)
-                    }
-                    
-                    scientist.position = CGPoint(x: newX, y: newY)
-                    addChild(scientist)
-                    
-                    for scene in sceneList{
-                        scene.scientist = scientist
-                    }
-                    
-                }
-            }
-            
-            
-            for node in self.children{
-                if node.name == "npcBorn"{
-                    npc = Npc()
-                    npc.position = node.position
-                    addChild(npc)
-                    
-                    for scene in sceneList{
-                        scene.npc = npc
-                    }
-                }
-            }
-            
-            //
-            //            for node in self.children{
-            //                if node.name == "chickenBorn"{
-            //                    let chicken = Chicken()
-            //                    chicken.position = node.position
-            //                    chicken.setup(scene: self)
-            //                    addChild(chicken)
-            //                    player.farmList.append(chicken)
-            //                }
-            //            }
-            
-            for node in self.children{
-                if node.name == "chickenBorn"{
-                    for animal in player.farmList{
-                        animal.position = node.position
-                        animal.setup(scene: self)
-                        animal.move(toParent: self)
-                        
-                    }
-                    
-                }
-            }
-            
-            
-            //            if isBedRoom{
-            //                let hat = PlantDog(scene: self)
-            //                hat.position = CGPoint(x: 300, y: 150)
-            //                addChild(hat)
-            //            }
-            
-            //canon set up
-            setupCanon()
-            
-            
-            if isMonsterRoom {
-                bornBreak(num: Int.random(in: 5..<10), homeScene: self)
-            }
-            
-            
-            
+            eachRoomSetting()
         }
-        //setupisset end
-        if isBackFromSecretRoom && !isDoorSet{
-            setupMonster(num: 5)
-            isBackFromSecretRoom = false
-        }
-        
-        
-        
-        if isEnterCaveRoom{
-            setupCaveMonster(level: player.gameLevel)
-        }
-        
-        
-        if !isEnterCaveRoom && !isBedRoom && !isSecretRoom{
-            mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
-            setupMap(mapNumber: player.gameLevel)
-        }
-        if isBedRoom{
-            player.health = player.bornHealth + player.baseHealth
-            player.healthChanged = true
-            player.setupPhysics()
-            
-            
-        }
-        if isBedRoom || isBreakRoom{
-            setupBornEffect()
-        }
-        
-        
-        
-        self.view?.isUserInteractionEnabled = true
-        player.isHidden = false
-        
-        sinceStart = 0
-        mount.position = handlerBackground.position
-        handler.position = handlerBackground.position
-        physicsWorld.contactDelegate = self
-        
-        player.move(toParent: self)
-        player.playerIsMoving = false
-        player.state = .idle
-        player.homeScene = self
-        player.healthChanged = true
-        player.levelChanged = true
-        player.expChanged = true
-        player.moneyChanged = true
-        player.weaponChanged = true
-        player.itemChanged = true
-        player.hatChanged = true
-        player.petChanged = true
-        player.eggChanged = true
-        player.powerChanged = true
-        player.collectionChanged = true
-        
-        
-        player.isAlived = true
-        levelChanged = true
-        player.isFiring = false
-        
-        
-        
-        //if npc != nil {npc.position = npcBornPoint}
-        fireButton.touchStartHandler = {self.player.isFiring = true}
-        fireButton.selectedHandler = {self.player.isFiring = false}
-        
-        popoButton.selectedHandler = {
-            
-            if self.player.item == nil {return}
-            switch self.player.item.name {
-            case "potion":
-                let item = self.player.item as! Potion
-                item.work(scene: self)
-            //self.player.itemChanged = true
-            case "fireBomb_1":
-                let item = self.player.item as! FireBomb
-                item.work(scene: self)
-            case "apple":
-                let item = self.player.item as! Apple
-                item.work(scene: self)
-            case "coke":
-                let item = self.player.item as! Coke
-                item.work(scene: self)
-            default:
-                break
-            }
-        }
-        
-        //power start to work when enter each room
-        for power in player.powerList{
-            power.homeScene = self
-            if !power.start{
-                power.start = true
-            }
-        }
-        
+        eachEnterSetting()
         
     }
     
@@ -472,19 +204,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setupPowerSelection(location: location)
         
-        
         if inDialogue {return}
-        //if player.round > round{return}
-        
+       
         if location.x > self.frame.width/2{
             mount.position = location
             handler.position = location
         }
         handleHandler(phase: "began", location: location)
-        //handleFacingHandler(phase: "began", location: location)
-        
-        
-        
+       
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -492,288 +219,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         
         handleHandler(phase: "moved", location: location)
-        //handleFacingHandler(phase: "moved", location: location)
-        
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
+        
         player.state = .idle
         handleHandler(phase: "ended", location: location)
         player.playerIsMoving = false
-        //handleFacingHandler(phase: "ended", location: location)
+       
     }
     
     
     override func update(_ currentTime: TimeInterval) {
         
-        playerSetupHud()
-        player.sinceFire += eachFrame
-        player.rStart += eachFrame
-        if player.playerIsMoving{
-            player.position+=(player.movingDirection * player.moveDistance)
-        }
-        sinceStart += eachFrame
-        birdBornStart += eachFrame
-        
-        //        for monster in monsterList{
-        //            monster.sinceStart += eachFrame
-        //        }
         if sinceStart > eachFrame{
             handler.isHidden = false
         }
-        
-        for node in self.children{
-            if node.name == "panda"{
-                let panda = node as! Panda
-                panda.sinceStart += eachFrame
-            }
-            if node.name == "npc"{
-                let npc = node as! Npc
-                checkNpcAround(npc: npc)
-            }
-            
+        if player.playerIsMoving{
+            player.position+=(player.movingDirection * player.moveDistance)
         }
         
-        //        for scene in sceneList{
-        //            if let npc = scene.npc{
-        //                npc.sinceBorn += eachFrame
-        //            }
-        //        }
-        
-        if let npc = npc{
-            npc.sinceBorn += eachFrame
-            //print("\(npc.sinceBorn)")
-        }
-        
-        
-        
-        for node in player.children{
-            if node.name == "plantDog"{
-                let plantDog = node as! PlantDog
-                plantDog.sinceStart += eachFrame
-                
-            }
-        }
-        
-        //        if npc != nil{
-        //            npc.sinceBorn += eachFrame
-        //            checkNpcAround()
-        //        }
-        
-        if soilder != nil {
-            checkSoilderAround()
-        }
-        
+
+        playerSetupHud()
+        checkSoilderAround()
         checkGirlAround()
         checkStatueAround()
         checkMakerAround()
         checkScientistAround()
         checkVendingMachineAround()
-        
-        if player.isFiring{
-            self.player.weapon.attack(direction: self.player.facing,homeScene: self)
-            
-        }else {player.weapon.reset()}
-        
-        
-        //finsh cleaning monster
-        if isBornRoom || isBonusRoom {if !isDoorSet{setupDoor();isDoorSet=true}
-        }else if isEnterCaveRoom {
-            
-            switch player.gameLevel {
-            case 1:
-                if sinceStart>30{
-                    for i in 0..<monsterList.count{
-                        if monsterList[i].isAlived{break}
-                        if i == monsterList.count - 1 && !isDoorSet{
-                            setupHomeOrKeepGoing()
-                            isDoorSet=true
-                        }
-                    }
-                }
-            case 2:
-                if sinceStart>30{
-                    for i in 0..<monsterList.count{
-                        if monsterList[i].isAlived{break}
-                        if i == monsterList.count - 1 && !isDoorSet{
-                            setupHomeOrKeepGoing()
-                            isDoorSet=true
-                        }
-                    }
-                }
-            default:
-                break
-            }
-            
-            
-        }
-        else{
-            for i in 0..<monsterList.count{
-                if monsterList[i].isAlived{break}
-                if i == monsterList.count - 1 && !isDoorSet{
-                    setupDoor()
-                    isDoorSet=true
-                    
-                }
-            }
-        }
-        
-        //heal effect
-        for node in self.children{
-            if node.name == "heal"{
-                node.position = player.position
-            }
-        }
-        
-        if player.rStart > 5 {
-            player.rStart = 5
-            rButton.selectedHandler = {
-                self.player.rStart = 0
-                self.player.weapon.rAttack(direction: self.player.facing, homeScene: self)
-            }
-            
-        }else {
-            let white = (rButton.childNode(withName: "white") as! SKSpriteNode)
-            white.yScale = CGFloat(player.rStart)/5
-            rButton.selectedHandler = {}
-        }
-        
-        
         checkBoxAround()
         checkFarmBarAround()
-        
-        if bornEffect != nil{
-            if sinceStart<0.1{
-                bornEffect.position = player.position - CGPoint(x: 0, y: 10)
-            }
-            if sinceStart > 1{
-                bornEffect.removeFromParent()
-            }
-        }
-        
-        
-        
+        checkNpcAround()
+        checkFoxAround()
         canonDetect()
-        
         monsterAutoAttackDetect()
-        
-        for node in self.children{
-            if node.isMember(of: Bird.self) {
-                let bird = node as! Bird
-                bird.sinceStart += eachFrame
-                bird.forRemove += eachFrame
-                if bird.forRemove > 10{
-                    bird.removeFromParent()
-                }
-            }
-        }
-        
-        if isMonsterRoom || isBornRoom{
-            if birdBornStart > 6{
-                if Int.random(in: 0..<100) < 5 {
-                    let bird = Bird(scene: self)
-                    bird.position = CGPoint(x: CGFloat.random(in: 700..<800), y: CGFloat.random(in: 200..<360))
-                    addChild(bird)
-                    
-                }
-                birdBornStart = 0
-            }
-            
-        }
-        
-        
-        
-        //zposition setting
-        
-        for node in self.children{
-            if node.name == "scarecrow" && player.position.distanceTo(node.position)<50{
-                if player.position.y < node.position.y{
-                    player.zPosition = node.zPosition + 1
-                }else{
-                    player.zPosition = 1
-                }
-            }
-            if node.name == "statue" && player.position.distanceTo(node.position)<50{
-                if player.position.y < node.position.y{
-                    player.zPosition = node.zPosition + 1
-                }else{
-                    player.zPosition = 1
-                }
-            }
-        }
-        
-        
-        for node in self.children{
-            if node.name == "fox"{
-                if node.position.distanceTo(player.position) < 60 {
-                    if !loveDialogueIsSet{
-                        loveDialogueIsSet = true
-                        let loveDialogue = LoveDialogue()
-                        loveDialogue.position = node.position + CGPoint(x: 5, y: 30)
-                        addChild(loveDialogue)
-                        loveDialogue.start()
-                        
-                        self.run(barkSound)
-                    }
-                    
-                    
-                } else {
-                    loveDialogueIsSet = false
-                    for node in self.children{
-                        if node.name == "loveDialogue"{
-                            node.removeFromParent()
-                        }
-                    }
-                    
-                }
-                
-                
-                
-            }
-        }
-        
-        
-        for scene in sceneList{
-            for node in scene.children{
-                if node.name == "chicken"{
-                    let chicken = node as! Chicken
-                    chicken.sinceStart += eachFrame
-                }
-                if node.name == "cat"{
-                    let cat = node as! Cat
-                    cat.sinceStart += eachFrame
-                }
-            }
-        }
-        
-        for power in player.powerList{
-            power.sinceStart += eachFrame
-        }
-        
-        //print("\(player.powerList.count)")
-        for i in 0..<player.powerList.count{
-            
-            if player.powerList[i].useNumber == 0{
-                player.powerList.remove(at: i)
-                player.powerChanged = true
-                break
-            }
-        }
-        
-        for monster in monsterList{
-            monster.sinceStart += eachFrame
-            
-        }
-        //print("\(monsterList.count)")
-        
-        for node in self.children{
-            if node.name == "umbrella"{
-                node.position = player.position + CGPoint(x: 0, y: 50)
-            }
-        }
+        setupZPosition()
+        setupLevelClean()
+        setupBirdInBackground()
+        setupPlayerAttack()
+        setupPositionFollow()
+        setupSinceStartCounting()
+        setupPowerRemove()
+  
         
     }
     
@@ -807,23 +297,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setupCanon()  {
-        
-        // if let canonBorn = self.childNode(withName: "canonBorn") as? SKSpriteNode {
-        //        for node in self.children{
-        //            if node.name == "canonBorn"{
-        //                var canon: Canon!
-        //
-        //                if node.position.x > self.frame.width/2 {
-        //                    canon = Canon(canonDirection: .left, scene: self)
-        //                }else {
-        //                    canon = Canon(canonDirection: .right, scene: self)
-        //                }
-        //                canon.position = node.position
-        //
-        //                addChild(canon)
-        //            }
-        //        }
-        // }
         if isMonsterRoom{
             for _ in 0..<Int.random(in: 0..<4){
                 
@@ -926,6 +399,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func setupCharacter() {
+        if villageGirl == nil && isMonsterRoom{
+            if Int.random(in: 0..<10)<2{
+                villageGirl = VillageGirl()
+                
+                var newX = CGFloat.random(in: 50..<self.frame.width-50)
+                var newY = CGFloat.random(in: 50..<self.frame.height-50)
+                
+                while atPoint(CGPoint(x: newX, y: newY)).physicsBody != nil {
+                    newX = CGFloat.random(in: 50..<self.frame.width-50)
+                    newY = CGFloat.random(in: 50..<self.frame.height-50)
+                }
+                
+                villageGirl.position = CGPoint(x: newX, y: newY)
+                addChild(villageGirl)
+                
+                for scene in sceneList{
+                    scene.villageGirl = villageGirl
+                }
+                
+            }
+        }
+        
+        if scientist == nil  && isMonsterRoom{
+            if Int.random(in: 0..<10)<1{
+                scientist = Scientist()
+                
+                var newX = CGFloat.random(in: 50..<self.frame.width-50)
+                var newY = CGFloat.random(in: 50..<self.frame.height-50)
+                
+                while atPoint(CGPoint(x: newX, y: newY)).physicsBody != nil {
+                    newX = CGFloat.random(in: 50..<self.frame.width-50)
+                    newY = CGFloat.random(in: 50..<self.frame.height-50)
+                }
+                
+                scientist.position = CGPoint(x: newX, y: newY)
+                addChild(scientist)
+                
+                for scene in sceneList{
+                    scene.scientist = scientist
+                }
+                
+            }
+        }
+    }
+    
     func setupBornEffect()  {
         bornEffect = BornEffect(scene: self)
         //bornEffect.position = player.position - CGPoint(x: 0, y: 10)
@@ -1015,6 +534,186 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func eachRoomSetting()  {
+        mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
+        handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
+        handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
+        fireButton = (self.childNode(withName: "fireButton") as! MSButtonNode)
+        fireButton.touchStartHandler = {self.player.isFiring = true}
+        fireButton.selectedHandler = {self.player.isFiring = false}
+        popoButton = (self.childNode(withName: "popoButton") as! MSButtonNode)
+        popoButton.selectedHandler = {
+            
+            if self.player.item == nil {return}
+            switch self.player.item.name {
+            case "potion":
+                let item = self.player.item as! Potion
+                item.work(scene: self)
+            //self.player.itemChanged = true
+            case "fireBomb_1":
+                let item = self.player.item as! FireBomb
+                item.work(scene: self)
+            case "apple":
+                let item = self.player.item as! Apple
+                item.work(scene: self)
+            case "coke":
+                let item = self.player.item as! Coke
+                item.work(scene: self)
+            default:
+                break
+            }
+        }
+        rButton = (self.childNode(withName: "rHandler") as! MSButtonNode)
+        //setupDoor()
+        leftButton = (self.childNode(withName: "left") as! MSButtonNode)
+        leftButton.selectedHandler = {
+            if self.player.itemList.count < 2 || self.player.inItemListNumber == 0{
+                self.run(self.errorSound)
+                return
+            }
+            self.run(self.slideSound)
+            self.player.item = self.player.itemList[self.player.inItemListNumber-1]
+            self.player.inItemListNumber -= 1
+            self.player.itemChanged = true
+            
+        }
+        rightButton = (self.childNode(withName: "right") as! MSButtonNode)
+        rightButton.selectedHandler = {
+            if self.player.itemList.count < 2 || self.player.inItemListNumber == self.player.itemList.count-1{
+                self.rightButton.run(self.errorSound)
+                return
+            }
+
+            self.rightButton.run(self.slideSound)
+            self.player.item = self.player.itemList[self.player.inItemListNumber+1]
+            self.player.inItemListNumber += 1
+            self.player.itemChanged = true
+            
+        }
+        
+        if isMonsterRoom {
+            let wait = SKAction.wait(forDuration: 1)
+            self.run(SKAction.sequence([wait,SKAction.run({
+                self.setupMonster(num: Int.random(in: 5..<10))
+            })]))
+            
+            bornBreak(num: Int.random(in: 5..<10), homeScene: self)
+        }
+        
+        if isBedRoom{
+            setupBedRoom()
+            self.run(startSound)
+        }
+        
+        if isCaveRoom{
+            print("enter!")
+            setupCave()
+        }
+        
+        for node in self.children{
+            if node.name == "boxBorn"{
+                let box = Box()
+                box.position = node.position
+                addChild(box)
+            }
+            if node.name == "scarecrowBorn"{
+                let scarecrow = Scarecrow(scene: self)
+                scarecrow.position = node.position
+                addChild(scarecrow)
+                monsterList.append(scarecrow)
+            }
+            if node.name == "breakBorn"{
+                let item = fromType(type: BreakType.random())
+                item.position = node.position
+                addChild(item)
+            }
+            if node.name == "npcBorn"{
+                npc = Npc()
+                npc.position = node.position
+                addChild(npc)
+                
+                for scene in sceneList{
+                    scene.npc = npc
+                }
+            }
+            if node.name == "chickenBorn"{
+                for animal in player.farmList{
+                    animal.position = node.position
+                    animal.setup(scene: self)
+                    animal.move(toParent: self)
+                    
+                }
+                
+            }
+        }
+        
+        setupCharacter()
+        setupCanon()
+    }
+    
+    func eachEnterSetting()  {
+        
+        if isBackFromSecretRoom && !isDoorSet{
+            setupMonster(num: 5)
+            isBackFromSecretRoom = false
+        }
+        
+        if isEnterCaveRoom{
+            setupCaveMonster(level: player.gameLevel)
+        }
+        
+        if !isEnterCaveRoom && !isBedRoom && !isSecretRoom{
+            mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
+            setupMap(mapNumber: player.gameLevel)
+        }
+        
+        if isBedRoom{
+            player.health = player.bornHealth + player.baseHealth
+            player.healthChanged = true
+            player.setupPhysics()
+   
+        }
+        
+        if isBedRoom || isBreakRoom{
+            setupBornEffect()
+        }
+        
+        self.view?.isUserInteractionEnabled = true
+        sinceStart = 0
+        mount.position = handlerBackground.position
+        handler.position = handlerBackground.position
+        physicsWorld.contactDelegate = self
+        
+        player.move(toParent: self)
+        player.isHidden = false
+        player.playerIsMoving = false
+        player.state = .idle
+        player.homeScene = self
+        player.healthChanged = true
+        player.levelChanged = true
+        player.expChanged = true
+        player.moneyChanged = true
+        player.weaponChanged = true
+        player.itemChanged = true
+        player.hatChanged = true
+        player.petChanged = true
+        player.eggChanged = true
+        player.powerChanged = true
+        player.collectionChanged = true
+        player.isAlived = true
+        player.isFiring = false
+        levelChanged = true
+        
+
+        //power start to work when enter each room
+        for power in player.powerList{
+            power.homeScene = self
+            if !power.start{
+                power.start = true
+            }
+        }
+    }
+    
     func setupCaveMonster(level: Int)  {
         
         switch level {
@@ -1074,6 +773,102 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+    }
+    
+    
+    func setupPlayerAttack()  {
+        if player.isFiring{
+            self.player.weapon.attack(direction: self.player.facing,homeScene: self)
+            
+        }else {player.weapon.reset()}
+        
+        if player.rStart > 5 {
+            player.rStart = 5
+            rButton.selectedHandler = {
+                self.player.rStart = 0
+                self.player.weapon.rAttack(direction: self.player.facing, homeScene: self)
+            }
+        }else {
+            let white = (rButton.childNode(withName: "white") as! SKSpriteNode)
+            white.yScale = CGFloat(player.rStart)/5
+            rButton.selectedHandler = {}
+        }
+    }
+    
+    func setupPositionFollow()  {
+        for node in self.children{
+            if node.name == "heal"{
+                node.position = player.position
+            }
+            if node.name == "umbrella"{
+                node.position = player.position + CGPoint(x: 0, y: 50)
+            }
+        }
+
+        if bornEffect != nil{
+            if sinceStart<0.1{
+                bornEffect.position = player.position - CGPoint(x: 0, y: 10)
+            }
+            if sinceStart > 1{
+                bornEffect.removeFromParent()
+            }
+        }
+    }
+    
+    func setupLevelClean() {
+        if isBornRoom || isBonusRoom {if !isDoorSet{setupDoor();isDoorSet=true}
+        }else if isEnterCaveRoom {
+        
+            switch player.gameLevel {
+            case 1:
+                if sinceStart>30{
+                    for i in 0..<monsterList.count{
+                        if monsterList[i].isAlived{break}
+                        if i == monsterList.count - 1 && !isDoorSet{
+                            setupHomeOrKeepGoing()
+                            isDoorSet=true
+                        }
+                    }
+                }
+            case 2:
+                if sinceStart>30{
+                    for i in 0..<monsterList.count{
+                        if monsterList[i].isAlived{break}
+                        if i == monsterList.count - 1 && !isDoorSet{
+                            setupHomeOrKeepGoing()
+                            isDoorSet=true
+                        }
+                    }
+                }
+            default:
+                break
+            }
+            
+            
+        }
+        else {
+            for i in 0..<monsterList.count{
+                if monsterList[i].isAlived{break}
+                if i == monsterList.count - 1 && !isDoorSet{
+                    setupDoor()
+                    isDoorSet=true
+                    
+                }
+            }
+        }
+    }
+    
+    func setupBirdInBackground()  {
+        if isMonsterRoom || isBornRoom{
+            if birdBornStart > 6{
+                if Int.random(in: 0..<100) < 5 {
+                    let bird = Bird(scene: self)
+                    bird.position = CGPoint(x: CGFloat.random(in: 700..<800), y: CGFloat.random(in: 200..<360))
+                    addChild(bird)
+                }
+                birdBornStart = 0
+            }
+        }
     }
     
     func monsterFall(monster: SKNode) {
@@ -1140,43 +935,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func checkSoilderAround()  {
         
-        let dist = player.position.distanceTo(soilder.position)
-        if dist < 50 {
-            if !dialogueIsSet {
-                dialogueIsSet = true
-                //sound
-                
-                self.run(stopSound)
-                
-                dialogue = Dialogue(dialogueType: "...")
-                dialogue.position = soilder.position + CGPoint(x: 0, y: 30)
-                dialogue.selectHandler = {
-                    
-                    self.bigDialogue = BigDialogue(scene: self)
-                    self.bigDialogue.position = self.dialogue.position
-                    self.addChild(self.bigDialogue)
-                    self.bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
-                    self.bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
-                    
-                    //tricky way to disable handler
-                    self.inDialogue = true
-                    self.popoButton.isUserInteractionEnabled = false
-                    self.fireButton.isUserInteractionEnabled = false
-                    self.dialogue.removeFromParent()
-                    
-                    self.bigDialogue.startWord(sentence: Word().caveWord)
-                    self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run(self.addWordButton)]))
-                    
+        for node in self.children{
+            if node.name == "soilder"{
+                let dist = player.position.distanceTo(node.position)
+                if dist < 50 {
+                    if !dialogueIsSet {
+                        dialogueIsSet = true
+                        //sound
+                        
+                        self.run(stopSound)
+                        
+                        dialogue = Dialogue(dialogueType: "...")
+                        dialogue.position = soilder.position + CGPoint(x: 0, y: 30)
+                        dialogue.selectHandler = {
+                            
+                            self.bigDialogue = BigDialogue(scene: self)
+                            self.bigDialogue.position = self.dialogue.position
+                            self.addChild(self.bigDialogue)
+                            self.bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
+                            self.bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
+                            
+                            //tricky way to disable handler
+                            self.inDialogue = true
+                            self.popoButton.isUserInteractionEnabled = false
+                            self.fireButton.isUserInteractionEnabled = false
+                            self.dialogue.removeFromParent()
+                            
+                            self.bigDialogue.startWord(sentence: Word().caveWord)
+                            self.run(SKAction.sequence([SKAction.wait(forDuration: 2),SKAction.run(self.addWordButton)]))
+                            
+                        }
+                        
+                        addChild(dialogue)
+                        dialogue.start()
+                        
+                    }
+                }else{
+                    if dialogue != nil {
+                        dialogue.removeFromParent()
+                        dialogueIsSet = false
+                    }
                 }
-                
-                addChild(dialogue)
-                dialogue.start()
-                
-            }
-        }else{
-            if dialogue != nil {
-                dialogue.removeFromParent()
-                dialogueIsSet = false
             }
         }
     }
@@ -1533,6 +1332,100 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func checkFoxAround() {
+        for node in self.children{
+            if node.name == "fox"{
+                if node.position.distanceTo(player.position) < 60 {
+                    if !loveDialogueIsSet{
+                        loveDialogueIsSet = true
+                        let loveDialogue = LoveDialogue()
+                        loveDialogue.position = node.position + CGPoint(x: 5, y: 30)
+                        addChild(loveDialogue)
+                        loveDialogue.start()
+                        
+                        self.run(barkSound)
+                    }
+                    
+                    
+                } else {
+                    loveDialogueIsSet = false
+                    for node in self.children{
+                        if node.name == "loveDialogue"{
+                            node.removeFromParent()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func setupPowerRemove()  {
+        for i in 0..<player.powerList.count{
+            
+            if player.powerList[i].useNumber == 0{
+                player.powerList.remove(at: i)
+                player.powerChanged = true
+                break
+            }
+        }
+    }
+    
+    func setupSinceStartCounting() {
+        player.sinceFire += eachFrame
+        player.rStart += eachFrame
+        sinceStart += eachFrame
+        birdBornStart += eachFrame
+        for monster in monsterList{
+            monster.sinceStart += eachFrame
+        }
+        for power in player.powerList{
+            power.sinceStart += eachFrame
+        }
+        for scene in sceneList{
+            for node in scene.children{
+                if node.name == "chicken"{
+                    let chicken = node as! Chicken
+                    chicken.sinceStart += eachFrame
+                }
+                if node.name == "cat"{
+                    let cat = node as! Cat
+                    cat.sinceStart += eachFrame
+                }
+            }
+        }
+     
+        
+        for node in self.children{
+            if node.name == "panda"{
+                let panda = node as! Panda
+                panda.sinceStart += eachFrame
+            }
+            if node.name == "npc"{
+                let npc = node as! Npc
+                npc.sinceBorn += eachFrame
+            }
+        }
+
+        for node in player.children{
+            if node.name == "plantDog"{
+                let plantDog = node as! PlantDog
+                plantDog.sinceStart += eachFrame
+            }
+        }
+        
+        for node in self.children{
+            if node.isMember(of: Bird.self) {
+                let bird = node as! Bird
+                bird.sinceStart += eachFrame
+                bird.forRemove += eachFrame
+                if bird.forRemove > 10{
+                    bird.removeFromParent()
+                }
+            }
+        }
+        
+    }
+    
     func checkBoxAround() {
         
         for node in self.children{
@@ -1552,6 +1445,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
                 
+            }
+        }
+    }
+    
+    func setupZPosition()  {
+        for node in self.children{
+            if node.name == "scarecrow" && player.position.distanceTo(node.position)<50{
+                if player.position.y < node.position.y{
+                    player.zPosition = node.zPosition + 1
+                }else{
+                    player.zPosition = 1
+                }
+            }
+            if node.name == "statue" && player.position.distanceTo(node.position)<50{
+                if player.position.y < node.position.y{
+                    player.zPosition = node.zPosition + 1
+                }else{
+                    player.zPosition = 1
+                }
             }
         }
     }
@@ -1642,55 +1554,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    func checkNpcAround(npc: Npc) {
+    func checkNpcAround() {
         
-        let dist = player.position.distanceTo(npc.position)
-        if dist < 60 {
-            if !dialogueIsSet {
-                dialogueIsSet = true
-                dialogue = Dialogue(dialogueType: "...")
-                dialogue.position = npc.position + CGPoint(x: 0, y: 30)
-                //set hello
-                
-                self.run(helloSound)
-                
-                
-                
-                dialogue.selectHandler = {
-                    
-                    let bigDialogue = BigDialogue(scene: self)
-                    bigDialogue.position = self.dialogue.position
-                    self.addChild(bigDialogue)
-                    bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
-                    bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
-                    
-                    //tricky way to disable handler
-                    self.inDialogue = true
-                    self.popoButton.isUserInteractionEnabled = false
-                    self.fireButton.isUserInteractionEnabled = false
-                    self.dialogue.removeFromParent()
-                    
-                    bigDialogue.startWord(sentence: Word().helloWord)
-                    bigDialogue.selectHandler = {
-                        bigDialogue.justClose()
+        for node in self.children{
+            if node.name == "npc"{
+                let dist = player.position.distanceTo(npc.position)
+                if dist < 60 {
+                    if !dialogueIsSet {
+                        dialogueIsSet = true
+                        dialogue = Dialogue(dialogueType: "...")
+                        dialogue.position = npc.position + CGPoint(x: 0, y: 30)
+                        //set hello
+                        
+                        self.run(helloSound)
+                        
+                        
+                        
+                        dialogue.selectHandler = {
+                            
+                            let bigDialogue = BigDialogue(scene: self)
+                            bigDialogue.position = self.dialogue.position
+                            self.addChild(bigDialogue)
+                            bigDialogue.run(SKAction.move(to: CGPoint(x: 131, y: 187), duration: 0.5))
+                            bigDialogue.run(SKAction.scale(to: CGSize(width: 412, height: 124), duration: 0.5))
+                            
+                            //tricky way to disable handler
+                            self.inDialogue = true
+                            self.popoButton.isUserInteractionEnabled = false
+                            self.fireButton.isUserInteractionEnabled = false
+                            self.dialogue.removeFromParent()
+                            
+                            bigDialogue.startWord(sentence: Word().helloWord)
+                            bigDialogue.selectHandler = {
+                                bigDialogue.justClose()
+                            }
+                            
+                        }
+                        
+                        addChild(dialogue)
+                        dialogue.start()
+                        
                     }
-                    
+                    npc.state = .idle
+                    npc.sinceBorn = 0
+                }else{
+                    if dialogue != nil {
+                        dialogue.removeFromParent()
+                        dialogueIsSet = false
+                    }
                 }
-                
-                addChild(dialogue)
-                dialogue.start()
-                
-            }
-            npc.state = .idle
-            npc.sinceBorn = 0
-        }else{
-            if dialogue != nil {
-                dialogue.removeFromParent()
-                dialogueIsSet = false
             }
         }
-        
-        
+
     }
     
     
@@ -1994,34 +1909,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.weaponChanged = false
         }
         
-        //        if player.hatChanged{
-        //            for node in player.children{
-        //                if node.name == "hat"{
-        //                    node.removeFromParent()
-        //                    break
-        //                }
-        //            }
-        //
-        //            let hatOnHead = player.hat!
-        //            hatOnHead.position = CGPoint(x: 0, y: 30)
-        //            hatOnHead.zPosition = 1
-        //            player.addChild(hatOnHead)
-        //
-        //            player.hatChanged = false
-        //        }
-        
-        
+    
         //weapon on hand rotate each frame
         if weaponOnHand != nil {
             weaponOnHand.zRotation  = (player.facing.angle) * (3.14/180)
         }
-        //        for node in player.children{
-        //            if node.name == "weaponOnHand"{
-        //                node.zRotation  = (player.facing.angle) * (3.14/180)
-        //            }
-        //        }
-        
-        
     }
     
     func setupMonsterMoving(nodeA: SKNode, nodeB: SKNode) {

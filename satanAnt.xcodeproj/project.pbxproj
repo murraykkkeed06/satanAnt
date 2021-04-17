@@ -457,6 +457,7 @@
 		72DC0FEF2615C55D006E7AA1 /* staff.png in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0FEE2615C55D006E7AA1 /* staff.png */; };
 		72E02EAC2629C5FB00FFBB81 /* powerSelection.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E02EAB2629C5FB00FFBB81 /* powerSelection.png */; };
 		72E02EAF2629E1A300FFBB81 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E02EAE2629E1A200FFBB81 /* error.mp3 */; };
+		72E02EB22629E30A00FFBB81 /* canonFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E02EB12629E30A00FFBB81 /* canonFire.mp3 */; };
 		72E1D5BC26299B8800F47F88 /* umbrella.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E1D5BB26299B8800F47F88 /* umbrella.png */; };
 		72E1D5BF26299BA200F47F88 /* Umbrella.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1D5BE26299BA200F47F88 /* Umbrella.swift */; };
 		72E48411260EEAC800D1C2DA /* Level_1_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72E48410260EEAC800D1C2DA /* Level_1_1.sks */; };
@@ -1049,6 +1050,7 @@
 		72DC0FEE2615C55D006E7AA1 /* staff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staff.png; sourceTree = "<group>"; };
 		72E02EAB2629C5FB00FFBB81 /* powerSelection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerSelection.png; sourceTree = "<group>"; };
 		72E02EAE2629E1A200FFBB81 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
+		72E02EB12629E30A00FFBB81 /* canonFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = canonFire.mp3; sourceTree = "<group>"; };
 		72E1D5BB26299B8800F47F88 /* umbrella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = umbrella.png; sourceTree = "<group>"; };
 		72E1D5BE26299BA200F47F88 /* Umbrella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Umbrella.swift; sourceTree = "<group>"; };
 		72E48410260EEAC800D1C2DA /* Level_1_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1_1.sks; sourceTree = "<group>"; };
@@ -1248,6 +1250,7 @@
 		72500A7E261B3E7C00EAE276 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				72E02EB12629E30A00FFBB81 /* canonFire.mp3 */,
 				72E02EAE2629E1A200FFBB81 /* error.mp3 */,
 				72533CF8262883350090A2E4 /* transfer.mp3 */,
 				7220E30C2626EC0600DADDCB /* meow.wav */,
@@ -2083,6 +2086,7 @@
 				7240ED3F2620848200745815 /* slime_4.png in Resources */,
 				72E7F4B5261C4217006A7AB1 /* caveDoor_11.png in Resources */,
 				722F7065260C8B75009EB2D1 /* gray.png in Resources */,
+				72E02EB22629E30A00FFBB81 /* canonFire.mp3 in Resources */,
 				72E4841D260EEDE800D1C2DA /* Level_1_2.sks in Resources */,
 				72E7F479261C2530006A7AB1 /* logHurt.mp3 in Resources */,
 				72500A61261AFEBE00EAE276 /* leaveButton.png in Resources */,

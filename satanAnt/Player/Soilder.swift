@@ -21,6 +21,7 @@ class Soilder: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.pinned = true
         self.physicsBody?.allowsRotation = false
+        self.name = "soilder"
     }
     
     required init?(coder aDecoder: NSCoder) {
