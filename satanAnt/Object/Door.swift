@@ -18,7 +18,7 @@ enum DoorDirection: Int {
 class Door: SKSpriteNode {
     
     //32 26 16 13
-    var doorSize = CGSize(width: 64, height: 52)
+    var doorSize = CGSize(width: 80, height: 52)
     
     init(position: CGPoint, name: String, doorDirection: DoorDirection){
         //let texture = SKTexture(imageNamed: "caveDoor_1")

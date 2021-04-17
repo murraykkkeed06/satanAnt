@@ -74,12 +74,6 @@
 		72210570261AF14A00B2EEAC /* soilder_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7221056C261AF14A00B2EEAC /* soilder_1.png */; };
 		72210573261AF18C00B2EEAC /* Soilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210572261AF18C00B2EEAC /* Soilder.swift */; };
 		7227D90A262ADF4200108107 /* gameRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D909262ADF4200108107 /* gameRoom.png */; };
-		7227D90D262ADF4B00108107 /* challengeRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D90C262ADF4B00108107 /* challengeRoom.png */; };
-		7227D910262ADF5300108107 /* farmRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D90F262ADF5300108107 /* farmRoom.png */; };
-		7227D913262ADF5B00108107 /* villageRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D912262ADF5B00108107 /* villageRoom.png */; };
-		7227D916262ADF6500108107 /* fishRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D915262ADF6500108107 /* fishRoom.png */; };
-		7227D919262ADF8A00108107 /* BonusMonsterRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D918262ADF8A00108107 /* BonusMonsterRoom.png */; };
-		7227D91C262ADFB100108107 /* StoneRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7227D91B262ADFB100108107 /* StoneRoom.png */; };
 		722F7065260C8B75009EB2D1 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 722F7064260C8B75009EB2D1 /* gray.png */; };
 		723C7AC32621735700D9026C /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723C7AC22621735700D9026C /* Drop.swift */; };
 		723C7AC62621870600D9026C /* candyBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 723C7AC52621870600D9026C /* candyBar.png */; };
@@ -178,7 +172,6 @@
 		72500A70261B0AE600EAE276 /* homeBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A6E261B0AE600EAE276 /* homeBoard.png */; };
 		72500A73261B0AEF00EAE276 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72500A72261B0AEF00EAE276 /* Board.swift */; };
 		72500A76261B12EE00EAE276 /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72500A75261B12EE00EAE276 /* Level_6.sks */; };
-		72500A79261B131100EAE276 /* breakRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 72500A78261B131100EAE276 /* breakRoom.png */; };
 		72500A7C261B3CA900EAE276 /* rainy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72500A7B261B3CA800EAE276 /* rainy.mp3 */; };
 		72500A83261B455B00EAE276 /* openChest.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72500A82261B455B00EAE276 /* openChest.wav */; };
 		72500A88261B4B9D00EAE276 /* door.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72500A87261B4B9C00EAE276 /* door.mp3 */; };
@@ -352,6 +345,13 @@
 		727B279B2624836700240223 /* Hat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B279A2624836700240223 /* Hat.swift */; };
 		727B279F26248C2000240223 /* scarecrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 727B279E26248C2000240223 /* scarecrow.png */; };
 		727B27A226248C4500240223 /* Scarecrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B27A126248C4500240223 /* Scarecrow.swift */; };
+		727ED735262B2943002DF1A7 /* breakRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 727ED734262B2942002DF1A7 /* breakRoom.png */; };
+		727ED73F262B346E002DF1A7 /* challengeRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 727ED73E262B346E002DF1A7 /* challengeRoom.png */; };
+		727ED748262B3485002DF1A7 /* villageRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 727ED747262B3485002DF1A7 /* villageRoom.png */; };
+		727ED74B262B348D002DF1A7 /* BonusMonsterRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 727ED74A262B348D002DF1A7 /* BonusMonsterRoom.png */; };
+		727ED74E262B3493002DF1A7 /* fishRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 727ED74D262B3493002DF1A7 /* fishRoom.png */; };
+		727ED751262B3591002DF1A7 /* StoneRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 727ED750262B3591002DF1A7 /* StoneRoom.png */; };
+		727ED756262B3731002DF1A7 /* farmRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 727ED755262B3731002DF1A7 /* farmRoom.png */; };
 		727F3562261EACEC00BB8E02 /* rHandler.png in Resources */ = {isa = PBXBuildFile; fileRef = 727F3561261EACEC00BB8E02 /* rHandler.png */; };
 		727F3569261EADB100BB8E02 /* lightening.png in Resources */ = {isa = PBXBuildFile; fileRef = 727F3568261EADB100BB8E02 /* lightening.png */; };
 		727F356C261EB64300BB8E02 /* fire.wav in Resources */ = {isa = PBXBuildFile; fileRef = 727F356B261EB64300BB8E02 /* fire.wav */; };
@@ -487,7 +487,6 @@
 		72E48435260EFEE700D1C2DA /* background_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E48434260EFEE700D1C2DA /* background_8.png */; };
 		72E48438260EFEFC00D1C2DA /* Level_1_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72E48437260EFEFC00D1C2DA /* Level_1_5.sks */; };
 		72E4843B260F051600D1C2DA /* background_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E4843A260F051600D1C2DA /* background_9.png */; };
-		72E4843E260F052600D1C2DA /* Level_1_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72E4843D260F052600D1C2DA /* Level_1_6.sks */; };
 		72E48443260F0F7000D1C2DA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E48442260F0F7000D1C2DA /* Log.swift */; };
 		72E48456260F110600D1C2DA /* log_backward_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E48446260F110500D1C2DA /* log_backward_1.png */; };
 		72E48457260F110600D1C2DA /* log_forward_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E48447260F110500D1C2DA /* log_forward_3.png */; };
@@ -678,12 +677,6 @@
 		7221056C261AF14A00B2EEAC /* soilder_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soilder_1.png; sourceTree = "<group>"; };
 		72210572261AF18C00B2EEAC /* Soilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soilder.swift; sourceTree = "<group>"; };
 		7227D909262ADF4200108107 /* gameRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameRoom.png; sourceTree = "<group>"; };
-		7227D90C262ADF4B00108107 /* challengeRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = challengeRoom.png; sourceTree = "<group>"; };
-		7227D90F262ADF5300108107 /* farmRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = farmRoom.png; sourceTree = "<group>"; };
-		7227D912262ADF5B00108107 /* villageRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villageRoom.png; sourceTree = "<group>"; };
-		7227D915262ADF6500108107 /* fishRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishRoom.png; sourceTree = "<group>"; };
-		7227D918262ADF8A00108107 /* BonusMonsterRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BonusMonsterRoom.png; sourceTree = "<group>"; };
-		7227D91B262ADFB100108107 /* StoneRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoneRoom.png; sourceTree = "<group>"; };
 		722F7064260C8B75009EB2D1 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
 		723C7AC22621735700D9026C /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
 		723C7AC52621870600D9026C /* candyBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = candyBar.png; sourceTree = "<group>"; };
@@ -782,7 +775,6 @@
 		72500A6E261B0AE600EAE276 /* homeBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeBoard.png; sourceTree = "<group>"; };
 		72500A72261B0AEF00EAE276 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		72500A75261B12EE00EAE276 /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
-		72500A78261B131100EAE276 /* breakRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breakRoom.png; sourceTree = "<group>"; };
 		72500A7B261B3CA800EAE276 /* rainy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rainy.mp3; sourceTree = "<group>"; };
 		72500A82261B455B00EAE276 /* openChest.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = openChest.wav; sourceTree = "<group>"; };
 		72500A87261B4B9C00EAE276 /* door.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = door.mp3; sourceTree = "<group>"; };
@@ -956,6 +948,13 @@
 		727B279A2624836700240223 /* Hat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hat.swift; sourceTree = "<group>"; };
 		727B279E26248C2000240223 /* scarecrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scarecrow.png; sourceTree = "<group>"; };
 		727B27A126248C4500240223 /* Scarecrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scarecrow.swift; sourceTree = "<group>"; };
+		727ED734262B2942002DF1A7 /* breakRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breakRoom.png; sourceTree = "<group>"; };
+		727ED73E262B346E002DF1A7 /* challengeRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = challengeRoom.png; sourceTree = "<group>"; };
+		727ED747262B3485002DF1A7 /* villageRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villageRoom.png; sourceTree = "<group>"; };
+		727ED74A262B348D002DF1A7 /* BonusMonsterRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BonusMonsterRoom.png; sourceTree = "<group>"; };
+		727ED74D262B3493002DF1A7 /* fishRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishRoom.png; sourceTree = "<group>"; };
+		727ED750262B3591002DF1A7 /* StoneRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoneRoom.png; sourceTree = "<group>"; };
+		727ED755262B3731002DF1A7 /* farmRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = farmRoom.png; sourceTree = "<group>"; };
 		727F3561261EACEC00BB8E02 /* rHandler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rHandler.png; sourceTree = "<group>"; };
 		727F3568261EADB100BB8E02 /* lightening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightening.png; sourceTree = "<group>"; };
 		727F356B261EB64300BB8E02 /* fire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fire.wav; sourceTree = "<group>"; };
@@ -1093,7 +1092,6 @@
 		72E48434260EFEE700D1C2DA /* background_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_8.png; sourceTree = "<group>"; };
 		72E48437260EFEFC00D1C2DA /* Level_1_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1_5.sks; sourceTree = "<group>"; };
 		72E4843A260F051600D1C2DA /* background_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_9.png; sourceTree = "<group>"; };
-		72E4843D260F052600D1C2DA /* Level_1_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1_6.sks; sourceTree = "<group>"; };
 		72E48442260F0F7000D1C2DA /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		72E48446260F110500D1C2DA /* log_backward_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_backward_1.png; sourceTree = "<group>"; };
 		72E48447260F110500D1C2DA /* log_forward_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_forward_3.png; sourceTree = "<group>"; };
@@ -1457,12 +1455,12 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
-				7227D918262ADF8A00108107 /* BonusMonsterRoom.png */,
-				7227D91B262ADFB100108107 /* StoneRoom.png */,
-				7227D915262ADF6500108107 /* fishRoom.png */,
-				7227D912262ADF5B00108107 /* villageRoom.png */,
-				7227D90F262ADF5300108107 /* farmRoom.png */,
-				7227D90C262ADF4B00108107 /* challengeRoom.png */,
+				727ED747262B3485002DF1A7 /* villageRoom.png */,
+				727ED74A262B348D002DF1A7 /* BonusMonsterRoom.png */,
+				727ED750262B3591002DF1A7 /* StoneRoom.png */,
+				727ED755262B3731002DF1A7 /* farmRoom.png */,
+				727ED74D262B3493002DF1A7 /* fishRoom.png */,
+				727ED73E262B346E002DF1A7 /* challengeRoom.png */,
 				7227D909262ADF4200108107 /* gameRoom.png */,
 				72E02EAB2629C5FB00FFBB81 /* powerSelection.png */,
 				72E1D5BB26299B8800F47F88 /* umbrella.png */,
@@ -1725,9 +1723,9 @@
 				72E7F460261C1798006A7AB1 /* bulletHitPoint_3.png */,
 				72E7F45F261C1798006A7AB1 /* bulletHitPoint_4.png */,
 				72E7F462261C1798006A7AB1 /* bulletHitPoint_5.png */,
-				72500A78261B131100EAE276 /* breakRoom.png */,
 				72500A6D261B0AE600EAE276 /* continueBoard.png */,
 				72500A6E261B0AE600EAE276 /* homeBoard.png */,
+				727ED734262B2942002DF1A7 /* breakRoom.png */,
 				72500A66261B03D000EAE276 /* caveRoom.png */,
 				72500A5E261AFEBE00EAE276 /* enterButton.png */,
 				72500A5F261AFEBE00EAE276 /* leaveButton.png */,
@@ -1909,7 +1907,6 @@
 				72E4841F260EEE5000D1C2DA /* Level_1_3.sks */,
 				72E48431260EFCAF00D1C2DA /* Level_1_4.sks */,
 				72E48437260EFEFC00D1C2DA /* Level_1_5.sks */,
-				72E4843D260F052600D1C2DA /* Level_1_6.sks */,
 				729E9436260E38A100DFF2D0 /* Level_2.sks */,
 				72E4842A260EF85700D1C2DA /* Level_3.sks */,
 				7276B4EC2619F65700C4918F /* Level_4.sks */,
@@ -2055,6 +2052,7 @@
 			files = (
 				7247F99B262B0816005B0DCA /* Level_11.sks in Resources */,
 				72FE15D0261DE27E008870C6 /* coinDrop_4.png in Resources */,
+				727ED756262B3731002DF1A7 /* farmRoom.png in Resources */,
 				729E9430260E33CA00DFF2D0 /* portal_3.png in Resources */,
 				729E9422260E2FBE00DFF2D0 /* new_backward_2.png in Resources */,
 				720A42612618A81D002D589C /* fire_2.png in Resources */,
@@ -2113,13 +2111,13 @@
 				72FE15D2261DE27E008870C6 /* heartDrop_2.png in Resources */,
 				72558C292626C3D20012DA21 /* chickenLeft_3.png in Resources */,
 				72684BC026254E16006B6DC9 /* robot_6.png in Resources */,
-				72500A79261B131100EAE276 /* breakRoom.png in Resources */,
 				7220E3042626EA3F00DADDCB /* catBack_1.png in Resources */,
 				725A371F2622CF0800340C82 /* bornEffect_2.png in Resources */,
 				720A42632618A81D002D589C /* fire_7.png in Resources */,
 				720A427A2618CBE9002D589C /* bomb_3.png in Resources */,
 				72558BF426269E1B0012DA21 /* hit_2.wav in Resources */,
 				72558C0A2626BC760012DA21 /* love_8.png in Resources */,
+				727ED74E262B3493002DF1A7 /* fishRoom.png in Resources */,
 				7240ED802620A8D300745815 /* ghostLeftAttack_3.png in Resources */,
 				721879852621E5DC00E98B28 /* wind.wav in Resources */,
 				72558BEA262696460012DA21 /* laserEye.png in Resources */,
@@ -2130,6 +2128,7 @@
 				72E02EB22629E30A00FFBB81 /* canonFire.mp3 in Resources */,
 				72E4841D260EEDE800D1C2DA /* Level_1_2.sks in Resources */,
 				72E7F479261C2530006A7AB1 /* logHurt.mp3 in Resources */,
+				727ED735262B2943002DF1A7 /* breakRoom.png in Resources */,
 				72500A61261AFEBE00EAE276 /* leaveButton.png in Resources */,
 				72E48478260F2F2800D1C2DA /* log_right_2.png in Resources */,
 				72558C232626C3D20012DA21 /* chickenRight_1.png in Resources */,
@@ -2153,7 +2152,6 @@
 				72684BBB26254E16006B6DC9 /* robot_2.png in Resources */,
 				72684BA726254BD1006B6DC9 /* foxidle3.png in Resources */,
 				725A37212622CF0800340C82 /* bornEffect_3.png in Resources */,
-				7227D913262ADF5B00108107 /* villageRoom.png in Resources */,
 				72F2E3232625C25200D9DC6D /* pandaLeft_3.png in Resources */,
 				7247F998262B07B2005B0DCA /* Level_10.sks in Resources */,
 				72E48493260F338C00D1C2DA /* two.png in Resources */,
@@ -2170,10 +2168,8 @@
 				723E801526272A6A002C54B9 /* stock.png in Resources */,
 				72F4410D26205CD1006F450B /* apple.png in Resources */,
 				72D638A12619753000A43D41 /* dialogue_3.png in Resources */,
-				7227D90D262ADF4B00108107 /* challengeRoom.png in Resources */,
 				72558BFB2626A9BF0012DA21 /* runAway.wav in Resources */,
 				72684BAA26254BD1006B6DC9 /* foxidle7.png in Resources */,
-				7227D91C262ADFB100108107 /* StoneRoom.png in Resources */,
 				7281EBB626232DA800EE69F9 /* canonRight_2.png in Resources */,
 				7247F995262B0777005B0DCA /* Level_9.sks in Resources */,
 				729E9421260E2FBE00DFF2D0 /* new_right_3.png in Resources */,
@@ -2188,8 +2184,6 @@
 				72500A83261B455B00EAE276 /* openChest.wav in Resources */,
 				720A426F2618C7C0002D589C /* logDie_4.png in Resources */,
 				720A425326189C31002D589C /* attack_4.png in Resources */,
-				72E4843E260F052600D1C2DA /* Level_1_6.sks in Resources */,
-				7227D910262ADF5300108107 /* farmRoom.png in Resources */,
 				72E7F4BD261C4217006A7AB1 /* caveDoor_1.png in Resources */,
 				72D77D1626280977007D9687 /* suprise_8.png in Resources */,
 				7240ED852620A8D300745815 /* ghostLeft_1.png in Resources */,
@@ -2308,11 +2302,11 @@
 				72558C3C2626D89A0012DA21 /* catEgg.png in Resources */,
 				7240ED412620848200745815 /* slime_10.png in Resources */,
 				727F356C261EB64300BB8E02 /* fire.wav in Resources */,
+				727ED74B262B348D002DF1A7 /* BonusMonsterRoom.png in Resources */,
 				72421407261A1A6900CA5F97 /* plusButton.png in Resources */,
 				725A36D9262298C300340C82 /* slimePurple_10.png in Resources */,
 				725A36E0262298C300340C82 /* slimePurple_4.png in Resources */,
 				72E484A0260F338C00D1C2DA /* heart_4.png in Resources */,
-				7227D916262ADF6500108107 /* fishRoom.png in Resources */,
 				7203E1C1260B2E68006FFD40 /* handlerBackground.png in Resources */,
 				725A36F0262298C300340C82 /* slimeRed_10.png in Resources */,
 				72CF1A8E261F556E00FA90BE /* bigger.wav in Resources */,
@@ -2336,6 +2330,7 @@
 				725A37032622B68300340C82 /* slimeJump.mp3 in Resources */,
 				729E9424260E2FBE00DFF2D0 /* new_right_4.png in Resources */,
 				72684BBD26254E16006B6DC9 /* robot_4.png in Resources */,
+				727ED73F262B346E002DF1A7 /* challengeRoom.png in Resources */,
 				725A37222622CF0800340C82 /* bornEffect_1.png in Resources */,
 				724470302624545100FF052E /* bird_2.png in Resources */,
 				7247F991262B0731005B0DCA /* Level_8.sks in Resources */,
@@ -2449,6 +2444,7 @@
 				72D6388A26196A4700A43D41 /* npcBack_4.png in Resources */,
 				72684BA826254BD1006B6DC9 /* foxidle6.png in Resources */,
 				729E9419260E2FBE00DFF2D0 /* new_forward_1.png in Resources */,
+				727ED748262B3485002DF1A7 /* villageRoom.png in Resources */,
 				72E7F49B261C3F2A006A7AB1 /* newPortal_4.png in Resources */,
 				725A36EA262298C300340C82 /* slimePurple_1.png in Resources */,
 				729E941B260E2FBE00DFF2D0 /* new_forward_3.png in Resources */,
@@ -2482,6 +2478,7 @@
 				7220E2FD2626EA3F00DADDCB /* catRight_2.png in Resources */,
 				725A370F2622BA6900340C82 /* deadGhost.png in Resources */,
 				72558BF526269E1B0012DA21 /* hit_5.wav in Resources */,
+				727ED751262B3591002DF1A7 /* StoneRoom.png in Resources */,
 				725A36FB2622B29600340C82 /* slimeDie_3.png in Resources */,
 				724470382624572D00FF052E /* egg.png in Resources */,
 				729E941C260E2FBE00DFF2D0 /* new_forward_2.png in Resources */,
@@ -2495,7 +2492,6 @@
 				72500A70261B0AE600EAE276 /* homeBoard.png in Resources */,
 				72E48497260F338C00D1C2DA /* seven.png in Resources */,
 				724213EB261A0CB300CA5F97 /* platform.png in Resources */,
-				7227D919262ADF8A00108107 /* BonusMonsterRoom.png in Resources */,
 				7220E2FF2626EA3F00DADDCB /* catLeft_2.png in Resources */,
 				72684BAD26254BD1006B6DC9 /* foxidle5.png in Resources */,
 				725A37302622D9B000340C82 /* monsterBornEffect_2.png in Resources */,

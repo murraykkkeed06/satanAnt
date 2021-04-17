@@ -178,7 +178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     class func level(_ levelNumber: Int) -> GameScene? {
         
         if levelNumber == 1 {
-            let randomMap = Int.random(in: 0..<7)
+            let randomMap = Int.random(in: 0..<6)
             guard let scene = GameScene(fileNamed: "Level_\(levelNumber)_\(randomMap)") else {
                 return nil
             }
