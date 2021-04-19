@@ -75,6 +75,12 @@ class Player: SKSpriteNode {
     
     var bornScene: GameScene!
     var roomScene: GameScene!
+    
+    var villageRoom: GameScene!
+    var fishRoom: GameScene!
+    var breakRoom: GameScene!
+    
+    
     var isAlived = true
     var round = 0
     var playerIsMoving: Bool = false{

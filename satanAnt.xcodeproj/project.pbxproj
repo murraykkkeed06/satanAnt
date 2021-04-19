@@ -48,6 +48,7 @@
 		720FA889262D5798000122A1 /* fishLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 720FA888262D5798000122A1 /* fishLeft.png */; };
 		721172F02628291D00DFDBE5 /* statue.png in Resources */ = {isa = PBXBuildFile; fileRef = 721172EF2628291D00DFDBE5 /* statue.png */; };
 		721879852621E5DC00E98B28 /* wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = 721879842621E5DC00E98B28 /* wind.wav */; };
+		721BED55262D808500CE4CF6 /* Level_14.sks in Resources */ = {isa = PBXBuildFile; fileRef = 721BED54262D808500CE4CF6 /* Level_14.sks */; };
 		7220E2FC2626EA3F00DADDCB /* catRight_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F02626EA3E00DADDCB /* catRight_1.png */; };
 		7220E2FD2626EA3F00DADDCB /* catRight_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F12626EA3E00DADDCB /* catRight_2.png */; };
 		7220E2FE2626EA3F00DADDCB /* catBack_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F22626EA3E00DADDCB /* catBack_2.png */; };
@@ -105,6 +106,18 @@
 		723E801F26272B71002C54B9 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E801E26272B71002C54B9 /* Stock.swift */; };
 		723E802226272B91002C54B9 /* Bucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E802126272B91002C54B9 /* Bucket.swift */; };
 		723E802726273A20002C54B9 /* hole.png in Resources */ = {isa = PBXBuildFile; fileRef = 723E802626273A20002C54B9 /* hole.png */; };
+		723F2FB8262DAE21005DDD34 /* Tent.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FB7262DAE21005DDD34 /* Tent.png */; };
+		723F2FBB262DAEDD005DDD34 /* pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FBA262DAEDD005DDD34 /* pond.png */; };
+		723F2FBE262DAF57005DDD34 /* village.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FBD262DAF57005DDD34 /* village.png */; };
+		723F2FC4262DB86D005DDD34 /* caveLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FC3262DB86D005DDD34 /* caveLogo.png */; };
+		723F2FC7262DB942005DDD34 /* homeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FC6262DB942005DDD34 /* homeLogo.png */; };
+		723F2FCA262DB9CE005DDD34 /* farmLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FC9262DB9CE005DDD34 /* farmLogo.png */; };
+		723F2FCD262DBA5D005DDD34 /* stoneLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FCC262DBA5D005DDD34 /* stoneLogo.png */; };
+		723F2FD0262DBB1E005DDD34 /* canonLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FCF262DBB1E005DDD34 /* canonLogo.png */; };
+		723F2FD3262DBC12005DDD34 /* bedLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FD2262DBC12005DDD34 /* bedLogo.png */; };
+		723F2FD6262DBCC0005DDD34 /* treasureLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FD5262DBCC0005DDD34 /* treasureLogo.png */; };
+		723F2FDB262DBDD0005DDD34 /* monsterDieLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FD9262DBDD0005DDD34 /* monsterDieLogo.png */; };
+		723F2FDC262DBDD0005DDD34 /* monsterAliveLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 723F2FDA262DBDD0005DDD34 /* monsterAliveLogo.png */; };
 		7240ED372620848200745815 /* slime_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2C2620848200745815 /* slime_11.png */; };
 		7240ED382620848200745815 /* slime_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2D2620848200745815 /* slime_8.png */; };
 		7240ED392620848200745815 /* slime_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7240ED2E2620848200745815 /* slime_1.png */; };
@@ -668,6 +681,7 @@
 		720FA888262D5798000122A1 /* fishLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishLeft.png; sourceTree = "<group>"; };
 		721172EF2628291D00DFDBE5 /* statue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statue.png; sourceTree = "<group>"; };
 		721879842621E5DC00E98B28 /* wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wind.wav; sourceTree = "<group>"; };
+		721BED54262D808500CE4CF6 /* Level_14.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_14.sks; sourceTree = "<group>"; };
 		7220E2F02626EA3E00DADDCB /* catRight_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catRight_1.png; sourceTree = "<group>"; };
 		7220E2F12626EA3E00DADDCB /* catRight_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catRight_2.png; sourceTree = "<group>"; };
 		7220E2F22626EA3E00DADDCB /* catBack_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catBack_2.png; sourceTree = "<group>"; };
@@ -725,6 +739,18 @@
 		723E801E26272B71002C54B9 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		723E802126272B91002C54B9 /* Bucket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bucket.swift; sourceTree = "<group>"; };
 		723E802626273A20002C54B9 /* hole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole.png; sourceTree = "<group>"; };
+		723F2FB7262DAE21005DDD34 /* Tent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tent.png; sourceTree = "<group>"; };
+		723F2FBA262DAEDD005DDD34 /* pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pond.png; sourceTree = "<group>"; };
+		723F2FBD262DAF57005DDD34 /* village.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = village.png; sourceTree = "<group>"; };
+		723F2FC3262DB86D005DDD34 /* caveLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caveLogo.png; sourceTree = "<group>"; };
+		723F2FC6262DB942005DDD34 /* homeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeLogo.png; sourceTree = "<group>"; };
+		723F2FC9262DB9CE005DDD34 /* farmLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = farmLogo.png; sourceTree = "<group>"; };
+		723F2FCC262DBA5D005DDD34 /* stoneLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoneLogo.png; sourceTree = "<group>"; };
+		723F2FCF262DBB1E005DDD34 /* canonLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canonLogo.png; sourceTree = "<group>"; };
+		723F2FD2262DBC12005DDD34 /* bedLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bedLogo.png; sourceTree = "<group>"; };
+		723F2FD5262DBCC0005DDD34 /* treasureLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treasureLogo.png; sourceTree = "<group>"; };
+		723F2FD9262DBDD0005DDD34 /* monsterDieLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterDieLogo.png; sourceTree = "<group>"; };
+		723F2FDA262DBDD0005DDD34 /* monsterAliveLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterAliveLogo.png; sourceTree = "<group>"; };
 		7240ED2C2620848200745815 /* slime_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_11.png; sourceTree = "<group>"; };
 		7240ED2D2620848200745815 /* slime_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_8.png; sourceTree = "<group>"; };
 		7240ED2E2620848200745815 /* slime_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime_1.png; sourceTree = "<group>"; };
@@ -1490,15 +1516,18 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
-				7265012F262D7D9F001972A6 /* Jellyfish1.png */,
-				72650130262D7D9F001972A6 /* Jellyfish2.png */,
-				7265012E262D7D9F001972A6 /* Jellyfish3.png */,
-				72650131262D7D9F001972A6 /* Jellyfish4.png */,
-				7265012C262D7D9F001972A6 /* Jellyfish5.png */,
-				7265012D262D7D9F001972A6 /* Jellyfish6.png */,
-				720FA87D262D5710000122A1 /* fishRIght.png */,
-				720FA888262D5798000122A1 /* fishLeft.png */,
-				72359F8D262D22E200EDACCB /* fishingRod.png */,
+				723F2FDA262DBDD0005DDD34 /* monsterAliveLogo.png */,
+				723F2FD9262DBDD0005DDD34 /* monsterDieLogo.png */,
+				723F2FD5262DBCC0005DDD34 /* treasureLogo.png */,
+				723F2FD2262DBC12005DDD34 /* bedLogo.png */,
+				723F2FCF262DBB1E005DDD34 /* canonLogo.png */,
+				723F2FCC262DBA5D005DDD34 /* stoneLogo.png */,
+				723F2FC9262DB9CE005DDD34 /* farmLogo.png */,
+				723F2FC6262DB942005DDD34 /* homeLogo.png */,
+				723F2FC3262DB86D005DDD34 /* caveLogo.png */,
+				723F2FBD262DAF57005DDD34 /* village.png */,
+				723F2FBA262DAEDD005DDD34 /* pond.png */,
+				723F2FB7262DAE21005DDD34 /* Tent.png */,
 				724213F2261A18C600CA5F97 /* abilityHud.png */,
 				7221054C261AA5D400B2EEAC /* abilityHud2.png */,
 				72F4410C26205CD1006F450B /* apple.png */,
@@ -1538,7 +1567,6 @@
 				724213E2261A0CB200CA5F97 /* book_4.png */,
 				724213E7261A0CB300CA5F97 /* book_5.png */,
 				725A371E2622CF0800340C82 /* bornEffect_1.png */,
-				72359F83262D20D100EDACCB /* breakRoom.png */,
 				725A371B2622CF0800340C82 /* bornEffect_2.png */,
 				725A371D2622CF0800340C82 /* bornEffect_3.png */,
 				725A371C2622CF0800340C82 /* bornEffect_4.png */,
@@ -1546,6 +1574,7 @@
 				724213D4261A064700CA5F97 /* box_2.png */,
 				724213D3261A064700CA5F97 /* box_3.png */,
 				724213D2261A064700CA5F97 /* box_4.png */,
+				72359F83262D20D100EDACCB /* breakRoom.png */,
 				72D01BB22622F74A00459733 /* bridge_top.png */,
 				72D01BA72622EAD300459733 /* bridge.png */,
 				723E800A26272828002C54B9 /* bucket.png */,
@@ -1657,18 +1686,21 @@
 				72777318261ECF4A009F823F /* fireBomb_2.png */,
 				72777319261ECF4A009F823F /* fireBomb_3.png */,
 				72777316261ECF4A009F823F /* fireBomb_4.png */,
+				72359F8D262D22E200EDACCB /* fishingRod.png */,
+				720FA888262D5798000122A1 /* fishLeft.png */,
+				720FA87D262D5710000122A1 /* fishRIght.png */,
 				727ED74D262B3493002DF1A7 /* fishRoom.png */,
 				72E48486260F338B00D1C2DA /* five.png */,
 				72533CF126287B350090A2E4 /* flyingBird.png */,
-				72E48488260F338B00D1C2DA /* four.png */,
-				72684BA026254BD0006B6DC9 /* foxidle1.png */,
-				72684B9D26254BD0006B6DC9 /* foxidle2.png */,
 				729D92F0262D4AAD00BB23B9 /* fountain_1.png */,
 				729D92EF262D4AAD00BB23B9 /* fountain_2.png */,
 				729D92F1262D4AAD00BB23B9 /* fountain_3.png */,
 				729D92EE262D4AAD00BB23B9 /* fountain_4.png */,
 				729D92F2262D4AAD00BB23B9 /* fountain_5.png */,
 				729D92ED262D4AAD00BB23B9 /* fountain_6.png */,
+				72E48488260F338B00D1C2DA /* four.png */,
+				72684BA026254BD0006B6DC9 /* foxidle1.png */,
+				72684B9D26254BD0006B6DC9 /* foxidle2.png */,
 				72684B9E26254BD0006B6DC9 /* foxidle3.png */,
 				72684BA526254BD1006B6DC9 /* foxidle4.png */,
 				72684BA426254BD0006B6DC9 /* foxidle5.png */,
@@ -1707,6 +1739,12 @@
 				72FE15CC261DE27E008870C6 /* heartDrop_4.png */,
 				723E802626273A20002C54B9 /* hole.png */,
 				72500A6E261B0AE600EAE276 /* homeBoard.png */,
+				7265012F262D7D9F001972A6 /* Jellyfish1.png */,
+				72650130262D7D9F001972A6 /* Jellyfish2.png */,
+				7265012E262D7D9F001972A6 /* Jellyfish3.png */,
+				72650131262D7D9F001972A6 /* Jellyfish4.png */,
+				7265012C262D7D9F001972A6 /* Jellyfish5.png */,
+				7265012D262D7D9F001972A6 /* Jellyfish6.png */,
 				72558BE9262696460012DA21 /* laserEye.png */,
 				72500A5F261AFEBE00EAE276 /* leaveButton.png */,
 				72D92E26261EEC18006DB779 /* leftButton.png */,
@@ -1969,6 +2007,7 @@
 				7247F99A262B0816005B0DCA /* Level_11.sks */,
 				7247F99D262B0848005B0DCA /* Level_12.sks */,
 				7247F9A0262B0878005B0DCA /* Level_13.sks */,
+				721BED54262D808500CE4CF6 /* Level_14.sks */,
 				7279A975260D913C000EB14F /* playerAction.sks */,
 				72B46640260B2A1400BC5E56 /* Actions.sks */,
 				72E48467260F11D700D1C2DA /* monsterAction.sks */,
@@ -2103,6 +2142,7 @@
 			files = (
 				729D92F8262D4AAE00BB23B9 /* fountain_5.png in Resources */,
 				7247F99B262B0816005B0DCA /* Level_11.sks in Resources */,
+				723F2FBB262DAEDD005DDD34 /* pond.png in Resources */,
 				72FE15D0261DE27E008870C6 /* coinDrop_4.png in Resources */,
 				727ED756262B3731002DF1A7 /* farmRoom.png in Resources */,
 				729E9430260E33CA00DFF2D0 /* portal_3.png in Resources */,
@@ -2113,6 +2153,7 @@
 				72E7F4BE261C4217006A7AB1 /* caveDoor_15.png in Resources */,
 				720A427B2618CBE9002D589C /* bomb_4.png in Resources */,
 				72E4849F260F338C00D1C2DA /* heart_0.png in Resources */,
+				723F2FD6262DBCC0005DDD34 /* treasureLogo.png in Resources */,
 				7281EBC126232DD800EE69F9 /* canonFire_1.png in Resources */,
 				725A36E1262298C300340C82 /* slimeBlue_8.png in Resources */,
 				72558C252626C3D20012DA21 /* chickenLeft_2.png in Resources */,
@@ -2152,6 +2193,7 @@
 				72533CF626287B350090A2E4 /* healthGainer.png in Resources */,
 				72F2E3122625C22400D9DC6D /* PetAction.sks in Resources */,
 				725A36D6262298C300340C82 /* slimeRed_2.png in Resources */,
+				723F2FC4262DB86D005DDD34 /* caveLogo.png in Resources */,
 				729E941F260E2FBE00DFF2D0 /* new_left_2.png in Resources */,
 				72FE15CE261DE27E008870C6 /* coinDrop_1.png in Resources */,
 				72E48494260F338C00D1C2DA /* eight.png in Resources */,
@@ -2186,6 +2228,7 @@
 				72E48478260F2F2800D1C2DA /* log_right_2.png in Resources */,
 				72558C232626C3D20012DA21 /* chickenRight_1.png in Resources */,
 				7220E3102626F3BD00DADDCB /* scientist.png in Resources */,
+				723F2FDB262DBDD0005DDD34 /* monsterDieLogo.png in Resources */,
 				72E7F4CC261C4FC1006A7AB1 /* playerDie.wav in Resources */,
 				72E48428260EF83D00D1C2DA /* background_6.png in Resources */,
 				725A36F3262298C300340C82 /* slimeRed_11.png in Resources */,
@@ -2209,6 +2252,7 @@
 				7247F998262B07B2005B0DCA /* Level_10.sks in Resources */,
 				72E48493260F338C00D1C2DA /* two.png in Resources */,
 				72D6388D26196A4700A43D41 /* npcRight_4.png in Resources */,
+				723F2FCD262DBA5D005DDD34 /* stoneLogo.png in Resources */,
 				7240ED7E2620A8D300745815 /* ghostLeftAttack_5.png in Resources */,
 				72558C262626C3D20012DA21 /* chickenRight_2.png in Resources */,
 				72E9860A2621C8D700382784 /* sword.png in Resources */,
@@ -2224,6 +2268,7 @@
 				72D638A12619753000A43D41 /* dialogue_3.png in Resources */,
 				72558BFB2626A9BF0012DA21 /* runAway.wav in Resources */,
 				72684BAA26254BD1006B6DC9 /* foxidle7.png in Resources */,
+				723F2FCA262DB9CE005DDD34 /* farmLogo.png in Resources */,
 				7281EBB626232DA800EE69F9 /* canonRight_2.png in Resources */,
 				7247F995262B0777005B0DCA /* Level_9.sks in Resources */,
 				729E9421260E2FBE00DFF2D0 /* new_right_3.png in Resources */,
@@ -2272,6 +2317,7 @@
 				72E1D5BC26299B8800F47F88 /* umbrella.png in Resources */,
 				7240ED7B2620A8D300745815 /* ghostLeft_2.png in Resources */,
 				72D638A9261978AC00A43D41 /* bigDialogue.png in Resources */,
+				723F2FDC262DBDD0005DDD34 /* monsterAliveLogo.png in Resources */,
 				72E48458260F110600D1C2DA /* log_backward_4.png in Resources */,
 				72D77D1226280977007D9687 /* suprise_6.png in Resources */,
 				72558BED262698E20012DA21 /* plantDogScream.wav in Resources */,
@@ -2296,6 +2342,7 @@
 				7240ED402620848200745815 /* slime_9.png in Resources */,
 				727B279F26248C2000240223 /* scarecrow.png in Resources */,
 				72FE15E2261DE790008870C6 /* heal.mp3 in Resources */,
+				723F2FC7262DB942005DDD34 /* homeLogo.png in Resources */,
 				729E9426260E2FBE00DFF2D0 /* new_backward_1.png in Resources */,
 				72500A6F261B0AE600EAE276 /* continueBoard.png in Resources */,
 				729D92F6262D4AAE00BB23B9 /* fountain_1.png in Resources */,
@@ -2402,6 +2449,7 @@
 				720A42642618A81D002D589C /* fire_1.png in Resources */,
 				720A425126189C31002D589C /* attack_1.png in Resources */,
 				72E48459260F110600D1C2DA /* log_left_2.png in Resources */,
+				723F2FD3262DBC12005DDD34 /* bedLogo.png in Resources */,
 				72D77D1126280977007D9687 /* suprise_3.png in Resources */,
 				723C7AD326218B6B00D9026C /* candy_1.png in Resources */,
 				723E802726273A20002C54B9 /* hole.png in Resources */,
@@ -2496,6 +2544,7 @@
 				7264DBFD26247A3800D7722B /* bird.wav in Resources */,
 				72777314261EC7CD009F823F /* coin.wav in Resources */,
 				72E48435260EFEE700D1C2DA /* background_8.png in Resources */,
+				723F2FBE262DAF57005DDD34 /* village.png in Resources */,
 				724213E8261A0CB300CA5F97 /* book_4.png in Resources */,
 				7279A99A260DAAC2000EB14F /* player_backward_1.png in Resources */,
 				725A36D4262298C300340C82 /* slimeRed_9.png in Resources */,
@@ -2539,6 +2588,7 @@
 				725A36F4262298C300340C82 /* slimeBlue_3.png in Resources */,
 				72AC01972620644F007F6133 /* land.wav in Resources */,
 				72558C2B2626C3D20012DA21 /* chickenRight_3.png in Resources */,
+				723F2FB8262DAE21005DDD34 /* Tent.png in Resources */,
 				7220E2FD2626EA3F00DADDCB /* catRight_2.png in Resources */,
 				725A370F2622BA6900340C82 /* deadGhost.png in Resources */,
 				72558BF526269E1B0012DA21 /* hit_5.wav in Resources */,
@@ -2580,6 +2630,7 @@
 				72B46641260B2A1400BC5E56 /* Actions.sks in Resources */,
 				725A36D5262298C300340C82 /* slimeBlue_9.png in Resources */,
 				72E986112621CD2400382784 /* stick.png in Resources */,
+				721BED55262D808500CE4CF6 /* Level_14.sks in Resources */,
 				72E4848F260F338C00D1C2DA /* exp_background.png in Resources */,
 				720A427D2618CBE9002D589C /* bomb_5.png in Resources */,
 				724213DC261A069600CA5F97 /* ObjectAction.sks in Resources */,
@@ -2590,6 +2641,7 @@
 				729E941E260E2FBE00DFF2D0 /* new_left_1.png in Resources */,
 				7281EBA826232D9900EE69F9 /* canonLeft_5.png in Resources */,
 				72D92E28261EEC18006DB779 /* leftButton.png in Resources */,
+				723F2FD0262DBB1E005DDD34 /* canonLogo.png in Resources */,
 				729E9425260E2FBE00DFF2D0 /* new_right_1.png in Resources */,
 				72D6389226196A4700A43D41 /* npcFor_1.png in Resources */,
 				7281EBB426232DA800EE69F9 /* canonRight_1.png in Resources */,

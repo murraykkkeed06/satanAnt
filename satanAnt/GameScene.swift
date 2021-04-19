@@ -118,7 +118,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isStoneRoom = false
     var isFishRoom = false
     var isMonsterBonusRoom = false
-        
+    var isFarmRoom = false
+    var isGameRoom = false
+    
     var YX: GridYX!
     
     var isClean = false
@@ -304,6 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupMonsterGetHeartDrop(nodeA: nodeA, nodeB: nodeB)
                 setupHitBreak(nodeA: nodeA, nodeB: nodeB)
                 setupHoleEnter(nodeA: nodeA, nodeB: nodeB)
+                setupFishRoomTransport(nodeA: nodeA, nodeB: nodeB)
                 
             }
         }
@@ -848,7 +851,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupLevelClean() {
-        if isBornRoom || isBonusRoom || isFishRoom || isVillageRoom || isStoneRoom{if !isDoorSet{setupDoor();isDoorSet=true}
+        if isBornRoom || isBonusRoom || isFishRoom || isVillageRoom || isStoneRoom || isFarmRoom {if !isDoorSet{setupDoor();isDoorSet=true}
         }else if isEnterCaveRoom {
         
             switch player.gameLevel {
@@ -2130,6 +2133,76 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func setupFishRoomTransport(nodeA: SKNode, nodeB: SKNode)  {
+        
+        var transportNode: SKNode!
+        var playerNode: Player!
+        
+        switch nodeA.name {
+        case "fishRoomTransport":
+            transportNode = nodeA
+        case "bornRoomTransport":
+            transportNode = nodeA
+        case "villageRoomTransport":
+            transportNode = nodeA
+        case "breakRoomTransport":
+            transportNode = nodeA
+        case "player":
+            playerNode = player
+        default:
+            break
+        }
+        
+        switch nodeB.name {
+        case "fishRoomTransport":
+            transportNode = nodeB
+        case "bornRoomTransport":
+            transportNode = nodeB
+        case "villageRoomTransport":
+            transportNode = nodeB
+        case "breakRoomTransport":
+            transportNode = nodeB
+        case "player":
+            playerNode = player
+        default:
+            break
+        }
+        
+        if playerNode != nil && transportNode != nil{
+            
+            var transportScene: GameScene!
+            
+            switch transportNode.name {
+            case "fishRoomTransport":
+                transportScene = player.fishRoom
+            case "bornRoomTransport":
+                transportScene = player.bornScene
+            case "villageRoomTransport":
+                transportScene = player.villageRoom
+            case "breakRoomTransport":
+                transportScene = player.breakRoom
+            default:
+                break
+            }
+            if  let view = self.view as SKView?{
+                if let scene = transportScene{
+                    scene.scaleMode = .aspectFit
+                    
+                    scene.player = player
+                    scene.player.position = CGPoint(x: self.frame.width/2, y: 80)
+                    
+                    scene.run(portalsound)
+                    scene.sceneList = sceneList
+                    view.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
+                 
+                }
+            }
+        }
+    }
+    
     func setupHoleEnter(nodeA: SKNode, nodeB: SKNode)  {
         if nodeA.name == "hole" && nodeB.name == "player"{
             for monster in monsterList{
@@ -2614,8 +2687,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 map = Map().map3[player.inMapNumber]
             }
             setupSceneList()
-            let bornScene = sceneList[self.bornRoom()]
-            player.bornScene = bornScene
+//            let bornScene = sceneList[self.bornRoom()]
+//            player.bornScene = bornScene
             if  let view = self.view as SKView?{
                 if let scene = player.bornScene{
                     scene.scaleMode = .aspectFit
@@ -2851,33 +2924,113 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     newRoom.name = "newRoom"
                     newRoom.zPosition = 100
                     newRoom.alpha = 0.5
-                    //player room
+                    newRoom.position = mapPosition.position + CGPoint(x: 20*x, y: -20*y)
+                 
                     
-                    
-                    //bonus room
-                    if map[y][x] == 3 {
-                        newRoom.color = .yellow
-                    }
-                    
-                    //monster clean room
+                    //monster room
                     let scene = getSceneFromMap(y: y,x: x)
-                    if map[y][x] == 1 && scene.isDoorSet{
-                        newRoom.color = .blue
+
+                    if map[y][x] == 1 && !scene.isDoorSet{
+                        let texture = SKTexture(imageNamed: "monsterAliveLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
+                    }
+                    else if map[y][x] == 1 && scene.isDoorSet{
+                        //newRoom.color = .blue
+                        let texture = SKTexture(imageNamed: "monsterDieLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
                     }
                     //cave room
                     if map[y][x] == 5 {
-                        newRoom.color = .black
+//                        newRoom.color = .black
+                        let texture = SKTexture(imageNamed: "caveLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
                     }
                     
                     //fish room
                     if map[y][x] == 10 {
-                        newRoom.color = .orange
+                        let texture = SKTexture(imageNamed: "fishRIght")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
                     }
+                   
                     
                     //home room && break room
                     if map[y][x] == 2 || map[y][x] == 6{
-                        newRoom.color = .purple
+//                        newRoom.color = .purple
+                        let texture = SKTexture(imageNamed: "homeLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
                     }
+                    
+                    //farmRoom
+                    if map[y][x] == 12 {
+                        let texture = SKTexture(imageNamed: "farmLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
+                    }
+                    
+                    //stoneRoom
+                    if map[y][x] == 9 {
+                        let texture = SKTexture(imageNamed: "stoneLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
+                    }
+                    
+                    //challenge
+                    if map[y][x] == 7 {
+                        let texture = SKTexture(imageNamed: "canonLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
+                    }
+                    
+                    //monster bonus room
+                    if map[y][x] == 11 {
+                        let texture = SKTexture(imageNamed: "treasureLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
+                    }
+                    
+                    //village bonus break room
+                    if map[y][x] == 8 || map[y][x] == 3 || map[y][x] == 6 {
+                        let texture = SKTexture(imageNamed: "bedLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
+                    }
+                    
+                    
                     
                     //player room
                     if x == YX.x && y == YX.y {
@@ -2887,7 +3040,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     
                     
-                    newRoom.position = mapPosition.position + CGPoint(x: 20*x, y: -20*y)
+                    
                     addChild(newRoom)
                     
                     
@@ -3197,6 +3350,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isBornRoom = true
                         sceneList.append(gameScene)
+                        player.bornScene = gameScene
                     }else if self.map[y][x] == 3 {
                         let gameScene = GameScene.level(3)!
                         gameScene.YX = GridYX(y: y, x: x)
@@ -3220,6 +3374,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         gameScene.isBreakRoom = true
                         gameScene.isBornRoom = true
                         sceneList.append(gameScene)
+                        player.breakRoom = gameScene
                     }
                     else if self.map[y][x] == 7 {
                         let gameScene = GameScene.level(13)!
@@ -3233,6 +3388,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isVillageRoom = true
                         sceneList.append(gameScene)
+                        player.villageRoom = gameScene
                     }
                     else if self.map[y][x] == 9 {
                         let gameScene = GameScene.level(11)!
@@ -3245,12 +3401,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isFishRoom = true
                         sceneList.append(gameScene)
+                        player.fishRoom = gameScene
                     }
                     else if self.map[y][x] == 11 {
                         let gameScene = GameScene.level(9)!
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isMonsterBonusRoom = true
                         gameScene.isMonsterRoom = true
+                        sceneList.append(gameScene)
+                    }
+                    else if self.map[y][x] == 12 {
+                        let gameScene = GameScene.level(14)!
+                        gameScene.YX = GridYX(y: y, x: x)
+                        gameScene.isFarmRoom = true
                         sceneList.append(gameScene)
                     }
                 }
