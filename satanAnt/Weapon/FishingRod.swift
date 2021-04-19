@@ -32,7 +32,12 @@ class FishingRod: Weapon {
     
     override func rAttack(direction: CGPoint, homeScene: GameScene) {
         
-       
+        for monster in homeScene.monsterList{
+            monster.sinceStart = 0
+            let wait = SKAction.wait(forDuration: TimeInterval.random(in: 0..<1))
+            let action = SKAction(named: "jellyFishAction")!
+            monster.run(SKAction.sequence([wait,action]))
+        }
         
     }
     
@@ -45,6 +50,17 @@ class FishingRod: Weapon {
             for node in self.children{
                 if node.name == "fishingLine"{
                     node.removeFromParent()
+                }
+                
+                if homeScene.fishGot != nil{
+
+                    let item = fromType(type: CollectionType.random())
+                    item.position = homeScene.fishGot.position
+                    homeScene.addChild(item)
+                    item.run(SKAction.move(to: homeScene.player.position, duration: 1))
+                    
+                    homeScene.fishGot.removeFromParent()
+                    homeScene.fishGot = nil
                 }
             }
             isFishing = false
