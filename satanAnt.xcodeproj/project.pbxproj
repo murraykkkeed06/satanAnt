@@ -321,6 +321,7 @@
 		72650135262D7D9F001972A6 /* Jellyfish1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7265012F262D7D9F001972A6 /* Jellyfish1.png */; };
 		72650136262D7D9F001972A6 /* Jellyfish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 72650130262D7D9F001972A6 /* Jellyfish2.png */; };
 		72650137262D7D9F001972A6 /* Jellyfish4.png in Resources */ = {isa = PBXBuildFile; fileRef = 72650131262D7D9F001972A6 /* Jellyfish4.png */; };
+		72668965262DCBC700DA4B72 /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = 72668964262DCBC600DA4B72 /* board.png */; };
 		72684BA626254BD1006B6DC9 /* foxidle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 72684B9D26254BD0006B6DC9 /* foxidle2.png */; };
 		72684BA726254BD1006B6DC9 /* foxidle3.png in Resources */ = {isa = PBXBuildFile; fileRef = 72684B9E26254BD0006B6DC9 /* foxidle3.png */; };
 		72684BA826254BD1006B6DC9 /* foxidle6.png in Resources */ = {isa = PBXBuildFile; fileRef = 72684B9F26254BD0006B6DC9 /* foxidle6.png */; };
@@ -954,6 +955,7 @@
 		7265012F262D7D9F001972A6 /* Jellyfish1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jellyfish1.png; sourceTree = "<group>"; };
 		72650130262D7D9F001972A6 /* Jellyfish2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jellyfish2.png; sourceTree = "<group>"; };
 		72650131262D7D9F001972A6 /* Jellyfish4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jellyfish4.png; sourceTree = "<group>"; };
+		72668964262DCBC600DA4B72 /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
 		72684B9D26254BD0006B6DC9 /* foxidle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foxidle2.png; sourceTree = "<group>"; };
 		72684B9E26254BD0006B6DC9 /* foxidle3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foxidle3.png; sourceTree = "<group>"; };
 		72684B9F26254BD0006B6DC9 /* foxidle6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foxidle6.png; sourceTree = "<group>"; };
@@ -1516,6 +1518,7 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72668964262DCBC600DA4B72 /* board.png */,
 				723F2FDA262DBDD0005DDD34 /* monsterAliveLogo.png */,
 				723F2FD9262DBDD0005DDD34 /* monsterDieLogo.png */,
 				723F2FD5262DBCC0005DDD34 /* treasureLogo.png */,
@@ -2433,6 +2436,7 @@
 				72E48495260F338C00D1C2DA /* heart_3.png in Resources */,
 				729D92F3262D4AAE00BB23B9 /* fountain_6.png in Resources */,
 				7220E3052626EA3F00DADDCB /* catFor_1.png in Resources */,
+				72668965262DCBC700DA4B72 /* board.png in Resources */,
 				725A37032622B68300340C82 /* slimeJump.mp3 in Resources */,
 				729E9424260E2FBE00DFF2D0 /* new_right_4.png in Resources */,
 				72684BBD26254E16006B6DC9 /* robot_4.png in Resources */,

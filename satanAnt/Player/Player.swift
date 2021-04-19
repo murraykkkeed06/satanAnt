@@ -78,7 +78,7 @@ class Player: SKSpriteNode {
     
     var villageRoom: GameScene!
     var fishRoom: GameScene!
-    var breakRoom: GameScene!
+    var bonusRoom: GameScene!
     
     
     var isAlived = true

@@ -38,7 +38,7 @@ class Canon: SKSpriteNode {
         self.sinceStart = 3
         
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 15))
-        self.physicsBody?.pinned = true
+        //self.physicsBody?.pinned = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = 2

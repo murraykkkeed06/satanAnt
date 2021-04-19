@@ -306,8 +306,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setupMonsterGetHeartDrop(nodeA: nodeA, nodeB: nodeB)
                 setupHitBreak(nodeA: nodeA, nodeB: nodeB)
                 setupHoleEnter(nodeA: nodeA, nodeB: nodeB)
-                setupFishRoomTransport(nodeA: nodeA, nodeB: nodeB)
-                
+                setupFarmRoomTransport(nodeA: nodeA, nodeB: nodeB)
+                setupGameRoomEnterAndBack(nodeA: nodeA, nodeB: nodeB)
             }
         }
         
@@ -697,7 +697,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupCaveMonster(level: player.gameLevel)
         }
         
-        if !isEnterCaveRoom && !isBedRoom && !isSecretRoom{
+        if !isEnterCaveRoom && !isBedRoom && !isSecretRoom && !isGameRoom{
             mapPosition = (self.childNode(withName: "map") as! SKSpriteNode)
             setupMap(mapNumber: player.gameLevel)
         }
@@ -2133,7 +2133,77 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func setupFishRoomTransport(nodeA: SKNode, nodeB: SKNode)  {
+    func setupGameRoomEnterAndBack(nodeA: SKNode, nodeB: SKNode)  {
+        
+        var gameRoomPoint: SKNode!
+        var playerNode: Player!
+        
+        switch nodeA.name {
+        case "gameRoomEnterPoint":
+            gameRoomPoint = nodeA
+        case "gameRoomBackPoint":
+            gameRoomPoint = nodeA
+        case "player":
+            playerNode = player
+        default:
+            break
+        }
+        
+        switch nodeB.name {
+        case "gameRoomEnterPoint":
+            gameRoomPoint = nodeB
+        case "gameRoomBackPoint":
+            gameRoomPoint = nodeB
+        case "player":
+            playerNode = player
+        default:
+            break
+        }
+        
+        
+        if playerNode != nil && gameRoomPoint != nil {
+            if gameRoomPoint.name == "gameRoomEnterPoint"{
+                if  let view = self.view as SKView?{
+                    if let scene = GameScene.level(8){
+                        scene.scaleMode = .aspectFit
+                        scene.isGameRoom = true
+                        scene.player = player
+                        scene.player.position = CGPoint(x: 350, y: 70)
+                        scene.run(doorSound)
+                        scene.sceneList = sceneList
+                        view.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                        view.showsFPS = true
+                        view.showsNodeCount = true
+                        view.ignoresSiblingOrder = true
+                        
+                    }
+                }
+            }
+            if gameRoomPoint.name == "gameRoomBackPoint"{
+                if  let view = self.view as SKView?{
+                    if let scene = player.villageRoom{
+                        scene.scaleMode = .aspectFit
+                        scene.player = player
+                        scene.player.position = CGPoint(x: 175, y: 188)
+                        scene.run(doorSound)
+                        scene.sceneList = sceneList
+                        view.presentScene(scene, transition: SKTransition.fade(withDuration: 1))
+                        view.showsFPS = true
+                        view.showsNodeCount = true
+                        view.ignoresSiblingOrder = true
+                        
+                    }
+                }
+            }
+            
+        }
+        
+        
+    }
+    
+    
+    
+    func setupFarmRoomTransport(nodeA: SKNode, nodeB: SKNode)  {
         
         var transportNode: SKNode!
         var playerNode: Player!
@@ -2145,7 +2215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             transportNode = nodeA
         case "villageRoomTransport":
             transportNode = nodeA
-        case "breakRoomTransport":
+        case "bonusRoomTransport":
             transportNode = nodeA
         case "player":
             playerNode = player
@@ -2160,7 +2230,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             transportNode = nodeB
         case "villageRoomTransport":
             transportNode = nodeB
-        case "breakRoomTransport":
+        case "bonusRoomTransport":
             transportNode = nodeB
         case "player":
             playerNode = player
@@ -2179,8 +2249,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 transportScene = player.bornScene
             case "villageRoomTransport":
                 transportScene = player.villageRoom
-            case "breakRoomTransport":
-                transportScene = player.breakRoom
+            case "bonusRoomTransport":
+                transportScene = player.bonusRoom
+                
             default:
                 break
             }
@@ -2189,7 +2260,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene.scaleMode = .aspectFit
                     
                     scene.player = player
-                    scene.player.position = CGPoint(x: self.frame.width/2, y: 80)
+                    scene.player.position = CGPoint(x: 333, y: 100)
                     
                     scene.run(portalsound)
                     scene.sceneList = sceneList
@@ -2198,6 +2269,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     view.showsNodeCount = true
                     view.ignoresSiblingOrder = true
                  
+                    print("\(player.position)")
                 }
             }
         }
@@ -2389,6 +2461,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             weaponTexture = nodeA
         case "swordTexture":
             weaponTexture = nodeA
+        case "fishingRodTexture":
+            weaponTexture = nodeA
         case "panda":
             pet = (nodeA as! Panda)
         case "poop":
@@ -2425,6 +2499,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "candyBarTexture":
             weaponTexture = nodeB
         case "swordTexture":
+            weaponTexture = nodeB
+        case "fishingRodTexture":
             weaponTexture = nodeB
         case "panda":
             pet = (nodeB as! Panda)
@@ -2551,6 +2627,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.weaponChanged = true
             case "swordTexture":
                 player.weapon = fromType(type: .sword)
+                player.weaponChanged = true
+            case "fishingRodTexture":
+                player.weapon = fromType(type: .fishingRod)
                 player.weaponChanged = true
                 
             default:
@@ -2832,22 +2911,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupMonster(num: Int) {
         
         for _ in 0..<num {
-            var borned = false
-            var check = 0
+ //           var borned = false
+//            var check = 0
+//            var bornX = CGFloat.random(in: 50..<self.frame.width-50)
+//            var bornY = CGFloat.random(in: 50..<self.frame.height-50)
+//            while !borned {
+//                for node in self.children {
+//                    if node.physicsBody != nil && node.frame.contains(CGPoint(x: bornX, y: bornY)) {
+//                        bornX = CGFloat.random(in: 50..<self.frame.width-50)
+//                        bornY = CGFloat.random(in: 50..<self.frame.height-50)
+//                        break
+//                    }else {
+//                        check += 1
+//                        if check == self.children.count {borned = true}
+//                    }
+//                }
+//            }
+            
             var bornX = CGFloat.random(in: 50..<self.frame.width-50)
             var bornY = CGFloat.random(in: 50..<self.frame.height-50)
-            while !borned {
-                for node in self.children {
-                    if node.physicsBody != nil && node.frame.contains(CGPoint(x: bornX, y: bornY)) {
-                        bornX = CGFloat.random(in: 50..<self.frame.width-50)
-                        bornY = CGFloat.random(in: 50..<self.frame.height-50)
-                        break
-                    }else {
-                        check += 1
-                        if check == self.children.count {borned = true}
-                    }
-                }
+            while atPoint(CGPoint(x: bornX, y: bornY)).physicsBody != nil{
+                bornX = CGFloat.random(in: 50..<self.frame.width-50)
+                bornY = CGFloat.random(in: 50..<self.frame.height-50)
             }
+            
             //let newLog = Log(scene: self)
             
             let wait = SKAction.wait(forDuration: TimeInterval.random(in: 0..<2))
@@ -3078,7 +3165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let scene = self.right
                 scene?.scaleMode = .aspectFit
                 scene?.player = player
-                scene?.player.position = leftDoor.position + CGPoint(x: 70, y: 0)
+                scene?.player.position = leftDoor.position + CGPoint(x: 100, y: 0)
                 //scene?.handler.position = self.handler.position
                 
                 scene?.run(portalsound)
@@ -3356,6 +3443,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         gameScene.YX = GridYX(y: y, x: x)
                         gameScene.isBonusRoom = true
                         sceneList.append(gameScene)
+                        player.bonusRoom = gameScene
                     }
                     else if self.map[y][x] == 1{
                         let gameScene = GameScene.level(1)!
@@ -3374,7 +3462,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         gameScene.isBreakRoom = true
                         gameScene.isBornRoom = true
                         sceneList.append(gameScene)
-                        player.breakRoom = gameScene
+                        
                     }
                     else if self.map[y][x] == 7 {
                         let gameScene = GameScene.level(13)!
