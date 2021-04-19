@@ -273,6 +273,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupPositionFollow()
         setupSinceStartCounting()
         setupPowerRemove()
+        setupFishingRod()
+        
+        
   
         
         
@@ -663,6 +666,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func eachEnterSetting()  {
+        
+        for node in player.weapon.children{
+            if node.name == "fishingLine"{
+                node.removeFromParent()
+                let weapon = player.weapon as! FishingRod
+                weapon.isFishing = false
+            }
+        }
         
         if isBackFromSecretRoom && !isDoorSet{
             setupMonster(num: 5)
@@ -1369,6 +1380,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    func setupFishingRod()  {
+        if player.weapon.weaponType == .fishingRod{
+            for anchorPoint in self.children{
+                if anchorPoint.name == "anchorPoint"{
+                    
+                    for node in player.weapon.children{
+                        if node.name == "fishingLine"{
+                            
+                            let line = node as! SKShapeNode
+                            let path =  CGMutablePath()
+                            let position = self.convert(anchorPoint.position, to: player.weapon)
+                            if let bornPoint = weaponOnHand.childNode(withName: "bornPoint"){
+                                path.move(to: bornPoint.position)
+                                path.addLine(to: position)
+                                line.path = path
+                            }
+                           
+                        }
+                    }
+                    
+                }
+            }
+            
+            
+        }
+    }
+    
     
     func setupPowerRemove()  {
         for i in 0..<player.powerList.count{

@@ -13,10 +13,11 @@ enum WeaponType: Int {
     case staff
     case candyBar
     case sword
+    case fishingRod
     
     static func random() -> WeaponType{
-        return WeaponType(rawValue: Int.random(in: 0..<3))!
-        //return WeaponType(rawValue: 2)!
+        //return WeaponType(rawValue: Int.random(in: 0..<3))!
+        return WeaponType(rawValue: 3)!
     }
 }
 
@@ -61,6 +62,8 @@ func fromType(type: WeaponType) -> Weapon {
         weapon = CandyBar()
     case .sword:
         weapon = Sword()
+    case .fishingRod:
+        weapon = FishingRod()
     }
     
     return weapon
@@ -86,6 +89,11 @@ func fromTypeTexture(type: WeaponType) -> SKNode{
         let texture = SKTexture(imageNamed: "sword")
         result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
         result.name = "swordTexture"
+        
+    case .fishingRod:
+        let texture = SKTexture(imageNamed: "fishingRod")
+        result = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 40, height: 24))
+        result.name = "fishingRod"
         
     }
     result.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 24))
