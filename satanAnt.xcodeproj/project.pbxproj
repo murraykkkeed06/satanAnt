@@ -43,6 +43,9 @@
 		720B472D26284835004C1448 /* giveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 720B472C26284835004C1448 /* giveButton.png */; };
 		720B473026284B59004C1448 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B472F26284B59004C1448 /* Collection.swift */; };
 		720B473326284EE9004C1448 /* collectionMaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 720B473226284EE9004C1448 /* collectionMaker.png */; };
+		720FA87B262D5501000122A1 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720FA87A262D5501000122A1 /* Fish.swift */; };
+		720FA87E262D5710000122A1 /* fishRIght.png in Resources */ = {isa = PBXBuildFile; fileRef = 720FA87D262D5710000122A1 /* fishRIght.png */; };
+		720FA889262D5798000122A1 /* fishLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 720FA888262D5798000122A1 /* fishLeft.png */; };
 		721172F02628291D00DFDBE5 /* statue.png in Resources */ = {isa = PBXBuildFile; fileRef = 721172EF2628291D00DFDBE5 /* statue.png */; };
 		721879852621E5DC00E98B28 /* wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = 721879842621E5DC00E98B28 /* wind.wav */; };
 		7220E2FC2626EA3F00DADDCB /* catRight_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F02626EA3E00DADDCB /* catRight_1.png */; };
@@ -654,6 +657,9 @@
 		720B472C26284835004C1448 /* giveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = giveButton.png; sourceTree = "<group>"; };
 		720B472F26284B59004C1448 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		720B473226284EE9004C1448 /* collectionMaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionMaker.png; sourceTree = "<group>"; };
+		720FA87A262D5501000122A1 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
+		720FA87D262D5710000122A1 /* fishRIght.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishRIght.png; sourceTree = "<group>"; };
+		720FA888262D5798000122A1 /* fishLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishLeft.png; sourceTree = "<group>"; };
 		721172EF2628291D00DFDBE5 /* statue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statue.png; sourceTree = "<group>"; };
 		721879842621E5DC00E98B28 /* wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wind.wav; sourceTree = "<group>"; };
 		7220E2F02626EA3E00DADDCB /* catRight_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catRight_1.png; sourceTree = "<group>"; };
@@ -1472,6 +1478,8 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				720FA87D262D5710000122A1 /* fishRIght.png */,
+				720FA888262D5798000122A1 /* fishLeft.png */,
 				72359F8D262D22E200EDACCB /* fishingRod.png */,
 				724213F2261A18C600CA5F97 /* abilityHud.png */,
 				7221054C261AA5D400B2EEAC /* abilityHud2.png */,
@@ -2003,6 +2011,7 @@
 				72F2E30D2625C1AE00D9DC6D /* Panda.swift */,
 				72558C302626C4A50012DA21 /* Chicken.swift */,
 				7220E3092626EA4800DADDCB /* Cat.swift */,
+				720FA87A262D5501000122A1 /* Fish.swift */,
 			);
 			path = Pet;
 			sourceTree = "<group>";
@@ -2202,6 +2211,7 @@
 				72558C272626C3D20012DA21 /* chickenFor_3.png in Resources */,
 				725A36DF262298C300340C82 /* slimePurple_8.png in Resources */,
 				72052D662620002400808095 /* erro.wav in Resources */,
+				720FA87E262D5710000122A1 /* fishRIght.png in Resources */,
 				72E4845E260F110600D1C2DA /* log_left_1.png in Resources */,
 				725A36E8262298C300340C82 /* slimePurple_7.png in Resources */,
 				723C7AC62621870600D9026C /* candyBar.png in Resources */,
@@ -2437,6 +2447,7 @@
 				72500A7C261B3CA900EAE276 /* rainy.mp3 in Resources */,
 				72CF1A91261F55D000FA90BE /* bottle.wav in Resources */,
 				72E48468260F11D700D1C2DA /* monsterAction.sks in Resources */,
+				720FA889262D5798000122A1 /* fishLeft.png in Resources */,
 				725A37162622C88400340C82 /* candyBarAttack.wav in Resources */,
 				7240ED7A2620A8D300745815 /* ghostRightAttack_3.png in Resources */,
 				7272744B260F774200141766 /* spear.png in Resources */,
@@ -2654,6 +2665,7 @@
 				72558C382626CA110012DA21 /* PetEgg.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
 				72E1D5BF26299BA200F47F88 /* Umbrella.swift in Sources */,
+				720FA87B262D5501000122A1 /* Fish.swift in Sources */,
 				72533CE5262877080090A2E4 /* FlyingBird.swift in Sources */,
 				723C7ADA26218B7800D9026C /* Candy.swift in Sources */,
 				723C7AC92621871500D9026C /* CandyBar.swift in Sources */,

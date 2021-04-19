@@ -174,6 +174,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var selectionWord: SKLabelNode!
     var lastSelectionNode: SKNode!
     
+    var fishGot: Fish!
+    
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
         
@@ -273,6 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupPositionFollow()
         setupSinceStartCounting()
         setupPowerRemove()
+        setupFishChangeAnchorPoint()
         setupFishingRod()
         
         
@@ -624,6 +627,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupCave()
         }
         
+        
+        
         for node in self.children{
             if node.name == "boxBorn"{
                 let box = Box()
@@ -658,6 +663,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 
+            }
+            if node.name == "fishBorn"{
+                let fish = Fish()
+                fish.position = node.position
+                addChild(fish)
             }
         }
         
@@ -1380,6 +1390,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    func setupFishChangeAnchorPoint()  {
+        for node in self.children{
+            if node.name == "fish"{
+                for anchorPoint in self.children{
+                    if anchorPoint.name == "anchorPoint"{
+                        if node.frame.contains(anchorPoint.position){
+                            anchorPoint.position = node.position
+                            let fish = node as! Fish
+                            fishGot = fish
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func setupFishingRod()  {
         if player.weapon.weaponType == .fishingRod{
             for anchorPoint in self.children{
@@ -1439,6 +1467,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if node.name == "cat"{
                     let cat = node as! Cat
                     cat.sinceStart += eachFrame
+                }
+                if node.name == "fish"{
+                    let fish = node as! Fish
+                    fish.sinceStart += eachFrame
                 }
             }
         }
@@ -2837,6 +2869,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         newRoom.color = .black
                     }
                     
+                    //fish room
+                    if map[y][x] == 10 {
+                        newRoom.color = .orange
+                    }
+                    
                     //home room && break room
                     if map[y][x] == 2 || map[y][x] == 6{
                         newRoom.color = .purple
@@ -2846,6 +2883,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if x == YX.x && y == YX.y {
                         newRoom.color = .red
                     }
+                    
+                    
                     
                     
                     newRoom.position = mapPosition.position + CGPoint(x: 20*x, y: -20*y)

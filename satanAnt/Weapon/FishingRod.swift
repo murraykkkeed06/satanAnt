@@ -85,6 +85,16 @@ class FishingRod: Weapon {
             
             self.addChild(line)
             
+            
+            //attack
+            for monster in homeScene.monsterList{
+                if monster.position.distanceTo(anchorPoint.position) < 35{
+                    monster.beingHit(homeScene: homeScene)
+                }
+            }
+
+            
+            
         }
         
     }
