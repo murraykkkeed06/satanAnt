@@ -279,7 +279,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupPowerRemove()
         setupFishChangeAnchorPoint()
         setupFishingRod()
-        
+        setupSlotMachine()
         
   
         
@@ -630,6 +630,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupCave()
         }
         
+        if isGameRoom{
+            let slotbar = SlotBar(scene: self)
+            addChild(slotbar)
+        }
         
         
         for node in self.children{
@@ -1407,6 +1411,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
+        }
+    }
+    
+    func setupSlotMachine()  {
+        if isGameRoom{
+            for node in self.children{
+                if node.name == "firstHead"{
+                    for icon in node.children{
+                        let position = node.convert(icon.position, to: self)
+                        if position.y > 265 {
+                            icon.isHidden = true
+                        }else{
+                            icon.isHidden = false
+                        }
+                        if position.y < 233{
+                            icon.removeFromParent()
+                        }
+                    }
+                }
+                if node.name == "secondHead"{
+                    for icon in node.children{
+                        let position = node.convert(icon.position, to: self)
+                        if position.y > 265 {
+                            icon.isHidden = true
+                        }else{
+                            icon.isHidden = false
+                        }
+                        if position.y < 233{
+                            icon.removeFromParent()
+                        }
+                    }
+                }
+                if node.name == "thirdHead"{
+                    for icon in node.children{
+                        let position = node.convert(icon.position, to: self)
+                        if position.y > 265 {
+                            icon.isHidden = true
+                        }else{
+                            icon.isHidden = false
+                        }
+                        if position.y < 233{
+                            icon.removeFromParent()
+                        }
+                    }
+                }
+            }
+            
+            
+            
         }
     }
     
