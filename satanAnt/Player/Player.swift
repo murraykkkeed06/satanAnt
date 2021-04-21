@@ -20,6 +20,8 @@ enum playerState {
 
 class Player: SKSpriteNode {
     
+    var saveDataTo: String!
+    
     var enterSecretRoomScene: GameScene!
     
     var AudioPlayer = AVAudioPlayer()
@@ -370,7 +372,7 @@ class Player: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = 3
         self.name = "player"
         self.exp = 89
-        self.level = 32
+        self.level = 3
         self.health = bornHealth
         self.money = 178
         self.weapon = fromType(type: WeaponType.random())

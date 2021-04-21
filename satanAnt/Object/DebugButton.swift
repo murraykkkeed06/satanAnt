@@ -29,35 +29,37 @@ class DebugButton: SKSpriteNode {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        readData()
+        resetData(dataName: "playerData1")
+        resetData(dataName: "playerData2")
+        resetData(dataName: "playerData3")
     }
-    func readData()  {
+    
+    func resetData(dataName: String)  {
+        let jsonObject: [String: Any] = [
+            "name" : "player",
+            "level" : 3,
+            "savingTime" : 0,
+            "attackPoint": 0,
+            "bulletSpeedPoint" : 0,
+            "healthPoint" : 0,
+            "rangePoint" : 0
+        ]
         
-       
+        let json = JSON(jsonObject)
+        let str = json.description
+        let data = str.data(using: .utf8)!
+        let path = FileManager.default.urls(for: .documentDirectory,
+                                            in: .userDomainMask)[0].appendingPathComponent(dataName)
         
+        
+        //write
         do {
-            // Get the saved data
-            let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let path = URL(fileURLWithPath: "playerData", relativeTo: directoryURL)
-
-            let savedData = try Data(contentsOf: path)
-            let json = try JSON(data: savedData)
-            //print("\(json.count)")
-            if let savingTime = json["savingTime"].int {
-                //Now you got your value
-                print("\(savingTime)")
-
-            }
-            print("able to read file!")
+            try data.write(to: path)
+            print("File saved: \(path.absoluteURL)")
         } catch {
             // Catch any errors
-            print("Unable to read the file")
+            print(error.localizedDescription)
         }
-        
-        
-        
-        
-        
     }
     
 }

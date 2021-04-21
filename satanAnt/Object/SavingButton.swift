@@ -31,6 +31,7 @@ class SavingButton: SKSpriteNode {
         homeScene.player.savingTime += 1
         let jsonObject: [String: Any] = [
             "name" : "player",
+            "level" : Int(homeScene.player.level),
             "savingTime" : homeScene.player.savingTime,
             "attackPoint": Int(homeScene.player.baseAttackPoint),
             "bulletSpeedPoint" : Int(homeScene.player.baseBulletSpeedPoint),
@@ -42,7 +43,7 @@ class SavingButton: SKSpriteNode {
         let str = json.description
         let data = str.data(using: .utf8)!
         let path = FileManager.default.urls(for: .documentDirectory,
-                                            in: .userDomainMask)[0].appendingPathComponent("playerData")
+                                            in: .userDomainMask)[0].appendingPathComponent(homeScene.player.saveDataTo)
         
         
         //write

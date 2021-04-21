@@ -121,6 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isMonsterBonusRoom = false
     var isFarmRoom = false
     var isGameRoom = false
+    var isStartRoom = false
     
     var YX: GridYX!
     
@@ -199,6 +200,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
+        
+        
         
         if !self.setupIsSet {
             setupIsSet = true

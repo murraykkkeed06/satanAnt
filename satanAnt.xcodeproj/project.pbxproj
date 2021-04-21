@@ -457,6 +457,12 @@
 		72B4BD7D260B4B570063ED38 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B4BD7C260B4B570063ED38 /* bullet.png */; };
 		72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4BD7F260B4B830063ED38 /* MSButtonNode.swift */; };
 		72B4BD83260B4BCE0063ED38 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4BD82260B4BCE0063ED38 /* Bullet.swift */; };
+		72BCD6FF2630250800837980 /* LoadBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCD6FE2630250800837980 /* LoadBoard.swift */; };
+		72BCD7032630254B00837980 /* loadBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 72BCD7022630254B00837980 /* loadBoard.png */; };
+		72BCD7062630259F00837980 /* loadCancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72BCD7052630259E00837980 /* loadCancelButton.png */; };
+		72BCD7092630263600837980 /* loadPlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72BCD7082630263600837980 /* loadPlayButton.png */; };
+		72BCD70C2630280000837980 /* LoadCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCD70B2630280000837980 /* LoadCancelButton.swift */; };
+		72BCD70F2630290700837980 /* LoadPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCD70E2630290700837980 /* LoadPlayButton.swift */; };
 		72C3155B2627DF010092C684 /* poop.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C3155A2627DF010092C684 /* poop.png */; };
 		72C3155E2627E3B60092C684 /* storeHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C3155D2627E3B60092C684 /* storeHud.png */; };
 		72C315612627E3F90092C684 /* vendingMechine.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C315602627E3F90092C684 /* vendingMechine.png */; };
@@ -519,6 +525,9 @@
 		72DFF508263006A500E465B9 /* SavingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DFF507263006A500E465B9 /* SavingButton.swift */; };
 		72DFF50B26300BC100E465B9 /* debugButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72DFF50A26300BC000E465B9 /* debugButton.png */; };
 		72DFF50E26300BCC00E465B9 /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DFF50D26300BCC00E465B9 /* DebugButton.swift */; };
+		72DFF512263017BE00E465B9 /* startScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 72DFF511263017BD00E465B9 /* startScreen.png */; };
+		72DFF518263017EC00E465B9 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72DFF517263017EC00E465B9 /* StartScene.sks */; };
+		72DFF51B2630195C00E465B9 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DFF51A2630195C00E465B9 /* StartScene.swift */; };
 		72E02EAC2629C5FB00FFBB81 /* powerSelection.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E02EAB2629C5FB00FFBB81 /* powerSelection.png */; };
 		72E02EAF2629E1A300FFBB81 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E02EAE2629E1A200FFBB81 /* error.mp3 */; };
 		72E02EB22629E30A00FFBB81 /* canonFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E02EB12629E30A00FFBB81 /* canonFire.mp3 */; };
@@ -1114,6 +1123,12 @@
 		72B4BD7C260B4B570063ED38 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		72B4BD7F260B4B830063ED38 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		72B4BD82260B4BCE0063ED38 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		72BCD6FE2630250800837980 /* LoadBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBoard.swift; sourceTree = "<group>"; };
+		72BCD7022630254B00837980 /* loadBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadBoard.png; sourceTree = "<group>"; };
+		72BCD7052630259E00837980 /* loadCancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadCancelButton.png; sourceTree = "<group>"; };
+		72BCD7082630263600837980 /* loadPlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadPlayButton.png; sourceTree = "<group>"; };
+		72BCD70B2630280000837980 /* LoadCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCancelButton.swift; sourceTree = "<group>"; };
+		72BCD70E2630290700837980 /* LoadPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPlayButton.swift; sourceTree = "<group>"; };
 		72C3155A2627DF010092C684 /* poop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poop.png; sourceTree = "<group>"; };
 		72C3155D2627E3B60092C684 /* storeHud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storeHud.png; sourceTree = "<group>"; };
 		72C315602627E3F90092C684 /* vendingMechine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vendingMechine.png; sourceTree = "<group>"; };
@@ -1176,6 +1191,9 @@
 		72DFF507263006A500E465B9 /* SavingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingButton.swift; sourceTree = "<group>"; };
 		72DFF50A26300BC000E465B9 /* debugButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugButton.png; sourceTree = "<group>"; };
 		72DFF50D26300BCC00E465B9 /* DebugButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
+		72DFF511263017BD00E465B9 /* startScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startScreen.png; sourceTree = "<group>"; };
+		72DFF517263017EC00E465B9 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
+		72DFF51A2630195C00E465B9 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		72E02EAB2629C5FB00FFBB81 /* powerSelection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerSelection.png; sourceTree = "<group>"; };
 		72E02EAE2629E1A200FFBB81 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
 		72E02EB12629E30A00FFBB81 /* canonFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = canonFire.mp3; sourceTree = "<group>"; };
@@ -1555,6 +1573,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				72BCD6FD263024F000837980 /* loadBoard */,
 				720C7DF8262EDFA3000A20CA /* SlotMachine */,
 				72533CE0262875E00090A2E4 /* Power */,
 				721172F326282F0F00DFDBE5 /* Collection */,
@@ -1576,6 +1595,7 @@
 				72B46656260B2CA900BC5E56 /* assets.atlas */,
 				72B4663C260B2A1400BC5E56 /* AppDelegate.swift */,
 				72D3A559260B618100E65281 /* Map.swift */,
+				72DFF51A2630195C00E465B9 /* StartScene.swift */,
 				7203E1C6260B3CCA006FFD40 /* Extension.swift */,
 				72B46642260B2A1400BC5E56 /* GameScene.swift */,
 				72B46644260B2A1400BC5E56 /* GameViewController.swift */,
@@ -1593,6 +1613,10 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72BCD7082630263600837980 /* loadPlayButton.png */,
+				72BCD7052630259E00837980 /* loadCancelButton.png */,
+				72BCD7022630254B00837980 /* loadBoard.png */,
+				72DFF511263017BD00E465B9 /* startScreen.png */,
 				72DFF50A26300BC000E465B9 /* debugButton.png */,
 				72DFF5042630060F00E465B9 /* savingButton.png */,
 				724213F2261A18C600CA5F97 /* abilityHud.png */,
@@ -2079,6 +2103,16 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		72BCD6FD263024F000837980 /* loadBoard */ = {
+			isa = PBXGroup;
+			children = (
+				72BCD6FE2630250800837980 /* LoadBoard.swift */,
+				72BCD70B2630280000837980 /* LoadCancelButton.swift */,
+				72BCD70E2630290700837980 /* LoadPlayButton.swift */,
+			);
+			path = loadBoard;
+			sourceTree = "<group>";
+		};
 		72D3A53E260B52C900E65281 /* SKS */ = {
 			isa = PBXGroup;
 			children = (
@@ -2101,6 +2135,7 @@
 				7247F99D262B0848005B0DCA /* Level_12.sks */,
 				7247F9A0262B0878005B0DCA /* Level_13.sks */,
 				721BED54262D808500CE4CF6 /* Level_14.sks */,
+				72DFF517263017EC00E465B9 /* StartScene.sks */,
 				7279A975260D913C000EB14F /* playerAction.sks */,
 				72B46640260B2A1400BC5E56 /* Actions.sks */,
 				72E48467260F11D700D1C2DA /* monsterAction.sks */,
@@ -2276,6 +2311,7 @@
 				7279A976260D913C000EB14F /* playerAction.sks in Resources */,
 				725A37092622B7A800340C82 /* slimeDie.wav in Resources */,
 				72C3155B2627DF010092C684 /* poop.png in Resources */,
+				72DFF512263017BE00E465B9 /* startScreen.png in Resources */,
 				72E7F4BB261C4217006A7AB1 /* caveDoor_2.png in Resources */,
 				72E7F473261C1D88006A7AB1 /* fireHit.mp3 in Resources */,
 				72FE15D3261DE27E008870C6 /* coinDrop_2.png in Resources */,
@@ -2345,6 +2381,7 @@
 				72D3A552260B575D00E65281 /* popo.sks in Resources */,
 				720B472D26284835004C1448 /* giveButton.png in Resources */,
 				720A425426189C31002D589C /* attack_2.png in Resources */,
+				72BCD7032630254B00837980 /* loadBoard.png in Resources */,
 				72684BBB26254E16006B6DC9 /* robot_2.png in Resources */,
 				72684BA726254BD1006B6DC9 /* foxidle3.png in Resources */,
 				725A37212622CF0800340C82 /* bornEffect_3.png in Resources */,
@@ -2408,6 +2445,7 @@
 				72533CF426287B350090A2E4 /* flyingBird.png in Resources */,
 				72558C152626BFA50012DA21 /* bark.wav in Resources */,
 				725A36D7262298C300340C82 /* slimePurple_3.png in Resources */,
+				72DFF518263017EC00E465B9 /* StartScene.sks in Resources */,
 				7264DC0926247FB500D7722B /* plantDog_4.png in Resources */,
 				7240ED372620848200745815 /* slime_11.png in Resources */,
 				720B473326284EE9004C1448 /* collectionMaker.png in Resources */,
@@ -2488,6 +2526,7 @@
 				72E48417260EEDAA00D1C2DA /* background_4.png in Resources */,
 				725A37192622CAC600340C82 /* ghostDie.wav in Resources */,
 				725A36F2262298C300340C82 /* slimePurple_9.png in Resources */,
+				72BCD7092630263600837980 /* loadPlayButton.png in Resources */,
 				72D3A553260B575D00E65281 /* Assets.xcassets in Resources */,
 				72533CDB2628736E0090A2E4 /* ducky.png in Resources */,
 				72D6388E26196A4700A43D41 /* npcLeft_4.png in Resources */,
@@ -2723,6 +2762,7 @@
 				725A37302622D9B000340C82 /* monsterBornEffect_2.png in Resources */,
 				725A37202622CF0800340C82 /* bornEffect_4.png in Resources */,
 				72B4BD7D260B4B570063ED38 /* bullet.png in Resources */,
+				72BCD7062630259F00837980 /* loadCancelButton.png in Resources */,
 				7279A981260D93D4000EB14F /* player_right_3.png in Resources */,
 				724213D9261A064700CA5F97 /* box_1.png in Resources */,
 				72D77D1026280977007D9687 /* suprise_4.png in Resources */,
@@ -2849,6 +2889,7 @@
 				720C7DFA262EDFB0000A20CA /* SlotIcon.swift in Sources */,
 				7221055C261ABD4000B2EEAC /* Cave.swift in Sources */,
 				72533CD8262872E40090A2E4 /* Ducky.swift in Sources */,
+				72BCD70C2630280000837980 /* LoadCancelButton.swift in Sources */,
 				72D704D3260F5E54007326C3 /* Num.swift in Sources */,
 				72F2E30E2625C1AE00D9DC6D /* Panda.swift in Sources */,
 				7277732A261ED13B009F823F /* Item.swift in Sources */,
@@ -2869,6 +2910,7 @@
 				72777321261ECF6D009F823F /* FireBomb.swift in Sources */,
 				72E7F46B261C17A5006A7AB1 /* BulletHitPoint.swift in Sources */,
 				7281EBCC2623305B00EE69F9 /* CanonFirePoint.swift in Sources */,
+				72DFF51B2630195C00E465B9 /* StartScene.swift in Sources */,
 				72E48443260F0F7000D1C2DA /* Log.swift in Sources */,
 				72E573762621F59900FDC1F0 /* VillageGirl.swift in Sources */,
 				72359F8A262D221800EDACCB /* FishingRod.swift in Sources */,
@@ -2888,6 +2930,7 @@
 				7240ED672620A16800745815 /* Ghost.swift in Sources */,
 				724213F0261A0CBE00CA5F97 /* Book.swift in Sources */,
 				72500A73261B0AEF00EAE276 /* Board.swift in Sources */,
+				72BCD70F2630290700837980 /* LoadPlayButton.swift in Sources */,
 				72210556261AB33700B2EEAC /* CancelButton.swift in Sources */,
 				72727448260F761D00141766 /* Weapon.swift in Sources */,
 				72210573261AF18C00B2EEAC /* Soilder.swift in Sources */,
@@ -2906,6 +2949,7 @@
 				72533CD5262872DB0090A2E4 /* Truffle.swift in Sources */,
 				72B46643260B2A1400BC5E56 /* GameScene.swift in Sources */,
 				72D3A537260B524D00E65281 /* Popo.swift in Sources */,
+				72BCD6FF2630250800837980 /* LoadBoard.swift in Sources */,
 				72E484A7260F435800D1C2DA /* Heart.swift in Sources */,
 				7220E3132626F3C900DADDCB /* Scientist.swift in Sources */,
 				72D01BAC2622EFE700459733 /* Portal.swift in Sources */,
