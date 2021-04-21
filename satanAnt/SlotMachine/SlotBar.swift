@@ -79,13 +79,13 @@ class SlotBar: SKSpriteNode {
         firstStop = false
         secondStop = false
         thirdStop = false
-        let firstAction = SKAction.moveBy(x: 0, y: -700, duration: TimeInterval.random(in: 5..<10))
+        let firstAction = SKAction.moveBy(x: 0, y: -490, duration: TimeInterval.random(in: 3..<5))
         firstAction.timingMode = .easeInEaseOut
         
-        let secondAction = SKAction.moveBy(x: 0, y: -700, duration: TimeInterval.random(in: 5..<10))
+        let secondAction = SKAction.moveBy(x: 0, y: -490, duration: TimeInterval.random(in: 3..<5))
         firstAction.timingMode = .easeInEaseOut
         
-        let thirdAction = SKAction.moveBy(x: 0, y: -700, duration: TimeInterval.random(in: 5..<10))
+        let thirdAction = SKAction.moveBy(x: 0, y: -490, duration: TimeInterval.random(in: 3..<5))
         firstAction.timingMode = .easeInEaseOut
         
         firstHead.run(SKAction.sequence([firstAction,SKAction.run({

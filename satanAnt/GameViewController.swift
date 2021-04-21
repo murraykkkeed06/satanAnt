@@ -9,6 +9,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import AVFoundation
+import SwiftyJSON
 
 class GameViewController: UIViewController {
 
@@ -39,6 +40,8 @@ class GameViewController: UIViewController {
 //        let bornScene = sceneList[self.bornRoom()]
 //        player.bornScene = bornScene
         
+        readData()
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             
@@ -67,6 +70,47 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    func readData()  {
+        
+
+        do {
+            
+            let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let path = URL(fileURLWithPath: "playerData", relativeTo: directoryURL)
+
+            let savedData = try Data(contentsOf: path)
+            let json = try JSON(data: savedData)
+            //print("\(json.count)")
+            if let savingTime = json["savingTime"].int {
+                player.savingTime = savingTime
+            }
+            
+            if let attackPoint = json["attackPoint"].int {
+                player.baseAttackPoint = CGFloat(attackPoint)
+            }
+            
+            if let bulletSpeedPoint = json["bulletSpeedPoint"].int {
+                player.baseBulletSpeedPoint = TimeInterval(bulletSpeedPoint)
+            }
+            if let healthPoint = json["healthPoint"].int {
+                player.baseHealthPoint = CGFloat(healthPoint)
+            }
+            if let rangePoint = json["rangePoint"].int {
+                player.baseBulletRangePoint = CGFloat(rangePoint)
+            }
+            
+            print("able to read file!")
+        } catch {
+            // Catch any errors
+            print("Unable to read the file")
+        }
+        
+        
+        
+        
+        
+    }
 
     override var shouldAutorotate: Bool {
         return true
@@ -86,3 +130,5 @@ class GameViewController: UIViewController {
     
     
 }
+
+

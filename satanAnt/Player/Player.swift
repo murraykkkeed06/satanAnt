@@ -27,7 +27,7 @@ class Player: SKSpriteNode {
     
     var walkSound: NSURL!
    
-    
+    var savingTime: Int = 0
     
     
     var isFiring = false

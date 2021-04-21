@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 import AVFoundation
+import SwiftyJSON
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -202,12 +203,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !self.setupIsSet {
             setupIsSet = true
             eachRoomSetting()
-           
             
             
         }
         
         eachEnterSetting()
+        
+        
+        
         
     }
     
@@ -630,10 +633,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupCave()
         }
         
-        if isGameRoom{
-            let slotbar = SlotBar(scene: self)
-            addChild(slotbar)
-        }
+        
         
         
         for node in self.children{
@@ -717,6 +717,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupBornEffect()
         }
         
+        if isGameRoom{
+            for node in children{
+                if node.name == "slotBar"{
+                    node.removeFromParent()
+                }
+            }
+            let slotbar = SlotBar(scene: self)
+            addChild(slotbar)
+        }
+        
         self.view?.isUserInteractionEnabled = true
         sinceStart = 0
         mount.position = handlerBackground.position
@@ -751,6 +761,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 power.start = true
             }
         }
+        
+        
+        let savingButton = SavingButton(scene: self)
+        let debugButton = DebugButton(scene: self)
+        addChild(savingButton)
+        addChild(debugButton)
     }
     
     func setupCaveMonster(level: Int)  {
