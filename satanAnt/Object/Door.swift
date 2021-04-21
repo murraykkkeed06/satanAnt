@@ -40,15 +40,15 @@ class Door: SKSpriteNode {
         //self.run(SKAction(named: "bornEffect")!)
         switch doorDirection {
         case .right:
-            self.anchorPoint = CGPoint(x: 0, y: 0.5)
-        case .left:
             self.anchorPoint = CGPoint(x: 1, y: 0.5)
-        case .up:
+        case .left:
             self.anchorPoint = CGPoint(x: 0, y: 0.5)
+        case .up:
+            self.anchorPoint = CGPoint(x: 1, y: 0.5)
             self.zRotation = 90 * (CGFloat.pi/180)
         case .down:
             self.anchorPoint = CGPoint(x: 0, y: 0.5)
-            self.zRotation = -90 * (CGFloat.pi/180)
+            self.zRotation = 90 * (CGFloat.pi/180)
         }
 
         self.position = position

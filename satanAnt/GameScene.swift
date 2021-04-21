@@ -276,7 +276,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         checkFoxAround()
         canonDetect()
         monsterAutoAttackDetect()
-        setupZPosition()
+        //setupZPosition()
         setupLevelClean()
         setupBirdInBackground()
         setupPlayerAttack()
@@ -3356,7 +3356,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let wait = SKAction.wait(forDuration: 0.5)
         let firstAction = SKAction.run({
             if self.top != nil {
-                let door = Door(position: self.topDoor.position,name: "topDoor", doorDirection: .up)
+                let door = Door(position: self.topDoor.position + CGPoint(x: 0, y: 80), name: "topDoor", doorDirection: .up)
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
@@ -3364,41 +3364,62 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.run(self.portalBornSound)
                 
             }
+            for node in self.children{
+                if node.name == "topGate"{
+                    node.removeFromParent()
+                }
+            }
+            
         })
         let secondAction = SKAction.run({
             if self.bototm != nil {
                 
-                let door = Door(position: self.bottomDoor.position,name: "bottomDoor", doorDirection: .down)
+                let door = Door(position: self.bottomDoor.position + CGPoint(x: 0, y: -80),name: "bottomDoor", doorDirection: .down)
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 
                 self.run(self.portalBornSound)
                 
+            }
+            for node in self.children{
+                if node.name == "bottomGate"{
+                    node.removeFromParent()
+                }
             }
         })
         
         let thirdAction = SKAction.run({
             if self.left != nil {
                 
-                let door = Door(position: self.leftDoor.position,name: "leftDoor",doorDirection: .left)
+                let door = Door(position: self.leftDoor.position + CGPoint(x: -80, y: 0),name: "leftDoor",doorDirection: .left)
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 
                 self.run(self.portalBornSound)
             }
+            for node in self.children{
+                if node.name == "leftGate"{
+                    node.removeFromParent()
+                }
+            }
         })
         let fourthAction = SKAction.run({
             if self.right != nil {
                 
-                let door = Door(position: self.rightDoor.position,name: "rightDoor",doorDirection: .right)
+                let door = Door(position: self.rightDoor.position + CGPoint(x: 80, y: 0),name: "rightDoor",doorDirection: .right)
                 self.addChild(door)
                 door.alpha = 0
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 
                 self.run(self.portalBornSound)
                 
+            }
+            for node in self.children{
+                if node.name == "rightGate"{
+                    node.removeFromParent()
+                }
             }
         })
         
