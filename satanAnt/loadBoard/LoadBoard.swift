@@ -45,7 +45,7 @@ class LoadBoard: SKSpriteNode {
             
             let label = SKLabelNode(fontNamed: "Chalkduster")
             let number = Int(getLevelFromData(dataName: "playerData1"))
-            label.text =  "Lev" + "\(number)"
+            label.text =  "Lv " + "\(number)"
             label.position = CGPoint(x: 292, y: 271)
             label.zPosition = 101
             label.fontSize = 18
@@ -77,7 +77,7 @@ class LoadBoard: SKSpriteNode {
             
             let label = SKLabelNode(fontNamed: "Chalkduster")
             let number = Int(getLevelFromData(dataName: "playerData2"))
-            label.text =  "Lev" + "\(number)"
+            label.text =  "Lv " + "\(number)"
             label.position = CGPoint(x: 292, y: 190)
             label.zPosition = 101
             label.fontSize = 18
@@ -110,7 +110,7 @@ class LoadBoard: SKSpriteNode {
             
             let label = SKLabelNode(fontNamed: "Chalkduster")
             let number = Int(getLevelFromData(dataName: "playerData3"))
-            label.text =  "Lev" + "\(number)"
+            label.text =  "Lv " + "\(number)"
             label.position = CGPoint(x: 292, y: 130)
             label.zPosition = 101
             label.fontSize = 18

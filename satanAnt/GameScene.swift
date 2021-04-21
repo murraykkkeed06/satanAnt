@@ -636,6 +636,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setupCave()
         }
         
+        if isBedRoom{
+            for node in self.children{
+                if node.name == "recordBorn"{
+                    let record = Record(scene: self)
+                    record.position = node.position
+                    addChild(record)
+                }
+            }
+            
+        }
+        
         
         
         
@@ -766,9 +777,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        let savingButton = SavingButton(scene: self)
+        
         let debugButton = DebugButton(scene: self)
-        addChild(savingButton)
         addChild(debugButton)
     }
     
