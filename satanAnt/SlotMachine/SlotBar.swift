@@ -23,6 +23,8 @@ class SlotBar: SKSpriteNode {
     var secondStop = true
     var thirdStop = true
     
+    var appendTime: Int = 1
+    
     
     init(scene: GameScene){
         
@@ -157,12 +159,59 @@ class SlotBar: SKSpriteNode {
                 bornItemTexture(num: 1, position: CGPoint(x: 300, y: 200), homeScene: homeScene)
 
             }
+            
+            appendNew()
+            
         }
+    }
+    
+    func appendNew()  {
+        
+        let startCount = appendTime * 40
+        let endCount = startCount + 40
+        
+        for i in startCount..<endCount{
+            let firstIcon = SlotICon(type: SlotIconType.random())
+            let secondIcon = SlotICon(type: SlotIconType.random())
+            let thirdIcon = SlotICon(type: SlotIconType.random())
+            
+            firstIcon.isHidden = true
+            secondIcon.isHidden = true
+            thirdIcon.isHidden = true
+            
+            firstIcon.position = CGPoint(x: 0, y: 14 * i)
+            secondIcon.position = CGPoint(x: 0, y: 14 * i)
+            thirdIcon.position = CGPoint(x: 0, y: 14 * i)
+            
+            let firstBar = SlotUnderScore()
+            let secondBar = SlotUnderScore()
+            let thirdBar = SlotUnderScore()
+            
+            firstBar.isHidden = true
+            secondBar.isHidden = true
+            thirdBar.isHidden = true
+            
+            firstBar.position = firstIcon.position + CGPoint(x: 0, y: 7)
+            secondBar.position = secondIcon.position + CGPoint(x: 0, y: 7)
+            thirdBar.position = thirdIcon.position + CGPoint(x: 0, y: 7)
+            
+            firstHead.addChild(firstIcon)
+            firstHead.addChild(firstBar)
+            
+            secondHead.addChild(secondIcon)
+            secondHead.addChild(secondBar)
+            
+            thirdHead.addChild(thirdIcon)
+            thirdHead.addChild(thirdBar)
+        }
+        
+        
+        appendTime += 1
     }
     
     func initialCol()  {
         
-        for i in 0 ..< 1000{
+        for i in 0 ..< 40{
             let firstIcon = SlotICon(type: SlotIconType.random())
             let secondIcon = SlotICon(type: SlotIconType.random())
             let thirdIcon = SlotICon(type: SlotIconType.random())

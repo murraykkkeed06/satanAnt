@@ -3212,9 +3212,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         addChild(node)
                     }
                     
-                    //village bonus break room
-                    if map[y][x] == 8 || map[y][x] == 3 || map[y][x] == 6 {
+                    //bonus break room
+                    if map[y][x] == 3 || map[y][x] == 6 {
                         let texture = SKTexture(imageNamed: "bedLogo")
+                        let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
+                        node.name = "newRoom"
+                        node.position = newRoom.position
+                        node.zPosition = 101
+                        addChild(node)
+                    }
+                    
+                    //village room
+                    if map[y][x] == 8 {
+                        let texture = SKTexture(imageNamed: "barn")
                         let node = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 15, height: 15))
                         node.name = "newRoom"
                         node.position = newRoom.position

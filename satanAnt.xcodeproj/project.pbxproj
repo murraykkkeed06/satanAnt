@@ -468,6 +468,7 @@
 		72C315612627E3F90092C684 /* vendingMechine.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C315602627E3F90092C684 /* vendingMechine.png */; };
 		72C315642627E58E0092C684 /* StoreDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C315632627E58E0092C684 /* StoreDialogue.swift */; };
 		72C315672627E84D0092C684 /* buyWordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C315662627E84D0092C684 /* buyWordButton.png */; };
+		72C7613B2631626500C6CDDA /* barn.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C7613A2631626500C6CDDA /* barn.png */; };
 		72CF1A8E261F556E00FA90BE /* bigger.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72CF1A8D261F556E00FA90BE /* bigger.wav */; };
 		72CF1A91261F55D000FA90BE /* bottle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72CF1A90261F55D000FA90BE /* bottle.wav */; };
 		72CF1A9D261F5A3D00FA90BE /* pick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72CF1A9C261F5A3D00FA90BE /* pick.mp3 */; };
@@ -1136,6 +1137,7 @@
 		72C315602627E3F90092C684 /* vendingMechine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vendingMechine.png; sourceTree = "<group>"; };
 		72C315632627E58E0092C684 /* StoreDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDialogue.swift; sourceTree = "<group>"; };
 		72C315662627E84D0092C684 /* buyWordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyWordButton.png; sourceTree = "<group>"; };
+		72C7613A2631626500C6CDDA /* barn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barn.png; sourceTree = "<group>"; };
 		72CF1A8D261F556E00FA90BE /* bigger.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bigger.wav; sourceTree = "<group>"; };
 		72CF1A90261F55D000FA90BE /* bottle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bottle.wav; sourceTree = "<group>"; };
 		72CF1A9C261F5A3D00FA90BE /* pick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pick.mp3; sourceTree = "<group>"; };
@@ -1617,6 +1619,7 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				72C7613A2631626500C6CDDA /* barn.png */,
 				721AE01626313D3C0002B341 /* loadBoard.png */,
 				72E7E34726304F360062A60F /* record.png */,
 				72BCD7082630263600837980 /* loadPlayButton.png */,
@@ -2496,6 +2499,7 @@
 				729D92F6262D4AAE00BB23B9 /* fountain_1.png in Resources */,
 				72C3155E2627E3B60092C684 /* storeHud.png in Resources */,
 				72558C0C2626BC760012DA21 /* love_2.png in Resources */,
+				72C7613B2631626500C6CDDA /* barn.png in Resources */,
 				7220E3022626EA3F00DADDCB /* catFor_3.png in Resources */,
 				7240ED832620A8D300745815 /* ghostRightAttack_1.png in Resources */,
 				7240ED3D2620848200745815 /* slime_5.png in Resources */,
