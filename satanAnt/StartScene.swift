@@ -20,8 +20,8 @@ class StartScene: SKScene {
         
         player = Player()
 
-        let loadBoard = LoadBoard(scene: self)
-        addChild(loadBoard)
+//        let loadBoard = LoadBoard(scene: self)
+//        addChild(loadBoard)
         
         
 
@@ -33,13 +33,7 @@ class StartScene: SKScene {
         currentFPS = 1 / deltaTime
         lastUpdateTime = currentTime
         print(currentFPS)
-        
-        //remove picture when load ok
-        for node in self.children{
-            if node.name == "loadingPicture" && currentFPS > 59{
-                node.removeFromParent()
-            }
-        }
+
     }
   
     
