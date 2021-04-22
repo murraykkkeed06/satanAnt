@@ -16,20 +16,16 @@ class GameViewController: UIViewController {
     var AudioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let sound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "rainy", ofType: "mp3")!)
-        AudioPlayer = try! AVAudioPlayer(contentsOf: sound as URL)
-        AudioPlayer.prepareToPlay()
-        AudioPlayer.numberOfLoops = -1
-        AudioPlayer.play()
-        
-        //player = Player()
+
         
         
         if let view = self.view as! SKView? {
             
             if let scene = StartScene(fileNamed: "StartScene"){
+                
+                let loadingPicture = LoadingPicture()
+                scene.addChild(loadingPicture)
+                        
                 scene.scaleMode = .aspectFit
                 view.presentScene(scene)
                 view.ignoresSiblingOrder = true
@@ -37,6 +33,14 @@ class GameViewController: UIViewController {
                 view.showsNodeCount = true
             }
         }
+        
+        super.viewDidLoad()
+        
+        let sound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "rainy", ofType: "mp3")!)
+        AudioPlayer = try! AVAudioPlayer(contentsOf: sound as URL)
+        AudioPlayer.prepareToPlay()
+        AudioPlayer.numberOfLoops = -1
+        AudioPlayer.play()
     }
 
     override var shouldAutorotate: Bool {

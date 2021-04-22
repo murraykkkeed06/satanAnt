@@ -86,6 +86,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var eachFrame: TimeInterval = 1/60
     
     var birdBornStart: TimeInterval = 0
+    var lastUpdateTime: TimeInterval = 0
+    var currentFPS: Double = 0
     
     var top: GameScene!
     var bototm: GameScene!
@@ -209,7 +211,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             
         }
-        
+        loadSceneAnimation()
         eachEnterSetting()
         
         
@@ -261,8 +263,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if player.playerIsMoving{
             player.position+=(player.movingDirection * player.moveDistance)
         }
+        //get fps
+        let deltaTime = currentTime - lastUpdateTime
+        currentFPS = 1 / deltaTime
+        lastUpdateTime = currentTime
+        print(currentFPS)
         
-
+        
         playerSetupHud()
         checkSoilderAround()
         checkGirlAround()
@@ -702,6 +709,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupCanon()
     }
     
+    func loadSceneAnimation()  {
+        
+    }
+    
+    
     func eachEnterSetting()  {
         
         for node in player.weapon.children{
@@ -740,6 +752,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if isGameRoom{
             for node in children{
                 if node.name == "slotBar"{
+                    node.removeFromParent()
+                }
+                if node.name == "firstHead"{
+                    node.removeFromParent()
+                }
+                if node.name == "secondHead"{
+                    node.removeFromParent()
+                }
+                if node.name == "thirdHead"{
                     node.removeFromParent()
                 }
             }

@@ -108,8 +108,8 @@ class LoadPlayButton: SKSpriteNode {
                 scene.player = homeScene.player
                 scene.player.position = CGPoint(x: 160, y: 250)
 
+                //let fade = SKTransition.doorsOpenVertical(withDuration: 5)
                 
-
                     // Present the scene
                 view.presentScene(scene)
 
