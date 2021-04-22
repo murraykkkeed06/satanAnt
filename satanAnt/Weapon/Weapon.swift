@@ -96,7 +96,8 @@ func fromTypeTexture(type: WeaponType) -> SKNode{
         result.name = "fishingRodTexture"
         
     }
-    result.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 24))
+    //result.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 24))
+    result.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 1, height: 1))
     result.physicsBody?.affectedByGravity = false
     result.physicsBody?.contactTestBitMask = 1
     result.physicsBody?.collisionBitMask = 2
@@ -120,6 +121,23 @@ func bornWeaponTexture(num: Int, position: CGPoint, homeScene: GameScene) {
     }
     
 }
+
+func bornWeaponTexture(num: Int, position: CGPoint, homeScene: GameScene, type: WeaponType) {
+    
+    for _ in 0..<num{
+        
+        //sound and born action
+        
+        let node = fromTypeTexture(type: type)
+        node.position = position
+        homeScene.addChild(node)
+        shootUp(node: node)
+
+        
+    }
+    
+}
+
 
 func shootUp(node: SKNode) {
     

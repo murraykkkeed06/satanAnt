@@ -656,6 +656,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 box.position = node.position
                 addChild(box)
             }
+            if node.name == "fishBoxBorn"{
+                let box = Box()
+                box.name = "fishBox"
+                box.position = node.position
+                addChild(box)
+            }
             if node.name == "scarecrowBorn"{
                 let scarecrow = Scarecrow(scene: self)
                 scarecrow.position = node.position
@@ -1612,6 +1618,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
             }
+            
+            if node.name == "fishBox"{
+                let box = node as! Box
+                let dist = player.position.distanceTo(box.position)
+                if !box.boxIsSet{
+                    if dist < 50 && !box.isOpen{
+                        box.boxIsSet = true
+                        box.open()
+                        box.isOpen = true
+                        
+                        bornWeaponTexture(num: 1, position: box.position, homeScene: self, type: .fishingRod)
+                        
+                    }
+                }
+                
+            }
+            
         }
     }
     
@@ -3244,74 +3267,88 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (nodeA.name == "rightDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "rightDoor"){
             if  let view = self.view as SKView?{
-                let scene = self.right
-                scene?.scaleMode = .aspectFit
-                scene?.player = player
-                scene?.player.position = leftDoor.position + CGPoint(x: 100, y: 0)
-                //scene?.handler.position = self.handler.position
-                
-                scene?.run(portalsound)
-                scene?.sceneList = sceneList
-                view.presentScene(scene!, transition: fade)
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.ignoresSiblingOrder = true
-                
+                if  let scene = self.right{
+                    scene.scaleMode = .aspectFit
+                    scene.player = player
+                    if scene.isDoorSet{
+                        scene.player.position = scene.leftDoor.position + CGPoint(x: -30, y:0)
+                    }else {
+                        scene.player.position = scene.leftDoor.position
+                    }
+                    //scene?.handler.position = self.handler.position
+                    
+                    scene.run(portalsound)
+                    scene.sceneList = sceneList
+                    view.presentScene(scene, transition: fade)
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
+                }
                 
                 
             }
         }
         if (nodeA.name == "leftDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "leftDoor") {
             if  let view = self.view as SKView?{
-                let scene = self.left
-                scene?.scaleMode = .aspectFit
-                scene?.player = player
-                scene?.player.position = rightDoor.position + CGPoint(x: -70, y: 0)
-                //scene?.handler.position = self.handler.position
+                if let scene = self.left{
+                    scene.scaleMode = .aspectFit
+                    scene.player = player
+                    if scene.isDoorSet{
+                        scene.player.position = scene.rightDoor.position + CGPoint(x: 30, y: 0)
+                    }else{
+                        scene.player.position = scene.rightDoor.position + CGPoint(x: 0, y: 0)
+                    }
+                    //scene?.handler.position = self.handler.position
+                    
+                    scene.run(portalsound)
+                    scene.sceneList = sceneList
+                    view.presentScene(scene, transition: fade)
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
                 
-                scene?.run(portalsound)
-                scene?.sceneList = sceneList
-                view.presentScene(scene!, transition: fade)
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.ignoresSiblingOrder = true
-                
-                
+                }
             }
             
         }
         if (nodeA.name == "topDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "topDoor") {
             if  let view = self.view as SKView?{
-                let scene = self.top
-                scene?.scaleMode = .aspectFit
-                scene?.player = player
-                scene?.player.position = bottomDoor.position + CGPoint(x: 0, y: 70)
-                
-                scene?.run(portalsound)
-                //scene?.handler.position = self.handler.position
-                scene?.sceneList = sceneList
-                view.presentScene(scene!, transition: fade)
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.ignoresSiblingOrder = true
-                
+                if let scene = self.top{
+                    scene.scaleMode = .aspectFit
+                    scene.player = player
+                    if scene.isDoorSet{
+                        scene.player.position = scene.bottomDoor.position + CGPoint(x: 0, y: -30)
+                    }else{
+                        scene.player.position = scene.bottomDoor.position + CGPoint(x: 0, y: 0)
+                    }
+                    scene.run(portalsound)
+                    //scene?.handler.position = self.handler.position
+                    scene.sceneList = sceneList
+                    view.presentScene(scene, transition: fade)
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
+                }
             }
         }
         if (nodeA.name == "bottomDoor" && nodeB.name == "player") || (nodeA.name == "player" && nodeB.name == "bottomDoor") {
             if  let view = self.view as SKView?{
-                let scene = self.bototm
-                scene?.scaleMode = .aspectFit
-                scene?.player = player
-                scene?.player.position = topDoor.position + CGPoint(x: 0, y: -70)
-                
-                scene?.run(portalsound)
-                //scene?.handler.position = self.handler.position
-                scene?.sceneList = sceneList
-                view.presentScene(scene!, transition: fade)
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.ignoresSiblingOrder = true
-                
+                if let scene = self.bototm{
+                    scene.scaleMode = .aspectFit
+                    scene.player = player
+                    if scene.isDoorSet{
+                        scene.player.position = scene.topDoor.position + CGPoint(x: 0, y: 30)
+                    }else{
+                        scene.player.position = scene.topDoor.position + CGPoint(x: 0, y: 0)
+                    }
+                    scene.run(portalsound)
+                    //scene?.handler.position = self.handler.position
+                    scene.sceneList = sceneList
+                    view.presentScene(scene, transition: fade)
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    view.ignoresSiblingOrder = true
+                }
             }
         }
         
@@ -3349,10 +3386,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setupDoor() {
-        topDoor = (self.childNode(withName: "topDoor") as! SKSpriteNode)
-        bottomDoor = (self.childNode(withName: "bottomDoor") as! SKSpriteNode)
-        leftDoor = (self.childNode(withName: "leftDoor") as! SKSpriteNode)
-        rightDoor = (self.childNode(withName: "rightDoor") as! SKSpriteNode)
+//        topDoor = (self.childNode(withName: "topDoor") as! SKSpriteNode)
+//        bottomDoor = (self.childNode(withName: "bottomDoor") as! SKSpriteNode)
+//        leftDoor = (self.childNode(withName: "leftDoor") as! SKSpriteNode)
+//        rightDoor = (self.childNode(withName: "rightDoor") as! SKSpriteNode)
         let wait = SKAction.wait(forDuration: 0.5)
         let firstAction = SKAction.run({
             if self.top != nil {
@@ -3363,13 +3400,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 self.run(self.portalBornSound)
                 
-            }
-            for node in self.children{
-                if node.name == "topGate"{
-                    node.removeFromParent()
+                for node in self.children{
+                    if node.name == "topGate"{
+                        node.removeFromParent()
+                    }
                 }
             }
-            
+  
         })
         let secondAction = SKAction.run({
             if self.bototm != nil {
@@ -3381,12 +3418,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 self.run(self.portalBornSound)
                 
-            }
-            for node in self.children{
-                if node.name == "bottomGate"{
-                    node.removeFromParent()
+                for node in self.children{
+                    if node.name == "bottomGate"{
+                        node.removeFromParent()
+                    }
                 }
             }
+            
         })
         
         let thirdAction = SKAction.run({
@@ -3398,12 +3436,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 door.run(SKAction.fadeAlpha(to: 1, duration: 1))
                 
                 self.run(self.portalBornSound)
-            }
-            for node in self.children{
-                if node.name == "leftGate"{
-                    node.removeFromParent()
+                for node in self.children{
+                    if node.name == "leftGate"{
+                        node.removeFromParent()
+                    }
                 }
             }
+            
         })
         let fourthAction = SKAction.run({
             if self.right != nil {
@@ -3415,12 +3454,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 self.run(self.portalBornSound)
                 
-            }
-            for node in self.children{
-                if node.name == "rightGate"{
-                    node.removeFromParent()
+                for node in self.children{
+                    if node.name == "rightGate"{
+                        node.removeFromParent()
+                    }
                 }
             }
+            
         })
         
         self.run(SKAction.sequence([firstAction,wait,secondAction,wait,thirdAction,wait,fourthAction]))
@@ -3660,6 +3700,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }}
             
             
+        }
+        
+        
+        //get left right top bottom door
+        for scene in sceneList{
+            for node in scene.children{
+                if node.name == "leftDoor"{scene.leftDoor = (node as! SKSpriteNode)}
+                if node.name == "rightDoor"{scene.rightDoor = (node as! SKSpriteNode)}
+                if node.name == "topDoor"{scene.topDoor = (node as! SKSpriteNode)}
+                if node.name == "bottomDoor"{scene.bottomDoor = (node as! SKSpriteNode)}
+            }
         }
     }
     

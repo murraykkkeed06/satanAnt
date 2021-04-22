@@ -54,6 +54,7 @@
 		721172F02628291D00DFDBE5 /* statue.png in Resources */ = {isa = PBXBuildFile; fileRef = 721172EF2628291D00DFDBE5 /* statue.png */; };
 		72184951262E7EFE00F84463 /* bet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72184950262E7EFD00F84463 /* bet.png */; };
 		721879852621E5DC00E98B28 /* wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = 721879842621E5DC00E98B28 /* wind.wav */; };
+		721AE01726313D3C0002B341 /* loadBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 721AE01626313D3C0002B341 /* loadBoard.png */; };
 		721BED55262D808500CE4CF6 /* Level_14.sks in Resources */ = {isa = PBXBuildFile; fileRef = 721BED54262D808500CE4CF6 /* Level_14.sks */; };
 		7220E2FC2626EA3F00DADDCB /* catRight_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F02626EA3E00DADDCB /* catRight_1.png */; };
 		7220E2FD2626EA3F00DADDCB /* catRight_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F12626EA3E00DADDCB /* catRight_2.png */; };
@@ -458,7 +459,6 @@
 		72B4BD80260B4B830063ED38 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4BD7F260B4B830063ED38 /* MSButtonNode.swift */; };
 		72B4BD83260B4BCE0063ED38 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4BD82260B4BCE0063ED38 /* Bullet.swift */; };
 		72BCD6FF2630250800837980 /* LoadBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCD6FE2630250800837980 /* LoadBoard.swift */; };
-		72BCD7032630254B00837980 /* loadBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 72BCD7022630254B00837980 /* loadBoard.png */; };
 		72BCD7062630259F00837980 /* loadCancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72BCD7052630259E00837980 /* loadCancelButton.png */; };
 		72BCD7092630263600837980 /* loadPlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72BCD7082630263600837980 /* loadPlayButton.png */; };
 		72BCD70C2630280000837980 /* LoadCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCD70B2630280000837980 /* LoadCancelButton.swift */; };
@@ -720,6 +720,7 @@
 		721172EF2628291D00DFDBE5 /* statue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statue.png; sourceTree = "<group>"; };
 		72184950262E7EFD00F84463 /* bet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet.png; sourceTree = "<group>"; };
 		721879842621E5DC00E98B28 /* wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wind.wav; sourceTree = "<group>"; };
+		721AE01626313D3C0002B341 /* loadBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loadBoard.png; path = ../../../../screenshot/loadBoard.png; sourceTree = "<group>"; };
 		721BED54262D808500CE4CF6 /* Level_14.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_14.sks; sourceTree = "<group>"; };
 		7220E2F02626EA3E00DADDCB /* catRight_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catRight_1.png; sourceTree = "<group>"; };
 		7220E2F12626EA3E00DADDCB /* catRight_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catRight_2.png; sourceTree = "<group>"; };
@@ -1126,7 +1127,6 @@
 		72B4BD7F260B4B830063ED38 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		72B4BD82260B4BCE0063ED38 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		72BCD6FE2630250800837980 /* LoadBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBoard.swift; sourceTree = "<group>"; };
-		72BCD7022630254B00837980 /* loadBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadBoard.png; sourceTree = "<group>"; };
 		72BCD7052630259E00837980 /* loadCancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadCancelButton.png; sourceTree = "<group>"; };
 		72BCD7082630263600837980 /* loadPlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadPlayButton.png; sourceTree = "<group>"; };
 		72BCD70B2630280000837980 /* LoadCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCancelButton.swift; sourceTree = "<group>"; };
@@ -1617,10 +1617,10 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				721AE01626313D3C0002B341 /* loadBoard.png */,
 				72E7E34726304F360062A60F /* record.png */,
 				72BCD7082630263600837980 /* loadPlayButton.png */,
 				72BCD7052630259E00837980 /* loadCancelButton.png */,
-				72BCD7022630254B00837980 /* loadBoard.png */,
 				72DFF511263017BD00E465B9 /* startScreen.png */,
 				72DFF50A26300BC000E465B9 /* debugButton.png */,
 				72DFF5042630060F00E465B9 /* savingButton.png */,
@@ -2387,7 +2387,6 @@
 				72D3A552260B575D00E65281 /* popo.sks in Resources */,
 				720B472D26284835004C1448 /* giveButton.png in Resources */,
 				720A425426189C31002D589C /* attack_2.png in Resources */,
-				72BCD7032630254B00837980 /* loadBoard.png in Resources */,
 				72684BBB26254E16006B6DC9 /* robot_2.png in Resources */,
 				72684BA726254BD1006B6DC9 /* foxidle3.png in Resources */,
 				725A37212622CF0800340C82 /* bornEffect_3.png in Resources */,
@@ -2815,6 +2814,7 @@
 				7279A988260D94A5000EB14F /* player_left_1.png in Resources */,
 				72684BBC26254E16006B6DC9 /* robot_5.png in Resources */,
 				725A36E2262298C300340C82 /* slimePurple_6.png in Resources */,
+				721AE01726313D3C0002B341 /* loadBoard.png in Resources */,
 				72558C0E2626BC760012DA21 /* love_6.png in Resources */,
 				72E4845D260F110600D1C2DA /* log_forward_1.png in Resources */,
 				72E7F4C2261C4217006A7AB1 /* caveDoor_16.png in Resources */,
