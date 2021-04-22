@@ -13,40 +13,36 @@ import SwiftyJSON
 
 class GameViewController: UIViewController {
 
-    var AudioPlayer = AVAudioPlayer()
     
-    @IBOutlet weak var startView: UIView!
-    
+   
     @IBOutlet weak var startButton: UIButton!
-    
     @IBOutlet weak var startLabel: UILabel!
     
-  
+    var imageView: UIImageView!
+    var timer: Timer!
+    var toggleNum: Int = 3
+    var AudioPlayer = AVAudioPlayer()
+    
     @IBAction func pressButton(_ sender: Any) {
        
-        print("enter!")
-        for view in self.view.subviews {
-            view.removeFromSuperview()
-        }
         changeScene()
-        
-   
     }
     
-   
     override func viewDidLoad() {
 
         //set font style
         self.startLabel.font = UIFont(name: "Chalkduster", size: 20)
         self.startLabel.textColor = .black
         
+        //set imageView
+        imageView = UIImageView(frame: CGRect(x: 283.5, y: 87.5, width: 100, height: 100))
+        let image = UIImage(named: "icon")
+        imageView.image = image
+        view.addSubview(imageView)
         
         //set animate
-        let imageView = UIImageView(frame: CGRect(x: 168, y: 87.5, width: 300, height: 200))
-        view.addSubview(imageView)
-        let animatedImage = UIImage.animatedImageNamed("gifDemo-", duration: 1)
-        imageView.image = animatedImage
-       
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(changeImage), userInfo: nil, repeats: true)
+        
 
         super.viewDidLoad()
         
@@ -58,13 +54,53 @@ class GameViewController: UIViewController {
         
     }
     
+    @objc func changeImage()  {
+        
+        
+        switch toggleNum {
+        case 1:
+            toggleNum = 2
+            
+            imageView.frame = CGRect(x: 183.5, y: 87.5, width: 300, height: 200)
+            //view.addSubview(imageView)
+            let animatedImage = UIImage.animatedImageNamed("gifDemo-", duration: 1)
+            imageView.image = animatedImage
+        case 2:
+            toggleNum = 3
+            imageView.frame = CGRect(x: 283.5, y: 87.5, width: 100, height: 100)
+            
+            let image = UIImage(named: "icon")
+            
+            imageView.image = image
+            //view.addSubview(imageView)
+        case 3:
+            toggleNum = 1
+            imageView.frame = CGRect(x: 283.5, y: 87.5, width: 100, height: 100)
+            let image = UIImage(named: "newLogo")
+            
+            imageView.image = image
+            //view.addSubview(imageView)
+        default:
+            break
+        }
+        
+        
+    }
+    
+    
     func changeScene()  {
+        
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        
         AudioPlayer.stop()
+        timer.invalidate()
         if let view = self.view as! SKView? {
             
             if let scene = StartScene(fileNamed: "StartScene"){
                 
-                let fade = SKTransition.fade(withDuration: 5)
+                let fade = SKTransition.fade(withDuration: 1)
                 
                 scene.scaleMode = .aspectFit
                 view.presentScene(scene, transition: fade)

@@ -19,7 +19,7 @@ class LoadBoard: SKSpriteNode {
         self.zPosition = 100
         self.position = CGPoint(x: 333, y: 205) + CGPoint(x: 0, y: 200)
         
-        let wait = SKAction.wait(forDuration: 3)
+        let wait = SKAction.wait(forDuration: 1)
         
         self.run(SKAction.sequence([SKAction.run(rollDown),wait,SKAction.run(render)]))
         
@@ -32,7 +32,7 @@ class LoadBoard: SKSpriteNode {
     }
     
     func rollDown()  {
-        let action = SKAction.move(to: CGPoint(x: 333, y: 205), duration: 3)
+        let action = SKAction.move(to: CGPoint(x: 333, y: 205), duration: 1)
         action.timingMode = .easeOut
         self.run(action)
     }

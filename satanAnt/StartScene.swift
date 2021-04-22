@@ -10,29 +10,22 @@ import SpriteKit
 import SwiftyJSON
 
 class StartScene: SKScene {
-    
-    var lastUpdateTime: TimeInterval = 0
-    var currentFPS: Double = 0
-    
+   
     var player: Player!
 
     override func didMove(to view: SKView) {
         
         player = Player()
 
-        let loadBoard = LoadBoard(scene: self)
-        addChild(loadBoard)
+//        let loadBoard = LoadBoard(scene: self)
+//        addChild(loadBoard)
         
         
 
     }
     
     override func update(_ currentTime: TimeInterval) {
-        //get fps
-        let deltaTime = currentTime - lastUpdateTime
-        currentFPS = 1 / deltaTime
-        lastUpdateTime = currentTime
-        print(currentFPS)
+       
 
     }
   
