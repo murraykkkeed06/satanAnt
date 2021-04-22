@@ -20,8 +20,8 @@ class StartScene: SKScene {
         
         player = Player()
 
-//        let loadBoard = LoadBoard(scene: self)
-//        addChild(loadBoard)
+        let loadBoard = LoadBoard(scene: self)
+        addChild(loadBoard)
         
         
 

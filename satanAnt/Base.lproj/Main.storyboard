@@ -55,7 +55,7 @@
                     <connections>
                         <outlet property="startButton" destination="9iW-Ck-fLB" id="c9D-0h-IlT"/>
                         <outlet property="startLabel" destination="hV5-t0-uFW" id="G7f-CL-TnZ"/>
-                        <outlet property="startView" destination="bnO-Ph-g5g" id="bK7-k7-3QJ"/>
+                        <outlet property="startView" destination="bnO-Ph-g5g" id="was-Rp-fxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

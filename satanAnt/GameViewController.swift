@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
 
     var AudioPlayer = AVAudioPlayer()
     
+    @IBOutlet weak var startView: UIView!
     
     @IBOutlet weak var startButton: UIButton!
     
@@ -29,8 +30,7 @@ class GameViewController: UIViewController {
         }
         changeScene()
         
-    
-        //changeScene()
+   
     }
     
    
@@ -50,21 +50,22 @@ class GameViewController: UIViewController {
 
         super.viewDidLoad()
         
-        let sound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "rainy", ofType: "mp3")!)
+        let sound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "startMusic", ofType: "mp3")!)
         AudioPlayer = try! AVAudioPlayer(contentsOf: sound as URL)
         AudioPlayer.prepareToPlay()
         AudioPlayer.numberOfLoops = -1
-        
+        AudioPlayer.play()
         
     }
     
     func changeScene()  {
+        AudioPlayer.stop()
         if let view = self.view as! SKView? {
             
             if let scene = StartScene(fileNamed: "StartScene"){
                 
                 let fade = SKTransition.fade(withDuration: 5)
-                AudioPlayer.play()
+                
                 scene.scaleMode = .aspectFit
                 view.presentScene(scene, transition: fade)
                 view.ignoresSiblingOrder = true
@@ -73,6 +74,12 @@ class GameViewController: UIViewController {
                
             }
         }
+        
+        let sound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "rainy", ofType: "mp3")!)
+        AudioPlayer = try! AVAudioPlayer(contentsOf: sound as URL)
+        AudioPlayer.prepareToPlay()
+        AudioPlayer.numberOfLoops = -1
+        AudioPlayer.play()
     }
 
     override var shouldAutorotate: Bool {
