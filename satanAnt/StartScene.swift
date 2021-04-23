@@ -23,11 +23,42 @@ class StartScene: SKScene {
         let twoPlayerButton = TwoPlayerButton()
         let settingButton = SettingButton()
         let staffButton = StaffButton()
-        let menuButton = MenuButton()
+        let menuButton = BackButton()
         
         onePlayerButton.selectHandler = {
             let loadBoard = LoadBoard(scene: self)
             self.addChild(loadBoard)
+        }
+        
+        twoPlayerButton.selectHandler = {
+            
+            let label = SKLabelNode(fontNamed: "Chalkduster")
+            label.text = "no friend no need"
+            label.fontSize = 25
+            label.zPosition = 10
+            label.position = twoPlayerButton.position + CGPoint(x: 0, y: 30)
+            self.addChild(label)
+            label.run(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 5),SKAction.removeFromParent()]))
+        }
+        
+        settingButton.selectHandler = {
+            let label = SKLabelNode(fontNamed: "Chalkduster")
+            label.text = "nothing to set"
+            label.fontSize = 25
+            label.zPosition = 10
+            label.position = settingButton.position + CGPoint(x: 0, y: 30)
+            self.addChild(label)
+            label.run(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 5),SKAction.removeFromParent()]))
+        }
+        
+        staffButton.selectHandler = {
+            let label = SKLabelNode(fontNamed: "Chalkduster")
+            label.text = "murray"
+            label.fontSize = 25
+            label.zPosition = 10
+            label.position = staffButton.position + CGPoint(x: 0, y: 30)
+            self.addChild(label)
+            label.run(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 5),SKAction.removeFromParent()]))
         }
         
         menuButton.selectHandler = {
@@ -59,7 +90,7 @@ class StartScene: SKScene {
             self.addChild(menuButton)
         })
         
-        self.run(SKAction.sequence([wait,firstAction,wait,secondAction,wait,thirdAction,wait,fourthAction,wait,fifthAction]))
+        self.run(SKAction.sequence([firstAction,wait,secondAction,wait,thirdAction,wait,fourthAction,wait,fifthAction]))
         
         
         

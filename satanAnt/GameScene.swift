@@ -182,6 +182,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var fishGot: Fish!
     
+    var menuButton: MenuButton!
+    var playButton: PlayButton!
+    
     /* Make a Class method to load levels */
     class func level(_ levelNumber: Int) -> GameScene? {
         
@@ -223,6 +226,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
+        
+        //pause button action
+        if let view = self.view{
+            if view.isPaused{
+                if self.menuButton.frame.contains(location){menuButton.work()}
+                if self.playButton.frame.contains(location){playButton.work()}
+            }
+        }
+        
         
         setupPowerSelection(location: location)
         
@@ -267,7 +279,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let deltaTime = currentTime - lastUpdateTime
         currentFPS = 1 / deltaTime
         lastUpdateTime = currentTime
-        print(currentFPS)
+        //print(currentFPS)
         
         
         playerSetupHud()
@@ -568,6 +580,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func eachRoomSetting()  {
+        
+        menuButton = MenuButton(scene: self)
+        playButton = PlayButton(scene: self)
+        
+        addChild(menuButton)
+        addChild(playButton)
+        
         mount = (self.childNode(withName: "//mount") as! SKSpriteNode)
         handler = (self.childNode(withName: "//handler") as! SKSpriteNode)
         handlerBackground = (self.childNode(withName: "//handlerBackground") as! SKSpriteNode)
@@ -707,6 +726,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setupCharacter()
         setupCanon()
+        
+        let pauseButton = PauseButton(scene: self)
+        addChild(pauseButton)
+        
+        
     }
     
     func loadSceneAnimation()  {
@@ -805,8 +829,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        let debugButton = DebugButton(scene: self)
-        addChild(debugButton)
+        
+//        let debugButton = DebugButton(scene: self)
+//        addChild(debugButton)
     }
     
     func setupCaveMonster(level: Int)  {

@@ -1,27 +1,30 @@
 //
-//  OnePlayerButton.swift
+//  SavingButton.swift
 //  satanAnt
 //
-//  Created by 劉孟學 on 2021/4/23.
+//  Created by 劉孟學 on 2021/4/21.
 //
 
 import Foundation
 import SpriteKit
+import SwiftyJSON
 
 class MenuButton: SKSpriteNode {
     
-    var selectHandler: ()-> Void = {print("menu button press not implemnet!")}
+    var homeScene: GameScene!
     
-    init(){
+    init(scene: GameScene){
+        
         let texture = SKTexture(imageNamed: "menuButton")
-        super.init(texture: texture, color: .clear, size: CGSize(width: 100, height: 40))
-        self.zPosition = 1
-        self.alpha = 0
-        self.position = CGPoint(x: 590, y: 35)
-        self.name = "startButton"
+        super.init(texture: texture, color: .clear, size: CGSize(width: 190, height: 70))
+        self.zPosition = 1000
+        self.position = CGPoint(x: 317, y: 264)
+        //self.isUserInteractionEnabled = true
+        self.homeScene = scene
+        self.name = "menuButton"
         self.run(SKAction(named: "idle")!)
-        self.run(SKAction.fadeAlpha(to: 1, duration: 3))
-        self.isUserInteractionEnabled = true
+        self.isHidden = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +32,32 @@ class MenuButton: SKSpriteNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        selectHandler()
+
     }
+    
+    
+    func work()  {
+        
+        self.homeScene.view?.isPaused = false
+        
+        if let view = homeScene.view {
+            
+            if let scene = StartScene(fileNamed: "StartScene"){
+                
+                let fade = SKTransition.fade(withDuration: 1)
+                
+                scene.scaleMode = .aspectFit
+                view.presentScene(scene, transition: fade)
+                view.ignoresSiblingOrder = true
+                view.showsFPS = true
+                view.showsNodeCount = true
+               
+            }
+        }
+        
+        
+    }
+    
+    
 }
+

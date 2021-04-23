@@ -61,11 +61,13 @@
 		721286242632778E00796DB1 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721286232632778E00796DB1 /* SettingButton.swift */; };
 		721286272632779B00796DB1 /* StaffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721286262632779B00796DB1 /* StaffButton.swift */; };
 		7212862A26327C7900796DB1 /* menuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212862926327C7900796DB1 /* menuButton.png */; };
-		7212862D26327CC000796DB1 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7212862C26327CC000796DB1 /* MenuButton.swift */; };
+		7212862D26327CC000796DB1 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7212862C26327CC000796DB1 /* BackButton.swift */; };
 		72184951262E7EFE00F84463 /* bet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72184950262E7EFD00F84463 /* bet.png */; };
 		721879852621E5DC00E98B28 /* wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = 721879842621E5DC00E98B28 /* wind.wav */; };
 		721AE01726313D3C0002B341 /* loadBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 721AE01626313D3C0002B341 /* loadBoard.png */; };
 		721BED55262D808500CE4CF6 /* Level_14.sks in Resources */ = {isa = PBXBuildFile; fileRef = 721BED54262D808500CE4CF6 /* Level_14.sks */; };
+		721D557F263283D200BBD338 /* startBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 721D557E263283D200BBD338 /* startBackButton.png */; };
+		721D55822632842900BBD338 /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D55812632842900BBD338 /* PauseButton.swift */; };
 		7220E2FC2626EA3F00DADDCB /* catRight_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F02626EA3E00DADDCB /* catRight_1.png */; };
 		7220E2FD2626EA3F00DADDCB /* catRight_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F12626EA3E00DADDCB /* catRight_2.png */; };
 		7220E2FE2626EA3F00DADDCB /* catBack_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7220E2F22626EA3E00DADDCB /* catBack_2.png */; };
@@ -430,6 +432,10 @@
 		7298E533262E7B1B00D64548 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7298E52B262E7B1A00D64548 /* heart.png */; };
 		7298E534262E7B1B00D64548 /* melon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7298E52C262E7B1A00D64548 /* melon.png */; };
 		7298E538262E7B7D00D64548 /* slotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7298E537262E7B7D00D64548 /* slotBackground.png */; };
+		729B88B42632846D0065259E /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88B32632846D0065259E /* pauseButton.png */; };
+		729B88B7263288E50065259E /* pausePlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88B6263288E50065259E /* pausePlayButton.png */; };
+		729B88BB263289700065259E /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B88BA263289700065259E /* MenuButton.swift */; };
+		729B88BE263289AC0065259E /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B88BD263289AC0065259E /* PlayButton.swift */; };
 		729D92F3262D4AAE00BB23B9 /* fountain_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 729D92ED262D4AAD00BB23B9 /* fountain_6.png */; };
 		729D92F4262D4AAE00BB23B9 /* fountain_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 729D92EE262D4AAD00BB23B9 /* fountain_4.png */; };
 		729D92F5262D4AAE00BB23B9 /* fountain_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 729D92EF262D4AAD00BB23B9 /* fountain_2.png */; };
@@ -763,11 +769,13 @@
 		721286232632778E00796DB1 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		721286262632779B00796DB1 /* StaffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffButton.swift; sourceTree = "<group>"; };
 		7212862926327C7900796DB1 /* menuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuButton.png; sourceTree = "<group>"; };
-		7212862C26327CC000796DB1 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		7212862C26327CC000796DB1 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		72184950262E7EFD00F84463 /* bet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet.png; sourceTree = "<group>"; };
 		721879842621E5DC00E98B28 /* wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wind.wav; sourceTree = "<group>"; };
 		721AE01626313D3C0002B341 /* loadBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loadBoard.png; path = ../../../../screenshot/loadBoard.png; sourceTree = "<group>"; };
 		721BED54262D808500CE4CF6 /* Level_14.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_14.sks; sourceTree = "<group>"; };
+		721D557E263283D200BBD338 /* startBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startBackButton.png; sourceTree = "<group>"; };
+		721D55812632842900BBD338 /* PauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		7220E2F02626EA3E00DADDCB /* catRight_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catRight_1.png; sourceTree = "<group>"; };
 		7220E2F12626EA3E00DADDCB /* catRight_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catRight_2.png; sourceTree = "<group>"; };
 		7220E2F22626EA3E00DADDCB /* catBack_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catBack_2.png; sourceTree = "<group>"; };
@@ -1132,6 +1140,10 @@
 		7298E52B262E7B1A00D64548 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		7298E52C262E7B1A00D64548 /* melon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melon.png; sourceTree = "<group>"; };
 		7298E537262E7B7D00D64548 /* slotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slotBackground.png; sourceTree = "<group>"; };
+		729B88B32632846D0065259E /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton.png; sourceTree = "<group>"; };
+		729B88B6263288E50065259E /* pausePlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pausePlayButton.png; sourceTree = "<group>"; };
+		729B88BA263289700065259E /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		729B88BD263289AC0065259E /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		729D92ED262D4AAD00BB23B9 /* fountain_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_6.png; sourceTree = "<group>"; };
 		729D92EE262D4AAD00BB23B9 /* fountain_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_4.png; sourceTree = "<group>"; };
 		729D92EF262D4AAD00BB23B9 /* fountain_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_2.png; sourceTree = "<group>"; };
@@ -1471,9 +1483,25 @@
 				721286202632778200796DB1 /* TwoPlayerButton.swift */,
 				721286232632778E00796DB1 /* SettingButton.swift */,
 				721286262632779B00796DB1 /* StaffButton.swift */,
-				7212862C26327CC000796DB1 /* MenuButton.swift */,
+				7212862C26327CC000796DB1 /* BackButton.swift */,
+				721D55812632842900BBD338 /* PauseButton.swift */,
+				729B88BA263289700065259E /* MenuButton.swift */,
+				729B88BD263289AC0065259E /* PlayButton.swift */,
 			);
 			path = StartSetting;
+			sourceTree = "<group>";
+		};
+		7212862F26327EF200796DB1 /* Dialogue */ = {
+			isa = PBXGroup;
+			children = (
+				72558C112626BCFB0012DA21 /* LoveDialogue.swift */,
+				72D638AB261978B700A43D41 /* BigDialogue.swift */,
+				724213FE261A18DC00CA5F97 /* AbilityHud.swift */,
+				72C315632627E58E0092C684 /* StoreDialogue.swift */,
+				72533CCE262870660090A2E4 /* TransferDialogue.swift */,
+				72D638AE26197FE200A43D41 /* Word.swift */,
+			);
+			path = Dialogue;
 			sourceTree = "<group>";
 		};
 		723C7ADC26219DD700D9026C /* Ammo */ = {
@@ -1662,6 +1690,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				7212862F26327EF200796DB1 /* Dialogue */,
 				7212861B2632773200796DB1 /* StartSetting */,
 				72BCD6FD263024F000837980 /* loadBoard */,
 				720C7DF8262EDFA3000A20CA /* SlotMachine */,
@@ -1703,6 +1732,9 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				729B88B6263288E50065259E /* pausePlayButton.png */,
+				729B88B32632846D0065259E /* pauseButton.png */,
+				721D557E263283D200BBD338 /* startBackButton.png */,
 				7212862926327C7900796DB1 /* menuButton.png */,
 				721286132632768E00796DB1 /* onePlayerButton.png */,
 				721286122632768D00796DB1 /* settingButton.png */,
@@ -2270,7 +2302,6 @@
 		72D638A72619786F00A43D41 /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				72D638AE26197FE200A43D41 /* Word.swift */,
 				720A42842618CD1E002D589C /* Tomb.swift */,
 				72D704D2260F5E54007326C3 /* Num.swift */,
 				72D3A536260B524D00E65281 /* Popo.swift */,
@@ -2287,11 +2318,6 @@
 				72500A72261B0AEF00EAE276 /* Board.swift */,
 				725A36FF2622B45700340C82 /* DeadSlime.swift */,
 				72D01BAB2622EFE700459733 /* Portal.swift */,
-				72558C112626BCFB0012DA21 /* LoveDialogue.swift */,
-				72D638AB261978B700A43D41 /* BigDialogue.swift */,
-				724213FE261A18DC00CA5F97 /* AbilityHud.swift */,
-				72C315632627E58E0092C684 /* StoreDialogue.swift */,
-				72533CCE262870660090A2E4 /* TransferDialogue.swift */,
 				72E1D5BE26299BA200F47F88 /* Umbrella.swift */,
 				72DFF507263006A500E465B9 /* SavingButton.swift */,
 				72DFF50D26300BCC00E465B9 /* DebugButton.swift */,
@@ -2778,6 +2804,8 @@
 				7220E3072626EA3F00DADDCB /* catFor_2.png in Resources */,
 				72DC0FEF2615C55D006E7AA1 /* staff.png in Resources */,
 				729E942F260E33CA00DFF2D0 /* portal_2.png in Resources */,
+				729B88B42632846D0065259E /* pauseButton.png in Resources */,
+				721D557F263283D200BBD338 /* startBackButton.png in Resources */,
 				7247F9A1262B0878005B0DCA /* Level_13.sks in Resources */,
 				721286162632768F00796DB1 /* settingButton.png in Resources */,
 				72210553261AB32100B2EEAC /* cancelButton.png in Resources */,
@@ -2856,6 +2884,7 @@
 				729E941B260E2FBE00DFF2D0 /* new_forward_3.png in Resources */,
 				7298E538262E7B7D00D64548 /* slotBackground.png in Resources */,
 				725A37122622BB5800340C82 /* logDie.wav in Resources */,
+				729B88B7263288E50065259E /* pausePlayButton.png in Resources */,
 				720A42822618CD0D002D589C /* tomb.png in Resources */,
 				72E4845A260F110600D1C2DA /* log_backward_3.png in Resources */,
 				725A36E5262298C300340C82 /* slimePurple_5.png in Resources */,
@@ -3065,7 +3094,7 @@
 				72777321261ECF6D009F823F /* FireBomb.swift in Sources */,
 				72E7F46B261C17A5006A7AB1 /* BulletHitPoint.swift in Sources */,
 				7281EBCC2623305B00EE69F9 /* CanonFirePoint.swift in Sources */,
-				7212862D26327CC000796DB1 /* MenuButton.swift in Sources */,
+				7212862D26327CC000796DB1 /* BackButton.swift in Sources */,
 				72DFF51B2630195C00E465B9 /* StartScene.swift in Sources */,
 				72E48443260F0F7000D1C2DA /* Log.swift in Sources */,
 				72E573762621F59900FDC1F0 /* VillageGirl.swift in Sources */,
@@ -3095,6 +3124,7 @@
 				725A37002622B45700340C82 /* DeadSlime.swift in Sources */,
 				72558C382626CA110012DA21 /* PetEgg.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
+				721D55822632842900BBD338 /* PauseButton.swift in Sources */,
 				72E1D5BF26299BA200F47F88 /* Umbrella.swift in Sources */,
 				720FA87B262D5501000122A1 /* Fish.swift in Sources */,
 				72533CE5262877080090A2E4 /* FlyingBird.swift in Sources */,
@@ -3109,11 +3139,13 @@
 				72BCD6FF2630250800837980 /* LoadBoard.swift in Sources */,
 				72E484A7260F435800D1C2DA /* Heart.swift in Sources */,
 				7220E3132626F3C900DADDCB /* Scientist.swift in Sources */,
+				729B88BE263289AC0065259E /* PlayButton.swift in Sources */,
 				72D01BAC2622EFE700459733 /* Portal.swift in Sources */,
 				72FE15D9261DE29C008870C6 /* HeartDrop.swift in Sources */,
 				723C7ADE26219E0F00D9026C /* Ammo.swift in Sources */,
 				727B27A226248C4500240223 /* Scarecrow.swift in Sources */,
 				721286212632778200796DB1 /* TwoPlayerButton.swift in Sources */,
+				729B88BB263289700065259E /* MenuButton.swift in Sources */,
 				72558C122626BCFB0012DA21 /* LoveDialogue.swift in Sources */,
 				7220E30A2626EA4800DADDCB /* Cat.swift in Sources */,
 				72D638AC261978B700A43D41 /* BigDialogue.swift in Sources */,
