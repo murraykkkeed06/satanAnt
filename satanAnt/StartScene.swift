@@ -17,11 +17,55 @@ class StartScene: SKScene {
         
         player = Player()
 
-//        let loadBoard = LoadBoard(scene: self)
-//        addChild(loadBoard)
-        
-        
 
+        
+        let onePlayerButton = OnePlayerButton()
+        let twoPlayerButton = TwoPlayerButton()
+        let settingButton = SettingButton()
+        let staffButton = StaffButton()
+        let menuButton = MenuButton()
+        
+        onePlayerButton.selectHandler = {
+            let loadBoard = LoadBoard(scene: self)
+            self.addChild(loadBoard)
+        }
+        
+        menuButton.selectHandler = {
+            for node in self.children{
+                if node.name != "startButton" && node.name != "startScene"{
+                    node.removeFromParent()
+                }
+            }
+        }
+        
+        
+  
+       
+        let wait = SKAction.wait(forDuration: 0.5)
+        
+        let firstAction = SKAction.run({
+            self.addChild(onePlayerButton)
+        })
+        let secondAction = SKAction.run({
+            self.addChild(twoPlayerButton)
+        })
+        let thirdAction = SKAction.run({
+            self.addChild(settingButton)
+        })
+        let fourthAction = SKAction.run({
+            self.addChild(staffButton)
+        })
+        let fifthAction = SKAction.run({
+            self.addChild(menuButton)
+        })
+        
+        self.run(SKAction.sequence([wait,firstAction,wait,secondAction,wait,thirdAction,wait,fourthAction,wait,fifthAction]))
+        
+        
+        
+        
+        
+        
     }
     
     override func update(_ currentTime: TimeInterval) {

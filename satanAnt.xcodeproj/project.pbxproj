@@ -52,6 +52,16 @@
 		720FA87E262D5710000122A1 /* fishRIght.png in Resources */ = {isa = PBXBuildFile; fileRef = 720FA87D262D5710000122A1 /* fishRIght.png */; };
 		720FA889262D5798000122A1 /* fishLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 720FA888262D5798000122A1 /* fishLeft.png */; };
 		721172F02628291D00DFDBE5 /* statue.png in Resources */ = {isa = PBXBuildFile; fileRef = 721172EF2628291D00DFDBE5 /* statue.png */; };
+		721286162632768F00796DB1 /* settingButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 721286122632768D00796DB1 /* settingButton.png */; };
+		721286172632768F00796DB1 /* onePlayerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 721286132632768E00796DB1 /* onePlayerButton.png */; };
+		721286182632768F00796DB1 /* staffButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 721286142632768E00796DB1 /* staffButton.png */; };
+		721286192632768F00796DB1 /* twoPlayerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 721286152632768E00796DB1 /* twoPlayerButton.png */; };
+		7212861D2632775D00796DB1 /* OnePlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7212861C2632775D00796DB1 /* OnePlayerButton.swift */; };
+		721286212632778200796DB1 /* TwoPlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721286202632778200796DB1 /* TwoPlayerButton.swift */; };
+		721286242632778E00796DB1 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721286232632778E00796DB1 /* SettingButton.swift */; };
+		721286272632779B00796DB1 /* StaffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721286262632779B00796DB1 /* StaffButton.swift */; };
+		7212862A26327C7900796DB1 /* menuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212862926327C7900796DB1 /* menuButton.png */; };
+		7212862D26327CC000796DB1 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7212862C26327CC000796DB1 /* MenuButton.swift */; };
 		72184951262E7EFE00F84463 /* bet.png in Resources */ = {isa = PBXBuildFile; fileRef = 72184950262E7EFD00F84463 /* bet.png */; };
 		721879852621E5DC00E98B28 /* wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = 721879842621E5DC00E98B28 /* wind.wav */; };
 		721AE01726313D3C0002B341 /* loadBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 721AE01626313D3C0002B341 /* loadBoard.png */; };
@@ -744,6 +754,16 @@
 		720FA87D262D5710000122A1 /* fishRIght.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishRIght.png; sourceTree = "<group>"; };
 		720FA888262D5798000122A1 /* fishLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishLeft.png; sourceTree = "<group>"; };
 		721172EF2628291D00DFDBE5 /* statue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statue.png; sourceTree = "<group>"; };
+		721286122632768D00796DB1 /* settingButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingButton.png; sourceTree = "<group>"; };
+		721286132632768E00796DB1 /* onePlayerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onePlayerButton.png; sourceTree = "<group>"; };
+		721286142632768E00796DB1 /* staffButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staffButton.png; sourceTree = "<group>"; };
+		721286152632768E00796DB1 /* twoPlayerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twoPlayerButton.png; sourceTree = "<group>"; };
+		7212861C2632775D00796DB1 /* OnePlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePlayerButton.swift; sourceTree = "<group>"; };
+		721286202632778200796DB1 /* TwoPlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerButton.swift; sourceTree = "<group>"; };
+		721286232632778E00796DB1 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
+		721286262632779B00796DB1 /* StaffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffButton.swift; sourceTree = "<group>"; };
+		7212862926327C7900796DB1 /* menuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuButton.png; sourceTree = "<group>"; };
+		7212862C26327CC000796DB1 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		72184950262E7EFD00F84463 /* bet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet.png; sourceTree = "<group>"; };
 		721879842621E5DC00E98B28 /* wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wind.wav; sourceTree = "<group>"; };
 		721AE01626313D3C0002B341 /* loadBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loadBoard.png; path = ../../../../screenshot/loadBoard.png; sourceTree = "<group>"; };
@@ -1444,6 +1464,18 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
+		7212861B2632773200796DB1 /* StartSetting */ = {
+			isa = PBXGroup;
+			children = (
+				7212861C2632775D00796DB1 /* OnePlayerButton.swift */,
+				721286202632778200796DB1 /* TwoPlayerButton.swift */,
+				721286232632778E00796DB1 /* SettingButton.swift */,
+				721286262632779B00796DB1 /* StaffButton.swift */,
+				7212862C26327CC000796DB1 /* MenuButton.swift */,
+			);
+			path = StartSetting;
+			sourceTree = "<group>";
+		};
 		723C7ADC26219DD700D9026C /* Ammo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1630,6 +1662,7 @@
 		72B4663B260B2A1400BC5E56 /* satanAnt */ = {
 			isa = PBXGroup;
 			children = (
+				7212861B2632773200796DB1 /* StartSetting */,
 				72BCD6FD263024F000837980 /* loadBoard */,
 				720C7DF8262EDFA3000A20CA /* SlotMachine */,
 				72533CE0262875E00090A2E4 /* Power */,
@@ -1670,6 +1703,11 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				7212862926327C7900796DB1 /* menuButton.png */,
+				721286132632768E00796DB1 /* onePlayerButton.png */,
+				721286122632768D00796DB1 /* settingButton.png */,
+				721286142632768E00796DB1 /* staffButton.png */,
+				721286152632768E00796DB1 /* twoPlayerButton.png */,
 				725811D02631C43600425EF9 /* newLogo.png */,
 				72CED4152631B1730033B102 /* gifDemo-0.png */,
 				725811D42631C52700425EF9 /* icon.png */,
@@ -2546,6 +2584,7 @@
 				72684BAE26254BD1006B6DC9 /* foxidle4.png in Resources */,
 				725A36FD2622B29600340C82 /* slimeDie_2.png in Resources */,
 				72D6389126196A4700A43D41 /* npcRight_3.png in Resources */,
+				721286192632768F00796DB1 /* twoPlayerButton.png in Resources */,
 				72E7F49D261C3F2A006A7AB1 /* newPortal_3.png in Resources */,
 				7281EBAA26232D9900EE69F9 /* canonLeft_2.png in Resources */,
 				72E1D5BC26299B8800F47F88 /* umbrella.png in Resources */,
@@ -2701,6 +2740,7 @@
 				723C7AD326218B6B00D9026C /* candy_1.png in Resources */,
 				723E802726273A20002C54B9 /* hole.png in Resources */,
 				727F3562261EACEC00BB8E02 /* rHandler.png in Resources */,
+				7212862A26327C7900796DB1 /* menuButton.png in Resources */,
 				7281EBAC26232D9900EE69F9 /* canonLeft_4.png in Resources */,
 				7264DC0726247FB500D7722B /* plantDog_7.png in Resources */,
 				72E7F4C6261C4694006A7AB1 /* playerWalk.mp3 in Resources */,
@@ -2727,6 +2767,7 @@
 				7244702E2624545100FF052E /* bird_1.png in Resources */,
 				72E7F4BA261C4217006A7AB1 /* caveDoor_6.png in Resources */,
 				7278BE8D2628323F00AFE001 /* statue_3.png in Resources */,
+				721286172632768F00796DB1 /* onePlayerButton.png in Resources */,
 				723C7AD726218B6B00D9026C /* candy_6.png in Resources */,
 				724470322624545100FF052E /* bird_3.png in Resources */,
 				723C7AD426218B6B00D9026C /* candy_2.png in Resources */,
@@ -2738,6 +2779,7 @@
 				72DC0FEF2615C55D006E7AA1 /* staff.png in Resources */,
 				729E942F260E33CA00DFF2D0 /* portal_2.png in Resources */,
 				7247F9A1262B0878005B0DCA /* Level_13.sks in Resources */,
+				721286162632768F00796DB1 /* settingButton.png in Resources */,
 				72210553261AB32100B2EEAC /* cancelButton.png in Resources */,
 				72558BF826269E1B0012DA21 /* hit_3.wav in Resources */,
 				724213EC261A0CB300CA5F97 /* book_1.png in Resources */,
@@ -2890,6 +2932,7 @@
 				725A36D5262298C300340C82 /* slimeBlue_9.png in Resources */,
 				72E986112621CD2400382784 /* stick.png in Resources */,
 				721BED55262D808500CE4CF6 /* Level_14.sks in Resources */,
+				721286182632768F00796DB1 /* staffButton.png in Resources */,
 				72E4848F260F338C00D1C2DA /* exp_background.png in Resources */,
 				720A427D2618CBE9002D589C /* bomb_5.png in Resources */,
 				724213DC261A069600CA5F97 /* ObjectAction.sks in Resources */,
@@ -3013,6 +3056,7 @@
 				72E9860D2621C8E500382784 /* Sword.swift in Sources */,
 				724213FF261A18DC00CA5F97 /* AbilityHud.swift in Sources */,
 				72D3A55A260B618100E65281 /* Map.swift in Sources */,
+				7212861D2632775D00796DB1 /* OnePlayerButton.swift in Sources */,
 				725A37382622DA4000340C82 /* MonsterBornEffect.swift in Sources */,
 				7203E1C7260B3CCA006FFD40 /* Extension.swift in Sources */,
 				7240ED44262085F900745815 /* Slime.swift in Sources */,
@@ -3021,6 +3065,7 @@
 				72777321261ECF6D009F823F /* FireBomb.swift in Sources */,
 				72E7F46B261C17A5006A7AB1 /* BulletHitPoint.swift in Sources */,
 				7281EBCC2623305B00EE69F9 /* CanonFirePoint.swift in Sources */,
+				7212862D26327CC000796DB1 /* MenuButton.swift in Sources */,
 				72DFF51B2630195C00E465B9 /* StartScene.swift in Sources */,
 				72E48443260F0F7000D1C2DA /* Log.swift in Sources */,
 				72E573762621F59900FDC1F0 /* VillageGirl.swift in Sources */,
@@ -3068,6 +3113,7 @@
 				72FE15D9261DE29C008870C6 /* HeartDrop.swift in Sources */,
 				723C7ADE26219E0F00D9026C /* Ammo.swift in Sources */,
 				727B27A226248C4500240223 /* Scarecrow.swift in Sources */,
+				721286212632778200796DB1 /* TwoPlayerButton.swift in Sources */,
 				72558C122626BCFB0012DA21 /* LoveDialogue.swift in Sources */,
 				7220E30A2626EA4800DADDCB /* Cat.swift in Sources */,
 				72D638AC261978B700A43D41 /* BigDialogue.swift in Sources */,
@@ -3082,6 +3128,7 @@
 				72533CE2262875EE0090A2E4 /* Power.swift in Sources */,
 				72B4663D260B2A1400BC5E56 /* AppDelegate.swift in Sources */,
 				72500A64261AFED000EAE276 /* wordButton.swift in Sources */,
+				721286242632778E00796DB1 /* SettingButton.swift in Sources */,
 				72B30114260B7E0B008063D7 /* Door.swift in Sources */,
 				7264DC1626247FDF00D7722B /* PlantDog.swift in Sources */,
 				720A425826189E7D002D589C /* AttackPoint.swift in Sources */,
@@ -3093,6 +3140,7 @@
 				72DFF50E26300BCC00E465B9 /* DebugButton.swift in Sources */,
 				7242140A261A1C3B00CA5F97 /* PlusButton.swift in Sources */,
 				72FE15DC261DE32E008870C6 /* CoinDrop.swift in Sources */,
+				721286272632779B00796DB1 /* StaffButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
