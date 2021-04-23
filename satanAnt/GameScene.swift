@@ -86,6 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var eachFrame: TimeInterval = 1/60
     
     var birdBornStart: TimeInterval = 0
+    var giftBornStart: TimeInterval = 0
     var lastUpdateTime: TimeInterval = 0
     var currentFPS: Double = 0
     
@@ -293,6 +294,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         checkFarmBarAround()
         checkNpcAround()
         checkFoxAround()
+        checkGiftAround()
         canonDetect()
         monsterAutoAttackDetect()
         //setupZPosition()
@@ -305,8 +307,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupFishChangeAnchorPoint()
         setupFishingRod()
         setupSlotMachine()
+        setupBalloon()
         
-  
         
         
     }
@@ -1452,6 +1454,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func checkGiftAround() {
+        
+        for node in self.children{
+            if node.name == "gift"{
+                if node.position.distanceTo(player.position)<50{
+                    bornDrop(num: 1, position: node.position.randomPointInDistamce(distance: 20), homeScene: self, type: .coinDrop)
+                    node.removeFromParent()
+//                    let firstAction = SKAction(named: "giftAction")!
+//                    node.run(SKAction.sequence([firstAction,SKAction.removeFromParent()]))
+                   
+                }
+            }
+        }
+        
+    }
+    
     func checkFoxAround() {
         for node in self.children{
             if node.name == "fox"{
@@ -1491,6 +1509,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         }
                     }
                 }
+            }
+        }
+    }
+    
+    func setupBalloon()  {
+        
+        if !isBedRoom{
+
+            if giftBornStart > 6{
+                if Int.random(in: 0..<100) < 5 {
+                    let balloon = Balloon()
+                    balloon.position = CGPoint(x: 700, y: CGFloat.random(in: 300..<375))
+                    addChild(balloon)
+                }
+                giftBornStart = 0
             }
         }
     }
@@ -1589,6 +1622,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.rStart += eachFrame
         sinceStart += eachFrame
         birdBornStart += eachFrame
+        giftBornStart += eachFrame
         for monster in monsterList{
             monster.sinceStart += eachFrame
         }
@@ -2980,7 +3014,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var monster: Monster!
         var ammo: Ammo!
         var playerNode: Player!
-        
+        var balloon: Balloon!
         
         switch nodeA.name {
         case "log":
@@ -3001,6 +3035,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeA as! Ammo)
         case "player":
             playerNode = player
+        case "balloon":
+            balloon = (nodeA as! Balloon)
             
         default:
             break
@@ -3025,6 +3061,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ammo = (nodeB as! Ammo)
         case "player":
             playerNode = player
+        case "balloon":
+            balloon = (nodeB as! Balloon)
             
         default:
             break
@@ -3052,6 +3090,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else{
                 player.beingHit()
             }
+        }
+        
+        if ammo != nil && balloon != nil{
+            
+            
+            if let gift = balloon.gift{
+                gift.move(toParent: self)
+                gift.run(SKAction.moveBy(x: 0, y: CGFloat.random(in: -200 ..< -100), duration: 0.5))
+            }
+            
+            balloon.removeFromParent()
+            
         }
         
         

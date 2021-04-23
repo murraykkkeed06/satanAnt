@@ -436,6 +436,23 @@
 		729B88B7263288E50065259E /* pausePlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88B6263288E50065259E /* pausePlayButton.png */; };
 		729B88BB263289700065259E /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B88BA263289700065259E /* MenuButton.swift */; };
 		729B88BE263289AC0065259E /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B88BD263289AC0065259E /* PlayButton.swift */; };
+		729B88C12632A7590065259E /* balloon.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88C02632A7590065259E /* balloon.png */; };
+		729B88C42632A8010065259E /* gift.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88C32632A8010065259E /* gift.png */; };
+		729B88C72632A8280065259E /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B88C62632A8280065259E /* Balloon.swift */; };
+		729B88CA2632A9BD0065259E /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B88C92632A9BD0065259E /* Gift.swift */; };
+		729B88D92632B6310065259E /* gift-12.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88CC2632B62E0065259E /* gift-12.png */; };
+		729B88DA2632B6310065259E /* gift-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88CD2632B62E0065259E /* gift-7.png */; };
+		729B88DB2632B6310065259E /* gift-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88CE2632B62F0065259E /* gift-11.png */; };
+		729B88DC2632B6310065259E /* gift-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88CF2632B62F0065259E /* gift-3.png */; };
+		729B88DD2632B6310065259E /* gift-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D02632B62F0065259E /* gift-4.png */; };
+		729B88DE2632B6310065259E /* gift-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D12632B6300065259E /* gift-6.png */; };
+		729B88DF2632B6310065259E /* gift-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D22632B6300065259E /* gift-5.png */; };
+		729B88E02632B6310065259E /* gift-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D32632B6300065259E /* gift-0.png */; };
+		729B88E12632B6310065259E /* gift-10.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D42632B6300065259E /* gift-10.png */; };
+		729B88E22632B6310065259E /* gift-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D52632B6300065259E /* gift-8.png */; };
+		729B88E32632B6310065259E /* gift-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D62632B6310065259E /* gift-2.png */; };
+		729B88E42632B6310065259E /* gift-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D72632B6310065259E /* gift-9.png */; };
+		729B88E52632B6310065259E /* gift-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 729B88D82632B6310065259E /* gift-1.png */; };
 		729D92F3262D4AAE00BB23B9 /* fountain_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 729D92ED262D4AAD00BB23B9 /* fountain_6.png */; };
 		729D92F4262D4AAE00BB23B9 /* fountain_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 729D92EE262D4AAD00BB23B9 /* fountain_4.png */; };
 		729D92F5262D4AAE00BB23B9 /* fountain_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 729D92EF262D4AAD00BB23B9 /* fountain_2.png */; };
@@ -1144,6 +1161,23 @@
 		729B88B6263288E50065259E /* pausePlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pausePlayButton.png; sourceTree = "<group>"; };
 		729B88BA263289700065259E /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		729B88BD263289AC0065259E /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		729B88C02632A7590065259E /* balloon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balloon.png; sourceTree = "<group>"; };
+		729B88C32632A8010065259E /* gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gift.png; sourceTree = "<group>"; };
+		729B88C62632A8280065259E /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
+		729B88C92632A9BD0065259E /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
+		729B88CC2632B62E0065259E /* gift-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-12.png"; sourceTree = "<group>"; };
+		729B88CD2632B62E0065259E /* gift-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-7.png"; sourceTree = "<group>"; };
+		729B88CE2632B62F0065259E /* gift-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-11.png"; sourceTree = "<group>"; };
+		729B88CF2632B62F0065259E /* gift-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-3.png"; sourceTree = "<group>"; };
+		729B88D02632B62F0065259E /* gift-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-4.png"; sourceTree = "<group>"; };
+		729B88D12632B6300065259E /* gift-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-6.png"; sourceTree = "<group>"; };
+		729B88D22632B6300065259E /* gift-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-5.png"; sourceTree = "<group>"; };
+		729B88D32632B6300065259E /* gift-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-0.png"; sourceTree = "<group>"; };
+		729B88D42632B6300065259E /* gift-10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-10.png"; sourceTree = "<group>"; };
+		729B88D52632B6300065259E /* gift-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-8.png"; sourceTree = "<group>"; };
+		729B88D62632B6310065259E /* gift-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-2.png"; sourceTree = "<group>"; };
+		729B88D72632B6310065259E /* gift-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-9.png"; sourceTree = "<group>"; };
+		729B88D82632B6310065259E /* gift-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-1.png"; sourceTree = "<group>"; };
 		729D92ED262D4AAD00BB23B9 /* fountain_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_6.png; sourceTree = "<group>"; };
 		729D92EE262D4AAD00BB23B9 /* fountain_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_4.png; sourceTree = "<group>"; };
 		729D92EF262D4AAD00BB23B9 /* fountain_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_2.png; sourceTree = "<group>"; };
@@ -1732,6 +1766,21 @@
 		72B46656260B2CA900BC5E56 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				729B88D32632B6300065259E /* gift-0.png */,
+				729B88D82632B6310065259E /* gift-1.png */,
+				729B88D62632B6310065259E /* gift-2.png */,
+				729B88CF2632B62F0065259E /* gift-3.png */,
+				729B88D02632B62F0065259E /* gift-4.png */,
+				729B88D22632B6300065259E /* gift-5.png */,
+				729B88D12632B6300065259E /* gift-6.png */,
+				729B88CD2632B62E0065259E /* gift-7.png */,
+				729B88D52632B6300065259E /* gift-8.png */,
+				729B88D72632B6310065259E /* gift-9.png */,
+				729B88D42632B6300065259E /* gift-10.png */,
+				729B88CE2632B62F0065259E /* gift-11.png */,
+				729B88CC2632B62E0065259E /* gift-12.png */,
+				729B88C32632A8010065259E /* gift.png */,
+				729B88C02632A7590065259E /* balloon.png */,
 				729B88B6263288E50065259E /* pausePlayButton.png */,
 				729B88B32632846D0065259E /* pauseButton.png */,
 				721D557E263283D200BBD338 /* startBackButton.png */,
@@ -2323,6 +2372,8 @@
 				72DFF50D26300BCC00E465B9 /* DebugButton.swift */,
 				72E7E33F26304B1C0062A60F /* Record.swift */,
 				72C7613D26316BAF00C6CDDA /* LoadingPIcture.swift */,
+				729B88C62632A8280065259E /* Balloon.swift */,
+				729B88C92632A9BD0065259E /* Gift.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -2503,6 +2554,7 @@
 				720C7DF6262EDC8E000A20CA /* slotBar.png in Resources */,
 				7240ED3F2620848200745815 /* slime_4.png in Resources */,
 				72CED40C2631AEFF0033B102 /* demo-1.png in Resources */,
+				729B88DB2632B6310065259E /* gift-11.png in Resources */,
 				729D92F4262D4AAE00BB23B9 /* fountain_4.png in Resources */,
 				72E7F4B5261C4217006A7AB1 /* caveDoor_11.png in Resources */,
 				722F7065260C8B75009EB2D1 /* gray.png in Resources */,
@@ -2510,6 +2562,7 @@
 				72E02EB22629E30A00FFBB81 /* canonFire.mp3 in Resources */,
 				7298E533262E7B1B00D64548 /* heart.png in Resources */,
 				7298E534262E7B1B00D64548 /* melon.png in Resources */,
+				729B88C42632A8010065259E /* gift.png in Resources */,
 				72E4841D260EEDE800D1C2DA /* Level_1_2.sks in Resources */,
 				72E7F479261C2530006A7AB1 /* logHurt.mp3 in Resources */,
 				72500A61261AFEBE00EAE276 /* leaveButton.png in Resources */,
@@ -2537,6 +2590,7 @@
 				72684BBB26254E16006B6DC9 /* robot_2.png in Resources */,
 				72684BA726254BD1006B6DC9 /* foxidle3.png in Resources */,
 				725A37212622CF0800340C82 /* bornEffect_3.png in Resources */,
+				729B88D92632B6310065259E /* gift-12.png in Resources */,
 				72F2E3232625C25200D9DC6D /* pandaLeft_3.png in Resources */,
 				7247F998262B07B2005B0DCA /* Level_10.sks in Resources */,
 				72CED4242631B1760033B102 /* gifDemo-5.png in Resources */,
@@ -2559,8 +2613,10 @@
 				72558BFB2626A9BF0012DA21 /* runAway.wav in Resources */,
 				72684BAA26254BD1006B6DC9 /* foxidle7.png in Resources */,
 				723F2FCA262DB9CE005DDD34 /* farmLogo.png in Resources */,
+				729B88E32632B6310065259E /* gift-2.png in Resources */,
 				7281EBB626232DA800EE69F9 /* canonRight_2.png in Resources */,
 				7247F995262B0777005B0DCA /* Level_9.sks in Resources */,
+				729B88C12632A7590065259E /* balloon.png in Resources */,
 				729E9421260E2FBE00DFF2D0 /* new_right_3.png in Resources */,
 				7298E531262E7B1B00D64548 /* clover.png in Resources */,
 				72558C272626C3D20012DA21 /* chickenFor_3.png in Resources */,
@@ -2632,12 +2688,14 @@
 				72E48498260F338C00D1C2DA /* five.png in Resources */,
 				720A426D2618C7C0002D589C /* logDie_2.png in Resources */,
 				725A37312622D9B000340C82 /* monsterBornEffect_4.png in Resources */,
+				729B88DE2632B6310065259E /* gift-6.png in Resources */,
 				72500A8C261B585700EAE276 /* type2.mp3 in Resources */,
 				72650137262D7D9F001972A6 /* Jellyfish4.png in Resources */,
 				720A42702618C7C0002D589C /* logDie_3.png in Resources */,
 				72210570261AF14A00B2EEAC /* soilder_1.png in Resources */,
 				7264DC0C26247FB500D7722B /* plantDog_6.png in Resources */,
 				720C7DF3262EDC5D000A20CA /* slotMachine.png in Resources */,
+				729B88DA2632B6310065259E /* gift-7.png in Resources */,
 				72E7F4C9261C46C8006A7AB1 /* logWalk.wav in Resources */,
 				72500A67261B03D000EAE276 /* caveRoom.png in Resources */,
 				7240ED402620848200745815 /* slime_9.png in Resources */,
@@ -2660,6 +2718,7 @@
 				72E7F4B4261C4217006A7AB1 /* caveDoor_8.png in Resources */,
 				72684BC126254E16006B6DC9 /* robot_7.png in Resources */,
 				72558C2A2626C3D20012DA21 /* chickenFor_1.png in Resources */,
+				729B88E52632B6310065259E /* gift-1.png in Resources */,
 				72D6388426196A4700A43D41 /* npcRight_1.png in Resources */,
 				72E5737D2621FCBE00FDC1F0 /* buyButton.png in Resources */,
 				72C315672627E84D0092C684 /* buyWordButton.png in Resources */,
@@ -2698,6 +2757,7 @@
 				72D6388F26196A4700A43D41 /* npcLeft_3.png in Resources */,
 				7240ED792620A8D300745815 /* ghostLeftAttack_1.png in Resources */,
 				72E7F47F261C2A20006A7AB1 /* swordHit.wav in Resources */,
+				729B88E12632B6310065259E /* gift-10.png in Resources */,
 				72D6388626196A4700A43D41 /* npcFor_3.png in Resources */,
 				7281EBD326233FC800EE69F9 /* canonBall.png in Resources */,
 				725A36E6262298C300340C82 /* slimeRed_4.png in Resources */,
@@ -2705,6 +2765,7 @@
 				72D6388526196A4700A43D41 /* npcLeft_1.png in Resources */,
 				72E7F49F261C3F2A006A7AB1 /* newPortal_5.png in Resources */,
 				72E7F467261C1798006A7AB1 /* bulletHitPoint_5.png in Resources */,
+				729B88DD2632B6310065259E /* gift-4.png in Resources */,
 				72FE15D1261DE27E008870C6 /* heartDrop_3.png in Resources */,
 				72E7F4B8261C4217006A7AB1 /* caveDoor_17.png in Resources */,
 				72F2E32B2625C25200D9DC6D /* pandaBack_3.png in Resources */,
@@ -2830,6 +2891,7 @@
 				725A37282622D02C00340C82 /* bornSound.wav in Resources */,
 				729D92F7262D4AAE00BB23B9 /* fountain_3.png in Resources */,
 				720A42652618A81D002D589C /* fire_4.png in Resources */,
+				729B88E02632B6310065259E /* gift-0.png in Resources */,
 				72E48456260F110600D1C2DA /* log_backward_1.png in Resources */,
 				72E48432260EFCAF00D1C2DA /* Level_1_4.sks in Resources */,
 				72500A76261B12EE00EAE276 /* Level_6.sks in Resources */,
@@ -2870,6 +2932,7 @@
 				7279A99A260DAAC2000EB14F /* player_backward_1.png in Resources */,
 				725A36D4262298C300340C82 /* slimeRed_9.png in Resources */,
 				7279A989260D94A5000EB14F /* player_left_2.png in Resources */,
+				729B88DF2632B6310065259E /* gift-5.png in Resources */,
 				7221056E261AF14A00B2EEAC /* soilder_2.png in Resources */,
 				72052D6D2620035200808095 /* start.wav in Resources */,
 				72558C2E2626C3D20012DA21 /* chickenLeft_1.png in Resources */,
@@ -2917,6 +2980,7 @@
 				723F2FB8262DAE21005DDD34 /* Tent.png in Resources */,
 				7220E2FD2626EA3F00DADDCB /* catRight_2.png in Resources */,
 				725A370F2622BA6900340C82 /* deadGhost.png in Resources */,
+				729B88DC2632B6310065259E /* gift-3.png in Resources */,
 				72CED40D2631AEFF0033B102 /* demo-3.png in Resources */,
 				72558BF526269E1B0012DA21 /* hit_5.wav in Resources */,
 				72CED4212631B1760033B102 /* gifDemo-14.png in Resources */,
@@ -2947,6 +3011,7 @@
 				72D77D1026280977007D9687 /* suprise_4.png in Resources */,
 				72E48491260F338C00D1C2DA /* money_background.png in Resources */,
 				72E48438260EFEFC00D1C2DA /* Level_1_5.sks in Resources */,
+				729B88E42632B6310065259E /* gift-9.png in Resources */,
 				72E4847B260F2F2800D1C2DA /* log_right_4.png in Resources */,
 				72F4411626205F9A006F450B /* coke.png in Resources */,
 				72E7F4B9261C4217006A7AB1 /* caveDoor_4.png in Resources */,
@@ -3018,6 +3083,7 @@
 				7240ED3B2620848200745815 /* slime_3.png in Resources */,
 				72052D652620002400808095 /* slide.wav in Resources */,
 				72650134262D7D9F001972A6 /* Jellyfish3.png in Resources */,
+				729B88E22632B6310065259E /* gift-8.png in Resources */,
 				72E48499260F338C00D1C2DA /* exp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3125,6 +3191,7 @@
 				72558C382626CA110012DA21 /* PetEgg.swift in Sources */,
 				72D638AF26197FE200A43D41 /* Word.swift in Sources */,
 				721D55822632842900BBD338 /* PauseButton.swift in Sources */,
+				729B88CA2632A9BD0065259E /* Gift.swift in Sources */,
 				72E1D5BF26299BA200F47F88 /* Umbrella.swift in Sources */,
 				720FA87B262D5501000122A1 /* Fish.swift in Sources */,
 				72533CE5262877080090A2E4 /* FlyingBird.swift in Sources */,
@@ -3167,6 +3234,7 @@
 				723E801926272A81002C54B9 /* Stone.swift in Sources */,
 				723E801C26272B48002C54B9 /* Van.swift in Sources */,
 				72D3A557260B5E8E00E65281 /* GridYX.swift in Sources */,
+				729B88C72632A8280065259E /* Balloon.swift in Sources */,
 				72533CCF262870660090A2E4 /* TransferDialogue.swift in Sources */,
 				7244703C2624574D00FF052E /* Egg.swift in Sources */,
 				72DFF50E26300BCC00E465B9 /* DebugButton.swift in Sources */,

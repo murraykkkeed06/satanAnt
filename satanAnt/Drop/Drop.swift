@@ -71,3 +71,33 @@ func bornDrop(num: Int, position: CGPoint, homeScene: GameScene) {
     
 }
 
+func bornDrop(num: Int, position: CGPoint, homeScene: GameScene, type: DropType) {
+    
+    for _ in 0..<num{
+        
+        homeScene.run(homeScene.landSound)
+        
+        let node = fromType(type: type)
+        node.position = position
+        homeScene.addChild(node)
+        
+        let wait = SKAction.wait(forDuration: 0.2)
+        let up = SKAction.run({
+            let force = CGFloat.random(in: 180..<220)
+            // Apply an impulse at the vector.
+            let v = CGVector(dx: CGFloat.random(in: -0.5..<0.5) * force, dy: CGFloat.random(in: 0.8..<1) * force)
+            
+            node.physicsBody?.applyImpulse(v)
+            
+        })
+        let down = SKAction.run({
+            node.physicsBody?.pinned = true
+        })
+        node.run(SKAction.sequence([up,wait,down]))
+        
+    }
+    
+
+    
+}
+
