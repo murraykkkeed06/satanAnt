@@ -212,17 +212,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !self.setupIsSet {
             setupIsSet = true
             eachRoomSetting()
-            
-            
         }
-        loadSceneAnimation()
+        
         eachEnterSetting()
-        
-        
-        
-        
+
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
@@ -235,7 +229,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if self.playButton.frame.contains(location){playButton.work()}
             }
         }
-        
         
         setupPowerSelection(location: location)
         
@@ -500,9 +493,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupPowerSelection(location: CGPoint)  {
         
-        
-        
-        
+
         let powerSelectionNode: SKNode!
         //print("\(atPoint(location).name)")
         let name = atPoint(location).name
@@ -735,9 +726,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func loadSceneAnimation()  {
-        
-    }
     
     
     func eachEnterSetting()  {
